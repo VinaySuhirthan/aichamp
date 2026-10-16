@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { hero, stats } from "@/content/content";
+import { hero } from "@/content/content";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -121,42 +121,6 @@ export default function Hero() {
               <span>{hero.cta2.label}</span>
             </a>
           </div>
-        </div>
-
-        {/* Stats strip */}
-        <div
-          className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-14 border-t border-[var(--border)]"
-          style={{ marginTop: "96px", paddingTop: "48px" }}
-        >
-          {stats.map((s) => (
-            <div key={s.label}>
-              <p className="counter" style={{ marginBottom: "8px" }}>
-                {s.value}
-                {s.suffix}
-              </p>
-              <p className="text-[var(--muted-lt)] text-xs tracking-[0.14em] uppercase font-mono" style={{ marginTop: "10px" }}>
-                {s.label}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div
-        className="absolute bottom-8 right-8 hidden md:flex flex-col items-center gap-2"
-        aria-hidden="true"
-      >
-        <span className="text-[10px] tracking-[0.2em] uppercase text-[var(--muted)] rotate-90 origin-center mb-4">
-          Scroll
-        </span>
-        <div className="w-px h-16 bg-[var(--border)] relative overflow-hidden">
-          <div
-            className="absolute top-0 left-0 w-full h-1/2 bg-[var(--accent)]"
-            style={{
-              animation: "scroll-line 1.8s ease-in-out infinite",
-            }}
-          />
         </div>
       </div>
     </section>
