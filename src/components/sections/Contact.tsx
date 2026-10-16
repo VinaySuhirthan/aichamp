@@ -67,24 +67,24 @@ export default function Contact() {
     <section
       ref={sectionRef}
       id="contact"
-      className="py-24 md:py-32 bg-[var(--surface)] text-[var(--paper)] border-t border-[var(--border)] relative overflow-hidden"
+      className="py-32 md:py-48 bg-[var(--surface)] text-[var(--paper)] border-t border-[var(--border)] relative overflow-hidden"
       aria-labelledby="contact-heading"
     >
       {/* Background glow */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[var(--accent)]/5 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="container relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-14 md:gap-20">
           {/* Left info column */}
           <div className="md:col-span-4">
             <p className="section-label mb-4 contact-reveal">Contact</p>
             <h2
               id="contact-heading"
-              className="font-serif text-[clamp(30px,4vw,50px)] text-[var(--paper)] leading-[1.2] tracking-[-0.02em] font-medium mb-6 contact-reveal"
+              className="font-serif text-[clamp(32px,4vw,52px)] text-[var(--paper)] leading-[1.38] tracking-[-0.015em] font-medium mb-8 contact-reveal"
             >
               {contact.label}
             </h2>
-            <p className="text-[var(--muted-lt)] text-sm leading-[1.8] mb-10 contact-reveal">
+            <p className="text-[var(--muted-lt)] text-base leading-[2.15] mb-12 contact-reveal">
               {contact.intro}
             </p>
 

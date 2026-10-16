@@ -46,7 +46,7 @@ export default function About() {
     <section
       ref={sectionRef}
       id="about"
-      className="py-24 md:py-32 section--light"
+      className="py-32 md:py-48 section--light"
       aria-labelledby="about-heading"
     >
       <div className="container">
@@ -97,19 +97,19 @@ export default function About() {
             <p className="section-label mb-6 about-reveal">About</p>
             <h2
               id="about-heading"
-              className="font-serif text-[clamp(32px,4.5vw,58px)] text-[var(--paper)] leading-[1.2] tracking-[-0.02em] font-medium mb-4 about-reveal"
+              className="font-serif text-[clamp(34px,4.5vw,58px)] text-[var(--paper)] leading-[1.38] tracking-[-0.015em] font-medium mb-5 about-reveal"
             >
               {about.name}
             </h2>
-            <p className="text-[var(--accent)] text-sm tracking-[0.08em] uppercase mb-8 leading-normal about-reveal">
+            <p className="text-[var(--accent)] text-sm tracking-[0.1em] uppercase mb-8 leading-normal about-reveal font-mono">
               {about.title}
             </p>
 
-            <div className="space-y-6 max-w-[680px]">
+            <div className="space-y-8 max-w-[680px]">
               {about.bio.map((para, i) => (
                 <p
                   key={i}
-                  className="text-[var(--muted)] text-[16px] leading-[1.85] about-reveal"
+                  className="text-[var(--muted-lt)] text-[17px] leading-[2.15] about-reveal"
                 >
                   {para}
                 </p>

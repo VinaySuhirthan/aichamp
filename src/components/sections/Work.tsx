@@ -37,27 +37,27 @@ export default function Work() {
       <section
         ref={sectionRef}
         id="work"
-        className="py-24 md:py-32 section--light"
+        className="py-32 md:py-48 section--light"
         aria-labelledby="work-heading"
       >
         <div className="container">
-          <div className="mb-16">
+          <div className="mb-20">
             <p className="section-label mb-4">Work</p>
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
               <h2
                 id="work-heading"
-                className="font-serif text-[clamp(36px,5vw,64px)] text-[var(--paper)] leading-[1.2] tracking-[-0.02em] font-medium max-w-[480px]"
+                className="font-serif text-[clamp(36px,5vw,64px)] text-[var(--paper)] leading-[1.38] tracking-[-0.015em] font-medium max-w-[480px]"
               >
                 Selected{" "}
                 <em className="italic text-[var(--accent)]">Work</em>
               </h2>
-              <p className="text-[var(--muted-lt)] text-sm max-w-xs leading-relaxed">{work.intro}</p>
+              <p className="text-[var(--muted-lt)] text-sm md:text-base max-w-sm leading-[2.1]">{work.intro}</p>
             </div>
           </div>
 
           <div
             ref={gridRef}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
           >
             {work.projects.map((project, i) => (
               <article

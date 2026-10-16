@@ -43,15 +43,15 @@ export default function Process() {
     <section
       ref={sectionRef}
       id="process"
-      className="py-24 md:py-32 bg-[var(--ink)]"
+      className="py-32 md:py-48 bg-[var(--ink)]"
       aria-labelledby="process-heading"
     >
       <div className="container">
-        <div className="mb-16 md:mb-20">
+        <div className="mb-20 md:mb-28">
           <p className="section-label mb-4">Process</p>
           <h2
             id="process-heading"
-            className="font-serif text-[clamp(36px,5vw,64px)] text-[var(--paper)] leading-[1.2] tracking-[-0.02em] font-medium max-w-[520px]"
+            className="font-serif text-[clamp(36px,5vw,64px)] text-[var(--paper)] leading-[1.38] tracking-[-0.015em] font-medium max-w-[520px]"
           >
             How We <em className="italic text-[var(--accent)]">Work</em>
           </h2>
@@ -64,7 +64,7 @@ export default function Process() {
           {process.steps.map((step, i) => (
             <div
               key={step.number}
-              className={`process-step relative p-8 md:p-10 ${
+              className={`process-step relative p-8 md:p-12 ${
                 i < process.steps.length - 1 ? "border-b md:border-b-0 md:border-r border-[var(--border)]" : ""
               }`}
             >
@@ -75,13 +75,13 @@ export default function Process() {
 
               {/* Content */}
               <div className="relative mt-4">
-                <p className="text-[var(--muted)] text-[10px] tracking-[0.18em] uppercase mb-3">
+                <p className="text-[var(--accent)] text-[10px] tracking-[0.18em] uppercase mb-4 font-mono font-semibold">
                   Step {step.number}
                 </p>
-                <h3 className="font-serif text-[22px] text-[var(--paper)] font-medium tracking-[-0.02em] mb-4">
+                <h3 className="font-serif text-[24px] text-[var(--paper)] font-medium tracking-[-0.015em] mb-4 leading-[1.35]">
                   {step.title}
                 </h3>
-                <p className="text-[var(--muted)] text-sm leading-[1.75]">
+                <p className="text-[var(--muted-lt)] text-sm leading-[2.1]">
                   {step.description}
                 </p>
               </div>

@@ -79,7 +79,7 @@ export default function Hero() {
           </p>
 
           {/* Headline */}
-          <h1 ref={headlineRef} className="hero__headline mb-6 leading-[1.18]">
+          <h1 ref={headlineRef} className="hero__headline mb-8 leading-[1.32]">
             {hero.headline.map((line, i) => (
               <span key={i} className="reveal-line block">
                 <span className="reveal-line__inner">
@@ -99,12 +99,12 @@ export default function Hero() {
           </h1>
 
           {/* Subhead */}
-          <p ref={subRef} className="hero__subhead leading-[1.75] mb-10 text-base md:text-lg">
+          <p ref={subRef} className="hero__subhead leading-[2.1] mb-12 text-base md:text-lg">
             {hero.subhead}
           </p>
 
           {/* CTAs */}
-          <div ref={ctasRef} className="flex flex-wrap gap-4">
+          <div ref={ctasRef} className="flex flex-wrap gap-5">
             <a
               href={hero.cta1.href}
               className="btn btn--ghost"
@@ -124,14 +124,14 @@ export default function Hero() {
         </div>
 
         {/* Stats strip */}
-        <div className="mt-16 md:mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 pt-10 border-t border-[var(--border)]">
+        <div className="mt-28 md:mt-36 grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-14 pt-14 border-t border-[var(--border)]">
           {stats.map((s) => (
             <div key={s.label}>
-              <p className="counter">
+              <p className="counter mb-2">
                 {s.value}
                 {s.suffix}
               </p>
-              <p className="text-[var(--muted)] text-xs tracking-[0.1em] uppercase mt-1">
+              <p className="text-[var(--muted-lt)] text-xs tracking-[0.14em] uppercase mt-2 font-mono">
                 {s.label}
               </p>
             </div>

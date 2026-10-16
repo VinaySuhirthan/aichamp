@@ -292,7 +292,7 @@ export default function Services() {
     <section
       ref={sectionRef}
       id="services"
-      className="py-24 md:py-32 bg-[var(--ink)] relative overflow-hidden"
+      className="py-32 md:py-48 bg-[var(--ink)] relative overflow-hidden"
       aria-labelledby="services-heading"
     >
       {/* Subtle tech background grid pattern */}
@@ -309,8 +309,8 @@ export default function Services() {
 
       <div className="container relative z-10">
         {/* Header Block */}
-        <div ref={headingRef} className="text-center max-w-3xl mx-auto mb-14 md:mb-18">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[var(--accent)]/40 bg-[var(--accent)]/10 text-[var(--accent-lt)] text-[11px] font-mono tracking-widest uppercase mb-6 shadow-sm">
+        <div ref={headingRef} className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[var(--accent)]/40 bg-[var(--accent)]/10 text-[var(--accent-lt)] text-[11px] font-mono tracking-widest uppercase mb-8 shadow-sm">
             <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] animate-ping" />
             <span>AI BIZ CHAMPION</span>
             <span className="opacity-40">•</span>
@@ -319,7 +319,7 @@ export default function Services() {
 
           <h2
             id="services-heading"
-            className="font-serif text-[clamp(32px,4.5vw,56px)] text-[var(--paper)] leading-[1.25] tracking-[-0.02em] font-medium mb-5"
+            className="font-serif text-[clamp(34px,5vw,62px)] text-[var(--paper)] leading-[1.38] tracking-[-0.015em] font-medium mb-7"
           >
             Pioneers in{" "}
             <span className="italic text-[var(--accent)] underline decoration-[var(--accent)]/30 underline-offset-8">
@@ -327,13 +327,13 @@ export default function Services() {
             </span>
           </h2>
 
-          <p className="text-[var(--muted-lt)] text-sm md:text-base leading-[1.85] max-w-2xl mx-auto">
+          <p className="text-[var(--muted-lt)] text-base md:text-lg leading-[2.15] max-w-2xl mx-auto">
             15 specialized, production-ready capabilities orchestrated by Dr. G. Nalinipriya — built for startups, brands, and modern institutions demanding precision and speed.
           </p>
         </div>
 
         {/* Filter Pills */}
-        <div className="flex flex-wrap items-center justify-center gap-2.5 mb-14">
+        <div className="flex flex-wrap items-center justify-center gap-3.5 mb-18 md:mb-24">
           {[
             { id: "all", label: "All 15 Services", count: 15 },
             { id: "visual", label: "Brand & Visual", count: 3 },
@@ -344,7 +344,7 @@ export default function Services() {
             <button
               key={cat.id}
               onClick={() => setFilter(cat.id as any)}
-              className={`px-4 py-2 rounded-full text-xs font-medium tracking-wide transition-all duration-300 border flex items-center gap-2 cursor-pointer ${
+              className={`px-5 py-2.5 rounded-full text-xs font-medium tracking-wide transition-all duration-300 border flex items-center gap-2.5 cursor-pointer ${
                 filter === cat.id
                   ? "bg-[var(--accent)] text-[var(--ink)] border-[var(--accent)] font-semibold shadow-md shadow-[var(--accent)]/25 scale-105"
                   : "bg-[var(--surface-2)]/80 text-[var(--muted-lt)] border-[var(--border)] hover:border-[var(--accent)] hover:text-[var(--paper)]"
@@ -365,56 +365,56 @@ export default function Services() {
         {/* Startup-Grade Services Grid */}
         <div
           ref={gridRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10"
         >
           {filtered.map((item) => (
             <div
               key={item.id}
-              className="hover-shimmer group relative rounded-2xl border border-[var(--border)] bg-gradient-to-b from-[var(--surface-2)]/90 via-[var(--surface-2)]/60 to-[var(--surface)]/90 backdrop-blur-md p-7 md:p-8 transition-all duration-400 hover:border-[var(--accent)] hover:shadow-[0_16px_36px_rgba(184,146,74,0.22)] hover:-translate-y-1.5 flex flex-col justify-between"
+              className="hover-shimmer group relative rounded-2xl border border-[var(--border)] bg-gradient-to-b from-[var(--surface-2)]/90 via-[var(--surface-2)]/60 to-[var(--surface)]/90 backdrop-blur-md p-8 md:p-9 transition-all duration-400 hover:border-[var(--accent)] hover:shadow-[0_16px_36px_rgba(184,146,74,0.22)] hover:-translate-y-1.5 flex flex-col justify-between"
             >
               {/* Top ambient highlight line */}
               <div className="absolute top-0 left-6 right-6 h-[1px] bg-gradient-to-r from-transparent via-[var(--accent)]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
               <div>
                 {/* Header Row */}
-                <div className="flex items-center justify-between mb-5">
+                <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center gap-3">
-                    <div className="w-11 h-11 rounded-xl bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center text-[var(--accent)] group-hover:scale-110 group-hover:border-[var(--accent)] group-hover:bg-[var(--accent)]/10 transition-all duration-300 shadow-inner">
+                    <div className="w-12 h-12 rounded-xl bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center text-[var(--accent)] group-hover:scale-110 group-hover:border-[var(--accent)] group-hover:bg-[var(--accent)]/10 transition-all duration-300 shadow-inner">
                       {item.icon}
                     </div>
                     <span className="font-mono text-xs font-semibold text-[var(--accent)] tracking-widest">
                       #{item.id < 10 ? `0${item.id}` : item.id}
                     </span>
                   </div>
-                  <span className="text-[10px] font-mono uppercase tracking-wider font-medium px-2.5 py-0.5 rounded-full bg-[var(--surface)] border border-[var(--border)] text-[var(--muted-lt)] group-hover:border-[var(--accent)]/40 group-hover:text-[var(--accent-lt)] transition-colors duration-300">
+                  <span className="text-[10px] font-mono uppercase tracking-wider font-medium px-3 py-1 rounded-full bg-[var(--surface)] border border-[var(--border)] text-[var(--muted-lt)] group-hover:border-[var(--accent)]/40 group-hover:text-[var(--accent-lt)] transition-colors duration-300">
                     {item.tag}
                   </span>
                 </div>
 
                 {/* Title */}
-                <h3 className="font-serif text-xl md:text-[22px] font-medium text-[var(--paper)] leading-[1.35] mb-2.5 group-hover:text-[var(--accent-lt)] transition-colors duration-300">
+                <h3 className="font-serif text-xl md:text-[23px] font-medium text-[var(--paper)] leading-[1.42] mb-3 group-hover:text-[var(--accent-lt)] transition-colors duration-300">
                   {item.name}
                 </h3>
 
                 {/* Tech chip */}
-                <p className="text-[10px] font-mono text-[var(--accent)]/80 tracking-wide uppercase mb-3">
+                <p className="text-[10px] font-mono text-[var(--accent)]/80 tracking-wide uppercase mb-4">
                   {item.techStack}
                 </p>
 
                 {/* Description */}
-                <p className="text-[var(--muted-lt)] text-sm leading-[1.8] mb-6">
+                <p className="text-[var(--muted-lt)] text-sm leading-[2.1] mb-8">
                   {item.description}
                 </p>
               </div>
 
               {/* Bottom Footer / Action */}
-              <div className="pt-5 border-t border-[var(--border)]/70 flex items-center justify-between mt-auto">
+              <div className="pt-6 border-t border-[var(--border)]/70 flex items-center justify-between mt-auto">
                 <span className="text-xs text-[var(--muted)] tracking-wide font-medium">
                   {item.categoryLabel}
                 </span>
                 <Link
                   href="#contact"
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--accent)] group-hover:text-[var(--accent-lt)] group-hover:translate-x-1 transition-all duration-300 cursor-pointer"
+                  className="inline-flex items-center gap-2 text-xs font-semibold text-[var(--accent)] group-hover:text-[var(--accent-lt)] group-hover:translate-x-1 transition-all duration-300 cursor-pointer"
                 >
                   <span>Inquire</span>
                   <span className="text-sm">→</span>
@@ -425,18 +425,18 @@ export default function Services() {
         </div>
 
         {/* Bottom Banner Callout */}
-        <div className="mt-14 p-6 md:p-8 rounded-2xl border border-[var(--accent)]/30 bg-gradient-to-r from-[var(--surface-2)] via-[var(--surface)] to-[var(--surface-2)] flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="mt-20 md:mt-24 p-8 md:p-12 rounded-2xl border border-[var(--accent)]/30 bg-gradient-to-r from-[var(--surface-2)] via-[var(--surface)] to-[var(--surface-2)] flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="text-center md:text-left">
-            <p className="text-xs font-mono uppercase tracking-widest text-[var(--accent)] font-semibold mb-1">
+            <p className="text-xs font-mono uppercase tracking-widest text-[var(--accent)] font-semibold mb-2">
               Custom Startup Architecture
             </p>
-            <p className="font-serif text-lg md:text-xl text-[var(--paper)]">
+            <p className="font-serif text-lg md:text-2xl text-[var(--paper)] leading-[1.4]">
               Looking for a tailored end-to-end launch package? Let AI Biz Champion build your growth engine.
             </p>
           </div>
           <Link
             href="#contact"
-            className="px-6 py-3 rounded-full bg-[var(--accent)] text-[var(--ink)] font-semibold text-xs tracking-wider uppercase hover:bg-[var(--accent-lt)] transition-all duration-300 shadow-lg shadow-[var(--accent)]/20 whitespace-nowrap cursor-pointer hover:scale-105"
+            className="px-7 py-3.5 rounded-full bg-[var(--accent)] text-[var(--ink)] font-semibold text-xs tracking-wider uppercase hover:bg-[var(--accent-lt)] transition-all duration-300 shadow-lg shadow-[var(--accent)]/20 whitespace-nowrap cursor-pointer hover:scale-105"
           >
             Start Your Project ↗
           </Link>

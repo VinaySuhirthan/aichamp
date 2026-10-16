@@ -31,21 +31,21 @@ export default function FAQ() {
     <section
       ref={sectionRef}
       id="faq"
-      className="py-24 md:py-32 bg-[var(--ink)]"
+      className="py-32 md:py-48 bg-[var(--ink)]"
       aria-labelledby="faq-heading"
     >
       <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-14">
           <div className="md:col-span-4">
             <p className="section-label mb-4 faq-reveal">FAQ</p>
             <h2
               id="faq-heading"
-              className="font-serif text-[clamp(32px,4.5vw,52px)] text-[var(--paper)] leading-[1.2] tracking-[-0.02em] font-medium faq-reveal"
+              className="font-serif text-[clamp(32px,4.5vw,52px)] text-[var(--paper)] leading-[1.38] tracking-[-0.015em] font-medium faq-reveal"
             >
               Common{" "}
               <em className="italic text-[var(--accent)]">Questions</em>
             </h2>
-            <p className="text-[var(--muted)] text-sm mt-6 leading-relaxed max-w-[280px] faq-reveal">
+            <p className="text-[var(--muted-lt)] text-sm md:text-base mt-8 leading-[2.1] max-w-[320px] faq-reveal">
               If you have a question not answered here, please reach out via the contact form below.
             </p>
           </div>
