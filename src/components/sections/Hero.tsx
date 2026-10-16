@@ -108,7 +108,7 @@ export default function Hero() {
             <a
               href={hero.cta1.href}
               className="btn btn--ghost"
-              aria-label="View our portfolio"
+              aria-label="Explore our services"
             >
               <span>{hero.cta1.label}</span>
               <ArrowIcon />

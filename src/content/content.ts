@@ -25,7 +25,6 @@ export const nav = [
   { label: "Services", href: "#services" },
   { label: "About", href: "#about" },
   { label: "Process", href: "#process" },
-  { label: "Work", href: "#work" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -33,7 +32,7 @@ export const hero = {
   headline: ["Because Quality", "Matters."],
   subhead:
     "Pioneers in AI-powered digital creativity and innovation.",
-  cta1: { label: "View Our Work", href: "#work" },
+  cta1: { label: "Explore Services", href: "#services" },
   cta2: { label: "Book a Consultation", href: "#contact" },
 };
 
