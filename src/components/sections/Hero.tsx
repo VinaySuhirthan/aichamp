@@ -31,10 +31,10 @@ export default function Hero() {
     mm.add("(prefers-reduced-motion: no-preference)", () => {
       // Reveal lines on load
       const lines = headline.querySelectorAll(".reveal-line__inner");
-      const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 1.3 });
-      tl.to(lines, { y: "0%", duration: 1.1, stagger: 0.12 })
-        .from(sub, { opacity: 0, y: 24, duration: 0.8 }, "-=0.6")
-        .from(ctas.children, { opacity: 0, y: 20, stagger: 0.1, duration: 0.7 }, "-=0.5");
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" }, delay: 0.2 });
+      tl.from(lines, { y: 30, opacity: 0, duration: 0.9, stagger: 0.12 })
+        .from(sub, { opacity: 0, y: 20, duration: 0.7 }, "-=0.4")
+        .from(ctas.children, { opacity: 0, y: 16, stagger: 0.08, duration: 0.6 }, "-=0.3");
 
       // Parallax on scroll
       gsap.to(headline, {
@@ -75,7 +75,7 @@ export default function Hero() {
         <div className="max-w-[900px]">
           {/* Label */}
           <p className="section-label mb-8" aria-hidden="true">
-            AI bis Champ
+            AI Biz Champion
           </p>
 
           {/* Headline */}

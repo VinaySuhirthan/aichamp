@@ -6,7 +6,7 @@ export default function MobileCTABar() {
   return (
     <div className="mobile-cta-bar flex gap-2 p-3 bg-[var(--ink)]/95 backdrop-blur-md border-t border-[var(--border)]" aria-label="Quick actions">
       <a
-        href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hello AI bis Champ, I want to inquire about your AI services.")}`}
+        href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hello AI Biz Champion, I want to inquire about your AI services.")}`}
         target="_blank"
         rel="noopener noreferrer"
         className="flex-1 inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#25D366] text-white font-semibold text-xs tracking-wide uppercase transition-transform active:scale-95 shadow-md shadow-[#25D366]/20"

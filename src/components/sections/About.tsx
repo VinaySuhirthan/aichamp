@@ -86,7 +86,7 @@ export default function About() {
                   <p className="text-[10px] tracking-[0.15em] uppercase text-[var(--muted)] mb-1">
                     {cred.label}
                   </p>
-                  <p className="text-[var(--ink)] text-sm font-medium">{cred.value}</p>
+                  <p className="text-[var(--paper)] text-sm font-medium">{cred.value}</p>
                 </li>
               ))}
             </ul>
@@ -97,7 +97,7 @@ export default function About() {
             <p className="section-label mb-6 about-reveal">About</p>
             <h2
               id="about-heading"
-              className="font-serif text-[clamp(32px,4.5vw,58px)] text-[var(--ink)] leading-[1.2] tracking-[-0.02em] font-medium mb-4 about-reveal"
+              className="font-serif text-[clamp(32px,4.5vw,58px)] text-[var(--paper)] leading-[1.2] tracking-[-0.02em] font-medium mb-4 about-reveal"
             >
               {about.name}
             </h2>

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { nav, site } from "@/content/content";
 import MobileMenu from "./MobileMenu";
 
@@ -47,10 +48,22 @@ export default function Header() {
             {/* Logo */}
             <Link
               href="/"
-              className="font-serif text-[var(--paper)] text-xl tracking-[-0.02em] font-medium no-underline focus-visible:outline-[var(--accent)]"
+              className="flex items-center gap-3 no-underline focus-visible:outline-[var(--accent)] group"
               aria-label={`${site.name} — Home`}
             >
-              AI bis Champ
+              <div className="relative w-9 h-9 rounded-full overflow-hidden border border-[var(--accent)]/50 bg-[#f5f0e8] p-0.5 shadow-sm group-hover:scale-105 transition-transform duration-300 flex-shrink-0">
+                <Image
+                  src="/logo.png"
+                  alt="AI Biz Champion Brand Mark"
+                  width={36}
+                  height={36}
+                  className="object-contain w-full h-full rounded-full"
+                  priority
+                />
+              </div>
+              <span className="font-serif text-[var(--paper)] text-xl tracking-[-0.02em] font-medium group-hover:text-[var(--accent-lt)] transition-colors">
+                AI Biz Champion
+              </span>
             </Link>
 
             {/* Desktop nav */}
@@ -70,7 +83,7 @@ export default function Header() {
             <a
               href="#contact"
               className="btn btn--primary hidden md:inline-flex"
-              aria-label="Book a consultation with AI bis Champ"
+              aria-label="Book a consultation with AI Biz Champion"
             >
               <span>Book a Consultation</span>
             </a>

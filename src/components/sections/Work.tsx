@@ -46,12 +46,12 @@ export default function Work() {
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
               <h2
                 id="work-heading"
-                className="font-serif text-[clamp(36px,5vw,64px)] text-[var(--ink)] leading-[1.2] tracking-[-0.02em] font-medium max-w-[480px]"
+                className="font-serif text-[clamp(36px,5vw,64px)] text-[var(--paper)] leading-[1.2] tracking-[-0.02em] font-medium max-w-[480px]"
               >
                 Selected{" "}
-                <em className="italic text-[var(--accent-dk)]">Work</em>
+                <em className="italic text-[var(--accent)]">Work</em>
               </h2>
-              <p className="text-[var(--muted)] text-sm max-w-xs leading-relaxed">{work.intro}</p>
+              <p className="text-[var(--muted-lt)] text-sm max-w-xs leading-relaxed">{work.intro}</p>
             </div>
           </div>
 

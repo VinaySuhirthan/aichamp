@@ -272,7 +272,6 @@ p { line-height: 1.8; }
 }
 .reveal-line__inner {
   display: block;
-  transform: translateY(110%);
   will-change: transform;
 }
 
@@ -404,14 +403,15 @@ p { line-height: 1.8; }
   top: 0; left: 0; right: 0;
   z-index: 100;
   padding: var(--space-4) 0;
-  transition: transform 0.45s var(--ease-out-expo), background 0.3s, padding 0.3s;
-  border-bottom: 1px solid transparent;
-}
-.header.scrolled {
-  background: var(--ink-80);
+  background: rgba(13, 13, 11, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-color: var(--border);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  transition: transform 0.45s var(--ease-out-expo), padding 0.3s, background 0.3s;
+}
+.header.scrolled {
+  background: rgba(13, 13, 11, 0.98);
+  border-bottom-color: var(--border);
   padding: var(--space-3) 0;
 }
 .header.hidden { transform: translateY(-100%); }
@@ -433,10 +433,13 @@ p { line-height: 1.8; }
 /* ─── Hero ───────────────────────────────────────────────── */
 .hero {
   position: relative;
-  min-height: 100svh;
+  min-height: 95vh;
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  justify-content: center;
   overflow: hidden;
+  padding-top: 120px;
+  padding-bottom: 60px;
 }
 .hero__canvas {
   position: absolute;
@@ -446,7 +449,7 @@ p { line-height: 1.8; }
 .hero__content {
   position: relative;
   z-index: 1;
-  padding: var(--space-12) 0 var(--space-10);
+  padding: var(--space-6) 0 var(--space-6);
   width: 100%;
 }
 .hero__headline {
@@ -549,10 +552,10 @@ p { line-height: 1.8; }
   color: var(--ink);
 }
 
-/* ─── Light section ──────────────────────────────────────── */
-.section--light { background: var(--paper); color: var(--ink); }
-.section--light .section-label { color: var(--accent-dk); }
-.section--light .divider { background: var(--border-lt); }
+/* ─── Unified Luxury Dark Section ───────────────────────── */
+.section--light { background: var(--surface); color: var(--paper); }
+.section--light .section-label { color: var(--accent); }
+.section--light .divider { background: var(--border); }
 
 /* ─── Counter ────────────────────────────────────────────── */
 .counter {

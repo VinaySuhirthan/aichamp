@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { site, nav, footer } from "@/content/content";
 
 export default function Footer() {
@@ -8,10 +9,21 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
           {/* Brand */}
           <div>
-            <p className="font-serif text-2xl text-[var(--paper)] tracking-[-0.02em] font-medium mb-4">
-              AI bis Champ
-            </p>
-            <p className="text-[var(--muted)] text-sm leading-relaxed max-w-xs">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="relative w-10 h-10 rounded-full overflow-hidden border border-[var(--accent)]/50 bg-[#f5f0e8] p-0.5 shadow-sm flex-shrink-0">
+                <Image
+                  src="/logo.png"
+                  alt="AI Biz Champion Brand Mark"
+                  width={40}
+                  height={40}
+                  className="object-contain w-full h-full rounded-full"
+                />
+              </div>
+              <p className="font-serif text-2xl text-[var(--paper)] tracking-[-0.02em] font-medium">
+                AI Biz Champion
+              </p>
+            </div>
+            <p className="text-[var(--muted-lt)] text-sm leading-relaxed max-w-xs">
               Because Quality Matters. Expert AI-powered services led by Dr. G. Nalinipriya, Professor and AI Specialist.
             </p>
           </div>
@@ -50,7 +62,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hello AI bis Champ team, I want to inquire about your services.")}`}
+                  href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hello AI Biz Champion team, I want to inquire about your services.")}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[var(--muted-lt)] text-sm hover:text-[#25D366] transition-colors no-underline focus-visible:outline-[var(--accent)]"
@@ -68,7 +80,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors capitalize text-xs tracking-wider focus-visible:outline-[var(--accent)]"
-                  aria-label={`Follow AI bis Champ on ${key}`}
+                  aria-label={`Follow AI Biz Champion on ${key}`}
                 >
                   {key}
                 </a>

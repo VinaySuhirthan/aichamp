@@ -1,4 +1,4 @@
-# AI bis Champ — Website
+# AI Biz Champion — Website
 
 **"Because Quality Matters"**  
 AI-powered creative services led by Dr. G. Nalinipriya, Professor and AI Specialist.
@@ -44,10 +44,10 @@ You do not need to touch any component to update content. Every export in that f
 
 ### `site` — Brand and contact info
 ```ts
-site.name          // "AI bis Champ"
+site.name          // "AI Biz Champion"
 site.tagline       // "Because Quality Matters"
 site.email         // Contact email
-site.whatsapp      // WhatsApp number (e.g. +911234567890)
+site.whatsapp      // WhatsApp number (e.g. 919994965489)
 site.social        // Instagram, YouTube, LinkedIn, Twitter URLs
 ```
 
@@ -128,7 +128,7 @@ The following pages have placeholder content that **must be replaced by a qualif
 
 ## SEO Configuration
 
-- **Domain**: Update all `https://aibischamp.com` references in `src/app/layout.tsx`, `src/app/sitemap.ts`, and `src/app/robots.ts` with your actual domain before deployment.
+- **Domain**: Update all `https://aibizchampion.com` references in `src/app/layout.tsx`, `src/app/sitemap.ts`, and `src/app/robots.ts` with your actual domain before deployment.
 - **OG Image**: Add a `public/og-image.jpg` file (1200×630px) for social sharing previews.
 - **Favicon**: Replace `public/favicon.svg` or `public/favicon.ico` with your actual brand mark.
 - **Structured Data**: Organization and Event schema are embedded in `src/app/page.tsx` and `src/app/masterclass/page.tsx`.
@@ -149,7 +149,7 @@ No environment variables are required for the default setup. If you add a backen
 
 ### Custom Domain
 1. In the Vercel dashboard, go to **Settings → Domains**
-2. Add your domain (e.g. `aibischamp.com`)
+2. Add your domain (e.g. `aibizchampion.com`)
 3. Update DNS as instructed by Vercel
 
 ### Updating the Site
@@ -250,4 +250,4 @@ Create `src/app/api/contact/route.ts` as a Next.js API route and POST to it.
 
 ---
 
-*Built by AI bis Champ — Because Quality Matters.*
+*Built for AI Biz Champion — Because Quality Matters.*

@@ -1,13 +1,13 @@
 // ============================================================
-// AI bis Champ — Master Content File
+// AI Biz Champion — Master Content File
 // Edit this file to update all site text, data, and settings.
 // ============================================================
 
 export const site = {
-  name: "AI bis Champ",
+  name: "AI Biz Champion",
   tagline: "Because Quality Matters",
   description:
-    "AI bis Champ delivers expert AI-powered design, video, web, and publishing services led by Dr. G. Nalinipriya, Professor and AI Specialist.",
+    "AI Biz Champion delivers expert AI-powered design, video, web, and publishing services led by Dr. G. Nalinipriya, Professor and AI Specialist.",
   email: "aibusinesschampions@gmail.com",
   whatsapp: "919994965489",
   whatsappFormatted: "+91 99949 65489",
@@ -26,7 +26,6 @@ export const nav = [
   { label: "About", href: "#about" },
   { label: "Process", href: "#process" },
   { label: "Work", href: "#work" },
-  { label: "Masterclass", href: "#masterclass" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -196,7 +195,7 @@ export const about = {
   bio: [
     "Dr. G. Nalinipriya is a Professor in Information Technology with doctoral supervision experience spanning multiple research domains. Her academic and professional work sits at the intersection of artificial intelligence, machine learning, and applied digital innovation.",
     "She has contributed to international publications, holds registered patents, and has delivered keynote addresses at conferences in the field of AI and technology. Her work is grounded in rigorous methodology and a commitment to practical impact.",
-    "AI bis Champ is the expression of that commitment — a service practice that brings institutional-grade thinking to every client engagement.",
+    "AI Biz Champion is the expression of that commitment — a startup practice that brings institutional-grade thinking to every client engagement.",
   ],
   credentials: [
     { label: "Specialisation", value: "Artificial Intelligence and Machine Learning" },
@@ -402,7 +401,6 @@ export const contact = {
     "Publishing and Selling",
     "Personalized Music Creation",
     "Research Paper Writing and Assistance",
-    "Masterclass Registration",
     "Other",
   ],
 };
@@ -421,5 +419,5 @@ export const footer = {
     { label: "Disclaimer", href: "/disclaimer" },
     { label: "Refund Policy", href: "/refund" },
   ],
-  copyright: `© ${new Date().getFullYear()} AI bis Champ. All rights reserved.`,
+  copyright: `© ${new Date().getFullYear()} AI Biz Champion. All rights reserved.`,
 };

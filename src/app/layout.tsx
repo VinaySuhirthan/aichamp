@@ -31,11 +31,11 @@ export const metadata: Metadata = {
     template: `%s | ${site.name}`,
   },
   description: site.description,
-  metadataBase: new URL("https://aibischamp.com"),
+  metadataBase: new URL("https://aibizchampion.com"),
   openGraph: {
     title: `${site.name} — ${site.tagline}`,
     description: site.description,
-    url: "https://aibischamp.com",
+    url: "https://aibizchampion.com",
     siteName: site.name,
     images: [{ url: site.ogImage, width: 1200, height: 630, alt: site.name }],
     locale: "en_IN",
@@ -52,7 +52,13 @@ export const metadata: Metadata = {
     follow: true,
     googleBot: { index: true, follow: true, "max-image-preview": "large" },
   },
-  icons: { icon: "/favicon.svg" },
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.png", type: "image/png" },
+    ],
+    apple: "/apple-icon.png",
+  },
 };
 
 export default function RootLayout({

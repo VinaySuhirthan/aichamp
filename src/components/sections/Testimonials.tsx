@@ -40,10 +40,10 @@ export default function Testimonials() {
           <p className="section-label mb-4">Testimonials</p>
           <h2
             id="testimonials-heading"
-            className="font-serif text-[clamp(32px,4.5vw,58px)] text-[var(--ink)] leading-[1.2] tracking-[-0.02em] font-medium"
+            className="font-serif text-[clamp(32px,4.5vw,58px)] text-[var(--paper)] leading-[1.2] tracking-[-0.02em] font-medium"
           >
             What Clients{" "}
-            <em className="italic text-[var(--accent-dk)]">Say</em>
+            <em className="italic text-[var(--accent)]">Say</em>
           </h2>
         </div>
 
@@ -54,17 +54,17 @@ export default function Testimonials() {
           {testimonials.items.map((t) => (
             <article
               key={t.id}
-              className="testimonial-card border border-[var(--border-lt)] p-8"
+              className="testimonial-card border border-[var(--border)] bg-[var(--surface-2)]/60 rounded-2xl p-8"
             >
               <blockquote>
                 <div className="testimonial-quote">
-                  <p className="text-[var(--ink)] text-[15px] leading-[1.8] italic font-serif">
+                  <p className="text-[var(--paper)] text-[15px] leading-[1.8] italic font-serif">
                     {t.quote}
                   </p>
                 </div>
-                <footer className="mt-6 pt-6 border-t border-[var(--border-lt)]">
-                  <p className="text-[var(--ink)] text-sm font-medium">{t.name}</p>
-                  <p className="text-[var(--muted)] text-xs mt-0.5">{t.title}</p>
+                <footer className="mt-6 pt-6 border-t border-[var(--border)]">
+                  <p className="text-[var(--paper)] text-sm font-medium">{t.name}</p>
+                  <p className="text-[var(--muted-lt)] text-xs mt-0.5">{t.title}</p>
                 </footer>
               </blockquote>
             </article>

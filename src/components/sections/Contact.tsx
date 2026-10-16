@@ -32,11 +32,11 @@ export default function Contact() {
       if (!sectionRef.current) return;
       gsap.from(sectionRef.current.querySelectorAll(".contact-reveal"), {
         opacity: 0,
-        y: 30,
-        stagger: 0.1,
-        duration: 0.9,
-        ease: "power3.out",
-        scrollTrigger: { trigger: sectionRef.current, start: "top 80%" },
+        y: 20,
+        stagger: 0.08,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: { trigger: sectionRef.current, start: "top 85%" },
       });
     });
     return () => mm.revert();
@@ -59,8 +59,7 @@ export default function Contact() {
     e.preventDefault();
     if (!validate()) return;
     setStatus("submitting");
-    // Simulate submission — replace with your actual form handler or API
-    await new Promise((r) => setTimeout(r, 1200));
+    await new Promise((r) => setTimeout(r, 1000));
     setStatus("success");
   };
 
@@ -68,50 +67,55 @@ export default function Contact() {
     <section
       ref={sectionRef}
       id="contact"
-      className="py-24 md:py-32 section--light"
+      className="py-24 md:py-32 bg-[var(--surface)] text-[var(--paper)] border-t border-[var(--border)] relative overflow-hidden"
       aria-labelledby="contact-heading"
     >
-      <div className="container">
+      {/* Background glow */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[var(--accent)]/5 blur-[120px] rounded-full pointer-events-none" />
+
+      <div className="container relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16">
-          {/* Left */}
+          {/* Left info column */}
           <div className="md:col-span-4">
             <p className="section-label mb-4 contact-reveal">Contact</p>
             <h2
               id="contact-heading"
-              className="font-serif text-[clamp(28px,3.5vw,48px)] text-[var(--ink)] leading-[1.2] tracking-[-0.02em] font-medium mb-6 contact-reveal"
+              className="font-serif text-[clamp(30px,4vw,50px)] text-[var(--paper)] leading-[1.2] tracking-[-0.02em] font-medium mb-6 contact-reveal"
             >
               {contact.label}
             </h2>
-            <p className="text-[var(--muted)] text-sm leading-relaxed mb-10 contact-reveal">
+            <p className="text-[var(--muted-lt)] text-sm leading-[1.8] mb-10 contact-reveal">
               {contact.intro}
             </p>
 
             <div className="space-y-6 contact-reveal">
               <div>
-                <p className="text-[10px] tracking-[0.18em] uppercase text-[var(--muted)] mb-1">
+                <p className="text-[10px] tracking-[0.18em] uppercase text-[var(--muted)] mb-1 font-mono">
                   Email
                 </p>
                 <a
                   href={`mailto:${site.email}`}
-                  className="text-[var(--ink)] text-sm font-medium hover:text-[var(--accent)] transition-colors no-underline focus-visible:outline-[var(--accent)]"
+                  className="text-[var(--paper)] text-sm font-medium hover:text-[var(--accent)] transition-colors no-underline break-all focus-visible:outline-[var(--accent)]"
                   aria-label="Send us an email"
                 >
                   {site.email}
                 </a>
               </div>
+
               <div>
-                <p className="text-[10px] tracking-[0.18em] uppercase text-[var(--muted)] mb-2 font-medium">
-                  Direct WhatsApp
+                <p className="text-[10px] tracking-[0.18em] uppercase text-[var(--muted)] mb-2 font-mono">
+                  Direct WhatsApp Contact
                 </p>
                 <a
-                  href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hello Dr. G. Nalinipriya & AI bis Champ team, I want to inquire about your AI services.")}`}
+                  href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hello Dr. G. Nalinipriya & AI Biz Champion team, I want to inquire about your AI services.")}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-[#25D366] text-white hover:bg-[#20ba5a] font-medium text-sm transition-all duration-300 shadow-md shadow-[#25D366]/20 cursor-pointer"
+                  className="group inline-flex items-center gap-3 px-4 py-2.5 rounded-xl bg-[#25D366]/15 border border-[#25D366]/30 text-[#25D366] hover:bg-[#25D366] hover:text-white font-medium text-sm transition-all duration-300 shadow-sm cursor-pointer"
                   aria-label={`Chat directly on WhatsApp with ${site.phone}`}
                 >
                   <WhatsAppIcon />
                   <span className="font-semibold">{site.phone}</span>
+                  <span className="text-xs opacity-75 group-hover:translate-x-0.5 transition-transform">↗</span>
                 </a>
               </div>
             </div>
@@ -121,39 +125,48 @@ export default function Contact() {
           <div className="md:col-span-8 contact-reveal">
             {status === "success" ? (
               <div
-                className="flex flex-col items-start justify-center min-h-[400px] py-12"
+                className="flex flex-col items-start justify-center min-h-[380px] p-8 rounded-2xl border border-[var(--accent)]/40 bg-[var(--surface-2)]"
                 role="status"
                 aria-live="polite"
               >
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="mb-6">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="mb-5">
                   <circle cx="12" cy="12" r="10" />
                   <polyline points="9 12 11 14 15 10" />
                 </svg>
-                <h3 className="font-serif text-2xl text-[var(--ink)] font-medium mb-3">
+                <h3 className="font-serif text-2xl text-[var(--paper)] font-medium mb-3">
                   Message received.
                 </h3>
-                <p className="text-[var(--muted)] text-sm leading-relaxed">
-                  Thank you for reaching out. We will review your enquiry and respond within one business day.
+                <p className="text-[var(--muted-lt)] text-sm leading-relaxed mb-6">
+                  Thank you for reaching out. We will review your enquiry and respond with a considered proposal within one business day.
                 </p>
+                <button
+                  onClick={() => {
+                    setStatus("idle");
+                    setForm({ name: "", email: "", service: "", message: "" });
+                  }}
+                  className="text-xs font-mono uppercase tracking-wider text-[var(--accent)] hover:underline cursor-pointer"
+                >
+                  ← Send another enquiry
+                </button>
               </div>
             ) : (
               <form
                 onSubmit={handleSubmit}
                 noValidate
                 aria-label="Contact form"
-                className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-[var(--surface-2)]/60 p-6 sm:p-8 rounded-2xl border border-[var(--border)]"
               >
                 {/* Name */}
                 <div className="form-field">
-                  <label htmlFor="contact-name" className="form-label">
-                    Full Name <span aria-hidden="true">*</span>
+                  <label htmlFor="contact-name" className="text-xs font-mono uppercase tracking-wider text-[var(--muted-lt)] mb-2 block font-medium">
+                    Full Name <span className="text-[var(--accent)]">*</span>
                   </label>
                   <input
                     id="contact-name"
                     type="text"
                     name="name"
                     autoComplete="name"
-                    className="form-input"
+                    className="w-full bg-[var(--surface-2)] border border-[var(--border)] text-[var(--paper)] rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[var(--accent)] transition-colors placeholder:text-[var(--muted)]"
                     placeholder="Your name"
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -162,7 +175,7 @@ export default function Contact() {
                     aria-invalid={!!errors.name}
                   />
                   {errors.name && (
-                    <p id="name-error" className="form-error" role="alert">
+                    <p id="name-error" className="text-xs text-red-400 mt-1.5" role="alert">
                       {errors.name}
                     </p>
                   )}
@@ -170,15 +183,15 @@ export default function Contact() {
 
                 {/* Email */}
                 <div className="form-field">
-                  <label htmlFor="contact-email" className="form-label">
-                    Email Address <span aria-hidden="true">*</span>
+                  <label htmlFor="contact-email" className="text-xs font-mono uppercase tracking-wider text-[var(--muted-lt)] mb-2 block font-medium">
+                    Email Address <span className="text-[var(--accent)]">*</span>
                   </label>
                   <input
                     id="contact-email"
                     type="email"
                     name="email"
                     autoComplete="email"
-                    className="form-input"
+                    className="w-full bg-[var(--surface-2)] border border-[var(--border)] text-[var(--paper)] rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[var(--accent)] transition-colors placeholder:text-[var(--muted)]"
                     placeholder="you@example.com"
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
@@ -187,7 +200,7 @@ export default function Contact() {
                     aria-invalid={!!errors.email}
                   />
                   {errors.email && (
-                    <p id="email-error" className="form-error" role="alert">
+                    <p id="email-error" className="text-xs text-red-400 mt-1.5" role="alert">
                       {errors.email}
                     </p>
                   )}
@@ -195,20 +208,20 @@ export default function Contact() {
 
                 {/* Service */}
                 <div className="form-field md:col-span-2">
-                  <label htmlFor="contact-service" className="form-label">
+                  <label htmlFor="contact-service" className="text-xs font-mono uppercase tracking-wider text-[var(--muted-lt)] mb-2 block font-medium">
                     Service of Interest
                   </label>
                   <select
                     id="contact-service"
                     name="service"
-                    className="form-select"
+                    className="w-full bg-[var(--surface-2)] border border-[var(--border)] text-[var(--paper)] rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[var(--accent)] transition-colors cursor-pointer"
                     value={form.service}
                     onChange={(e) => setForm({ ...form, service: e.target.value })}
                     aria-label="Select a service"
                   >
-                    <option value="">Select a service (optional)</option>
+                    <option value="" className="bg-[var(--surface-2)] text-[var(--muted)]">Select a service (optional)</option>
                     {contact.serviceOptions.map((opt) => (
-                      <option key={opt} value={opt}>
+                      <option key={opt} value={opt} className="bg-[var(--surface-2)] text-[var(--paper)]">
                         {opt}
                       </option>
                     ))}
@@ -217,14 +230,15 @@ export default function Contact() {
 
                 {/* Message */}
                 <div className="form-field md:col-span-2">
-                  <label htmlFor="contact-message" className="form-label">
-                    Message <span aria-hidden="true">*</span>
+                  <label htmlFor="contact-message" className="text-xs font-mono uppercase tracking-wider text-[var(--muted-lt)] mb-2 block font-medium">
+                    Message <span className="text-[var(--accent)]">*</span>
                   </label>
                   <textarea
                     id="contact-message"
                     name="message"
-                    className="form-textarea"
-                    placeholder="Describe your project or enquiry..."
+                    rows={4}
+                    className="w-full bg-[var(--surface-2)] border border-[var(--border)] text-[var(--paper)] rounded-xl p-4 text-sm focus:outline-none focus:border-[var(--accent)] transition-colors placeholder:text-[var(--muted)] resize-y min-h-[120px]"
+                    placeholder="Describe your project, objectives, or required deliverables..."
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
                     aria-required="true"
@@ -232,7 +246,7 @@ export default function Contact() {
                     aria-invalid={!!errors.message}
                   />
                   {errors.message && (
-                    <p id="message-error" className="form-error" role="alert">
+                    <p id="message-error" className="text-xs text-red-400 mt-1.5" role="alert">
                       {errors.message}
                     </p>
                   )}
@@ -243,7 +257,7 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={status === "submitting"}
-                    className="btn btn--primary cursor-pointer"
+                    className="btn btn--primary rounded-xl cursor-pointer"
                     aria-label="Submit contact form"
                   >
                     <span>
@@ -257,14 +271,15 @@ export default function Contact() {
                   </button>
 
                   <a
-                    href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hello Dr. G. Nalinipriya & AI bis Champ team, I want to inquire about your AI services.")}`}
+                    href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hello Dr. G. Nalinipriya & AI Biz Champion team, I want to inquire about your AI services.")}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[#25D366] text-white hover:bg-[#20ba5a] font-medium text-xs tracking-wider uppercase transition-all duration-300 shadow-md shadow-[#25D366]/20 cursor-pointer"
+                    className="inline-flex items-center gap-2.5 px-5 py-3 rounded-xl border border-[var(--border)] bg-[var(--surface-2)] text-[var(--paper)] hover:border-[#25D366] hover:text-[#25D366] font-medium text-xs tracking-wider uppercase transition-all duration-300 shadow-sm cursor-pointer"
                     aria-label={`Chat on WhatsApp with ${site.phone}`}
                   >
+                    <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
                     <WhatsAppIcon />
-                    <span>WhatsApp Direct ({site.phone})</span>
+                    <span>Chat on WhatsApp</span>
                   </a>
                 </div>
               </form>
@@ -284,7 +299,7 @@ function WhatsAppIcon() {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.5"
+      strokeWidth="1.8"
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"

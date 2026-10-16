@@ -106,7 +106,7 @@ export default function HeroCanvas() {
   return (
     <div
       ref={mountRef}
-      className="hero__canvas"
+      className="hero__canvas pointer-events-none"
       aria-hidden="true"
       role="presentation"
     />
