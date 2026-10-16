@@ -47,11 +47,12 @@ export default function Process() {
       aria-labelledby="process-heading"
     >
       <div className="container">
-        <div className="mb-20 md:mb-28">
-          <p className="section-label mb-4">Process</p>
+        <div style={{ marginBottom: "64px" }}>
+          <p className="section-label" style={{ marginBottom: "16px" }}>Process</p>
           <h2
             id="process-heading"
-            className="font-serif text-[clamp(36px,5vw,64px)] text-[var(--paper)] leading-[1.38] tracking-[-0.015em] font-medium max-w-[520px]"
+            className="font-serif text-[clamp(36px,5vw,64px)] text-[var(--paper)] font-medium max-w-[520px]"
+            style={{ lineHeight: "1.35", letterSpacing: "-0.015em" }}
           >
             How We <em className="italic text-[var(--accent)]">Work</em>
           </h2>
@@ -64,24 +65,25 @@ export default function Process() {
           {process.steps.map((step, i) => (
             <div
               key={step.number}
-              className={`process-step relative p-8 md:p-12 ${
+              className={`process-step relative ${
                 i < process.steps.length - 1 ? "border-b md:border-b-0 md:border-r border-[var(--border)]" : ""
               }`}
+              style={{ padding: "36px 32px" }}
             >
-              {/* Step number (large background) */}
-              <div className="process-step__number select-none" aria-hidden="true">
+              {/* Step number */}
+              <div className="process-step__number select-none" style={{ marginBottom: "20px" }} aria-hidden="true">
                 {step.number}
               </div>
 
               {/* Content */}
-              <div className="relative mt-4">
-                <p className="text-[var(--accent)] text-[10px] tracking-[0.18em] uppercase mb-4 font-mono font-semibold">
+              <div className="relative">
+                <p className="text-[var(--accent)] text-[10px] tracking-[0.18em] uppercase font-mono font-semibold" style={{ marginBottom: "12px" }}>
                   Step {step.number}
                 </p>
-                <h3 className="font-serif text-[24px] text-[var(--paper)] font-medium tracking-[-0.015em] mb-4 leading-[1.35]">
+                <h3 className="font-serif text-[23px] text-[var(--paper)] font-medium tracking-[-0.015em]" style={{ lineHeight: "1.35", marginBottom: "16px" }}>
                   {step.title}
                 </h3>
-                <p className="text-[var(--muted-lt)] text-sm leading-[2.1]">
+                <p className="text-[var(--muted-lt)] text-sm" style={{ lineHeight: "2.1" }}>
                   {step.description}
                 </p>
               </div>

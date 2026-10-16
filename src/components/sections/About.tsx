@@ -80,13 +80,13 @@ export default function About() {
               </div>
             </div>
             {/* Credentials */}
-            <ul className="mt-8 space-y-4 list-none" aria-label="Credentials">
+            <ul className="w-full max-w-[260px] list-none" style={{ marginTop: "36px" }} aria-label="Credentials">
               {about.credentials.map((cred) => (
-                <li key={cred.label} className="border-t border-[var(--border-lt)] pt-4">
-                  <p className="text-[10px] tracking-[0.15em] uppercase text-[var(--muted)] mb-1">
+                <li key={cred.label} className="border-t border-[var(--border)]" style={{ paddingTop: "16px", marginBottom: "16px" }}>
+                  <p className="text-[10px] tracking-[0.16em] uppercase text-[var(--muted)] font-mono" style={{ marginBottom: "6px" }}>
                     {cred.label}
                   </p>
-                  <p className="text-[var(--paper)] text-sm font-medium">{cred.value}</p>
+                  <p className="text-[var(--paper)] text-sm font-medium leading-snug">{cred.value}</p>
                 </li>
               ))}
             </ul>
@@ -94,32 +94,34 @@ export default function About() {
 
           {/* Text column */}
           <div ref={textRef} className="md:col-span-8 lg:col-span-8">
-            <p className="section-label mb-6 about-reveal">About</p>
+            <p className="section-label about-reveal" style={{ marginBottom: "20px" }}>About</p>
             <h2
               id="about-heading"
-              className="font-serif text-[clamp(34px,4.5vw,58px)] text-[var(--paper)] leading-[1.38] tracking-[-0.015em] font-medium mb-5 about-reveal"
+              className="font-serif text-[clamp(34px,4.5vw,58px)] text-[var(--paper)] font-medium about-reveal"
+              style={{ lineHeight: "1.35", letterSpacing: "-0.015em", marginBottom: "16px" }}
             >
               {about.name}
             </h2>
-            <p className="text-[var(--accent)] text-sm tracking-[0.1em] uppercase mb-8 leading-normal about-reveal font-mono">
+            <p className="text-[var(--accent)] text-sm tracking-[0.12em] uppercase leading-normal about-reveal font-mono" style={{ marginBottom: "36px" }}>
               {about.title}
             </p>
 
-            <div className="space-y-8 max-w-[680px]">
+            <div className="max-w-[700px]">
               {about.bio.map((para, i) => (
                 <p
                   key={i}
-                  className="text-[var(--muted-lt)] text-[17px] leading-[2.15] about-reveal"
+                  className="text-[var(--muted-lt)] text-[16.5px] about-reveal"
+                  style={{ lineHeight: "2.2", marginBottom: "28px" }}
                 >
                   {para}
                 </p>
               ))}
             </div>
 
-            <div className="mt-12 about-reveal">
+            <div className="about-reveal" style={{ marginTop: "44px" }}>
               <a
                 href="#contact"
-                className="btn btn--ghost-ink"
+                className="btn btn--ghost"
                 aria-label="Book a consultation with Dr. G. Nalinipriya"
               >
                 <span>Book a Consultation</span>

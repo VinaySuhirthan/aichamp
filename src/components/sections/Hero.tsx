@@ -74,14 +74,14 @@ export default function Hero() {
       <div className="hero__content container">
         <div className="max-w-[900px]">
           {/* Label */}
-          <p className="section-label mb-8" aria-hidden="true">
+          <p className="section-label" style={{ marginBottom: "28px" }} aria-hidden="true">
             AI Biz Champion
           </p>
 
           {/* Headline */}
-          <h1 ref={headlineRef} className="hero__headline mb-8 leading-[1.32]">
+          <h1 ref={headlineRef} className="hero__headline" style={{ lineHeight: "1.32", marginBottom: "32px" }}>
             {hero.headline.map((line, i) => (
-              <span key={i} className="reveal-line block">
+              <span key={i} className="reveal-line block" style={{ marginBottom: "12px" }}>
                 <span className="reveal-line__inner">
                   {i === 1 ? (
                     <>
@@ -99,12 +99,12 @@ export default function Hero() {
           </h1>
 
           {/* Subhead */}
-          <p ref={subRef} className="hero__subhead leading-[2.1] mb-12 text-base md:text-lg">
+          <p ref={subRef} className="hero__subhead text-base md:text-lg" style={{ lineHeight: "2.15", marginBottom: "44px" }}>
             {hero.subhead}
           </p>
 
           {/* CTAs */}
-          <div ref={ctasRef} className="flex flex-wrap gap-5">
+          <div ref={ctasRef} className="flex flex-wrap" style={{ gap: "20px" }}>
             <a
               href={hero.cta1.href}
               className="btn btn--ghost"
@@ -124,14 +124,17 @@ export default function Hero() {
         </div>
 
         {/* Stats strip */}
-        <div className="mt-28 md:mt-36 grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-14 pt-14 border-t border-[var(--border)]">
+        <div
+          className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-14 border-t border-[var(--border)]"
+          style={{ marginTop: "96px", paddingTop: "48px" }}
+        >
           {stats.map((s) => (
             <div key={s.label}>
-              <p className="counter mb-2">
+              <p className="counter" style={{ marginBottom: "8px" }}>
                 {s.value}
                 {s.suffix}
               </p>
-              <p className="text-[var(--muted-lt)] text-xs tracking-[0.14em] uppercase mt-2 font-mono">
+              <p className="text-[var(--muted-lt)] text-xs tracking-[0.14em] uppercase font-mono" style={{ marginTop: "10px" }}>
                 {s.label}
               </p>
             </div>

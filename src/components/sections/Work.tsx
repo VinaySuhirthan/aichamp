@@ -41,28 +41,30 @@ export default function Work() {
         aria-labelledby="work-heading"
       >
         <div className="container">
-          <div className="mb-20">
-            <p className="section-label mb-4">Work</p>
+          <div style={{ marginBottom: "64px" }}>
+            <p className="section-label" style={{ marginBottom: "16px" }}>Work</p>
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
               <h2
                 id="work-heading"
-                className="font-serif text-[clamp(36px,5vw,64px)] text-[var(--paper)] leading-[1.38] tracking-[-0.015em] font-medium max-w-[480px]"
+                className="font-serif text-[clamp(36px,5vw,64px)] text-[var(--paper)] font-medium max-w-[480px]"
+                style={{ lineHeight: "1.35", letterSpacing: "-0.015em" }}
               >
                 Selected{" "}
                 <em className="italic text-[var(--accent)]">Work</em>
               </h2>
-              <p className="text-[var(--muted-lt)] text-sm md:text-base max-w-sm leading-[2.1]">{work.intro}</p>
+              <p className="text-[var(--muted-lt)] text-sm md:text-base max-w-sm" style={{ lineHeight: "2.15" }}>{work.intro}</p>
             </div>
           </div>
 
           <div
             ref={gridRef}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
+            style={{ gap: "32px" }}
           >
             {work.projects.map((project, i) => (
               <article
                 key={project.id}
-                className="project-card group relative rounded-xl overflow-hidden border border-[var(--border-lt)] bg-[var(--surface-2)] shadow-sm transition-all duration-500 hover:border-[var(--accent)] hover:shadow-[0_14px_34px_rgba(184,146,74,0.28)] hover:-translate-y-1.5"
+                className="project-card group relative rounded-xl overflow-hidden border border-[var(--border)] bg-[var(--surface-2)] shadow-sm transition-all duration-500 hover:border-[var(--accent)] hover:shadow-[0_14px_34px_rgba(184,146,74,0.28)] hover:-translate-y-1.5"
               >
                 <button
                   onClick={() => setActiveModal(project.id)}
@@ -71,7 +73,7 @@ export default function Work() {
                   style={{ background: "none", border: "none", padding: 0 }}
                 >
                   <div
-                    className="hover-shimmer relative w-full h-[200px] sm:h-[220px] overflow-hidden bg-[var(--surface-2)]"
+                    className="hover-shimmer relative w-full h-[210px] sm:h-[230px] overflow-hidden bg-[var(--surface-2)]"
                   >
                     <Image
                       src={project.image.src}
@@ -91,18 +93,18 @@ export default function Work() {
                     </div>
 
                     {/* Bottom info */}
-                    <div className="absolute bottom-0 left-0 right-0 p-4 z-20">
-                      <p className="text-[var(--accent)] text-[10px] tracking-[0.15em] uppercase font-semibold mb-1">
+                    <div className="absolute bottom-0 left-0 right-0 p-5 z-20">
+                      <p className="text-[var(--accent)] text-[10px] tracking-[0.16em] uppercase font-semibold font-mono" style={{ marginBottom: "6px" }}>
                         {project.category}
                       </p>
-                      <h3 className="text-[var(--paper)] font-serif text-base font-medium line-clamp-1 group-hover:text-[var(--accent-lt)] transition-colors duration-300">
+                      <h3 className="text-[var(--paper)] font-serif text-base font-medium line-clamp-1 group-hover:text-[var(--accent-lt)] transition-colors duration-300" style={{ lineHeight: "1.4", marginBottom: "8px" }}>
                         {project.title}
                       </h3>
-                      <div className="flex gap-1.5 mt-2 flex-wrap">
+                      <div className="flex gap-2 mt-2 flex-wrap">
                         {project.tags.slice(0, 2).map((tag) => (
                           <span
                             key={tag}
-                            className="text-[9px] text-[var(--muted-lt)] tracking-[0.08em] uppercase border border-white/10 px-1.5 py-0.5 bg-black/50 backdrop-blur-sm rounded"
+                            className="text-[9px] text-[var(--muted-lt)] tracking-[0.08em] uppercase border border-white/10 px-2 py-0.5 bg-black/60 backdrop-blur-sm rounded"
                           >
                             {tag}
                           </span>

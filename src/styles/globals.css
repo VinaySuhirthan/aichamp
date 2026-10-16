@@ -43,8 +43,6 @@
 /* ─── Reset & Base ───────────────────────────────────────── */
 *, *::before, *::after {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 html {
@@ -56,6 +54,8 @@ html {
 }
 
 body {
+  margin: 0;
+  padding: 0;
   background-color: var(--ink);
   color: var(--paper);
   font-family: var(--font-sans);
@@ -259,10 +259,10 @@ p { line-height: 2.05; }
 
 .btn--ghost-ink {
   background: transparent;
-  color: var(--ink);
-  border: 1px solid var(--border-lt);
+  color: var(--paper);
+  border: 1px solid var(--border);
 }
-.btn--ghost-ink:hover { border-color: var(--accent); color: var(--accent); }
+.btn--ghost-ink:hover { border-color: var(--accent); color: var(--accent-lt); }
 
 /* ─── Reveal Animations ──────────────────────────────────── */
 .reveal-line {

@@ -37,15 +37,16 @@ export default function FAQ() {
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-14">
           <div className="md:col-span-4">
-            <p className="section-label mb-4 faq-reveal">FAQ</p>
+            <p className="section-label faq-reveal" style={{ marginBottom: "16px" }}>FAQ</p>
             <h2
               id="faq-heading"
-              className="font-serif text-[clamp(32px,4.5vw,52px)] text-[var(--paper)] leading-[1.38] tracking-[-0.015em] font-medium faq-reveal"
+              className="font-serif text-[clamp(32px,4.5vw,52px)] text-[var(--paper)] font-medium faq-reveal"
+              style={{ lineHeight: "1.35", letterSpacing: "-0.015em", marginBottom: "20px" }}
             >
               Common{" "}
               <em className="italic text-[var(--accent)]">Questions</em>
             </h2>
-            <p className="text-[var(--muted-lt)] text-sm md:text-base mt-8 leading-[2.1] max-w-[320px] faq-reveal">
+            <p className="text-[var(--muted-lt)] text-sm md:text-base max-w-[320px] faq-reveal" style={{ lineHeight: "2.15" }}>
               If you have a question not answered here, please reach out via the contact form below.
             </p>
           </div>
