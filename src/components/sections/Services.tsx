@@ -309,8 +309,11 @@ export default function Services() {
 
       <div className="container relative z-10">
         {/* Header Block */}
-        <div ref={headingRef} className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[var(--accent)]/40 bg-[var(--accent)]/10 text-[var(--accent-lt)] text-[11px] font-mono tracking-widest uppercase mb-8 shadow-sm">
+        <div ref={headingRef} className="text-center max-w-3xl mx-auto" style={{ marginBottom: "64px" }}>
+          <div
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[var(--accent)]/40 bg-[var(--accent)]/10 text-[var(--accent-lt)] text-[11px] font-mono tracking-widest uppercase shadow-sm"
+            style={{ marginBottom: "32px" }}
+          >
             <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] animate-ping" />
             <span>AI BIZ CHAMPION</span>
             <span className="opacity-40">•</span>
@@ -319,21 +322,28 @@ export default function Services() {
 
           <h2
             id="services-heading"
-            className="font-serif text-[clamp(34px,5vw,62px)] text-[var(--paper)] leading-[1.38] tracking-[-0.015em] font-medium mb-7"
+            className="font-serif text-[clamp(34px,5vw,64px)] text-[var(--paper)] font-medium"
+            style={{ lineHeight: "1.45", marginBottom: "32px" }}
           >
             Pioneers in{" "}
-            <span className="italic text-[var(--accent)] underline decoration-[var(--accent)]/30 underline-offset-8">
+            <span className="italic text-[var(--accent)]">
               AI-Powered Digital Creativity
             </span>
           </h2>
 
-          <p className="text-[var(--muted-lt)] text-base md:text-lg leading-[2.15] max-w-2xl mx-auto">
+          <p
+            className="text-[var(--muted-lt)] text-base md:text-lg max-w-2xl mx-auto"
+            style={{ lineHeight: "2.2", marginBottom: "52px" }}
+          >
             15 specialized, production-ready capabilities orchestrated by Dr. G. Nalinipriya — built for startups, brands, and modern institutions demanding precision and speed.
           </p>
         </div>
 
         {/* Filter Pills */}
-        <div className="flex flex-wrap items-center justify-center gap-3.5 mb-18 md:mb-24">
+        <div
+          className="flex flex-wrap items-center justify-center gap-3.5"
+          style={{ marginBottom: "64px" }}
+        >
           {[
             { id: "all", label: "All 15 Services", count: 15 },
             { id: "visual", label: "Brand & Visual", count: 3 },
@@ -352,7 +362,7 @@ export default function Services() {
             >
               <span>{cat.label}</span>
               <span
-                className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full ${
+                className={`text-[10px] font-mono px-1.5 py-0.5 rounded-full ${
                   filter === cat.id ? "bg-[var(--ink)]/20 text-[var(--ink)]" : "bg-[var(--surface)] text-[var(--muted)]"
                 }`}
               >
@@ -365,19 +375,21 @@ export default function Services() {
         {/* Startup-Grade Services Grid */}
         <div
           ref={gridRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+          style={{ gap: "36px" }}
         >
           {filtered.map((item) => (
             <div
               key={item.id}
-              className="hover-shimmer group relative rounded-2xl border border-[var(--border)] bg-gradient-to-b from-[var(--surface-2)]/90 via-[var(--surface-2)]/60 to-[var(--surface)]/90 backdrop-blur-md p-8 md:p-9 transition-all duration-400 hover:border-[var(--accent)] hover:shadow-[0_16px_36px_rgba(184,146,74,0.22)] hover:-translate-y-1.5 flex flex-col justify-between"
+              className="hover-shimmer group relative rounded-2xl border border-[var(--border)] bg-gradient-to-b from-[var(--surface-2)]/90 via-[var(--surface-2)]/60 to-[var(--surface)]/90 backdrop-blur-md transition-all duration-400 hover:border-[var(--accent)] hover:shadow-[0_16px_36px_rgba(184,146,74,0.22)] hover:-translate-y-1.5 flex flex-col justify-between"
+              style={{ padding: "36px 32px" }}
             >
               {/* Top ambient highlight line */}
               <div className="absolute top-0 left-6 right-6 h-[1px] bg-gradient-to-r from-transparent via-[var(--accent)]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
               <div>
                 {/* Header Row */}
-                <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center justify-between" style={{ marginBottom: "24px" }}>
                   <div className="flex items-center gap-3">
                     <div className="w-12 h-12 rounded-xl bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center text-[var(--accent)] group-hover:scale-110 group-hover:border-[var(--accent)] group-hover:bg-[var(--accent)]/10 transition-all duration-300 shadow-inner">
                       {item.icon}
@@ -392,23 +404,35 @@ export default function Services() {
                 </div>
 
                 {/* Title */}
-                <h3 className="font-serif text-xl md:text-[23px] font-medium text-[var(--paper)] leading-[1.42] mb-3 group-hover:text-[var(--accent-lt)] transition-colors duration-300">
+                <h3
+                  className="font-serif text-xl md:text-[23px] font-medium text-[var(--paper)] group-hover:text-[var(--accent-lt)] transition-colors duration-300"
+                  style={{ lineHeight: "1.45", marginBottom: "16px" }}
+                >
                   {item.name}
                 </h3>
 
                 {/* Tech chip */}
-                <p className="text-[10px] font-mono text-[var(--accent)]/80 tracking-wide uppercase mb-4">
+                <p
+                  className="text-[10px] font-mono text-[var(--accent)]/80 tracking-wide uppercase"
+                  style={{ marginBottom: "20px" }}
+                >
                   {item.techStack}
                 </p>
 
                 {/* Description */}
-                <p className="text-[var(--muted-lt)] text-sm leading-[2.1] mb-8">
+                <p
+                  className="text-[var(--muted-lt)] text-sm"
+                  style={{ lineHeight: "2.1", marginBottom: "32px", fontSize: "14.5px" }}
+                >
                   {item.description}
                 </p>
               </div>
 
               {/* Bottom Footer / Action */}
-              <div className="pt-6 border-t border-[var(--border)]/70 flex items-center justify-between mt-auto">
+              <div
+                className="border-t border-[var(--border)]/70 flex items-center justify-between"
+                style={{ paddingTop: "24px", marginTop: "auto" }}
+              >
                 <span className="text-xs text-[var(--muted)] tracking-wide font-medium">
                   {item.categoryLabel}
                 </span>
