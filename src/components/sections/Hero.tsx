@@ -16,6 +16,7 @@ const HeroCanvas = dynamic(() => import("@/components/ui/HeroCanvas"), {
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
+  const secondaryRef = useRef<HTMLParagraphElement>(null);
   const subRef = useRef<HTMLParagraphElement>(null);
   const ctasRef = useRef<HTMLDivElement>(null);
 
@@ -23,22 +24,25 @@ export default function Hero() {
     const mm = gsap.matchMedia();
     const section = sectionRef.current;
     const headline = headlineRef.current;
+    const secondary = secondaryRef.current;
     const sub = subRef.current;
     const ctas = ctasRef.current;
 
-    if (!section || !headline || !sub || !ctas) return;
+    if (!section || !headline || !secondary || !sub || !ctas) return;
 
     mm.add("(prefers-reduced-motion: no-preference)", () => {
       // Reveal lines on load
-      const lines = headline.querySelectorAll(".reveal-line__inner");
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" }, delay: 0.2 });
-      tl.from(lines, { y: 30, opacity: 0, duration: 0.9, stagger: 0.12 })
-        .from(sub, { opacity: 0, y: 20, duration: 0.7 }, "-=0.4")
-        .from(ctas.children, { opacity: 0, y: 16, stagger: 0.08, duration: 0.6 }, "-=0.3");
+      const mainLines = headline.querySelectorAll(".reveal-line__inner");
+      const secLines = secondary.querySelectorAll(".reveal-line__inner");
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" }, delay: 0.15 });
+      tl.from(mainLines, { y: 25, opacity: 0, duration: 0.8 })
+        .from(secLines, { y: 20, opacity: 0, duration: 0.7 }, "-=0.45")
+        .from(sub, { opacity: 0, y: 16, duration: 0.6 }, "-=0.35")
+        .from(ctas.children, { opacity: 0, y: 12, stagger: 0.08, duration: 0.5 }, "-=0.25");
 
       // Parallax on scroll
-      gsap.to(headline, {
-        y: -60,
+      gsap.to([headline, secondary], {
+        y: -40,
         ease: "none",
         scrollTrigger: {
           trigger: section,
@@ -72,39 +76,44 @@ export default function Hero() {
       />
 
       <div className="hero__content container">
-        <div className="max-w-[900px]">
-          {/* Label */}
-          <p className="section-label" style={{ marginBottom: "28px" }} aria-hidden="true">
-            AI Biz Champion
-          </p>
-
-          {/* Headline */}
-          <h1 ref={headlineRef} className="hero__headline" style={{ lineHeight: "1.32", marginBottom: "32px" }}>
-            {hero.headline.map((line, i) => (
-              <span key={i} className="reveal-line block" style={{ marginBottom: "12px" }}>
-                <span className="reveal-line__inner">
-                  {i === 1 ? (
-                    <>
-                      <em className="not-italic text-[var(--accent)]">
-                        {line.split(" ")[0]}{" "}
-                      </em>
-                      {line.split(" ").slice(1).join(" ")}
-                    </>
-                  ) : (
-                    line
-                  )}
-                </span>
+        <div className="max-w-[960px]">
+          {/* Main H1: AI Biz Champion (Largest, Serif) */}
+          <h1
+            ref={headlineRef}
+            className="hero__headline mb-3 sm:mb-4"
+          >
+            <span className="reveal-line block">
+              <span className="reveal-line__inner">
+                {hero.title}
               </span>
-            ))}
+            </span>
           </h1>
 
-          {/* Subhead */}
-          <p ref={subRef} className="hero__subhead text-base md:text-lg" style={{ lineHeight: "2.15", marginBottom: "44px" }}>
+          {/* Secondary Line: Because Quality Matters. (Smaller, Matters in gold italic) */}
+          <p
+            ref={secondaryRef}
+            className="hero__secondary mb-4 sm:mb-5"
+          >
+            <span className="reveal-line block">
+              <span className="reveal-line__inner">
+                Because Quality{" "}
+                <em className="italic text-[var(--accent)] font-serif">
+                  Matters.
+                </em>
+              </span>
+            </span>
+          </p>
+
+          {/* Supporting Line: Smallest */}
+          <p
+            ref={subRef}
+            className="hero__subhead text-sm sm:text-base md:text-lg mb-7 sm:mb-8 md:mb-9"
+          >
             {hero.subhead}
           </p>
 
-          {/* CTAs */}
-          <div ref={ctasRef} className="flex flex-wrap" style={{ gap: "20px" }}>
+          {/* CTAs: visible above the fold */}
+          <div ref={ctasRef} className="flex flex-wrap items-center gap-4 sm:gap-5">
             <a
               href={hero.cta1.href}
               className="btn btn--ghost"

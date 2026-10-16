@@ -29,9 +29,10 @@ export const nav = [
 ];
 
 export const hero = {
-  headline: ["Because Quality", "Matters."],
-  subhead:
-    "Pioneers in AI-powered digital creativity and innovation.",
+  title: "AI Biz Champion",
+  secondary: "Because Quality Matters.",
+  subhead: "Pioneers in AI-powered digital creativity and innovation.",
+  headline: ["Because Quality", "Matters."], // backwards compatibility
   cta1: { label: "Explore Services", href: "#services" },
   cta2: { label: "Book a Consultation", href: "#contact" },
 };

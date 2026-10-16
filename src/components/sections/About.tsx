@@ -35,23 +35,11 @@ export default function About() {
       if (textRef.current) {
         gsap.from(textRef.current.querySelectorAll(".about-reveal"), {
           opacity: 0,
-          y: 25,
+          y: 20,
           stagger: 0.08,
           duration: 0.8,
           ease: "power3.out",
           scrollTrigger: { trigger: textRef.current, start: "top 80%" },
-        });
-      }
-
-      // Gallery stagger
-      if (galleryRef.current) {
-        gsap.from(galleryRef.current.querySelectorAll(".photo-card"), {
-          opacity: 0,
-          y: 20,
-          stagger: 0.03,
-          duration: 0.6,
-          ease: "power2.out",
-          scrollTrigger: { trigger: galleryRef.current, start: "top 85%" },
         });
       }
     });
@@ -209,6 +197,7 @@ export default function About() {
                   fill
                   sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 16vw"
                   className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+                  unoptimized
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-40 group-hover:opacity-20 transition-opacity duration-300" />
@@ -289,6 +278,7 @@ export default function About() {
                 fill
                 sizes="(max-width: 768px) 100vw, 800px"
                 className="object-contain"
+                unoptimized
                 priority
               />
             </div>
