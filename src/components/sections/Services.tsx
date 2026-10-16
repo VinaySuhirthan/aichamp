@@ -266,6 +266,13 @@ export default function Services() {
   const headingRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
   const [filter, setFilter] = useState<"all" | "visual" | "video" | "tech" | "publishing">("all");
+  const [mobileView, setMobileView] = useState<"carousel" | "grid">("carousel");
+
+  const scrollCarousel = (direction: number) => {
+    if (!gridRef.current) return;
+    const amount = gridRef.current.clientWidth * 0.82;
+    gridRef.current.scrollBy({ left: direction * amount, behavior: "smooth" });
+  };
 
   useEffect(() => {
     const mm = gsap.matchMedia();
@@ -292,7 +299,7 @@ export default function Services() {
     <section
       ref={sectionRef}
       id="services"
-      className="py-32 md:py-48 bg-[var(--ink)] relative overflow-hidden"
+      className="py-20 md:py-48 bg-[var(--ink)] relative overflow-hidden"
       aria-labelledby="services-heading"
     >
       {/* Subtle tech background grid pattern */}
@@ -309,10 +316,9 @@ export default function Services() {
 
       <div className="container relative z-10">
         {/* Header Block */}
-        <div ref={headingRef} className="text-center max-w-3xl mx-auto" style={{ marginBottom: "64px" }}>
+        <div ref={headingRef} className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
           <div
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[var(--accent)]/40 bg-[var(--accent)]/10 text-[var(--accent-lt)] text-[11px] font-mono tracking-widest uppercase shadow-sm"
-            style={{ marginBottom: "32px" }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[var(--accent)]/40 bg-[var(--accent)]/10 text-[var(--accent-lt)] text-[11px] font-mono tracking-widest uppercase shadow-sm mb-6 md:mb-8"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] animate-ping" />
             <span>AI BIZ CHAMPION</span>
@@ -322,8 +328,7 @@ export default function Services() {
 
           <h2
             id="services-heading"
-            className="font-serif text-[clamp(34px,5vw,64px)] text-[var(--paper)] font-medium"
-            style={{ lineHeight: "1.45", marginBottom: "32px" }}
+            className="font-serif text-[clamp(32px,5vw,64px)] text-[var(--paper)] font-medium leading-[1.3] md:leading-[1.45] mb-6 md:mb-8"
           >
             Pioneers in{" "}
             <span className="italic text-[var(--accent)]">
@@ -332,8 +337,7 @@ export default function Services() {
           </h2>
 
           <p
-            className="text-[var(--muted-lt)] text-base md:text-lg max-w-2xl mx-auto"
-            style={{ lineHeight: "2.2", marginBottom: "52px" }}
+            className="text-[var(--muted-lt)] text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-[1.8] md:leading-[2.2]"
           >
             15 specialized, production-ready capabilities orchestrated by Dr. G. Nalinipriya — built for startups, brands, and modern institutions demanding precision and speed.
           </p>
@@ -341,8 +345,7 @@ export default function Services() {
 
         {/* Filter Pills */}
         <div
-          className="flex flex-wrap items-center justify-center gap-3.5"
-          style={{ marginBottom: "64px" }}
+          className="flex overflow-x-auto no-scrollbar md:flex-wrap items-center justify-start md:justify-center gap-2 md:gap-3.5 pb-2 md:pb-0 mb-6 md:mb-16 -mx-4 px-4 md:mx-0 md:px-0"
         >
           {[
             { id: "all", label: "All 15 Services", count: 15 },
@@ -354,7 +357,7 @@ export default function Services() {
             <button
               key={cat.id}
               onClick={() => setFilter(cat.id as any)}
-              className={`px-5 py-2.5 rounded-full text-xs font-medium tracking-wide transition-all duration-300 border flex items-center gap-2.5 cursor-pointer ${
+              className={`px-4 md:px-5 py-2 md:py-2.5 rounded-full text-xs font-medium tracking-wide transition-all duration-300 border flex items-center gap-2 whitespace-nowrap cursor-pointer flex-shrink-0 ${
                 filter === cat.id
                   ? "bg-[var(--accent)] text-[var(--ink)] border-[var(--accent)] font-semibold shadow-md shadow-[var(--accent)]/25 scale-105"
                   : "bg-[var(--surface-2)]/80 text-[var(--muted-lt)] border-[var(--border)] hover:border-[var(--accent)] hover:text-[var(--paper)]"
@@ -372,17 +375,60 @@ export default function Services() {
           ))}
         </div>
 
-        {/* Startup-Grade Services Grid */}
+        {/* Mobile controls bar (Phone only, hidden on laptop) */}
+        <div className="flex md:hidden items-center justify-between gap-3 mb-4 px-1">
+          <div className="flex items-center gap-2">
+            <span className="text-[11px] font-mono text-[var(--accent)] uppercase tracking-wider font-semibold">
+              {mobileView === "carousel" ? `Swipe ${filtered.length} Services →` : `All ${filtered.length} Services`}
+            </span>
+          </div>
+
+          <div className="flex items-center gap-2">
+            {mobileView === "carousel" && (
+              <div className="flex items-center gap-1.5 mr-1">
+                <button
+                  onClick={() => scrollCarousel(-1)}
+                  className="w-7 h-7 rounded-full bg-[var(--surface-2)] border border-[var(--border)] text-[var(--paper)] flex items-center justify-center text-xs hover:border-[var(--accent)] cursor-pointer"
+                  aria-label="Scroll services left"
+                >
+                  ←
+                </button>
+                <button
+                  onClick={() => scrollCarousel(1)}
+                  className="w-7 h-7 rounded-full bg-[var(--surface-2)] border border-[var(--border)] text-[var(--paper)] flex items-center justify-center text-xs hover:border-[var(--accent)] cursor-pointer"
+                  aria-label="Scroll services right"
+                >
+                  →
+                </button>
+              </div>
+            )}
+            <button
+              onClick={() => setMobileView(mobileView === "carousel" ? "grid" : "carousel")}
+              className="text-[10px] font-mono uppercase px-2.5 py-1 rounded-md bg-[var(--surface-2)] border border-[var(--border)] text-[var(--paper)] hover:border-[var(--accent)] cursor-pointer"
+            >
+              {mobileView === "carousel" ? "List View ☰" : "Swipe View ⊞"}
+            </button>
+          </div>
+        </div>
+
+        {/* Startup-Grade Services Grid / Phone Swipeable Slider */}
         <div
           ref={gridRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
-          style={{ gap: "36px" }}
+          className={`
+            ${mobileView === "carousel"
+              ? "flex overflow-x-auto snap-x snap-mandatory no-scrollbar pb-6 pt-1 -mx-4 px-4 gap-4 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-[36px] md:mx-0 md:px-0 md:overflow-visible md:pb-0"
+              : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-[36px]"
+            }
+          `}
         >
           {filtered.map((item) => (
             <div
               key={item.id}
-              className="hover-shimmer group relative rounded-2xl border border-[var(--border)] bg-gradient-to-b from-[var(--surface-2)]/90 via-[var(--surface-2)]/60 to-[var(--surface)]/90 backdrop-blur-md transition-all duration-400 hover:border-[var(--accent)] hover:shadow-[0_16px_36px_rgba(184,146,74,0.22)] hover:-translate-y-1.5 flex flex-col justify-between"
-              style={{ padding: "36px 32px" }}
+              className={`
+                hover-shimmer group relative rounded-2xl border border-[var(--border)] bg-gradient-to-b from-[var(--surface-2)]/90 via-[var(--surface-2)]/60 to-[var(--surface)]/90 backdrop-blur-md transition-all duration-400 hover:border-[var(--accent)] hover:shadow-[0_16px_36px_rgba(184,146,74,0.22)] hover:-translate-y-1.5 flex flex-col justify-between
+                ${mobileView === "carousel" ? "w-[84vw] max-w-[340px] flex-shrink-0 snap-center md:w-auto md:flex-shrink md:snap-align-none" : "w-full"}
+                p-6 md:p-[36px_32px]
+              `}
             >
               {/* Top ambient highlight line */}
               <div className="absolute top-0 left-6 right-6 h-[1px] bg-gradient-to-r from-transparent via-[var(--accent)]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

@@ -43,15 +43,15 @@ export default function Process() {
     <section
       ref={sectionRef}
       id="process"
-      className="py-32 md:py-48 bg-[var(--ink)]"
+      className="py-20 md:py-48 bg-[var(--ink)]"
       aria-labelledby="process-heading"
     >
       <div className="container">
-        <div style={{ marginBottom: "64px" }}>
+        <div className="mb-10 md:mb-16">
           <p className="section-label" style={{ marginBottom: "16px" }}>Process</p>
           <h2
             id="process-heading"
-            className="font-serif text-[clamp(36px,5vw,64px)] text-[var(--paper)] font-medium max-w-[520px]"
+            className="font-serif text-[clamp(32px,5vw,64px)] text-[var(--paper)] font-medium max-w-[520px]"
             style={{ lineHeight: "1.35", letterSpacing: "-0.015em" }}
           >
             How We <em className="italic text-[var(--accent)]">Work</em>
@@ -65,13 +65,12 @@ export default function Process() {
           {process.steps.map((step, i) => (
             <div
               key={step.number}
-              className={`process-step relative ${
+              className={`process-step relative p-6 md:p-10 ${
                 i < process.steps.length - 1 ? "border-b md:border-b-0 md:border-r border-[var(--border)]" : ""
               }`}
-              style={{ padding: "36px 32px" }}
             >
               {/* Step number */}
-              <div className="process-step__number select-none" style={{ marginBottom: "20px" }} aria-hidden="true">
+              <div className="process-step__number select-none text-[64px] md:text-[88px] mb-3 md:mb-5" aria-hidden="true">
                 {step.number}
               </div>
 

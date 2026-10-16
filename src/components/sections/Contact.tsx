@@ -67,14 +67,14 @@ export default function Contact() {
     <section
       ref={sectionRef}
       id="contact"
-      className="py-32 md:py-48 bg-[var(--surface)] text-[var(--paper)] border-t border-[var(--border)] relative overflow-hidden"
+      className="py-20 md:py-48 bg-[var(--surface)] text-[var(--paper)] border-t border-[var(--border)] relative overflow-hidden"
       aria-labelledby="contact-heading"
     >
       {/* Background glow */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[var(--accent)]/5 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="container relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-14 md:gap-20">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-20">
           {/* Left info column */}
           <div className="md:col-span-4">
             <p className="section-label contact-reveal" style={{ marginBottom: "16px" }}>Contact</p>

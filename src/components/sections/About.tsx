@@ -68,17 +68,17 @@ export default function About() {
     <section
       ref={sectionRef}
       id="about"
-      className="py-32 md:py-48 section--light relative overflow-hidden"
+      className="py-20 md:py-48 section--light relative overflow-hidden"
       aria-labelledby="about-heading"
     >
       <div className="container relative z-10">
         {/* Founder Story Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 items-start">
           {/* Portrait column */}
           <div className="md:col-span-4 lg:col-span-4 flex flex-col items-center md:items-start">
             <div
               ref={imgRef}
-              className="group hover-shimmer relative w-[220px] sm:w-[250px] h-[300px] sm:h-[330px] rounded-2xl overflow-hidden p-1.5 bg-gradient-to-b from-[var(--accent)]/50 via-[var(--border)] to-[var(--surface-2)] shadow-xl transition-all duration-500 hover:shadow-[0_16px_40px_rgba(184,146,74,0.35)] hover:-translate-y-1.5 cursor-pointer"
+              className="group hover-shimmer relative w-[200px] sm:w-[250px] h-[270px] sm:h-[330px] rounded-2xl overflow-hidden p-1.5 bg-gradient-to-b from-[var(--accent)]/50 via-[var(--border)] to-[var(--surface-2)] shadow-xl transition-all duration-500 hover:shadow-[0_16px_40px_rgba(184,146,74,0.35)] hover:-translate-y-1.5 cursor-pointer"
               role="img"
               aria-label={about.portrait.alt}
             >
@@ -122,7 +122,7 @@ export default function About() {
             <p className="section-label about-reveal" style={{ marginBottom: "18px" }}>About The Founder</p>
             <h2
               id="about-heading"
-              className="font-serif text-[clamp(34px,4.5vw,56px)] text-[var(--paper)] font-medium about-reveal"
+              className="font-serif text-[clamp(32px,4.5vw,56px)] text-[var(--paper)] font-medium about-reveal"
               style={{ lineHeight: "1.35", letterSpacing: "-0.015em", marginBottom: "16px" }}
             >
               {about.name}
@@ -135,7 +135,7 @@ export default function About() {
               {about.bio.map((para, i) => (
                 <p
                   key={i}
-                  className="text-[var(--muted-lt)] text-[16px] about-reveal"
+                  className="text-[var(--muted-lt)] text-[15px] sm:text-[16px] about-reveal"
                   style={{ lineHeight: "2.15", marginBottom: "26px" }}
                 >
                   {para}
@@ -159,8 +159,8 @@ export default function About() {
         </div>
 
         {/* Global Impact Photo Showcase: All 18 Photos in Compact Perfect Size */}
-        <div className="border-t border-[var(--border)]" style={{ marginTop: "96px", paddingTop: "64px" }}>
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6" style={{ marginBottom: "40px" }}>
+        <div className="border-t border-[var(--border)] mt-16 md:mt-24 pt-10 md:pt-16">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-6 mb-8 md:mb-10">
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[var(--accent)]/30 bg-[var(--accent)]/10 text-[var(--accent-lt)] text-[10px] font-mono tracking-widest uppercase mb-3">
                 <span>Archive & Milestones</span>
@@ -176,13 +176,13 @@ export default function About() {
 
           <div
             ref={galleryRef}
-            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3.5"
+            className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-2.5 md:gap-3.5"
           >
             {about.gallery.map((item) => (
               <div
                 key={item.id}
                 onClick={() => setSelectedPhoto(item.id)}
-                className="photo-card group hover-shimmer relative h-[130px] sm:h-[145px] rounded-xl overflow-hidden border border-[var(--border)] bg-[var(--surface-2)] cursor-pointer transition-all duration-300 hover:border-[var(--accent)] hover:shadow-[0_8px_24px_rgba(184,146,74,0.25)] hover:-translate-y-1"
+                className="photo-card group hover-shimmer relative h-[95px] sm:h-[120px] md:h-[145px] rounded-lg md:rounded-xl overflow-hidden border border-[var(--border)] bg-[var(--surface-2)] cursor-pointer transition-all duration-300 hover:border-[var(--accent)] hover:shadow-[0_8px_24px_rgba(184,146,74,0.25)] hover:-translate-y-1"
                 role="button"
                 tabIndex={0}
                 aria-label={`View photo ${item.id}: ${item.alt}`}

@@ -31,11 +31,11 @@ export default function FAQ() {
     <section
       ref={sectionRef}
       id="faq"
-      className="py-32 md:py-48 bg-[var(--ink)]"
+      className="py-20 md:py-48 bg-[var(--ink)]"
       aria-labelledby="faq-heading"
     >
       <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-14">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14">
           <div className="md:col-span-4">
             <p className="section-label faq-reveal" style={{ marginBottom: "16px" }}>FAQ</p>
             <h2
