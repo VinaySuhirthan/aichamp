@@ -34,7 +34,7 @@ export default function MasterclassPage() {
           <div className="container">
             <div className="max-w-[760px]">
               <p className="section-label mb-6">Live Masterclass</p>
-              <h1 className="font-serif text-[clamp(32px,5vw,72px)] text-[var(--paper)] leading-[0.95] tracking-[-0.03em] font-medium mb-6">
+              <h1 className="font-serif text-[clamp(32px,5vw,72px)] text-[var(--paper)] leading-[1.2] tracking-[-0.02em] font-medium mb-6">
                 {masterclass.title}
                 <br />
                 <em className="italic text-[var(--accent)]">{masterclass.subtitle}</em>

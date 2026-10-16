@@ -268,6 +268,7 @@ p { line-height: 1.8; }
 .reveal-line {
   overflow: hidden;
   display: block;
+  padding: 0.08em 0;
 }
 .reveal-line__inner {
   display: block;
@@ -450,10 +451,10 @@ p { line-height: 1.8; }
 }
 .hero__headline {
   font-family: var(--font-serif);
-  font-size: clamp(52px, 9vw, 120px);
+  font-size: clamp(48px, 8.5vw, 110px);
   font-weight: 500;
-  line-height: 0.92;
-  letter-spacing: -0.03em;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
   color: var(--paper);
 }
 .hero__headline em {
@@ -463,8 +464,8 @@ p { line-height: 1.8; }
 .hero__subhead {
   font-size: clamp(14px, 1.8vw, 18px);
   color: var(--muted-lt);
-  max-width: 480px;
-  line-height: 1.5;
+  max-width: 520px;
+  line-height: 1.75;
 }
 
 /* ─── About ──────────────────────────────────────────────── */

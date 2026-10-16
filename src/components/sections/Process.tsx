@@ -51,7 +51,7 @@ export default function Process() {
           <p className="section-label mb-4">Process</p>
           <h2
             id="process-heading"
-            className="font-serif text-[clamp(36px,5vw,64px)] text-[var(--paper)] leading-[0.95] tracking-[-0.03em] font-medium max-w-[520px]"
+            className="font-serif text-[clamp(36px,5vw,64px)] text-[var(--paper)] leading-[1.2] tracking-[-0.02em] font-medium max-w-[520px]"
           >
             How We <em className="italic text-[var(--accent)]">Work</em>
           </h2>

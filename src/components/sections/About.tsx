@@ -97,19 +97,19 @@ export default function About() {
             <p className="section-label mb-6 about-reveal">About</p>
             <h2
               id="about-heading"
-              className="font-serif text-[clamp(32px,4.5vw,58px)] text-[var(--ink)] leading-[0.95] tracking-[-0.03em] font-medium mb-4 about-reveal"
+              className="font-serif text-[clamp(32px,4.5vw,58px)] text-[var(--ink)] leading-[1.2] tracking-[-0.02em] font-medium mb-4 about-reveal"
             >
               {about.name}
             </h2>
-            <p className="text-[var(--accent)] text-sm tracking-[0.08em] uppercase mb-10 about-reveal">
+            <p className="text-[var(--accent)] text-sm tracking-[0.08em] uppercase mb-8 leading-normal about-reveal">
               {about.title}
             </p>
 
-            <div className="space-y-5 max-w-[640px]">
+            <div className="space-y-6 max-w-[680px]">
               {about.bio.map((para, i) => (
                 <p
                   key={i}
-                  className="text-[var(--muted)] text-[15px] leading-[1.75] about-reveal"
+                  className="text-[var(--muted)] text-[16px] leading-[1.85] about-reveal"
                 >
                   {para}
                 </p>

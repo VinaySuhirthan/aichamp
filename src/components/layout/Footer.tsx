@@ -50,13 +50,13 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href={`https://wa.me/${site.whatsapp}`}
+                  href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hello AI bis Champ team, I want to inquire about your services.")}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[var(--muted-lt)] text-sm hover:text-[var(--accent)] transition-colors no-underline focus-visible:outline-[var(--accent)]"
-                  aria-label="Chat with us on WhatsApp"
+                  className="text-[var(--muted-lt)] text-sm hover:text-[#25D366] transition-colors no-underline focus-visible:outline-[var(--accent)]"
+                  aria-label={`Chat with us on WhatsApp at ${site.phone}`}
                 >
-                  WhatsApp [PLACEHOLDER]
+                  WhatsApp: <span className="text-[var(--paper)] font-medium">{site.phone}</span>
                 </a>
               </li>
             </ul>

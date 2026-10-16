@@ -8,6 +8,7 @@ import Footer from "@/components/layout/Footer";
 import Preloader from "@/components/layout/Preloader";
 import MobileCTABar from "@/components/layout/MobileCTABar";
 import SmoothScrollProvider from "@/components/layout/SmoothScrollProvider";
+import FloatingWhatsApp from "@/components/layout/FloatingWhatsApp";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -71,6 +72,7 @@ export default function RootLayout({
           <main id="main-content">{children}</main>
           <Footer />
         </SmoothScrollProvider>
+        <FloatingWhatsApp />
         <MobileCTABar />
       </body>
     </html>

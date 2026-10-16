@@ -79,7 +79,7 @@ export default function Hero() {
           </p>
 
           {/* Headline */}
-          <h1 ref={headlineRef} className="hero__headline mb-8">
+          <h1 ref={headlineRef} className="hero__headline mb-6 leading-[1.18]">
             {hero.headline.map((line, i) => (
               <span key={i} className="reveal-line block">
                 <span className="reveal-line__inner">
@@ -99,7 +99,7 @@ export default function Hero() {
           </h1>
 
           {/* Subhead */}
-          <p ref={subRef} className="hero__subhead mb-12">
+          <p ref={subRef} className="hero__subhead leading-[1.75] mb-10 text-base md:text-lg">
             {hero.subhead}
           </p>
 

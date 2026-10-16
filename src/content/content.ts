@@ -9,9 +9,9 @@ export const site = {
   description:
     "AI bis Champ delivers expert AI-powered design, video, web, and publishing services led by Dr. G. Nalinipriya, Professor and AI Specialist.",
   email: "aibusinesschampions@gmail.com",
-  whatsapp: "[PLACEHOLDER: WhatsApp number e.g. +91XXXXXXXXXX]",
-  phone: "[PLACEHOLDER: Phone number]",
-  address: "[PLACEHOLDER: Business address]",
+  whatsapp: "919994965489",
+  whatsappFormatted: "+91 99949 65489",
+  phone: "+91 99949 65489",
   social: {
     instagram: "[PLACEHOLDER: Instagram URL]",
     youtube: "[PLACEHOLDER: YouTube URL]",

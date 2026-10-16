@@ -40,7 +40,7 @@ export default function Testimonials() {
           <p className="section-label mb-4">Testimonials</p>
           <h2
             id="testimonials-heading"
-            className="font-serif text-[clamp(32px,4.5vw,58px)] text-[var(--ink)] leading-[0.95] tracking-[-0.03em] font-medium"
+            className="font-serif text-[clamp(32px,4.5vw,58px)] text-[var(--ink)] leading-[1.2] tracking-[-0.02em] font-medium"
           >
             What Clients{" "}
             <em className="italic text-[var(--accent-dk)]">Say</em>

@@ -40,7 +40,7 @@ export default function FAQ() {
             <p className="section-label mb-4 faq-reveal">FAQ</p>
             <h2
               id="faq-heading"
-              className="font-serif text-[clamp(32px,4.5vw,52px)] text-[var(--paper)] leading-[0.95] tracking-[-0.03em] font-medium faq-reveal"
+              className="font-serif text-[clamp(32px,4.5vw,52px)] text-[var(--paper)] leading-[1.2] tracking-[-0.02em] font-medium faq-reveal"
             >
               Common{" "}
               <em className="italic text-[var(--accent)]">Questions</em>

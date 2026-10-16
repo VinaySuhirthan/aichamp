@@ -78,7 +78,7 @@ export default function Contact() {
             <p className="section-label mb-4 contact-reveal">Contact</p>
             <h2
               id="contact-heading"
-              className="font-serif text-[clamp(28px,3.5vw,48px)] text-[var(--ink)] leading-[0.95] tracking-[-0.03em] font-medium mb-6 contact-reveal"
+              className="font-serif text-[clamp(28px,3.5vw,48px)] text-[var(--ink)] leading-[1.2] tracking-[-0.02em] font-medium mb-6 contact-reveal"
             >
               {contact.label}
             </h2>
@@ -100,18 +100,18 @@ export default function Contact() {
                 </a>
               </div>
               <div>
-                <p className="text-[10px] tracking-[0.18em] uppercase text-[var(--muted)] mb-2">
-                  WhatsApp
+                <p className="text-[10px] tracking-[0.18em] uppercase text-[var(--muted)] mb-2 font-medium">
+                  Direct WhatsApp
                 </p>
                 <a
-                  href={`https://wa.me/${site.whatsapp}`}
+                  href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hello Dr. G. Nalinipriya & AI bis Champ team, I want to inquire about your AI services.")}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 btn btn--ghost-ink text-sm"
-                  aria-label="Chat with us on WhatsApp"
+                  className="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-[#25D366] text-white hover:bg-[#20ba5a] font-medium text-sm transition-all duration-300 shadow-md shadow-[#25D366]/20 cursor-pointer"
+                  aria-label={`Chat directly on WhatsApp with ${site.phone}`}
                 >
                   <WhatsAppIcon />
-                  <span>Chat on WhatsApp</span>
+                  <span className="font-semibold">{site.phone}</span>
                 </a>
               </div>
             </div>
@@ -238,14 +238,13 @@ export default function Contact() {
                   )}
                 </div>
 
-                {/* Submit */}
-                <div className="md:col-span-2">
+                {/* Submit & WhatsApp */}
+                <div className="md:col-span-2 flex flex-wrap items-center gap-4 pt-2">
                   <button
                     type="submit"
                     disabled={status === "submitting"}
-                    className="btn btn--primary"
+                    className="btn btn--primary cursor-pointer"
                     aria-label="Submit contact form"
-                    style={{ cursor: "inherit" }}
                   >
                     <span>
                       {status === "submitting" ? "Sending..." : "Send Message"}
@@ -256,6 +255,17 @@ export default function Contact() {
                       </svg>
                     )}
                   </button>
+
+                  <a
+                    href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hello Dr. G. Nalinipriya & AI bis Champ team, I want to inquire about your AI services.")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[#25D366] text-white hover:bg-[#20ba5a] font-medium text-xs tracking-wider uppercase transition-all duration-300 shadow-md shadow-[#25D366]/20 cursor-pointer"
+                    aria-label={`Chat on WhatsApp with ${site.phone}`}
+                  >
+                    <WhatsAppIcon />
+                    <span>WhatsApp Direct ({site.phone})</span>
+                  </a>
                 </div>
               </form>
             )}

@@ -208,8 +208,8 @@ export default function Services() {
 
       <div className="container relative z-10">
         {/* Header Block */}
-        <div ref={headingRef} className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[var(--accent)]/40 bg-[var(--accent)]/10 text-[var(--accent-lt)] text-xs font-semibold tracking-wider uppercase mb-5 shadow-sm">
+        <div ref={headingRef} className="text-center max-w-3xl mx-auto mb-14 md:mb-18">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[var(--accent)]/40 bg-[var(--accent)]/10 text-[var(--accent-lt)] text-xs font-semibold tracking-wider uppercase mb-6 shadow-sm">
             <span>🚀 AI bis Champ</span>
             <span className="opacity-40">•</span>
             <span>✨ Because Quality Matters</span>
@@ -217,7 +217,7 @@ export default function Services() {
 
           <h2
             id="services-heading"
-            className="font-serif text-[clamp(30px,4.5vw,56px)] text-[var(--paper)] leading-[1.05] tracking-[-0.02em] font-medium mb-4"
+            className="font-serif text-[clamp(32px,4.5vw,56px)] text-[var(--paper)] leading-[1.25] tracking-[-0.02em] font-medium mb-5"
           >
             We Are Pioneers in{" "}
             <span className="italic text-[var(--accent)] underline decoration-[var(--accent)]/30 underline-offset-8">
@@ -225,13 +225,13 @@ export default function Services() {
             </span>
           </h2>
 
-          <p className="text-[var(--muted-lt)] text-sm md:text-base leading-relaxed max-w-2xl mx-auto">
+          <p className="text-[var(--muted-lt)] text-sm md:text-base leading-[1.85] max-w-2xl mx-auto">
             Offering the following 15 specialized capabilities — orchestrated by Dr. G. Nalinipriya to combine academic excellence with high-velocity creative production.
           </p>
         </div>
 
         {/* Filter Pills */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
+        <div className="flex flex-wrap items-center justify-center gap-2.5 mb-14">
           {[
             { id: "all", label: "All 15 Services", count: 15 },
             { id: "visual", label: "🎨 Visual Design", count: 3 },
@@ -263,19 +263,19 @@ export default function Services() {
         {/* Super Dooper Highlighted Grid of 15 Works */}
         <div
           ref={gridRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7"
         >
           {filtered.map((item) => (
             <div
               key={item.id}
-              className="hover-shimmer group relative rounded-2xl border border-[var(--border)] bg-gradient-to-b from-[var(--surface-2)]/90 to-[var(--surface)]/90 backdrop-blur-md p-6 transition-all duration-400 hover:border-[var(--accent)] hover:shadow-[0_12px_32px_rgba(184,146,74,0.22)] hover:-translate-y-1.5 flex flex-col justify-between"
+              className="hover-shimmer group relative rounded-2xl border border-[var(--border)] bg-gradient-to-b from-[var(--surface-2)]/90 to-[var(--surface)]/90 backdrop-blur-md p-7 md:p-8 transition-all duration-400 hover:border-[var(--accent)] hover:shadow-[0_12px_32px_rgba(184,146,74,0.22)] hover:-translate-y-1.5 flex flex-col justify-between"
             >
               {/* Top ambient highlight line */}
               <div className="absolute top-0 left-6 right-6 h-[1px] bg-gradient-to-r from-transparent via-[var(--accent)]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
               <div>
                 {/* Header Row */}
-                <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center justify-between mb-5">
                   <div className="flex items-center gap-3">
                     <div className="w-11 h-11 rounded-xl bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center text-2xl group-hover:scale-110 group-hover:border-[var(--accent)] transition-all duration-300 shadow-inner">
                       {item.emoji}
@@ -290,19 +290,19 @@ export default function Services() {
                 </div>
 
                 {/* Title */}
-                <h3 className="font-serif text-xl font-medium text-[var(--paper)] mb-2.5 group-hover:text-[var(--accent-lt)] transition-colors duration-300">
+                <h3 className="font-serif text-xl md:text-[22px] font-medium text-[var(--paper)] leading-[1.35] mb-3 group-hover:text-[var(--accent-lt)] transition-colors duration-300">
                   {item.name}
                 </h3>
 
                 {/* Description */}
-                <p className="text-[var(--muted-lt)] text-xs md:text-sm leading-relaxed mb-6">
+                <p className="text-[var(--muted-lt)] text-sm leading-[1.8] mb-6">
                   {item.description}
                 </p>
               </div>
 
               {/* Bottom Footer / Action */}
-              <div className="pt-4 border-t border-[var(--border)]/70 flex items-center justify-between">
-                <span className="text-[11px] text-[var(--muted)] tracking-wide">
+              <div className="pt-5 border-t border-[var(--border)]/70 flex items-center justify-between mt-auto">
+                <span className="text-xs text-[var(--muted)] tracking-wide">
                   {item.categoryLabel}
                 </span>
                 <Link
