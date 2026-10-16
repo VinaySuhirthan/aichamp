@@ -189,7 +189,7 @@ export const about = {
   name: "Dr. G. Nalinipriya",
   title: "Professor in IT • AI & Machine Learning Specialist • PhD Supervisor",
   portrait: {
-    src: "/images/18.webp",
+    src: "/images/main.webp",
     alt: "Portrait of Dr. G. Nalinipriya — Professor and AI Specialist",
   },
   bio: [

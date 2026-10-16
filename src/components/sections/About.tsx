@@ -89,7 +89,8 @@ export default function About() {
                   fill
                   sizes="250px"
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  loading="lazy"
+                  unoptimized
+                  priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent transition-opacity duration-300" />
                 {/* Floating identity badge */}
