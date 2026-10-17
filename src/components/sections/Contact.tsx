@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { contact, site } from "@/content/content";
+import { supabase } from "@/lib/supabase";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -24,6 +25,7 @@ export default function Contact() {
   const sectionRef = useRef<HTMLElement>(null);
   const [form, setForm] = useState<FormState>({ name: "", email: "", service: "", message: "" });
   const [errors, setErrors] = useState<FormErrors>({});
+  const [serverError, setServerError] = useState<string | null>(null);
   const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
 
   useEffect(() => {
@@ -59,8 +61,32 @@ export default function Contact() {
     e.preventDefault();
     if (!validate()) return;
     setStatus("submitting");
-    await new Promise((r) => setTimeout(r, 1000));
-    setStatus("success");
+    setServerError(null);
+
+    try {
+      const { error } = await supabase.from("contact_submissions").insert([
+        {
+          name: form.name.trim(),
+          email: form.email.trim(),
+          service: form.service.trim() || null,
+          message: form.message.trim(),
+        },
+      ]);
+
+      if (error) {
+        throw error;
+      }
+
+      setStatus("success");
+    } catch (err: unknown) {
+      console.error("Supabase submission error:", err);
+      const msg =
+        err instanceof Error
+          ? err.message
+          : "Failed to submit enquiry. Please check your network or try again.";
+      setServerError(msg);
+      setStatus("idle");
+    }
   };
 
   return (
@@ -143,6 +169,7 @@ export default function Contact() {
                 <button
                   onClick={() => {
                     setStatus("idle");
+                    setServerError(null);
                     setForm({ name: "", email: "", service: "", message: "" });
                   }}
                   className="text-xs font-mono uppercase tracking-wider text-[var(--accent)] hover:underline cursor-pointer"
@@ -252,6 +279,18 @@ export default function Contact() {
                     </p>
                   )}
                 </div>
+
+                {/* Server Error Alert */}
+                {serverError && (
+                  <div className="md:col-span-2 p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-xs leading-relaxed flex items-center gap-3" role="alert">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-red-400" aria-hidden="true">
+                      <circle cx="12" cy="12" r="10" />
+                      <line x1="12" y1="8" x2="12" y2="12" />
+                      <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg>
+                    <span>{serverError}</span>
+                  </div>
+                )}
 
                 {/* Submit & WhatsApp */}
                 <div className="md:col-span-2 flex flex-wrap items-center gap-4 pt-2">
