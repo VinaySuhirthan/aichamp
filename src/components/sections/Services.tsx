@@ -277,21 +277,71 @@ export default function Services() {
   useEffect(() => {
     const mm = gsap.matchMedia();
     mm.add("(prefers-reduced-motion: no-preference)", () => {
-      if (!headingRef.current) return;
-      gsap.from(headingRef.current.children, {
-        opacity: 0,
-        y: 25,
-        stagger: 0.1,
-        duration: 0.8,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: headingRef.current,
-          start: "top 85%",
-        },
-      });
+      if (headingRef.current) {
+        gsap.from(headingRef.current.children, {
+          opacity: 0,
+          y: 25,
+          stagger: 0.1,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: headingRef.current,
+            start: "top 85%",
+          },
+        });
+      }
+
+      if (gridRef.current) {
+        const cards = gridRef.current.querySelectorAll(".service-card-item");
+        gsap.fromTo(
+          cards,
+          {
+            opacity: 0,
+            y: 50,
+            scale: 0.95,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.75,
+            ease: "power3.out",
+            stagger: {
+              amount: 0.45,
+              from: "start",
+            },
+            scrollTrigger: {
+              trigger: gridRef.current,
+              start: "top 82%",
+              toggleActions: "play none none none",
+            },
+            clearProps: "transform,opacity",
+          }
+        );
+      }
     });
     return () => mm.revert();
   }, []);
+
+  // Silky smooth re-entrance when switching categories
+  useEffect(() => {
+    if (!gridRef.current) return;
+    const cards = gridRef.current.querySelectorAll(".service-card-item");
+    if (!cards || cards.length === 0) return;
+    gsap.fromTo(
+      cards,
+      { opacity: 0, y: 25, scale: 0.97 },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.42,
+        stagger: 0.035,
+        ease: "power2.out",
+        clearProps: "transform,opacity",
+      }
+    );
+  }, [filter]);
 
   const filtered = filter === "all" ? allServices : allServices.filter((s) => s.category === filter);
 
@@ -318,9 +368,9 @@ export default function Services() {
         {/* Header Block */}
         <div ref={headingRef} className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
           <div
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[var(--accent)]/40 bg-[var(--accent)]/10 text-[var(--accent-lt)] text-[11px] font-mono tracking-widest uppercase shadow-sm mb-6 md:mb-8"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#d4aa6a]/40 bg-[#d4aa6a]/10 text-[#d4aa6a] text-[11px] font-mono tracking-widest uppercase shadow-sm mb-6 md:mb-8"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] animate-ping" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#ff2e54] animate-ping" />
             <span>AI BIZ CHAMPION</span>
             <span className="opacity-40">•</span>
             <span>BECAUSE QUALITY MATTERS</span>
@@ -331,7 +381,7 @@ export default function Services() {
             className="font-serif text-[clamp(32px,5vw,64px)] text-[var(--paper)] font-medium leading-[1.3] md:leading-[1.45] mb-6 md:mb-8"
           >
             Pioneers in{" "}
-            <span className="italic text-[var(--accent)]">
+            <span className="italic text-[#d4aa6a]">
               AI-Powered Digital Creativity
             </span>
           </h2>
@@ -359,14 +409,14 @@ export default function Services() {
               onClick={() => setFilter(cat.id as any)}
               className={`px-4 md:px-5 py-2 md:py-2.5 rounded-full text-xs font-medium tracking-wide transition-all duration-300 border flex items-center gap-2 whitespace-nowrap cursor-pointer flex-shrink-0 ${
                 filter === cat.id
-                  ? "bg-[var(--accent)] text-[var(--ink)] border-[var(--accent)] font-semibold shadow-md shadow-[var(--accent)]/25 scale-105"
-                  : "bg-[var(--surface-2)]/80 text-[var(--muted-lt)] border-[var(--border)] hover:border-[var(--accent)] hover:text-[var(--paper)]"
+                  ? "bg-[#ff2e54] text-white border-[#ff2e54] font-semibold shadow-md shadow-[#ff2e54]/30 scale-105"
+                  : "bg-[var(--surface-2)]/80 text-[var(--muted-lt)] border-[var(--border)] hover:border-[#d4aa6a] hover:text-white"
               }`}
             >
               <span>{cat.label}</span>
               <span
                 className={`text-[10px] font-mono px-1.5 py-0.5 rounded-full ${
-                  filter === cat.id ? "bg-[var(--ink)]/20 text-[var(--ink)]" : "bg-[var(--surface)] text-[var(--muted)]"
+                  filter === cat.id ? "bg-black/30 text-white" : "bg-[var(--surface)] text-[var(--muted)]"
                 }`}
               >
                 {cat.count}
@@ -425,33 +475,33 @@ export default function Services() {
             <div
               key={item.id}
               className={`
-                hover-shimmer group relative rounded-2xl border border-[var(--border)] bg-gradient-to-b from-[var(--surface-2)]/90 via-[var(--surface-2)]/60 to-[var(--surface)]/90 backdrop-blur-md transition-all duration-400 hover:border-[var(--accent)] hover:shadow-[0_16px_36px_rgba(184,146,74,0.22)] hover:-translate-y-1.5 flex flex-col justify-between
+                service-card-item transform-gpu hover-shimmer group relative rounded-2xl border border-[var(--border)] bg-gradient-to-b from-[var(--surface-2)]/90 via-[var(--surface-2)]/60 to-[var(--surface)]/90 backdrop-blur-md transition-all duration-400 hover:border-[#ff2e54]/80 hover:shadow-[0_16px_36px_rgba(255,46,84,0.2)] hover:-translate-y-1.5 flex flex-col justify-between
                 ${mobileView === "carousel" ? "w-[84vw] max-w-[340px] flex-shrink-0 snap-center md:w-auto md:flex-shrink md:snap-align-none" : "w-full"}
                 p-6 md:p-[36px_32px]
               `}
             >
               {/* Top ambient highlight line */}
-              <div className="absolute top-0 left-6 right-6 h-[1px] bg-gradient-to-r from-transparent via-[var(--accent)]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute top-0 left-6 right-6 h-[1px] bg-gradient-to-r from-transparent via-[#ff2e54]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
               <div>
                 {/* Header Row */}
                 <div className="flex items-center justify-between" style={{ marginBottom: "24px" }}>
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-xl bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center text-[var(--accent)] group-hover:scale-110 group-hover:border-[var(--accent)] group-hover:bg-[var(--accent)]/10 transition-all duration-300 shadow-inner">
+                    <div className="w-12 h-12 rounded-xl bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center text-[#ff2e54] group-hover:scale-110 group-hover:border-[#ff2e54] group-hover:bg-[#ff2e54]/10 transition-all duration-300 shadow-inner">
                       {item.icon}
                     </div>
-                    <span className="font-mono text-xs font-semibold text-[var(--accent)] tracking-widest">
+                    <span className="font-mono text-xs font-semibold text-[#d4aa6a] tracking-widest">
                       #{item.id < 10 ? `0${item.id}` : item.id}
                     </span>
                   </div>
-                  <span className="text-[10px] font-mono uppercase tracking-wider font-medium px-3 py-1 rounded-full bg-[var(--surface)] border border-[var(--border)] text-[var(--muted-lt)] group-hover:border-[var(--accent)]/40 group-hover:text-[var(--accent-lt)] transition-colors duration-300">
+                  <span className="text-[10px] font-mono uppercase tracking-wider font-medium px-3 py-1 rounded-full bg-[var(--surface)] border border-[var(--border)] text-[var(--muted-lt)] group-hover:border-[#d4aa6a]/40 group-hover:text-[#d4aa6a] transition-colors duration-300">
                     {item.tag}
                   </span>
                 </div>
 
                 {/* Title */}
                 <h3
-                  className="font-serif text-xl md:text-[23px] font-medium text-[var(--paper)] group-hover:text-[var(--accent-lt)] transition-colors duration-300"
+                  className="font-serif text-xl md:text-[23px] font-medium text-[var(--paper)] group-hover:text-[#d4aa6a] transition-colors duration-300"
                   style={{ lineHeight: "1.45", marginBottom: "16px" }}
                 >
                   {item.name}
@@ -459,7 +509,7 @@ export default function Services() {
 
                 {/* Tech chip */}
                 <p
-                  className="text-[10px] font-mono text-[var(--accent)]/80 tracking-wide uppercase"
+                  className="text-[10px] font-mono text-[#d4aa6a]/85 tracking-wide uppercase"
                   style={{ marginBottom: "20px" }}
                 >
                   {item.techStack}
@@ -484,7 +534,7 @@ export default function Services() {
                 </span>
                 <Link
                   href="#contact"
-                  className="inline-flex items-center gap-2 text-xs font-semibold text-[var(--accent)] group-hover:text-[var(--accent-lt)] group-hover:translate-x-1 transition-all duration-300 cursor-pointer"
+                  className="inline-flex items-center gap-2 text-xs font-semibold text-[#ff2e54] group-hover:text-[#ff5e7e] group-hover:translate-x-1 transition-all duration-300 cursor-pointer"
                 >
                   <span>Inquire</span>
                   <span className="text-sm">→</span>
@@ -495,9 +545,9 @@ export default function Services() {
         </div>
 
         {/* Bottom Banner Callout */}
-        <div className="mt-20 md:mt-24 p-8 md:p-12 rounded-2xl border border-[var(--accent)]/30 bg-gradient-to-r from-[var(--surface-2)] via-[var(--surface)] to-[var(--surface-2)] flex flex-col md:flex-row items-center justify-between gap-8">
+        <div className="mt-20 md:mt-24 p-8 md:p-12 rounded-2xl border border-[#d4aa6a]/30 bg-gradient-to-r from-[var(--surface-2)] via-[var(--surface)] to-[var(--surface-2)] flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="text-center md:text-left">
-            <p className="text-xs font-mono uppercase tracking-widest text-[var(--accent)] font-semibold mb-2">
+            <p className="text-xs font-mono uppercase tracking-widest text-[#d4aa6a] font-semibold mb-2">
               Custom Startup Architecture
             </p>
             <p className="font-serif text-lg md:text-2xl text-[var(--paper)] leading-[1.4]">
@@ -506,7 +556,7 @@ export default function Services() {
           </div>
           <Link
             href="#contact"
-            className="px-7 py-3.5 rounded-full bg-[var(--accent)] text-[var(--ink)] font-semibold text-xs tracking-wider uppercase hover:bg-[var(--accent-lt)] transition-all duration-300 shadow-lg shadow-[var(--accent)]/20 whitespace-nowrap cursor-pointer hover:scale-105"
+            className="px-7 py-3.5 rounded-full bg-[#ff2e54] text-white font-semibold text-xs tracking-wider uppercase hover:bg-[#e01e43] transition-all duration-300 shadow-lg shadow-[#ff2e54]/30 whitespace-nowrap cursor-pointer hover:scale-105"
           >
             Start Your Project ↗
           </Link>

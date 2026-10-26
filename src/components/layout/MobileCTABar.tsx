@@ -19,7 +19,7 @@ export default function MobileCTABar() {
       </a>
       <a
         href="#contact"
-        className="flex-1 inline-flex items-center justify-center gap-1.5 py-3 px-4 rounded-xl bg-[var(--accent)] text-[var(--ink)] font-semibold text-xs tracking-wide uppercase transition-transform active:scale-95 shadow-md shadow-[var(--accent)]/20"
+        className="flex-1 inline-flex items-center justify-center gap-1.5 py-3 px-4 rounded-xl bg-[#ff2e54] text-white font-semibold text-xs tracking-wide uppercase transition-transform active:scale-95 shadow-md shadow-[#ff2e54]/30"
         aria-label="Book a consultation"
       >
         <span>Book Consultation</span>

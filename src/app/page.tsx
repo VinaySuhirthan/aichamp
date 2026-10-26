@@ -1,4 +1,5 @@
 import Hero from "@/components/sections/Hero";
+import MarqueeRibbon from "@/components/sections/MarqueeRibbon";
 import Services from "@/components/sections/Services";
 import About from "@/components/sections/About";
 import Process from "@/components/sections/Process";
@@ -8,7 +9,7 @@ import { site } from "@/content/content";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: `${site.name} — ${site.tagline}`,
+  title: site.name,
   description: site.description,
 };
 
@@ -35,6 +36,7 @@ export default function Home() {
         }}
       />
       <Hero />
+      <MarqueeRibbon />
       <Services />
       <About />
       <Process />

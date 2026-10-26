@@ -8,6 +8,10 @@ export default function Preloader() {
   const [done, setDone] = useState(false);
 
   useEffect(() => {
+    if (typeof window !== "undefined" && window.location.search.includes("nopreload")) {
+      setDone(true);
+      return;
+    }
     const el = ref.current;
     if (!el) return;
 

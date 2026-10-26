@@ -27,13 +27,13 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: `${site.name} — ${site.tagline}`,
+    default: site.name,
     template: `%s | ${site.name}`,
   },
   description: site.description,
   metadataBase: new URL("https://aibizchampion.com"),
   openGraph: {
-    title: `${site.name} — ${site.tagline}`,
+    title: site.name,
     description: site.description,
     url: "https://aibizchampion.com",
     siteName: site.name,
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — ${site.tagline}`,
+    title: site.name,
     description: site.description,
     images: [site.ogImage],
   },
@@ -72,7 +72,7 @@ export default function RootLayout({
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
-        <Preloader />
+        {/* <Preloader /> */}
         <SmoothScrollProvider>
           <Header />
           <main id="main-content">{children}</main>

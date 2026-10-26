@@ -9,23 +9,26 @@ import MobileMenu from "./MobileMenu";
 export default function Header() {
   const headerRef = useRef<HTMLElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const lastScrollY = useRef(0);
+  const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
-    const header = headerRef.current;
-    if (!header) return;
+    let prevScrolled = false;
+    let prevHidden = false;
 
     const onScroll = () => {
       const y = window.scrollY;
-      if (y > 80) {
-        header.classList.add("scrolled");
-      } else {
-        header.classList.remove("scrolled");
+      const isScrolled = y > 40;
+      if (isScrolled !== prevScrolled) {
+        prevScrolled = isScrolled;
+        setScrolled(isScrolled);
       }
-      if (y > lastScrollY.current && y > 200) {
-        header.classList.add("hidden");
-      } else {
-        header.classList.remove("hidden");
+
+      const isHidden = y > lastScrollY.current && y > 200;
+      if (isHidden !== prevHidden) {
+        prevHidden = isHidden;
+        setHidden(isHidden);
       }
       lastScrollY.current = y;
     };
@@ -34,80 +37,99 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Lock body scroll when menu open
+  // Lock body scroll when mobile menu open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [menuOpen]);
 
   return (
     <>
-      <header ref={headerRef} className="header" role="banner">
-        <div className="container">
-          <div className="flex items-center justify-between">
-            {/* Logo */}
-            <Link
-              href="/"
-              className="flex items-center gap-3 no-underline focus-visible:outline-[var(--accent)] group"
-              aria-label={`${site.name} — Home`}
+      <header
+        ref={headerRef}
+        className={`fixed top-3 sm:top-5 inset-x-0 z-50 flex justify-center px-3 sm:px-6 transition-all duration-300 pointer-events-none ${
+          hidden ? "-translate-y-28 opacity-0" : "translate-y-0 opacity-100"
+        }`}
+        role="banner"
+      >
+        <div
+          className={`pointer-events-auto w-full max-w-5xl rounded-full transition-all duration-300 flex items-center justify-between px-4 sm:px-6 py-2 sm:py-2.5 border ${
+            scrolled
+              ? "bg-[#0d0d0b]/90 border-white/15 backdrop-blur-2xl shadow-[0_12px_40px_rgba(0,0,0,0.8)]"
+              : "bg-[#111110]/75 border-white/10 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.5)]"
+          }`}
+        >
+          {/* Brand Logo & Wordmark */}
+          <Link
+            href="/"
+            className="flex items-center gap-2.5 no-underline group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff2e54] rounded-full p-1"
+            aria-label={`${site.name} — Home`}
+          >
+            <div className="relative w-8 h-8 rounded-full overflow-hidden border border-[#d4aa6a]/50 bg-[#161614] p-0.5 shadow-sm group-hover:scale-105 group-hover:border-[#d4aa6a] transition-all duration-300 flex-shrink-0">
+              <Image
+                src="/logo.png"
+                alt="AI Biz Champion Brand Mark"
+                width={32}
+                height={32}
+                className="object-contain w-full h-full rounded-full"
+                priority
+              />
+            </div>
+            <span className="font-sans font-bold text-white text-base sm:text-lg tracking-tight group-hover:text-[#d4aa6a] transition-colors">
+              {site.name}
+            </span>
+          </Link>
+
+          {/* Desktop Nav Items */}
+          <nav aria-label="Primary navigation" className="hidden md:flex items-center gap-1 lg:gap-2">
+            <a
+              href="#hero"
+              className="px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-white bg-[#ff2e54] shadow-[0_0_12px_rgba(255,46,84,0.4)] transition-all duration-200"
             >
-              <div className="relative w-9 h-9 rounded-full overflow-hidden border border-[var(--accent)]/50 bg-[#f5f0e8] p-0.5 shadow-sm group-hover:scale-105 transition-transform duration-300 flex-shrink-0">
-                <Image
-                  src="/logo.png"
-                  alt="AI Biz Champion Brand Mark"
-                  width={36}
-                  height={36}
-                  className="object-contain w-full h-full rounded-full"
-                  priority
-                />
-              </div>
-              <span className="font-serif text-[var(--paper)] text-xl tracking-[-0.02em] font-medium group-hover:text-[var(--accent-lt)] transition-colors">
-                AI Biz Champion
-              </span>
-            </Link>
+              Home
+            </a>
+            {nav.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-neutral-300 hover:text-[#d4aa6a] hover:bg-white/[0.06] transition-all duration-200 no-underline"
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
 
-            {/* Desktop nav */}
-            <nav aria-label="Primary navigation" className="hidden md:flex items-center gap-8">
-              {nav.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className="text-[13px] font-medium tracking-[0.06em] uppercase text-[var(--muted-lt)] hover:text-[var(--paper)] transition-colors duration-200 no-underline focus-visible:outline-[var(--accent)]"
-                >
-                  {item.label}
-                </a>
-              ))}
-            </nav>
-
-            {/* Desktop CTA */}
+          {/* Right Action CTA Button */}
+          <div className="flex items-center gap-3">
             <a
               href="#contact"
-              className="btn btn--primary hidden md:inline-flex"
+              className="hidden sm:inline-flex items-center px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-[#ff2e54] text-white hover:bg-[#e01e43] hover:shadow-[0_0_20px_rgba(255,46,84,0.5)] transition-all duration-300 no-underline"
               aria-label="Book a consultation with AI Biz Champion"
             >
-              <span>Book a Consultation</span>
+              Contact Us
             </a>
 
-            {/* Mobile hamburger */}
+            {/* Mobile Hamburger Toggle */}
             <button
-              className="md:hidden flex flex-col gap-[5px] p-2 min-h-[44px] min-w-[44px] items-center justify-center"
+              className="md:hidden flex flex-col gap-[5px] p-2 min-h-[40px] min-w-[40px] items-center justify-center rounded-full hover:bg-white/10 transition-colors"
               aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
               aria-expanded={menuOpen}
               aria-controls="mobile-menu"
               onClick={() => setMenuOpen((v) => !v)}
-              style={{ cursor: "inherit" }}
             >
               <span
-                className="block w-6 h-px bg-[var(--paper)] transition-transform duration-300 origin-center"
-                style={{ transform: menuOpen ? "translateY(6px) rotate(45deg)" : "" }}
+                className="block w-5 h-[2px] bg-white transition-transform duration-300 origin-center"
+                style={{ transform: menuOpen ? "translateY(7px) rotate(45deg)" : "" }}
               />
               <span
-                className="block w-6 h-px bg-[var(--paper)] transition-opacity duration-300"
+                className="block w-5 h-[2px] bg-white transition-opacity duration-300"
                 style={{ opacity: menuOpen ? 0 : 1 }}
               />
               <span
-                className="block w-6 h-px bg-[var(--paper)] transition-transform duration-300 origin-center"
-                style={{ transform: menuOpen ? "translateY(-6px) rotate(-45deg)" : "" }}
+                className="block w-5 h-[2px] bg-white transition-transform duration-300 origin-center"
+                style={{ transform: menuOpen ? "translateY(-7px) rotate(-45deg)" : "" }}
               />
             </button>
           </div>
