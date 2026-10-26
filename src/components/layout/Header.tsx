@@ -67,7 +67,7 @@ export default function Header() {
             className="flex items-center gap-2.5 no-underline group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff2e54] rounded-full p-1"
             aria-label={`${site.name} — Home`}
           >
-            <div className="relative w-8 h-8 rounded-full overflow-hidden border border-[#d4aa6a]/50 bg-[#161614] p-0.5 shadow-sm group-hover:scale-105 group-hover:border-[#d4aa6a] transition-all duration-300 flex-shrink-0">
+            <div className="relative w-8 h-8 rounded-full overflow-hidden border border-[#00f0ff]/50 bg-[#161614] p-0.5 shadow-sm group-hover:scale-105 group-hover:border-[#00f0ff] transition-all duration-300 flex-shrink-0">
               <Image
                 src="/logo.png"
                 alt="AI Biz Champion Brand Mark"
@@ -77,7 +77,7 @@ export default function Header() {
                 priority
               />
             </div>
-            <span className="font-sans font-bold text-white text-base sm:text-lg tracking-tight group-hover:text-[#d4aa6a] transition-colors">
+            <span className="font-sans font-bold text-white text-base sm:text-lg tracking-tight group-hover:text-[#00f0ff] transition-colors">
               {site.name}
             </span>
           </Link>
@@ -94,7 +94,7 @@ export default function Header() {
               <a
                 key={item.href}
                 href={item.href}
-                className="px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-neutral-300 hover:text-[#d4aa6a] hover:bg-white/[0.06] transition-all duration-200 no-underline"
+                className="px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-neutral-300 hover:text-[#00f0ff] hover:bg-white/[0.06] transition-all duration-200 no-underline"
               >
                 {item.label}
               </a>

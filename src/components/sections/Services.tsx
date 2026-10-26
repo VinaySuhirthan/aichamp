@@ -368,7 +368,7 @@ export default function Services() {
         {/* Header Block */}
         <div ref={headingRef} className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
           <div
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#d4aa6a]/40 bg-[#d4aa6a]/10 text-[#d4aa6a] text-[11px] font-mono tracking-widest uppercase shadow-sm mb-6 md:mb-8"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#00f0ff]/40 bg-[#00f0ff]/10 text-[#00f0ff] text-[11px] font-mono tracking-widest uppercase shadow-sm mb-6 md:mb-8"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-[#ff2e54] animate-ping" />
             <span>AI BIZ CHAMPION</span>
@@ -381,7 +381,7 @@ export default function Services() {
             className="font-serif text-[clamp(32px,5vw,64px)] text-[var(--paper)] font-medium leading-[1.3] md:leading-[1.45] mb-6 md:mb-8"
           >
             Pioneers in{" "}
-            <span className="italic text-[#d4aa6a]">
+            <span className="italic text-[#00f0ff] drop-shadow-[0_0_20px_rgba(0,240,255,0.35)]">
               AI-Powered Digital Creativity
             </span>
           </h2>
@@ -410,7 +410,7 @@ export default function Services() {
               className={`px-4 md:px-5 py-2 md:py-2.5 rounded-full text-xs font-medium tracking-wide transition-all duration-300 border flex items-center gap-2 whitespace-nowrap cursor-pointer flex-shrink-0 ${
                 filter === cat.id
                   ? "bg-[#ff2e54] text-white border-[#ff2e54] font-semibold shadow-md shadow-[#ff2e54]/30 scale-105"
-                  : "bg-[var(--surface-2)]/80 text-[var(--muted-lt)] border-[var(--border)] hover:border-[#d4aa6a] hover:text-white"
+                  : "bg-[var(--surface-2)]/80 text-[var(--muted-lt)] border-[var(--border)] hover:border-[#00f0ff] hover:text-[#00f0ff]"
               }`}
             >
               <span>{cat.label}</span>
@@ -490,18 +490,18 @@ export default function Services() {
                     <div className="w-12 h-12 rounded-xl bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center text-[#ff2e54] group-hover:scale-110 group-hover:border-[#ff2e54] group-hover:bg-[#ff2e54]/10 transition-all duration-300 shadow-inner">
                       {item.icon}
                     </div>
-                    <span className="font-mono text-xs font-semibold text-[#d4aa6a] tracking-widest">
+                    <span className="font-mono text-xs font-bold text-[#00f0ff] tracking-widest drop-shadow-[0_0_8px_rgba(0,240,255,0.4)]">
                       #{item.id < 10 ? `0${item.id}` : item.id}
                     </span>
                   </div>
-                  <span className="text-[10px] font-mono uppercase tracking-wider font-medium px-3 py-1 rounded-full bg-[var(--surface)] border border-[var(--border)] text-[var(--muted-lt)] group-hover:border-[#d4aa6a]/40 group-hover:text-[#d4aa6a] transition-colors duration-300">
+                  <span className="text-[10px] font-mono uppercase tracking-wider font-medium px-3 py-1 rounded-full bg-[var(--surface)] border border-[var(--border)] text-[var(--muted-lt)] group-hover:border-[#00f0ff]/50 group-hover:text-[#00f0ff] transition-colors duration-300">
                     {item.tag}
                   </span>
                 </div>
 
                 {/* Title */}
                 <h3
-                  className="font-serif text-xl md:text-[23px] font-medium text-[var(--paper)] group-hover:text-[#d4aa6a] transition-colors duration-300"
+                  className="font-serif text-xl md:text-[23px] font-medium text-[var(--paper)] group-hover:text-[#00f0ff] transition-colors duration-300"
                   style={{ lineHeight: "1.45", marginBottom: "16px" }}
                 >
                   {item.name}
@@ -509,7 +509,7 @@ export default function Services() {
 
                 {/* Tech chip */}
                 <p
-                  className="text-[10px] font-mono text-[#d4aa6a]/85 tracking-wide uppercase"
+                  className="text-[10px] font-mono text-[#00f0ff]/80 tracking-wide uppercase"
                   style={{ marginBottom: "20px" }}
                 >
                   {item.techStack}
@@ -545,9 +545,9 @@ export default function Services() {
         </div>
 
         {/* Bottom Banner Callout */}
-        <div className="mt-20 md:mt-24 p-8 md:p-12 rounded-2xl border border-[#d4aa6a]/30 bg-gradient-to-r from-[var(--surface-2)] via-[var(--surface)] to-[var(--surface-2)] flex flex-col md:flex-row items-center justify-between gap-8">
+        <div className="mt-20 md:mt-24 p-8 md:p-12 rounded-2xl border border-[#00f0ff]/30 bg-gradient-to-r from-[var(--surface-2)] via-[var(--surface)] to-[var(--surface-2)] flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="text-center md:text-left">
-            <p className="text-xs font-mono uppercase tracking-widest text-[#d4aa6a] font-semibold mb-2">
+            <p className="text-xs font-mono uppercase tracking-widest text-[#00f0ff] font-bold mb-2 drop-shadow-[0_0_10px_rgba(0,240,255,0.4)]">
               Custom Startup Architecture
             </p>
             <p className="font-serif text-lg md:text-2xl text-[var(--paper)] leading-[1.4]">

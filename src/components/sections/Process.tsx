@@ -54,7 +54,7 @@ export default function Process() {
             className="font-serif text-[clamp(32px,5vw,64px)] text-[var(--paper)] font-medium max-w-[520px]"
             style={{ lineHeight: "1.35", letterSpacing: "-0.015em" }}
           >
-            How We <em className="italic text-[#d4aa6a]">Work</em>
+            How We <em className="italic text-[#00f0ff] drop-shadow-[0_0_15px_rgba(0,240,255,0.4)]">Work</em>
           </h2>
         </div>
 
@@ -98,7 +98,7 @@ export default function Process() {
                     height="16"
                     viewBox="0 0 24 24"
                     fill="none"
-                    stroke="#d4aa6a"
+                    stroke="#00f0ff"
                     strokeWidth="1.8"
                   >
                     <path d="M5 12h14M12 5l7 7-7 7" />
