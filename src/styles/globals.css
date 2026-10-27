@@ -948,3 +948,73 @@ p { line-height: 1.8; }
   }
 }
 
+/* ─── 3D Card Physics & Specular Spotlight Engine ────────────── */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.perspective-1400 {
+  perspective: 1400px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.translate-z-10 {
+  transform: translateZ(10px);
+}
+
+.translate-z-20 {
+  transform: translateZ(20px);
+}
+
+.translate-z-30 {
+  transform: translateZ(30px);
+}
+
+.translate-z-40 {
+  transform: translateZ(40px);
+}
+
+.card-spotlight {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.card-spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    380px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(2, 132, 199, 0.14),
+    transparent 80%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.card-spotlight:hover::before {
+  opacity: 1;
+}
+
+/* Smooth Horizontal Snap/Glide Track for Cards */
+.card-runway-track {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-behavior: smooth;
+}
+.card-runway-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* Card Glow Accent */
+.service-active-halo {
+  box-shadow: 0 20px 50px -10px rgba(2, 132, 199, 0.22), 0 0 0 1.5px rgba(2, 132, 199, 0.4);
+}
+

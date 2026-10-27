@@ -165,10 +165,13 @@ export default function AIChatbot() {
     }
   }, [isOpen]);
 
-  // Listen to open-ai-chat event or direct invocation (e.g. from MobileCTABar)
+  // Listen to open-ai-chat event or direct invocation (e.g. from MobileCTABar or Services cards)
   useEffect(() => {
-    const handleOpenChat = () => {
+    const handleOpenChat = (e?: any) => {
       setIsOpen(true);
+      if (e?.detail?.message) {
+        setInput(e.detail.message);
+      }
     };
     (window as any).__openAIChat = handleOpenChat;
     window.addEventListener("open-ai-chat", handleOpenChat);
