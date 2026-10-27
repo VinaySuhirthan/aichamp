@@ -1,25 +1,40 @@
 "use client";
 
-import { site } from "@/content/content";
-
 export default function MobileCTABar() {
+  const handleOpenAIChat = () => {
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new CustomEvent("open-ai-chat"));
+    }
+  };
+
   return (
-    <div className="mobile-cta-bar flex gap-2 p-3 bg-[var(--ink)]/95 backdrop-blur-md border-t border-[var(--border)]" aria-label="Quick actions">
-      <a
-        href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hello AI Biz Champ, I want to inquire about your AI services.")}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex-1 inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#25D366] text-white font-semibold text-xs tracking-wide uppercase transition-transform active:scale-95 shadow-md shadow-[#25D366]/20"
-        aria-label="Direct WhatsApp Chat"
+    <div
+      className="mobile-cta-bar flex gap-2.5 p-3 bg-[#faf7f0]/95 backdrop-blur-md border-t border-[#bae6fd] shadow-[0_-4px_20px_rgba(2,132,199,0.12)]"
+      aria-label="Quick actions"
+    >
+      {/* Ask AI button replacing WhatsApp */}
+      <button
+        type="button"
+        onClick={handleOpenAIChat}
+        className="flex-1 inline-flex items-center justify-center gap-2 py-3 px-3 rounded-xl bg-gradient-to-r from-[#0284c7] via-[#0ea5e9] to-[#0284c7] text-white font-bold text-xs tracking-wide uppercase transition-transform active:scale-95 shadow-md shadow-[#0284c7]/25 cursor-pointer"
+        aria-label="Open Ask AI Chatbot"
       >
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-          <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
-        </svg>
-        <span>WhatsApp</span>
-      </a>
+        <span className="relative flex items-center justify-center w-5 h-5 rounded-full bg-white/20 text-white">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 0C12 6.627 6.627 12 0 12c6.627 0 12 5.373 12 12 0-6.627 5.373-12 12-12-6.627 0-12-5.373-12-12z" />
+          </svg>
+          <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-[#10b981] rounded-full" />
+        </span>
+        <span>Ask AI</span>
+        <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-white/20 text-white font-sans font-semibold normal-case">
+          Online
+        </span>
+      </button>
+
+      {/* Book Consultation */}
       <a
         href="#contact"
-        className="flex-1 inline-flex items-center justify-center gap-1.5 py-3 px-4 rounded-xl bg-gradient-to-r from-[#0284c7] via-[#0ea5e9] to-[#0284c7] text-[#fcf9f2] font-semibold text-xs tracking-wide uppercase transition-transform active:scale-95 shadow-md shadow-[#0ea5e9]/30"
+        className="flex-1 inline-flex items-center justify-center gap-1.5 py-3 px-3 rounded-xl bg-white text-[#0c192c] border border-[#bae6fd] hover:bg-[#e0f2fe] font-bold text-xs tracking-wide uppercase transition-transform active:scale-95 shadow-sm"
         aria-label="Book a consultation"
       >
         <span>Book Consultation</span>
@@ -27,3 +42,4 @@ export default function MobileCTABar() {
     </div>
   );
 }
+

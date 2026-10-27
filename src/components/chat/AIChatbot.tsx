@@ -154,6 +154,17 @@ export default function AIChatbot() {
     }
   }, [isOpen]);
 
+  // Listen to open-ai-chat event (e.g. from MobileCTABar)
+  useEffect(() => {
+    const handleOpenChat = () => {
+      setIsOpen(true);
+    };
+    window.addEventListener("open-ai-chat", handleOpenChat);
+    return () => {
+      window.removeEventListener("open-ai-chat", handleOpenChat);
+    };
+  }, []);
+
   useEffect(() => {
     if (isOpen) {
       messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -457,7 +468,7 @@ export default function AIChatbot() {
       const data = await response.json();
       const reply =
         data.reply ||
-        "I apologize, but I could not process that request. Please feel free to reach out directly to Dr. Nalinipriya on WhatsApp at +91 99949 65489.";
+        "I apologize, but I could not process that request. Please feel free to book a consultation below or email aibusinesschampions@gmail.com.";
 
       setMessages((prev) => [
         ...prev,
@@ -480,7 +491,7 @@ export default function AIChatbot() {
           id: (Date.now() + 1).toString(),
           role: "assistant",
           content:
-            "Sorry, I encountered a temporary connection issue. You can chat directly with Dr. Nalinipriya on WhatsApp at +91 99949 65489 or email aibusinesschampions@gmail.com.",
+            "Sorry, I encountered a temporary connection issue. You can book a consultation below or email us directly at aibusinesschampions@gmail.com.",
           timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
         },
       ]);
@@ -548,8 +559,8 @@ export default function AIChatbot() {
 
   return (
     <>
-      {/* Floating Trigger Button */}
-      <div className="fixed bottom-24 right-4 sm:bottom-28 sm:right-7 z-50 flex items-center">
+      {/* Floating Trigger Button - Hidden on mobile (<768px) where bottom MobileCTABar provides Ask AI */}
+      <div className="fixed bottom-7 right-4 sm:bottom-28 sm:right-7 z-50 hidden md:flex items-center">
         {!isOpen && (
           <button
             onClick={() => setIsOpen(true)}
@@ -622,8 +633,8 @@ export default function AIChatbot() {
                 }
               : undefined
           }
-          className={`rgb-hairline fixed z-50 w-[calc(100vw-32px)] sm:w-[430px] h-[600px] max-h-[85vh] flex flex-col rounded-2xl bg-white backdrop-blur-2xl border border-[#bae6fd] shadow-[0_25px_70px_rgba(2,132,199,0.25),0_0_30px_rgba(14,165,233,0.15)] overflow-hidden animate-in fade-in zoom-in-95 duration-200 ${
-            !position ? "bottom-4 right-4 sm:bottom-6 sm:right-6" : ""
+          className={`rgb-hairline fixed z-50 w-[calc(100vw-32px)] sm:w-[430px] h-[600px] max-h-[78vh] sm:max-h-[85vh] flex flex-col rounded-2xl bg-white backdrop-blur-2xl border border-[#bae6fd] shadow-[0_25px_70px_rgba(2,132,199,0.25),0_0_30px_rgba(14,165,233,0.15)] overflow-hidden animate-in fade-in zoom-in-95 duration-200 ${
+            !position ? "bottom-20 right-4 sm:bottom-6 sm:right-6" : ""
           } ${
             isDragging
               ? "select-none shadow-[0_35px_90px_rgba(2,132,199,0.45)] scale-[1.01] transition-none cursor-grabbing"
@@ -939,18 +950,15 @@ export default function AIChatbot() {
               </button>
             </div>
 
-            {/* Direct WhatsApp Callout */}
+            {/* Consultation Callout */}
             <div className="flex items-center justify-between mt-2 pt-2 border-t border-[#e8dfd3] text-[10px] text-[#64748b]">
-              <span>Prefer WhatsApp?</span>
+              <span>Need custom AI scoping?</span>
               <a
-                href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent(
-                  "Hello Dr. Nalinipriya & AI Biz Champ, I want to inquire about your AI services."
-                )}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#25D366] hover:underline font-semibold flex items-center gap-1"
+                href="#contact"
+                onClick={() => setIsOpen(false)}
+                className="text-[#0284c7] hover:underline font-semibold flex items-center gap-1"
               >
-                Chat directly on WhatsApp →
+                Book a Consultation →
               </a>
             </div>
           </div>
