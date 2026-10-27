@@ -169,35 +169,49 @@ export default function AIChatbot() {
         {!isOpen && (
           <button
             onClick={() => setIsOpen(true)}
-            className="group relative flex items-center gap-3 px-4 py-3 sm:px-5 sm:py-3.5 rounded-full bg-gradient-to-r from-[#1a1012] via-[#241619] to-[#1a1012] text-[#f3eedf] border border-[#c8102e]/60 shadow-[0_10px_35px_rgba(200,16,46,0.35)] hover:shadow-[0_14px_45px_rgba(200,16,46,0.55)] hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer backdrop-blur-xl"
+            className="group relative flex items-center gap-3.5 px-5 py-3.5 rounded-full bg-white text-[#120b0c] border border-neutral-200/90 shadow-[0_12px_36px_rgba(0,0,0,0.4),0_2px_10px_rgba(0,0,0,0.15)] hover:shadow-[0_16px_44px_rgba(255,255,255,0.3)] hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
             aria-label="Open AI Assistant Chat"
           >
-            {/* Glowing ring */}
-            <span className="absolute -inset-0.5 rounded-full bg-gradient-to-r from-[#c8102e]/50 to-[#f3eedf]/20 blur-sm group-hover:opacity-100 opacity-60 transition duration-300 pointer-events-none" />
+            {/* Subtle soft white aura ring on hover */}
+            <span className="absolute -inset-0.5 rounded-full bg-white/40 blur-sm group-hover:opacity-100 opacity-0 transition duration-300 pointer-events-none" />
 
-            {/* AI Avatar Icon */}
-            <div className="relative flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-[#c8102e] to-[#73121c] text-white shadow-inner">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M12 2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2 2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z" />
-                <rect x="4" y="8" width="16" height="12" rx="2" />
-                <path d="M9 13v2M15 13v2" />
+            {/* AI Avatar Icon with 4-point Sparkle */}
+            <div className="relative flex items-center justify-center w-8 h-8 rounded-full bg-[#120b0c] text-white shadow-sm">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 0C12 6.627 6.627 12 0 12c6.627 0 12 5.373 12 12 0-6.627 5.373-12 12-12-6.627 0-12-5.373-12-12z" />
               </svg>
-              {/* Online pulse */}
-              <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-[#25D366] rounded-full border border-[#120b0c]" />
+              {/* Online indicator */}
+              <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-[#10b981] rounded-full border-2 border-white" />
             </div>
 
             {/* Label */}
             <div className="flex flex-col text-left">
               <div className="flex items-center gap-1.5">
-                <span className="font-heading font-bold text-xs sm:text-sm tracking-tight text-[#f8f4ec]">
+                <span className="font-heading font-extrabold text-sm tracking-tight text-[#120b0c]">
                   Ask AI
                 </span>
-                <span className="text-[10px] px-1.5 py-0.2 rounded bg-[#c8102e]/30 text-[#f3eedf] font-mono border border-[#c8102e]/40">
-                  NVIDIA NIM
+                <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-neutral-100 text-neutral-600 font-sans font-semibold border border-neutral-200">
+                  Online
                 </span>
               </div>
-              <span className="text-[10px] text-[#bfb3a8] font-sans">Online Assistant</span>
+              <span className="text-[11px] text-neutral-500 font-sans font-medium">Instant Assistant</span>
             </div>
+
+            {/* Right arrow */}
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="text-neutral-400 group-hover:text-[#120b0c] group-hover:translate-x-0.5 transition-all ml-0.5"
+              aria-hidden="true"
+            >
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
 
             {/* Unread dot */}
             {hasUnread && (
@@ -216,20 +230,18 @@ export default function AIChatbot() {
           {/* Header */}
           <div className="relative flex items-center justify-between px-5 py-3.5 bg-gradient-to-r from-[#1f1013] via-[#2a1318] to-[#1a0e10] border-b border-[#351f23]">
             <div className="flex items-center gap-3">
-              <div className="relative w-9 h-9 rounded-full bg-gradient-to-br from-[#c8102e] via-[#a60c24] to-[#520b12] flex items-center justify-center text-white shadow-md border border-white/20">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <path d="M12 2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2 2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z" />
-                  <rect x="4" y="8" width="16" height="12" rx="2" />
-                  <path d="M9 13v2M15 13v2" />
+              <div className="relative w-9 h-9 rounded-full bg-[#120b0c] border border-white/20 flex items-center justify-center text-white shadow-md">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 0C12 6.627 6.627 12 0 12c6.627 0 12 5.373 12 12 0-6.627 5.373-12 12-12-6.627 0-12-5.373-12-12z" />
                 </svg>
-                <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-[#25D366] rounded-full border-2 border-[#1a1012]" />
+                <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-[#10b981] rounded-full border-2 border-[#1a1012]" />
               </div>
               <div>
                 <div className="flex items-center gap-1.5">
                   <h3 className="font-heading font-bold text-sm text-[#f8f4ec] tracking-tight">
                     AI Biz Champion
                   </h3>
-                  <span className="text-[9px] px-1.5 py-0.5 rounded bg-[#c8102e]/30 text-[#f3eedf] font-mono border border-[#c8102e]/40">
+                  <span className="text-[9px] px-2 py-0.5 rounded-full bg-[#c8102e]/30 text-[#f3eedf] font-sans font-semibold border border-[#c8102e]/40">
                     AI Specialist
                   </span>
                 </div>
@@ -272,8 +284,10 @@ export default function AIChatbot() {
                 className={`flex gap-2.5 ${msg.role === "user" ? "justify-end" : "justify-start"}`}
               >
                 {msg.role === "assistant" && (
-                  <div className="w-7 h-7 rounded-full bg-[#241619] border border-[#c8102e]/50 flex items-center justify-center shrink-0 mt-0.5 text-xs text-[#c8102e] font-bold">
-                    AI
+                  <div className="w-7 h-7 rounded-full bg-[#120b0c] border border-white/20 flex items-center justify-center shrink-0 mt-0.5 text-white">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M12 0C12 6.627 6.627 12 0 12c6.627 0 12 5.373 12 12 0-6.627 5.373-12 12-12-6.627 0-12-5.373-12-12z" />
+                    </svg>
                   </div>
                 )}
                 <div
@@ -298,8 +312,10 @@ export default function AIChatbot() {
             {/* Loading Indicator */}
             {isLoading && (
               <div className="flex gap-2.5 justify-start">
-                <div className="w-7 h-7 rounded-full bg-[#241619] border border-[#c8102e]/50 flex items-center justify-center shrink-0 text-xs text-[#c8102e] font-bold">
-                  AI
+                <div className="w-7 h-7 rounded-full bg-[#120b0c] border border-white/20 flex items-center justify-center shrink-0 text-white">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M12 0C12 6.627 6.627 12 0 12c6.627 0 12 5.373 12 12 0-6.627 5.373-12 12-12-6.627 0-12-5.373-12-12z" />
+                  </svg>
                 </div>
                 <div className="bg-[#1f1417] border border-[#351f23] rounded-2xl rounded-tl-xs px-4 py-3 flex items-center gap-1.5">
                   <span className="w-2 h-2 rounded-full bg-[#c8102e] animate-bounce" style={{ animationDelay: "0ms" }} />
