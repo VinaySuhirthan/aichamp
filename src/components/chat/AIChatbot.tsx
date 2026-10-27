@@ -31,6 +31,7 @@ export default function AIChatbot() {
   const [isLoading, setIsLoading] = useState(false);
   const [hasUnread, setHasUnread] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   // Speech-to-Text (STT) & Audio States
@@ -144,13 +145,23 @@ export default function AIChatbot() {
     setPosition(null);
   };
 
+  const scrollToBottom = (behavior: ScrollBehavior = "smooth") => {
+    if (messagesContainerRef.current) {
+      messagesContainerRef.current.scrollTo({
+        top: messagesContainerRef.current.scrollHeight,
+        behavior,
+      });
+    }
+  };
+
   useEffect(() => {
     if (isOpen) {
       setHasUnread(false);
       setTimeout(() => {
-        inputRef.current?.focus();
-        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-      }, 150);
+        // preventScroll prevents the browser window from scrolling down
+        inputRef.current?.focus({ preventScroll: true });
+        scrollToBottom("instant");
+      }, 80);
     }
   }, [isOpen]);
 
@@ -169,9 +180,9 @@ export default function AIChatbot() {
 
   useEffect(() => {
     if (isOpen) {
-      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+      scrollToBottom("smooth");
     }
-  }, [messages, isLoading]);
+  }, [messages, isLoading, isOpen]);
 
   // Clean up recording / audio when unmounting
   useEffect(() => {
@@ -729,7 +740,10 @@ export default function AIChatbot() {
           </div>
 
           {/* Messages Body */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-3.5 bg-[#faf7f0] scrollbar-thin scrollbar-thumb-[#bae6fd]">
+          <div
+            ref={messagesContainerRef}
+            className="flex-1 overflow-y-auto p-4 space-y-3.5 bg-[#faf7f0] scrollbar-thin scrollbar-thumb-[#bae6fd]"
+          >
             {messages.map((msg) => (
               <div
                 key={msg.id}
