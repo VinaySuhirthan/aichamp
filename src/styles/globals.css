@@ -912,57 +912,30 @@ p { line-height: 1.8; }
   }
 }
 
-.rgb-liquid-boundary {
+/* ─── Moving Liquid RGB Border (Strictly 2px perimeter border, solid creamy interior) ─ */
+.liquid-rgb-border-wrapper {
   position: relative;
   border-radius: 9999px;
+  padding: 2px; /* EXACTLY 2px thin border thickness */
+  background: linear-gradient(
+    90deg,
+    #0284c7 0%,
+    #38bdf8 16%,
+    #818cf8 32%,
+    #c084fc 48%,
+    #f472b6 64%,
+    #38bdf8 82%,
+    #0284c7 100%
+  );
+  background-size: 300% 100%;
+  animation: liquid-rgb-flow 4.5s ease-in-out infinite;
+  box-shadow: 0 4px 20px rgba(14, 165, 233, 0.18);
+}
+
+.liquid-rgb-inner {
+  width: 100%;
+  border-radius: 9999px;
   background-color: #faf7f0 !important;
-  isolation: isolate;
-}
-
-/* Moving liquid gradient all around the entire 360-degree boundary */
-.rgb-liquid-boundary::before {
-  content: "";
-  position: absolute;
-  inset: -2.5px;
-  border-radius: 9999px;
-  background: linear-gradient(
-    90deg,
-    #0284c7 0%,
-    #38bdf8 15%,
-    #818cf8 32%,
-    #c084fc 48%,
-    #f472b6 65%,
-    #38bdf8 82%,
-    #0284c7 100%
-  );
-  background-size: 300% 300%;
-  animation: liquid-rgb-flow 5s ease-in-out infinite;
-  z-index: -1;
-  pointer-events: none;
-}
-
-/* Butter-smooth ambient chromatic liquid aura glow */
-.rgb-liquid-boundary::after {
-  content: "";
-  position: absolute;
-  inset: -5px;
-  border-radius: 9999px;
-  background: linear-gradient(
-    90deg,
-    #0284c7 0%,
-    #38bdf8 15%,
-    #818cf8 32%,
-    #c084fc 48%,
-    #f472b6 65%,
-    #38bdf8 82%,
-    #0284c7 100%
-  );
-  background-size: 300% 300%;
-  animation: liquid-rgb-flow 5s ease-in-out infinite;
-  filter: blur(14px);
-  opacity: 0.55;
-  z-index: -2;
-  pointer-events: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -970,8 +943,7 @@ p { line-height: 1.8; }
   .rgb-soft-glow::after,
   .rgb-chromatic-glow,
   .rgb-hairline::after,
-  .rgb-liquid-boundary::before,
-  .rgb-liquid-boundary::after {
+  .liquid-rgb-border-wrapper {
     animation: none !important;
   }
 }
