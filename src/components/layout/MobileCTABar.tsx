@@ -3,6 +3,9 @@
 export default function MobileCTABar() {
   const handleOpenAIChat = () => {
     if (typeof window !== "undefined") {
+      if (typeof (window as any).__openAIChat === "function") {
+        (window as any).__openAIChat();
+      }
       window.dispatchEvent(new CustomEvent("open-ai-chat"));
     }
   };
