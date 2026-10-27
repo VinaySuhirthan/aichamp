@@ -292,55 +292,113 @@ export default function Services() {
       }
 
       if (gridRef.current) {
-        const cards = gridRef.current.querySelectorAll(".service-card-item");
-        gsap.fromTo(
-          cards,
-          {
-            opacity: 0,
-            y: 50,
-            scale: 0.95,
-          },
-          {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 0.75,
-            ease: "power3.out",
-            stagger: {
-              amount: 0.45,
-              from: "start",
-            },
-            scrollTrigger: {
-              trigger: gridRef.current,
-              start: "top 82%",
-              toggleActions: "play none none none",
-            },
-            clearProps: "transform,opacity",
-          }
+        const cards = Array.from(
+          gridRef.current.querySelectorAll<HTMLElement>(".service-card-item")
         );
+
+        // Set every card invisible to start
+        gsap.set(cards, { opacity: 0, y: 60, scale: 0.96 });
+
+        // Helper: group cards into rows by matching their top-offset
+        const groupCardsByRow = (els: HTMLElement[]) => {
+          const rows: HTMLElement[][] = [];
+          const rowMap = new Map<number, HTMLElement[]>();
+          els.forEach((el) => {
+            const top = Math.round(el.getBoundingClientRect().top + window.scrollY);
+            if (!rowMap.has(top)) rowMap.set(top, []);
+            rowMap.get(top)!.push(el);
+          });
+          rowMap.forEach((row) => rows.push(row));
+          return rows;
+        };
+
+        // Build per-row scroll triggers
+        const buildRowTriggers = () => {
+          ScrollTrigger.getAll()
+            .filter((t) => t.vars?.id?.toString().startsWith("row-"))
+            .forEach((t) => t.kill());
+
+          const rows = groupCardsByRow(cards);
+          rows.forEach((rowCards, rowIndex) => {
+            gsap.fromTo(
+              rowCards,
+              { opacity: 0, y: 60, scale: 0.96 },
+              {
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                duration: 0.7,
+                ease: "power3.out",
+                stagger: 0.12,
+                onComplete: () => {
+                  rowCards.forEach((card) => {
+                    card.classList.add("is-revealed");
+                    gsap.set(card, { clearProps: "transform,opacity,scale" });
+                  });
+                },
+                scrollTrigger: {
+                  id: `row-${rowIndex}`,
+                  trigger: rowCards[0],
+                  start: "top 88%",
+                  toggleActions: "play none none none",
+                },
+              }
+            );
+          });
+        };
+
+        // Build on mount
+        buildRowTriggers();
+
+        // Rebuild if layout reflows (resize)
+        const ro = new ResizeObserver(() => {
+          ScrollTrigger.refresh();
+          buildRowTriggers();
+        });
+        ro.observe(gridRef.current);
+
+        return () => ro.disconnect();
       }
     });
     return () => mm.revert();
   }, []);
 
-  // Silky smooth re-entrance when switching categories
+  // Row-by-row re-entrance when switching categories
   useEffect(() => {
     if (!gridRef.current) return;
-    const cards = gridRef.current.querySelectorAll(".service-card-item");
+    const cards = Array.from(
+      gridRef.current.querySelectorAll<HTMLElement>(".service-card-item")
+    );
     if (!cards || cards.length === 0) return;
-    gsap.fromTo(
-      cards,
-      { opacity: 0, y: 25, scale: 0.97 },
-      {
+
+    // Group by row then stagger each row
+    const rowMap = new Map<number, HTMLElement[]>();
+    cards.forEach((el) => {
+      const top = Math.round(el.getBoundingClientRect().top);
+      if (!rowMap.has(top)) rowMap.set(top, []);
+      rowMap.get(top)!.push(el);
+    });
+    const rows: HTMLElement[][] = [];
+    rowMap.forEach((row) => rows.push(row));
+
+    gsap.set(cards, { opacity: 0, y: 30, scale: 0.97 });
+    rows.forEach((rowCards, rowIndex) => {
+      gsap.to(rowCards, {
         opacity: 1,
         y: 0,
         scale: 1,
         duration: 0.42,
-        stagger: 0.035,
         ease: "power2.out",
-        clearProps: "transform,opacity",
-      }
-    );
+        stagger: 0.07,
+        delay: rowIndex * 0.1,
+        onComplete: () => {
+          rowCards.forEach((card) => {
+            card.classList.add("is-revealed");
+            gsap.set(card, { clearProps: "transform,opacity,scale" });
+          });
+        },
+      });
+    });
   }, [filter]);
 
   const filtered = filter === "all" ? allServices : allServices.filter((s) => s.category === filter);
@@ -368,9 +426,9 @@ export default function Services() {
         {/* Header Block */}
         <div ref={headingRef} className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
           <div
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#00f0ff]/40 bg-[#00f0ff]/10 text-[#00f0ff] text-[11px] font-mono tracking-widest uppercase shadow-sm mb-6 md:mb-8"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#f3eedf]/30 bg-[#520b12]/40 text-[#f3eedf] text-[11px] font-mono tracking-widest uppercase shadow-sm mb-6 md:mb-8"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-[#ff2e54] animate-ping" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#c8102e] animate-ping" />
             <span>AI BIZ CHAMPION</span>
             <span className="opacity-40">•</span>
             <span>BECAUSE QUALITY MATTERS</span>
@@ -381,7 +439,7 @@ export default function Services() {
             className="font-serif text-[clamp(32px,5vw,64px)] text-[var(--paper)] font-medium leading-[1.3] md:leading-[1.45] mb-6 md:mb-8"
           >
             Pioneers in{" "}
-            <span className="italic text-[#00f0ff] drop-shadow-[0_0_20px_rgba(0,240,255,0.35)]">
+            <span className="italic text-[#f3eedf] drop-shadow-[0_0_20px_rgba(243,238,223,0.35)]">
               AI-Powered Digital Creativity
             </span>
           </h2>
@@ -409,8 +467,8 @@ export default function Services() {
               onClick={() => setFilter(cat.id as any)}
               className={`px-4 md:px-5 py-2 md:py-2.5 rounded-full text-xs font-medium tracking-wide transition-all duration-300 border flex items-center gap-2 whitespace-nowrap cursor-pointer flex-shrink-0 ${
                 filter === cat.id
-                  ? "bg-[#ff2e54] text-white border-[#ff2e54] font-semibold shadow-md shadow-[#ff2e54]/30 scale-105"
-                  : "bg-[var(--surface-2)]/80 text-[var(--muted-lt)] border-[var(--border)] hover:border-[#00f0ff] hover:text-[#00f0ff]"
+                  ? "bg-[#c8102e] text-white border-[#c8102e] font-semibold shadow-md shadow-[#c8102e]/30 scale-105"
+                  : "bg-[var(--surface-2)]/80 text-[var(--muted-lt)] border-[var(--border)] hover:border-[#f3eedf] hover:text-[#f3eedf]"
               }`}
             >
               <span>{cat.label}</span>
@@ -475,33 +533,33 @@ export default function Services() {
             <div
               key={item.id}
               className={`
-                service-card-item transform-gpu hover-shimmer group relative rounded-2xl border border-[var(--border)] bg-gradient-to-b from-[var(--surface-2)]/90 via-[var(--surface-2)]/60 to-[var(--surface)]/90 backdrop-blur-md transition-all duration-400 hover:border-[#ff2e54]/80 hover:shadow-[0_16px_36px_rgba(255,46,84,0.2)] hover:-translate-y-1.5 flex flex-col justify-between
+                service-card-item transform-gpu hover-shimmer group relative rounded-2xl border border-[var(--border)] bg-gradient-to-b from-[var(--surface-2)]/90 via-[var(--surface-2)]/60 to-[var(--surface)]/90 backdrop-blur-md transition-all duration-400 hover:border-[#c8102e]/80 hover:shadow-[0_16px_36px_rgba(200,16,46,0.22)] hover:-translate-y-1.5 flex flex-col justify-between
                 ${mobileView === "carousel" ? "w-[84vw] max-w-[340px] flex-shrink-0 snap-center md:w-auto md:flex-shrink md:snap-align-none" : "w-full"}
                 p-6 md:p-[36px_32px]
               `}
             >
               {/* Top ambient highlight line */}
-              <div className="absolute top-0 left-6 right-6 h-[1px] bg-gradient-to-r from-transparent via-[#ff2e54]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute top-0 left-6 right-6 h-[1px] bg-gradient-to-r from-transparent via-[#c8102e]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
               <div>
                 {/* Header Row */}
                 <div className="flex items-center justify-between" style={{ marginBottom: "24px" }}>
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-xl bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center text-[#ff2e54] group-hover:scale-110 group-hover:border-[#ff2e54] group-hover:bg-[#ff2e54]/10 transition-all duration-300 shadow-inner">
+                    <div className="w-12 h-12 rounded-xl bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center text-[#c8102e] group-hover:scale-110 group-hover:border-[#c8102e] group-hover:bg-[#c8102e]/10 transition-all duration-300 shadow-inner">
                       {item.icon}
                     </div>
-                    <span className="font-mono text-xs font-bold text-[#00f0ff] tracking-widest drop-shadow-[0_0_8px_rgba(0,240,255,0.4)]">
+                    <span className="font-mono text-xs font-bold text-[#f3eedf] tracking-widest drop-shadow-[0_0_8px_rgba(243,238,223,0.35)]">
                       #{item.id < 10 ? `0${item.id}` : item.id}
                     </span>
                   </div>
-                  <span className="text-[10px] font-mono uppercase tracking-wider font-medium px-3 py-1 rounded-full bg-[var(--surface)] border border-[var(--border)] text-[var(--muted-lt)] group-hover:border-[#00f0ff]/50 group-hover:text-[#00f0ff] transition-colors duration-300">
+                  <span className="text-[10px] font-mono uppercase tracking-wider font-medium px-3 py-1 rounded-full bg-[var(--surface)] border border-[var(--border)] text-[var(--muted-lt)] group-hover:border-[#f3eedf]/50 group-hover:text-[#f3eedf] transition-colors duration-300">
                     {item.tag}
                   </span>
                 </div>
 
                 {/* Title */}
                 <h3
-                  className="font-serif text-xl md:text-[23px] font-medium text-[var(--paper)] group-hover:text-[#00f0ff] transition-colors duration-300"
+                  className="font-serif text-xl md:text-[23px] font-medium text-[var(--paper)] group-hover:text-[#f3eedf] transition-colors duration-300"
                   style={{ lineHeight: "1.45", marginBottom: "16px" }}
                 >
                   {item.name}
@@ -509,7 +567,7 @@ export default function Services() {
 
                 {/* Tech chip */}
                 <p
-                  className="text-[10px] font-mono text-[#00f0ff]/80 tracking-wide uppercase"
+                  className="text-[10px] font-mono text-[#f3eedf]/80 tracking-wide uppercase"
                   style={{ marginBottom: "20px" }}
                 >
                   {item.techStack}
@@ -534,7 +592,7 @@ export default function Services() {
                 </span>
                 <Link
                   href="#contact"
-                  className="inline-flex items-center gap-2 text-xs font-semibold text-[#ff2e54] group-hover:text-[#ff5e7e] group-hover:translate-x-1 transition-all duration-300 cursor-pointer"
+                  className="inline-flex items-center gap-2 text-xs font-semibold text-[#c8102e] group-hover:text-[#e02644] group-hover:translate-x-1 transition-all duration-300 cursor-pointer"
                 >
                   <span>Inquire</span>
                   <span className="text-sm">→</span>
@@ -545,9 +603,9 @@ export default function Services() {
         </div>
 
         {/* Bottom Banner Callout */}
-        <div className="mt-20 md:mt-24 p-8 md:p-12 rounded-2xl border border-[#00f0ff]/30 bg-gradient-to-r from-[var(--surface-2)] via-[var(--surface)] to-[var(--surface-2)] flex flex-col md:flex-row items-center justify-between gap-8">
+        <div className="mt-20 md:mt-24 p-8 md:p-12 rounded-2xl border border-[#f3eedf]/25 bg-gradient-to-r from-[#241619] via-[#1a1012] to-[#241619] flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="text-center md:text-left">
-            <p className="text-xs font-mono uppercase tracking-widest text-[#00f0ff] font-bold mb-2 drop-shadow-[0_0_10px_rgba(0,240,255,0.4)]">
+            <p className="text-xs font-mono uppercase tracking-widest text-[#f3eedf] font-bold mb-2 drop-shadow-[0_0_10px_rgba(243,238,223,0.35)]">
               Custom Startup Architecture
             </p>
             <p className="font-serif text-lg md:text-2xl text-[var(--paper)] leading-[1.4]">
@@ -556,7 +614,7 @@ export default function Services() {
           </div>
           <Link
             href="#contact"
-            className="px-7 py-3.5 rounded-full bg-[#ff2e54] text-white font-semibold text-xs tracking-wider uppercase hover:bg-[#e01e43] transition-all duration-300 shadow-lg shadow-[#ff2e54]/30 whitespace-nowrap cursor-pointer hover:scale-105"
+            className="px-7 py-3.5 rounded-full bg-[#c8102e] text-white font-semibold text-xs tracking-wider uppercase hover:bg-[#a60c24] transition-all duration-300 shadow-lg shadow-[#c8102e]/30 whitespace-nowrap cursor-pointer hover:scale-105"
           >
             Start Your Project ↗
           </Link>

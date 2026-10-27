@@ -96,9 +96,9 @@ export default function Contact() {
       className="py-20 md:py-48 bg-[var(--surface)] text-[var(--paper)] border-t border-[var(--border)] relative overflow-hidden"
       aria-labelledby="contact-heading"
     >
-      {/* Dual ambient glow: Crimson + Cyber Cyan */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#ff2e54]/8 blur-[130px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[450px] h-[450px] bg-[#00f0ff]/8 blur-[130px] rounded-full pointer-events-none" />
+      {/* Dual ambient glow: Crimson + Deep Burgundy */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#c8102e]/10 blur-[130px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[450px] h-[450px] bg-[#520b12]/18 blur-[130px] rounded-full pointer-events-none" />
 
       <div className="container relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-20">

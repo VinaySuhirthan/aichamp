@@ -2,37 +2,40 @@
 
 /* ─── Design Tokens ─────────────────────────────────────── */
 :root {
-  --ink:       #0d0d0b;
-  --ink-80:    rgba(13,13,11,0.8);
-  --paper:     #f5f0e8;
-  --paper-2:   #ede8df;
-  --paper-3:   #e5dfd5;
+  --ink:       #120b0c;
+  --ink-80:    rgba(18, 11, 12, 0.85);
+  --paper:     #f8f4ec;
+  --paper-2:   #f1ebd9;
+  --paper-3:   #e6dec7;
 
-  /* ── Cyber Neon Duo: Electric Crimson + Cyber Cyan ── */
-  --crimson:        #ff2e54;
-  --crimson-hover:  #e01e43;
-  --crimson-glow:   rgba(255, 46, 84, 0.45);
-  --crimson-subtle: rgba(255, 46, 84, 0.12);
+  /* ── User Curated Palette: Crimson + Warm Ivory + Burgundy + Deep Espresso ── */
+  --crimson:        #c8102e;
+  --crimson-hover:  #a60c24;
+  --crimson-glow:   rgba(200, 16, 46, 0.45);
+  --crimson-subtle: rgba(200, 16, 46, 0.12);
 
-  --cyan:           #00f0ff;
-  --cyan-hover:     #00d4e5;
-  --cyan-glow:      rgba(0, 240, 255, 0.45);
-  --cyan-subtle:    rgba(0, 240, 255, 0.12);
+  --ivory:          #f3eedf;
+  --ivory-hover:    #ffffff;
+  --ivory-glow:     rgba(243, 238, 223, 0.4);
+  --ivory-subtle:   rgba(243, 238, 223, 0.1);
 
-  /* Primary dynamic action accent */
-  --accent:         #ff2e54;
-  --accent-lt:      #ff5e7e;
-  --accent-dk:      #e01e43;
+  --burgundy:       #520b12;
+  --burgundy-lt:    #73121c;
 
-  /* Secondary bright accent */
-  --secondary:      #00f0ff;
+  /* Primary action accent (Vivid Crimson) */
+  --accent:         #c8102e;
+  --accent-lt:      #e02644;
+  --accent-dk:      #990a1e;
 
-  --muted:     #6b6560;
-  --muted-lt:  #9e9890;
-  --border:    #2a2925;
-  --border-lt: #d8d2c8;
-  --surface:   #161614;
-  --surface-2: #1e1e1b;
+  /* Secondary luminous accent (Warm Ivory) */
+  --secondary:      #f3eedf;
+
+  --muted:     #8f8078;
+  --muted-lt:  #bfb3a8;
+  --border:    #351f23;
+  --border-lt: #482a30;
+  --surface:   #1a1012;
+  --surface-2: #241619;
   --white:     #ffffff;
 
   --font-serif: 'Playfair Display', Georgia, serif;
@@ -188,7 +191,7 @@ p { line-height: 2.05; }
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, var(--crimson), var(--cyan));
+  background: linear-gradient(90deg, var(--crimson), var(--ivory));
   transform: scaleX(0);
   transform-origin: left;
   animation: preload-bar 1.2s var(--ease-out-expo) forwards;
@@ -213,8 +216,8 @@ p { line-height: 2.05; }
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--cyan);
-  text-shadow: 0 0 14px rgba(0, 240, 255, 0.4);
+  color: var(--ivory);
+  text-shadow: 0 0 16px rgba(243, 238, 223, 0.4);
 }
 
 /* ─── Hairline Dividers ──────────────────────────────────── */
@@ -252,7 +255,7 @@ p { line-height: 2.05; }
 .btn--primary {
   background: var(--crimson);
   color: #ffffff;
-  box-shadow: 0 4px 20px rgba(255, 46, 84, 0.4);
+  box-shadow: 0 4px 22px rgba(200, 16, 46, 0.45);
 }
 .btn--primary::after {
   content: '';
@@ -265,23 +268,23 @@ p { line-height: 2.05; }
   z-index: 0;
 }
 .btn--primary:hover {
-  box-shadow: 0 6px 30px rgba(255, 46, 84, 0.65);
+  box-shadow: 0 6px 32px rgba(200, 16, 46, 0.7);
   transform: translateY(-1px) scale(1.02);
 }
 .btn--primary:hover::after { transform: scaleX(1); }
 .btn--primary span { position: relative; z-index: 1; }
 
 .btn--ghost {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(243, 238, 223, 0.04);
   color: var(--paper);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(243, 238, 223, 0.2);
   backdrop-filter: blur(8px);
 }
 .btn--ghost:hover {
-  border-color: var(--cyan);
-  color: var(--cyan);
-  background: rgba(0, 240, 255, 0.08);
-  box-shadow: 0 0 20px rgba(0, 240, 255, 0.35);
+  border-color: var(--ivory);
+  color: var(--ivory);
+  background: rgba(243, 238, 223, 0.1);
+  box-shadow: 0 0 20px rgba(243, 238, 223, 0.3);
 }
 
 .btn--ghost-ink {
@@ -306,6 +309,26 @@ p { line-height: 2.05; }
   opacity: 0;
   transform: translateY(32px);
   will-change: opacity, transform;
+}
+
+/* ─── Service Card Scroll Reveal ────────────────────────── */
+/* Cards start invisible; GSAP animates them in row-by-row  */
+.service-card-item {
+  opacity: 0;
+  transform: translateY(60px) scale(0.96);
+  will-change: opacity, transform;
+}
+/* Ensure hover micro-lift still works after GSAP clears props */
+.service-card-item.is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-card-item {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 
 /* ─── Accordion ──────────────────────────────────────────── */

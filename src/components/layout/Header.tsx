@@ -64,10 +64,10 @@ export default function Header() {
           {/* Brand Logo & Wordmark */}
           <Link
             href="/"
-            className="flex items-center gap-2.5 no-underline group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff2e54] rounded-full p-1"
+            className="flex items-center gap-2.5 no-underline group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c8102e] rounded-full p-1"
             aria-label={`${site.name} — Home`}
           >
-            <div className="relative w-8 h-8 rounded-full overflow-hidden border border-[#00f0ff]/50 bg-[#161614] p-0.5 shadow-sm group-hover:scale-105 group-hover:border-[#00f0ff] transition-all duration-300 flex-shrink-0">
+            <div className="relative w-8 h-8 rounded-full overflow-hidden border border-[#f3eedf]/40 bg-[#1a1012] p-0.5 shadow-sm group-hover:scale-105 group-hover:border-[#c8102e] transition-all duration-300 flex-shrink-0">
               <Image
                 src="/logo.png"
                 alt="AI Biz Champion Brand Mark"
@@ -77,7 +77,7 @@ export default function Header() {
                 priority
               />
             </div>
-            <span className="font-sans font-bold text-white text-base sm:text-lg tracking-tight group-hover:text-[#00f0ff] transition-colors">
+            <span className="font-sans font-bold text-white text-base sm:text-lg tracking-tight group-hover:text-[#f3eedf] transition-colors">
               {site.name}
             </span>
           </Link>
@@ -86,7 +86,7 @@ export default function Header() {
           <nav aria-label="Primary navigation" className="hidden md:flex items-center gap-1 lg:gap-2">
             <a
               href="#hero"
-              className="px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-white bg-[#ff2e54] shadow-[0_0_12px_rgba(255,46,84,0.4)] transition-all duration-200"
+              className="px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-white bg-[#c8102e] shadow-[0_0_12px_rgba(200,16,46,0.45)] transition-all duration-200"
             >
               Home
             </a>
@@ -94,7 +94,7 @@ export default function Header() {
               <a
                 key={item.href}
                 href={item.href}
-                className="px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-neutral-300 hover:text-[#00f0ff] hover:bg-white/[0.06] transition-all duration-200 no-underline"
+                className="px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-neutral-300 hover:text-[#f3eedf] hover:bg-white/[0.06] transition-all duration-200 no-underline"
               >
                 {item.label}
               </a>
@@ -105,7 +105,7 @@ export default function Header() {
           <div className="flex items-center gap-3">
             <a
               href="#contact"
-              className="hidden sm:inline-flex items-center px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-[#ff2e54] text-white hover:bg-[#e01e43] hover:shadow-[0_0_20px_rgba(255,46,84,0.5)] transition-all duration-300 no-underline"
+              className="hidden sm:inline-flex items-center px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-[#c8102e] text-white hover:bg-[#a60c24] hover:shadow-[0_0_20px_rgba(200,16,46,0.6)] transition-all duration-300 no-underline"
               aria-label="Book a consultation with AI Biz Champion"
             >
               Contact Us

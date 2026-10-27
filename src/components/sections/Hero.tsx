@@ -82,13 +82,13 @@ export default function Hero() {
 
       {/* Hero Content Container */}
       <div className="relative z-10 max-w-[1000px] mx-auto flex flex-col items-center">
-        {/* Top Floating Category Badge (Cyber Cyan Glow with Crimson Live Pulse) */}
+        {/* Top Floating Category Badge (Warm Ivory on Burgundy with Crimson Live Pulse) */}
         <div
           ref={badgeRef}
-          className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-[#00f0ff]/40 bg-[#00f0ff]/10 backdrop-blur-md mb-3 sm:mb-4 shadow-[0_4px_20px_rgba(0,240,255,0.25)]"
+          className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-[#f3eedf]/30 bg-[#520b12]/40 backdrop-blur-md mb-3 sm:mb-4 shadow-[0_4px_20px_rgba(200,16,46,0.25)]"
         >
-          <span className="w-2 h-2 rounded-full bg-[#ff2e54] shadow-[0_0_10px_#ff2e54] animate-pulse" />
-          <span className="text-xs font-bold tracking-wider uppercase text-[#00f0ff]">
+          <span className="w-2 h-2 rounded-full bg-[#c8102e] shadow-[0_0_10px_#c8102e] animate-pulse" />
+          <span className="text-xs font-bold tracking-wider uppercase text-[#f3eedf]">
             AI Biz Champion Studio
           </span>
         </div>
@@ -106,9 +106,9 @@ export default function Hero() {
           <span
             className="block text-4xl sm:text-6xl md:text-7xl lg:text-[84px] font-black tracking-tight my-0.5 sm:my-1"
             style={{
-              WebkitTextStroke: "2px rgba(255, 255, 255, 0.95)",
+              WebkitTextStroke: "2px rgba(243, 238, 223, 0.95)",
               color: "transparent",
-              textShadow: "0 0 35px rgba(255, 46, 84, 0.55)",
+              textShadow: "0 0 35px rgba(200, 16, 46, 0.65)",
             }}
           >
             NEXT-GEN
@@ -125,14 +125,14 @@ export default function Hero() {
           className="text-xs sm:text-sm md:text-base text-neutral-300 font-normal max-w-lg mt-3 sm:mt-4 mb-5 sm:mb-6 leading-relaxed drop-shadow"
         >
           Pioneers in high-impact AI agents, video, and automated growth systems — led by{" "}
-          <span className="text-[#00f0ff] font-semibold drop-shadow-[0_0_12px_rgba(0,240,255,0.4)]">Dr. G. Nalinipriya</span>, Professor & AI Specialist.
+          <span className="text-[#f3eedf] font-semibold drop-shadow-[0_0_12px_rgba(243,238,223,0.35)] underline decoration-[#c8102e]/60 underline-offset-4">Dr. G. Nalinipriya</span>, Professor & AI Specialist.
         </p>
 
         {/* Action CTAs: Dual-Tone Actions */}
         <div ref={ctasRef} className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
           <a
             href={hero.cta1.href || "#services"}
-            className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#ff2e54] text-white font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 hover:bg-[#e01e43] hover:scale-105 hover:shadow-[0_0_30px_rgba(255,46,84,0.7)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff2e54]"
+            className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#c8102e] text-white font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 hover:bg-[#a60c24] hover:scale-105 hover:shadow-[0_0_30px_rgba(200,16,46,0.7)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c8102e]"
             aria-label="Explore our services"
           >
             <span>{hero.cta1.label || "View Services"}</span>
@@ -140,7 +140,7 @@ export default function Hero() {
           </a>
           <a
             href={hero.cta2.href || "#contact"}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[#00f0ff]/40 bg-white/[0.04] backdrop-blur-md text-neutral-200 font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 hover:bg-[#00f0ff]/15 hover:border-[#00f0ff] hover:text-[#00f0ff] hover:scale-105 hover:shadow-[0_0_25px_rgba(0,240,255,0.4)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00f0ff]"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[#f3eedf]/40 bg-white/[0.04] backdrop-blur-md text-[#f3eedf] font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 hover:bg-[#520b12]/50 hover:border-[#f3eedf] hover:text-white hover:scale-105 hover:shadow-[0_0_25px_rgba(243,238,223,0.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f3eedf]"
             aria-label="Book a consultation"
           >
             <span>{hero.cta2.label || "Book Consultation"}</span>
