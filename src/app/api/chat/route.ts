@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { site, services, about, process as workflow, faq } from "@/content/content";
 
-const SYSTEM_PROMPT = `You are the official AI Assistant for "AI Biz Champion" (https://aibizchampion.com), a premier AI digital agency and technology consultancy led by Dr. G. Nalinipriya.
+const SYSTEM_PROMPT = `You are the official AI Assistant for "AI Biz Champ" (https://aibizchampion.com), a premier AI digital agency and technology consultancy led by Dr. G. Nalinipriya.
 
 Founder & Leadership:
 - Dr. G. Nalinipriya: Professor in Information Technology, AI & Machine Learning Specialist, PhD Supervisor at a world top-ranking university.
@@ -44,7 +44,7 @@ function generateSmartFallback(message: string): string {
   const q = message.toLowerCase();
 
   if (q.includes("hi") || q.includes("hello") || q.includes("hey") || q.includes("start")) {
-    return `Hello! Welcome to **AI Biz Champion**. I am your AI Consultant.\n\nWe provide elite AI-powered design, video, web, agentic systems, and research services led by **Dr. G. Nalinipriya** (Professor in IT & AI Specialist).\n\nHow can I help your business or academic goals today?\n- **Explore Services** (Design, Video, Web, Agents, Research)\n- **Learn about Dr. G. Nalinipriya**\n- **Project timelines & workflow**\n- **Book a Discovery Consultation**`;
+    return `Hello! Welcome to **AI Biz Champ**. I am your AI Consultant.\n\nWe provide elite AI-powered design, video, web, agentic systems, and research services led by **Dr. G. Nalinipriya** (Professor in IT & AI Specialist).\n\nHow can I help your business or academic goals today?\n- **Explore Services** (Design, Video, Web, Agents, Research)\n- **Learn about Dr. G. Nalinipriya**\n- **Project timelines & workflow**\n- **Book a Discovery Consultation**`;
   }
 
   if (q.includes("nalinipriya") || q.includes("who is") || q.includes("about") || q.includes("founder") || q.includes("doctor")) {
@@ -56,7 +56,7 @@ function generateSmartFallback(message: string): string {
   }
 
   if (q.includes("price") || q.includes("cost") || q.includes("quote") || q.includes("rate") || q.includes("charge")) {
-    return `Every project at AI Biz Champion is custom-scoped to ensure the highest return on investment without paying for unnecessary bloat.\n\n- Visual design deliverables typically start with standard fixed-rate packages.\n- Custom web, AI agent development, and research projects are quoted with transparent milestones.\n\nFor an immediate tailored quote, you can reach out directly to **Dr. G. Nalinipriya** on WhatsApp at **+91 99949 65489** or email **aibusinesschampions@gmail.com**.`;
+    return `Every project at AI Biz Champ is custom-scoped to ensure the highest return on investment without paying for unnecessary bloat.\n\n- Visual design deliverables typically start with standard fixed-rate packages.\n- Custom web, AI agent development, and research projects are quoted with transparent milestones.\n\nFor an immediate tailored quote, you can reach out directly to **Dr. G. Nalinipriya** on WhatsApp at **+91 99949 65489** or email **aibusinesschampions@gmail.com**.`;
   }
 
   if (q.includes("contact") || q.includes("whatsapp") || q.includes("phone") || q.includes("email") || q.includes("book") || q.includes("call")) {
@@ -75,7 +75,7 @@ function generateSmartFallback(message: string): string {
     return `Our structured 4-step workflow ensures timely delivery:\n\n1. **Discover** (1-2 days consultation)\n2. **Design** (Clear scope & directional proof)\n3. **Build** (Precision AI execution & human review)\n4. **Deliver** (Handover & refinements)\n\nMost visual design projects are delivered in **5–7 business days**. Web and AI software projects follow agreed milestone schedules.`;
   }
 
-  return `Thank you for your question! **AI Biz Champion** provides expert AI-driven design, video, web, agentic software, and academic research services led by Dr. G. Nalinipriya.\n\nWould you like to:\n1. Inquire about a specific service (Design, Video, Web, Agents, Research)?\n2. Schedule a free discovery call with our team?\n3. Chat directly with us on [WhatsApp (+91 99949 65489)](https://wa.me/${site.whatsapp})?`;
+  return `Thank you for your question! **AI Biz Champ** provides expert AI-driven design, video, web, agentic software, and academic research services led by Dr. G. Nalinipriya.\n\nWould you like to:\n1. Inquire about a specific service (Design, Video, Web, Agents, Research)?\n2. Schedule a free discovery call with our team?\n3. Chat directly with us on [WhatsApp (+91 99949 65489)](https://wa.me/${site.whatsapp})?`;
 }
 
 export async function POST(req: NextRequest) {

@@ -51,7 +51,7 @@ export default function Preloader() {
 
   return (
     <div ref={ref} className="preloader" aria-hidden="true" role="presentation">
-      <div className="preloader__wordmark">AI Biz Champion</div>
+      <div className="preloader__wordmark">AI Biz Champ</div>
       <div className="preloader__bar" />
     </div>
   );

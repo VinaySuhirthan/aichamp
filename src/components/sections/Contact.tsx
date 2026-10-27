@@ -141,7 +141,7 @@ export default function Contact() {
                   Direct WhatsApp Contact
                 </p>
                 <a
-                  href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hello Dr. G. Nalinipriya & AI Biz Champion team, I want to inquire about your AI services.")}`}
+                  href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hello Dr. G. Nalinipriya & AI Biz Champ team, I want to inquire about your AI services.")}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-[#25D366]/15 border border-[#25D366]/30 text-[#25D366] hover:bg-[#25D366] hover:text-white font-medium text-sm transition-all duration-300 shadow-sm cursor-pointer"
@@ -342,7 +342,7 @@ export default function Contact() {
                   </button>
 
                   <a
-                    href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hello Dr. G. Nalinipriya & AI Biz Champion team, I want to inquire about your AI services.")}`}
+                    href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hello Dr. G. Nalinipriya & AI Biz Champ team, I want to inquire about your AI services.")}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2.5 px-5 py-3 rounded-xl border border-[var(--border)] bg-[var(--surface-2)] text-[var(--paper)] hover:border-[#25D366] hover:text-[#25D366] font-medium text-xs tracking-wider uppercase transition-all duration-300 shadow-sm cursor-pointer"

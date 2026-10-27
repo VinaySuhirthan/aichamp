@@ -70,7 +70,7 @@ export default function Header() {
             <div className="relative w-8 h-8 rounded-full overflow-hidden border border-[#0ea5e9]/30 bg-white p-0.5 shadow-sm group-hover:scale-105 group-hover:border-[#0284c7] transition-all duration-300 flex-shrink-0">
               <Image
                 src="/logo.png"
-                alt="AI Biz Champion Brand Mark"
+                alt="AI Biz Champ Brand Mark"
                 width={32}
                 height={32}
                 className="object-contain w-full h-full rounded-full"
@@ -106,7 +106,7 @@ export default function Header() {
             <a
               href="#contact"
               className="hidden sm:inline-flex items-center px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-[#0284c7] via-[#0ea5e9] to-[#0284c7] text-white shadow-[0_4px_16px_rgba(2,132,199,0.3)] hover:shadow-[0_6px_24px_rgba(2,132,199,0.5)] transition-all duration-300 no-underline"
-              aria-label="Book a consultation with AI Biz Champion"
+              aria-label="Book a consultation with AI Biz Champ"
             >
               Contact Us
             </a>

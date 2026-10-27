@@ -1,13 +1,13 @@
 // ============================================================
-// AI Biz Champion — Master Content File
+// AI Biz Champ — Master Content File
 // Edit this file to update all site text, data, and settings.
 // ============================================================
 
 export const site = {
-  name: "AI Biz Champion",
+  name: "AI Biz Champ",
   tagline: "Because Quality Matters",
   description:
-    "AI Biz Champion delivers expert AI-powered design, video, web, and publishing services led by Dr. G. Nalinipriya, Professor and AI Specialist.",
+    "AI Biz Champ delivers expert AI-powered design, video, web, and publishing services led by Dr. G. Nalinipriya, Professor and AI Specialist.",
   email: "aibusinesschampions@gmail.com",
   whatsapp: "919994965489",
   whatsappFormatted: "+91 99949 65489",
@@ -29,7 +29,7 @@ export const nav = [
 ];
 
 export const hero = {
-  title: "AI Biz Champion",
+  title: "AI Biz Champ",
   secondary: "Because Quality Matters.",
   subhead: "Pioneers in AI-powered digital creativity and innovation.",
   headline: ["Because Quality", "Matters."], // backwards compatibility
@@ -223,7 +223,7 @@ export const about = {
     { id: 15, src: "/images/15.webp", alt: "Global Scholars Mentorship Programme" },
     { id: 16, src: "/images/16.webp", alt: "International Academic Delegation and Summit" },
     { id: 17, src: "/images/17.webp", alt: "Distinguished Academic Leadership Felicitation" },
-    { id: 18, src: "/images/18.webp", alt: "Dr. G. Nalinipriya — Founder, AI Biz Champion" },
+    { id: 18, src: "/images/18.webp", alt: "Dr. G. Nalinipriya — Founder, AI Biz Champ" },
   ],
 };
 
@@ -441,5 +441,5 @@ export const footer = {
     { label: "Disclaimer", href: "/disclaimer" },
     { label: "Refund Policy", href: "/refund" },
   ],
-  copyright: `© ${new Date().getFullYear()} AI Biz Champion. All rights reserved.`,
+  copyright: `© ${new Date().getFullYear()} AI Biz Champ. All rights reserved.`,
 };

@@ -90,7 +90,7 @@ export default function Hero() {
         >
           <span className="w-2 h-2 rounded-full bg-gradient-to-r from-[#38bdf8] via-[#818cf8] to-[#c084fc] shadow-[0_0_12px_#38bdf8] animate-pulse" />
           <span className="text-xs font-bold tracking-wider uppercase text-[#0c192c]">
-            AI Biz Champion
+            AI Biz Champ
           </span>
         </div>
 

@@ -1,4 +1,4 @@
-# AI Biz Champion — Website
+# AI Biz Champ — Website
 
 **"Because Quality Matters"**  
 AI-powered creative services led by Dr. G. Nalinipriya, Professor and AI Specialist.
@@ -44,7 +44,7 @@ You do not need to touch any component to update content. Every export in that f
 
 ### `site` — Brand and contact info
 ```ts
-site.name          // "AI Biz Champion"
+site.name          // "AI Biz Champ"
 site.tagline       // "Because Quality Matters"
 site.email         // Contact email
 site.whatsapp      // WhatsApp number (e.g. 919994965489)
@@ -250,4 +250,4 @@ Create `src/app/api/contact/route.ts` as a Next.js API route and POST to it.
 
 ---
 
-*Built for AI Biz Champion — Because Quality Matters.*
+*Built for AI Biz Champ — Because Quality Matters.*

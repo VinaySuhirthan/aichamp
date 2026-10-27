@@ -13,14 +13,14 @@ export default function Footer() {
               <div className="relative w-10 h-10 rounded-full overflow-hidden border border-[#0ea5e9]/30 bg-white p-0.5 shadow-sm flex-shrink-0">
                 <Image
                   src="/logo.png"
-                  alt="AI Biz Champion Brand Mark"
+                  alt="AI Biz Champ Brand Mark"
                   width={40}
                   height={40}
                   className="object-contain w-full h-full rounded-full"
                 />
               </div>
               <p className="font-serif text-2xl text-[#0c192c] tracking-[-0.02em] font-bold">
-                AI Biz Champion
+                AI Biz Champ
               </p>
             </div>
             <p className="text-[#475569] text-sm leading-relaxed max-w-xs">
@@ -62,7 +62,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hello AI Biz Champion team, I want to inquire about your services.")}`}
+                  href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hello AI Biz Champ team, I want to inquire about your services.")}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[var(--muted-lt)] text-sm hover:text-[#25D366] transition-colors no-underline focus-visible:outline-[var(--accent)]"
@@ -80,7 +80,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors capitalize text-xs tracking-wider focus-visible:outline-[var(--accent)]"
-                  aria-label={`Follow AI Biz Champion on ${key}`}
+                  aria-label={`Follow AI Biz Champ on ${key}`}
                 >
                   {key}
                 </a>

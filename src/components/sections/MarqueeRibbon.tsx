@@ -14,7 +14,7 @@ const primaryKeywords = [
 
 const secondaryKeywords = [
   "ENTERPRISE GRADE",
-  "AI CHAMPION SUITE",
+  "AI CHAMP SUITE",
   "DR. G. NALINIPRIYA LEAD",
   "DATA DRIVEN IMPACT",
   "END-TO-END AUTOMATION",

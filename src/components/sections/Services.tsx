@@ -415,7 +415,7 @@ export default function Services() {
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#0ea5e9]/40 bg-white text-[#0c192c] text-[10px] font-sans font-semibold tracking-wider uppercase mb-1 shadow-sm">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#0284c7] animate-ping" />
-                <span>AI BIZ CHAMPION</span>
+                <span>AI BIZ CHAMP</span>
                 <span className="opacity-40">•</span>
                 <span>BECAUSE QUALITY MATTERS</span>
               </div>
