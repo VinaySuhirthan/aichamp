@@ -899,11 +899,79 @@ p { line-height: 1.8; }
   pointer-events: none;
 }
 
+/* ─── Ultra-Smooth Moving Liquid RGB Border around Pill ────────── */
+@keyframes liquid-rgb-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.rgb-liquid-boundary {
+  position: relative;
+  border-radius: 9999px;
+  background-color: #faf7f0 !important;
+  isolation: isolate;
+}
+
+/* Moving liquid gradient all around the entire 360-degree boundary */
+.rgb-liquid-boundary::before {
+  content: "";
+  position: absolute;
+  inset: -2.5px;
+  border-radius: 9999px;
+  background: linear-gradient(
+    90deg,
+    #0284c7 0%,
+    #38bdf8 15%,
+    #818cf8 32%,
+    #c084fc 48%,
+    #f472b6 65%,
+    #38bdf8 82%,
+    #0284c7 100%
+  );
+  background-size: 300% 300%;
+  animation: liquid-rgb-flow 5s ease-in-out infinite;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Butter-smooth ambient chromatic liquid aura glow */
+.rgb-liquid-boundary::after {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border-radius: 9999px;
+  background: linear-gradient(
+    90deg,
+    #0284c7 0%,
+    #38bdf8 15%,
+    #818cf8 32%,
+    #c084fc 48%,
+    #f472b6 65%,
+    #38bdf8 82%,
+    #0284c7 100%
+  );
+  background-size: 300% 300%;
+  animation: liquid-rgb-flow 5s ease-in-out infinite;
+  filter: blur(14px);
+  opacity: 0.55;
+  z-index: -2;
+  pointer-events: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .rgb-border-pill::before,
   .rgb-soft-glow::after,
   .rgb-chromatic-glow,
-  .rgb-hairline::after {
+  .rgb-hairline::after,
+  .rgb-liquid-boundary::before,
+  .rgb-liquid-boundary::after {
     animation: none !important;
   }
 }

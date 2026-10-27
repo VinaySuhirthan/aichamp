@@ -573,7 +573,7 @@ export default function AIChatbot() {
   return (
     <>
       {/* Floating Trigger Button - Hidden on mobile (<768px) where bottom MobileCTABar provides Ask AI */}
-      <div className="fixed bottom-7 right-4 sm:bottom-28 sm:right-7 z-50 hidden md:flex items-center">
+      <div className="fixed bottom-8 right-8 z-50 hidden md:flex items-center">
         {!isOpen && (
           <button
             onClick={() => setIsOpen(true)}
@@ -646,11 +646,13 @@ export default function AIChatbot() {
                 }
               : undefined
           }
-          className={`rgb-hairline fixed z-50 w-[calc(100vw-32px)] sm:w-[430px] h-[600px] max-h-[78vh] sm:max-h-[85vh] flex flex-col rounded-2xl bg-white backdrop-blur-2xl border border-[#bae6fd] shadow-[0_25px_70px_rgba(2,132,199,0.25),0_0_30px_rgba(14,165,233,0.15)] overflow-hidden animate-in fade-in zoom-in-95 duration-200 ${
-            !position ? "bottom-20 right-4 sm:bottom-6 sm:right-6" : ""
+          className={`fixed z-[200] flex flex-col bg-white backdrop-blur-2xl border border-[#bae6fd] shadow-[0_25px_80px_rgba(2,132,199,0.28),0_0_35px_rgba(14,165,233,0.18)] overflow-hidden animate-in fade-in zoom-in-95 duration-200 ${
+            !position
+              ? "inset-x-0 bottom-0 w-full h-[88vh] max-h-[88vh] rounded-t-3xl sm:inset-auto sm:bottom-8 sm:right-8 sm:w-[420px] sm:h-[620px] sm:max-h-[85vh] sm:rounded-2xl"
+              : "w-[calc(100vw-24px)] sm:w-[420px] h-[600px] max-h-[85vh] rounded-2xl"
           } ${
             isDragging
-              ? "select-none shadow-[0_35px_90px_rgba(2,132,199,0.45)] scale-[1.01] transition-none cursor-grabbing"
+              ? "select-none shadow-[0_35px_90px_rgba(2,132,199,0.5)] scale-[1.01] transition-none cursor-grabbing"
               : ""
           }`}
         >

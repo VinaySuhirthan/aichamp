@@ -55,10 +55,10 @@ export default function Header() {
         role="banner"
       >
         <div
-          className={`pointer-events-auto w-full max-w-5xl rounded-full transition-all duration-300 flex items-center justify-between px-4 sm:px-6 py-2 sm:py-2.5 border rgb-hairline ${
+          className={`pointer-events-auto w-full max-w-5xl rounded-full transition-all duration-300 flex items-center justify-between px-4 sm:px-6 py-2 sm:py-2.5 rgb-liquid-boundary ${
             scrolled
-              ? "bg-[#faf7f0]/95 border-[#0ea5e9]/25 backdrop-blur-2xl shadow-[0_10px_30px_rgba(2,132,199,0.12),0_2px_8px_rgba(0,0,0,0.05)]"
-              : "bg-[#faf7f0]/85 border-[#e8dfd3] backdrop-blur-xl shadow-[0_8px_24px_rgba(2,132,199,0.08),0_2px_6px_rgba(0,0,0,0.04)]"
+              ? "bg-[#faf7f0]/95 backdrop-blur-2xl shadow-[0_12px_36px_rgba(2,132,199,0.18)]"
+              : "bg-[#faf7f0]/90 backdrop-blur-xl shadow-[0_8px_28px_rgba(2,132,199,0.12)]"
           }`}
         >
           {/* Brand Logo & Wordmark */}
