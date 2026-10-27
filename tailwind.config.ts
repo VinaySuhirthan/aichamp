@@ -9,8 +9,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        serif: ["var(--font-playfair)", "Georgia", "serif"],
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        heading: ["var(--font-heading)", "'Plus Jakarta Sans'", "system-ui", "-apple-system", "sans-serif"],
+        sans: ["var(--font-sans)", "'Plus Jakarta Sans'", "Inter", "system-ui", "-apple-system", "sans-serif"],
+        serif: ["var(--font-serif)", "Georgia", "serif"],
       },
       colors: {
         ink: "var(--ink)",
