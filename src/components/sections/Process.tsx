@@ -51,10 +51,9 @@ export default function Process() {
           <p className="section-label" style={{ marginBottom: "16px" }}>Process</p>
           <h2
             id="process-heading"
-            className="font-serif text-[clamp(32px,5vw,64px)] text-[var(--paper)] font-medium max-w-[520px]"
-            style={{ lineHeight: "1.35", letterSpacing: "-0.015em" }}
+            className="font-heading text-[clamp(32px,5vw,56px)] text-[#f8f4ec] font-bold max-w-[520px] tracking-tight leading-tight"
           >
-            How We <em className="italic text-[#f3eedf] drop-shadow-[0_0_15px_rgba(243,238,223,0.35)]">Work</em>
+            How We <span className="text-[#f3eedf] italic font-normal drop-shadow-[0_0_20px_rgba(243,238,223,0.3)]">Work</span>
           </h2>
         </div>
 
@@ -66,23 +65,23 @@ export default function Process() {
             <div
               key={step.number}
               className={`process-step relative p-6 md:p-10 ${
-                i < process.steps.length - 1 ? "border-b md:border-b-0 md:border-r border-[var(--border)]" : ""
+                i < process.steps.length - 1 ? "border-b md:border-b-0 md:border-r border-[#351f23]" : ""
               }`}
             >
               {/* Step number */}
-              <div className="process-step__number select-none text-[64px] md:text-[88px] mb-3 md:mb-5" aria-hidden="true">
+              <div className="process-step__number font-heading font-black select-none text-[64px] md:text-[88px] mb-3 md:mb-5 tracking-tighter" aria-hidden="true">
                 {step.number}
               </div>
 
               {/* Content */}
               <div className="relative">
-                <p className="text-[#c8102e] text-[10px] tracking-[0.18em] uppercase font-mono font-semibold" style={{ marginBottom: "12px" }}>
+                <p className="text-[#c8102e] text-[11px] tracking-[0.2em] uppercase font-sans font-bold" style={{ marginBottom: "12px" }}>
                   Step {step.number}
                 </p>
-                <h3 className="font-serif text-[23px] text-[var(--paper)] font-medium tracking-[-0.015em]" style={{ lineHeight: "1.35", marginBottom: "16px" }}>
+                <h3 className="font-heading text-[22px] md:text-[24px] text-[#f8f4ec] font-bold tracking-tight" style={{ lineHeight: "1.3", marginBottom: "14px" }}>
                   {step.title}
                 </h3>
-                <p className="text-[var(--muted-lt)] text-sm" style={{ lineHeight: "2.1" }}>
+                <p className="text-[#bfb3a8] font-sans text-sm leading-relaxed">
                   {step.description}
                 </p>
               </div>
