@@ -102,9 +102,9 @@ export default function Contact() {
       className="py-20 md:py-48 bg-[var(--surface)] text-[var(--paper)] border-t border-[var(--border)] relative overflow-hidden"
       aria-labelledby="contact-heading"
     >
-      {/* Dual ambient glow: Crimson + Deep Burgundy */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#c8102e]/10 blur-[130px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[450px] h-[450px] bg-[#520b12]/18 blur-[130px] rounded-full pointer-events-none" />
+      {/* Dual ambient glow: Ice Blue + Deep Midnight Sapphire */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#0ea5e9]/12 blur-[130px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[450px] h-[450px] bg-[#1e40af]/15 blur-[130px] rounded-full pointer-events-none" />
 
       <div className="container relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-20">
@@ -113,7 +113,7 @@ export default function Contact() {
             <p className="section-label contact-reveal" style={{ marginBottom: "16px" }}>Contact</p>
             <h2
               id="contact-heading"
-              className="font-heading text-[clamp(32px,4vw,52px)] text-[#f8f4ec] font-bold tracking-tight contact-reveal"
+              className="font-heading text-[clamp(32px,4vw,52px)] text-[#fcf9f2] font-bold tracking-tight contact-reveal"
               style={{ lineHeight: "1.3", letterSpacing: "-0.015em", marginBottom: "24px" }}
             >
               {contact.label}

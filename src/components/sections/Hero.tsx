@@ -67,7 +67,7 @@ export default function Hero() {
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] rounded-full pointer-events-none z-0"
         style={{
-          background: "radial-gradient(circle, rgba(255, 46, 84, 0.15) 0%, rgba(255, 46, 84, 0.03) 45%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(56, 189, 248, 0.22) 0%, rgba(14, 165, 233, 0.06) 45%, transparent 70%)",
           filter: "blur(60px)",
         }}
       />
@@ -76,19 +76,19 @@ export default function Hero() {
       <div
         className="absolute bottom-0 inset-x-0 h-28 pointer-events-none z-0"
         style={{
-          background: "linear-gradient(to top, #0d0d0b 0%, rgba(13,13,11,0.5) 60%, transparent 100%)",
+          background: "linear-gradient(to top, #060c18 0%, rgba(6,12,24,0.5) 60%, transparent 100%)",
         }}
       />
 
       {/* Hero Content Container */}
       <div className="relative z-10 max-w-[1000px] mx-auto flex flex-col items-center">
-        {/* Top Floating Category Badge (Warm Ivory on Burgundy with Crimson Live Pulse) */}
+        {/* Top Floating Category Badge (Creamy White on Deep Sapphire with Light Blue Live Pulse) */}
         <div
           ref={badgeRef}
-          className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-[#f3eedf]/30 bg-[#520b12]/40 backdrop-blur-md mb-3 sm:mb-4 shadow-[0_4px_20px_rgba(200,16,46,0.25)]"
+          className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-[#38bdf8]/35 bg-[#0c1a33]/60 backdrop-blur-md mb-3 sm:mb-4 shadow-[0_4px_20px_rgba(14,165,233,0.25)]"
         >
-          <span className="w-2 h-2 rounded-full bg-[#c8102e] shadow-[0_0_10px_#c8102e] animate-pulse" />
-          <span className="text-xs font-bold tracking-wider uppercase text-[#f3eedf]">
+          <span className="w-2 h-2 rounded-full bg-[#38bdf8] shadow-[0_0_10px_#38bdf8] animate-pulse" />
+          <span className="text-xs font-bold tracking-wider uppercase text-[#fcf9f2]">
             AI Biz Champion
           </span>
         </div>
@@ -96,9 +96,9 @@ export default function Hero() {
         {/* Master Headline: 3 Clean Lines */}
         <h1
           ref={headlineRef}
-          className="font-sans font-black tracking-[-0.025em] uppercase leading-[0.98] text-white flex flex-col items-center select-none"
+          className="font-sans font-black tracking-[-0.025em] uppercase leading-[0.98] text-[#fcf9f2] flex flex-col items-center select-none"
         >
-          <span className="block text-3xl sm:text-5xl md:text-6xl font-extrabold text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
+          <span className="block text-3xl sm:text-5xl md:text-6xl font-extrabold text-[#fcf9f2] drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
             Empowering The
           </span>
           
@@ -106,15 +106,15 @@ export default function Hero() {
           <span
             className="block text-4xl sm:text-6xl md:text-7xl lg:text-[84px] font-black tracking-tight my-0.5 sm:my-1"
             style={{
-              WebkitTextStroke: "2px rgba(243, 238, 223, 0.95)",
+              WebkitTextStroke: "2px rgba(252, 249, 242, 0.95)",
               color: "transparent",
-              textShadow: "0 0 35px rgba(200, 16, 46, 0.65)",
+              textShadow: "0 0 35px rgba(56, 189, 248, 0.65)",
             }}
           >
             NEXT-GEN
           </span>
 
-          <span className="block text-3xl sm:text-5xl md:text-6xl font-extrabold text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
+          <span className="block text-3xl sm:text-5xl md:text-6xl font-extrabold text-[#fcf9f2] drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
             AI Revolution
           </span>
         </h1>
@@ -122,17 +122,17 @@ export default function Hero() {
         {/* Subtitle */}
         <p
           ref={subRef}
-          className="text-xs sm:text-sm md:text-base text-neutral-300 font-normal max-w-lg mt-3 sm:mt-4 mb-5 sm:mb-6 leading-relaxed drop-shadow"
+          className="text-xs sm:text-sm md:text-base text-[#a6bdd8] font-normal max-w-lg mt-3 sm:mt-4 mb-5 sm:mb-6 leading-relaxed drop-shadow"
         >
           Pioneers in high-impact AI agents, video, and automated growth systems — led by{" "}
-          <span className="text-[#f3eedf] font-semibold drop-shadow-[0_0_12px_rgba(243,238,223,0.35)] underline decoration-[#c8102e]/60 underline-offset-4">Dr. G. Nalinipriya</span>, Professor & AI Specialist.
+          <span className="text-[#fcf9f2] font-semibold drop-shadow-[0_0_12px_rgba(252,249,242,0.35)] underline decoration-[#38bdf8]/60 underline-offset-4">Dr. G. Nalinipriya</span>, Professor & AI Specialist.
         </p>
 
         {/* Action CTAs: Dual-Tone Actions */}
         <div ref={ctasRef} className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
           <a
             href={hero.cta1.href || "#services"}
-            className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#c8102e] text-white font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 hover:bg-[#a60c24] hover:scale-105 hover:shadow-[0_0_30px_rgba(200,16,46,0.7)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c8102e]"
+            className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-gradient-to-r from-[#0284c7] via-[#0ea5e9] to-[#0284c7] text-[#fcf9f2] font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(56,189,248,0.7)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#38bdf8]"
             aria-label="Explore our services"
           >
             <span>{hero.cta1.label || "View Services"}</span>
@@ -140,7 +140,7 @@ export default function Hero() {
           </a>
           <a
             href={hero.cta2.href || "#contact"}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[#f3eedf]/40 bg-white/[0.04] backdrop-blur-md text-[#f3eedf] font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 hover:bg-[#520b12]/50 hover:border-[#f3eedf] hover:text-white hover:scale-105 hover:shadow-[0_0_25px_rgba(243,238,223,0.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f3eedf]"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[#fcf9f2]/40 bg-white/[0.04] backdrop-blur-md text-[#fcf9f2] font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 hover:bg-[#0c1a33]/60 hover:border-[#38bdf8] hover:text-[#38bdf8] hover:scale-105 hover:shadow-[0_0_25px_rgba(56,189,248,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#38bdf8]"
             aria-label="Book a consultation"
           >
             <span>{hero.cta2.label || "Book Consultation"}</span>

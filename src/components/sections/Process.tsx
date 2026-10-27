@@ -65,7 +65,7 @@ export default function Process() {
             <div
               key={step.number}
               className={`process-step relative p-6 md:p-10 ${
-                i < process.steps.length - 1 ? "border-b md:border-b-0 md:border-r border-[#351f23]" : ""
+                i < process.steps.length - 1 ? "border-b md:border-b-0 md:border-r border-[#15243e]" : ""
               }`}
             >
               {/* Step number */}
@@ -75,13 +75,13 @@ export default function Process() {
 
               {/* Content */}
               <div className="relative">
-                <p className="text-[#c8102e] text-[11px] tracking-[0.2em] uppercase font-sans font-bold" style={{ marginBottom: "12px" }}>
+                <p className="text-[#38bdf8] text-[11px] tracking-[0.2em] uppercase font-sans font-bold" style={{ marginBottom: "12px" }}>
                   Step {step.number}
                 </p>
-                <h3 className="font-heading text-[22px] md:text-[24px] text-[#f8f4ec] font-bold tracking-tight" style={{ lineHeight: "1.3", marginBottom: "14px" }}>
+                <h3 className="font-heading text-[22px] md:text-[24px] text-[#fcf9f2] font-bold tracking-tight" style={{ lineHeight: "1.3", marginBottom: "14px" }}>
                   {step.title}
                 </h3>
-                <p className="text-[#bfb3a8] font-sans text-sm leading-relaxed">
+                <p className="text-[#a6bdd8] font-sans text-sm leading-relaxed">
                   {step.description}
                 </p>
               </div>
@@ -97,7 +97,7 @@ export default function Process() {
                     height="16"
                     viewBox="0 0 24 24"
                     fill="none"
-                    stroke="#f3eedf"
+                    stroke="#38bdf8"
                     strokeWidth="1.8"
                   >
                     <path d="M5 12h14M12 5l7 7-7 7" />

@@ -10,7 +10,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <div className="relative w-10 h-10 rounded-full overflow-hidden border border-[#f3eedf]/40 bg-[#1a1012] p-0.5 shadow-sm flex-shrink-0">
+              <div className="relative w-10 h-10 rounded-full overflow-hidden border border-[#fcf9f2]/40 bg-[#0a1222] p-0.5 shadow-sm flex-shrink-0">
                 <Image
                   src="/logo.png"
                   alt="AI Biz Champion Brand Mark"
@@ -37,7 +37,7 @@ export default function Footer() {
                   <li key={item.href}>
                     <a
                       href={item.href}
-                      className="text-[var(--muted-lt)] text-sm hover:text-[#f3eedf] transition-colors no-underline focus-visible:outline-[#c8102e]"
+                      className="text-[var(--muted-lt)] text-sm hover:text-[#fcf9f2] transition-colors no-underline focus-visible:outline-[#38bdf8]"
                     >
                       {item.label}
                     </a>
@@ -54,7 +54,7 @@ export default function Footer() {
               <li>
                 <a
                   href={`mailto:${site.email}`}
-                  className="text-[var(--muted-lt)] text-sm hover:text-[#f3eedf] transition-colors no-underline break-all focus-visible:outline-[#c8102e]"
+                  className="text-[var(--muted-lt)] text-sm hover:text-[#fcf9f2] transition-colors no-underline break-all focus-visible:outline-[#38bdf8]"
                   aria-label="Send us an email"
                 >
                   {site.email}

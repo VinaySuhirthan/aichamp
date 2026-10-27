@@ -2,40 +2,40 @@
 
 /* ─── Design Tokens ─────────────────────────────────────── */
 :root {
-  --ink:       #120b0c;
-  --ink-80:    rgba(18, 11, 12, 0.85);
-  --paper:     #f8f4ec;
-  --paper-2:   #f1ebd9;
-  --paper-3:   #e6dec7;
+  --ink:       #060c18;
+  --ink-80:    rgba(6, 12, 24, 0.88);
+  --paper:     #fcf9f2;
+  --paper-2:   #f6f0e2;
+  --paper-3:   #ebe1ce;
 
-  /* ── User Curated Palette: Crimson + Warm Ivory + Burgundy + Deep Espresso ── */
-  --crimson:        #c8102e;
-  --crimson-hover:  #a60c24;
-  --crimson-glow:   rgba(200, 16, 46, 0.45);
-  --crimson-subtle: rgba(200, 16, 46, 0.12);
+  /* ── User Curated Palette: Light Blue (all blue tones) + Creamy White ── */
+  --crimson:        #0ea5e9;
+  --crimson-hover:  #0284c7;
+  --crimson-glow:   rgba(56, 189, 248, 0.45);
+  --crimson-subtle: rgba(56, 189, 248, 0.12);
 
-  --ivory:          #f3eedf;
+  --ivory:          #fcf9f2;
   --ivory-hover:    #ffffff;
-  --ivory-glow:     rgba(243, 238, 223, 0.4);
-  --ivory-subtle:   rgba(243, 238, 223, 0.1);
+  --ivory-glow:     rgba(252, 249, 242, 0.4);
+  --ivory-subtle:   rgba(252, 249, 242, 0.1);
 
-  --burgundy:       #520b12;
-  --burgundy-lt:    #73121c;
+  --burgundy:       #0c1a33;
+  --burgundy-lt:    #162a52;
 
-  /* Primary action accent (Vivid Crimson) */
-  --accent:         #c8102e;
-  --accent-lt:      #e02644;
-  --accent-dk:      #990a1e;
+  /* Primary action accent (Vivid Sky / Light Blue) */
+  --accent:         #0ea5e9;
+  --accent-lt:      #38bdf8;
+  --accent-dk:      #0284c7;
 
-  /* Secondary luminous accent (Warm Ivory) */
-  --secondary:      #f3eedf;
+  /* Secondary luminous accent (Creamy White) */
+  --secondary:      #fcf9f2;
 
-  --muted:     #8f8078;
-  --muted-lt:  #bfb3a8;
-  --border:    #351f23;
-  --border-lt: #482a30;
-  --surface:   #1a1012;
-  --surface-2: #241619;
+  --muted:     #788ea8;
+  --muted-lt:  #a6bdd8;
+  --border:    #15243e;
+  --border-lt: #1f355c;
+  --surface:   #091224;
+  --surface-2: #0e1c36;
   --white:     #ffffff;
 
   /* ── Modern Premium Typography ── */
@@ -258,7 +258,7 @@ p { line-height: 1.8; }
 .btn--primary {
   background: var(--crimson);
   color: #ffffff;
-  box-shadow: 0 4px 22px rgba(200, 16, 46, 0.45);
+  box-shadow: 0 4px 22px rgba(14, 165, 233, 0.45);
 }
 .btn--primary::after {
   content: '';
@@ -271,23 +271,23 @@ p { line-height: 1.8; }
   z-index: 0;
 }
 .btn--primary:hover {
-  box-shadow: 0 6px 32px rgba(200, 16, 46, 0.7);
+  box-shadow: 0 6px 32px rgba(14, 165, 233, 0.7);
   transform: translateY(-1px) scale(1.02);
 }
 .btn--primary:hover::after { transform: scaleX(1); }
 .btn--primary span { position: relative; z-index: 1; }
 
 .btn--ghost {
-  background: rgba(243, 238, 223, 0.04);
+  background: rgba(252, 249, 242, 0.05);
   color: var(--paper);
-  border: 1px solid rgba(243, 238, 223, 0.2);
+  border: 1px solid rgba(56, 189, 248, 0.3);
   backdrop-filter: blur(8px);
 }
 .btn--ghost:hover {
-  border-color: var(--ivory);
-  color: var(--ivory);
-  background: rgba(243, 238, 223, 0.1);
-  box-shadow: 0 0 20px rgba(243, 238, 223, 0.3);
+  border-color: #38bdf8;
+  color: #ffffff;
+  background: rgba(14, 165, 233, 0.15);
+  box-shadow: 0 0 24px rgba(56, 189, 248, 0.35);
 }
 
 .btn--ghost-ink {
@@ -330,7 +330,7 @@ p { line-height: 1.8; }
   position: sticky;
   will-change: transform, filter, opacity;
   transform-origin: top center;
-  box-shadow: 0 -16px 40px rgba(0, 0, 0, 0.7), 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 24px rgba(200, 16, 46, 0.12);
+  box-shadow: 0 -16px 40px rgba(0, 0, 0, 0.7), 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 24px rgba(56, 189, 248, 0.2);
 }
 .stacked-card::before {
   content: "";
@@ -338,7 +338,7 @@ p { line-height: 1.8; }
   inset: -1px;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(180deg, rgba(200, 16, 46, 0.45) 0%, rgba(243, 238, 223, 0.15) 30%, transparent 100%);
+  background: linear-gradient(180deg, rgba(56, 189, 248, 0.45) 0%, rgba(252, 249, 242, 0.15) 30%, transparent 100%);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
@@ -480,14 +480,14 @@ p { line-height: 1.8; }
   top: 0; left: 0; right: 0;
   z-index: 100;
   padding: var(--space-4) 0;
-  background: rgba(13, 13, 11, 0.92);
+  background: rgba(6, 12, 24, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.07);
   transition: transform 0.45s var(--ease-out-expo), padding 0.3s, background 0.3s;
 }
 .header.scrolled {
-  background: rgba(13, 13, 11, 0.98);
+  background: rgba(6, 12, 24, 0.98);
   border-bottom-color: var(--border);
   padding: var(--space-3) 0;
 }
@@ -576,7 +576,7 @@ p { line-height: 1.8; }
 }
 
 .process-step:hover {
-  background: rgba(200, 16, 46, 0.04);
+  background: rgba(14, 165, 233, 0.04);
 }
 
 .process-step__number {
@@ -585,17 +585,17 @@ p { line-height: 1.8; }
   font-weight: 800;
   line-height: 0.95;
   letter-spacing: -0.05em;
-  color: rgba(243, 238, 223, 0.4);
-  -webkit-text-stroke: 1.5px rgba(243, 238, 223, 0.85);
+  color: rgba(252, 249, 242, 0.4);
+  -webkit-text-stroke: 1.5px rgba(56, 189, 248, 0.85);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   display: inline-block;
   user-select: none;
 }
 
 .process-step:hover .process-step__number {
-  color: rgba(200, 16, 46, 0.5);
-  -webkit-text-stroke: 1.5px #c8102e;
-  filter: drop-shadow(0 0 24px rgba(200, 16, 46, 0.6));
+  color: rgba(56, 189, 248, 0.5);
+  -webkit-text-stroke: 1.5px #38bdf8;
+  filter: drop-shadow(0 0 24px rgba(56, 189, 248, 0.65));
   transform: translateY(-2px);
 }
 

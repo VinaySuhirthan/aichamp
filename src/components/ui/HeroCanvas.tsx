@@ -34,45 +34,45 @@ export default function HeroCanvas() {
     const worldGroup = new THREE.Group();
     scene.add(worldGroup);
 
-    // 1. Primary Neural Wireframe Sphere (Rich Crimson Red)
+    // 1. Primary Neural Wireframe Sphere (Electric Light Blue)
     const sphereGeo = new THREE.IcosahedronGeometry(1.25, 2);
     const sphereMat = new THREE.MeshBasicMaterial({
-      color: 0xc8102e, // Crimson Red
+      color: 0x0ea5e9, // Vivid Light Sky Blue
       wireframe: true,
       transparent: true,
-      opacity: 0.52,
+      opacity: 0.55,
     });
     const sphereMesh = new THREE.Mesh(sphereGeo, sphereMat);
     worldGroup.add(sphereMesh);
 
-    // 2. Outer Concentric Cyber Cage (Warm Ivory)
+    // 2. Outer Concentric Cyber Cage (Creamy White)
     const outerGeo = new THREE.IcosahedronGeometry(1.65, 1);
     const outerMat = new THREE.MeshBasicMaterial({
-      color: 0xf3eedf, // Warm Ivory
+      color: 0xfcf9f2, // Creamy White
       wireframe: true,
       transparent: true,
-      opacity: 0.28,
+      opacity: 0.32,
     });
     const outerMesh = new THREE.Mesh(outerGeo, outerMat);
     worldGroup.add(outerMesh);
 
-    // 3. Glowing Node Points on Vertices (Crimson)
+    // 3. Glowing Node Points on Vertices (Ice Cyan Blue)
     const nodePositions = sphereGeo.attributes.position.clone();
     nodePositions.needsUpdate = true;
     const nodeGeo = new THREE.BufferGeometry();
     nodeGeo.setAttribute("position", nodePositions);
 
     const nodeMat = new THREE.PointsMaterial({
-      color: 0xc8102e, // Rich Crimson Nodes
-      size: 0.052,
+      color: 0x38bdf8, // Electric Ice Blue Nodes
+      size: 0.056,
       transparent: true,
-      opacity: 0.95,
+      opacity: 0.98,
       sizeAttenuation: true,
     });
     const nodePoints = new THREE.Points(nodeGeo, nodeMat);
     worldGroup.add(nodePoints);
 
-    // 4. Floating Cosmic Data Particles (Warm Ivory)
+    // 4. Floating Cosmic Data Particles (Creamy White)
     const PARTICLE_COUNT = 700;
     const pPositions = new Float32Array(PARTICLE_COUNT * 3);
 
@@ -90,10 +90,10 @@ export default function HeroCanvas() {
     particlesGeo.setAttribute("position", new THREE.BufferAttribute(pPositions, 3));
 
     const particlesMat = new THREE.PointsMaterial({
-      color: 0xf3eedf, // Warm Ivory ambient dust
+      color: 0xfcf9f2, // Creamy White ambient dust
       size: 0.024,
       transparent: true,
-      opacity: 0.55,
+      opacity: 0.6,
       sizeAttenuation: true,
     });
     const particles = new THREE.Points(particlesGeo, particlesMat);

@@ -57,17 +57,17 @@ export default function Header() {
         <div
           className={`pointer-events-auto w-full max-w-5xl rounded-full transition-all duration-300 flex items-center justify-between px-4 sm:px-6 py-2 sm:py-2.5 border ${
             scrolled
-              ? "bg-[#0d0d0b]/90 border-white/15 backdrop-blur-2xl shadow-[0_12px_40px_rgba(0,0,0,0.8)]"
-              : "bg-[#111110]/75 border-white/10 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.5)]"
+              ? "bg-[#060c18]/90 border-white/15 backdrop-blur-2xl shadow-[0_12px_40px_rgba(0,0,0,0.8)]"
+              : "bg-[#081020]/75 border-white/10 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.5)]"
           }`}
         >
           {/* Brand Logo & Wordmark */}
           <Link
             href="/"
-            className="flex items-center gap-2.5 no-underline group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c8102e] rounded-full p-1"
+            className="flex items-center gap-2.5 no-underline group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#38bdf8] rounded-full p-1"
             aria-label={`${site.name} — Home`}
           >
-            <div className="relative w-8 h-8 rounded-full overflow-hidden border border-[#f3eedf]/40 bg-[#1a1012] p-0.5 shadow-sm group-hover:scale-105 group-hover:border-[#c8102e] transition-all duration-300 flex-shrink-0">
+            <div className="relative w-8 h-8 rounded-full overflow-hidden border border-[#fcf9f2]/40 bg-[#0a1222] p-0.5 shadow-sm group-hover:scale-105 group-hover:border-[#38bdf8] transition-all duration-300 flex-shrink-0">
               <Image
                 src="/logo.png"
                 alt="AI Biz Champion Brand Mark"
@@ -77,7 +77,7 @@ export default function Header() {
                 priority
               />
             </div>
-            <span className="font-sans font-bold text-white text-base sm:text-lg tracking-tight group-hover:text-[#f3eedf] transition-colors">
+            <span className="font-sans font-bold text-white text-base sm:text-lg tracking-tight group-hover:text-[#fcf9f2] transition-colors">
               {site.name}
             </span>
           </Link>
@@ -86,7 +86,7 @@ export default function Header() {
           <nav aria-label="Primary navigation" className="hidden md:flex items-center gap-1 lg:gap-2">
             <a
               href="#hero"
-              className="px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-white bg-[#c8102e] shadow-[0_0_12px_rgba(200,16,46,0.45)] transition-all duration-200"
+              className="px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-[#fcf9f2] bg-[#0ea5e9] shadow-[0_0_14px_rgba(14,165,233,0.5)] transition-all duration-200"
             >
               Home
             </a>
@@ -94,7 +94,7 @@ export default function Header() {
               <a
                 key={item.href}
                 href={item.href}
-                className="px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-neutral-300 hover:text-[#f3eedf] hover:bg-white/[0.06] transition-all duration-200 no-underline"
+                className="px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-neutral-300 hover:text-[#fcf9f2] hover:bg-white/[0.06] transition-all duration-200 no-underline"
               >
                 {item.label}
               </a>
@@ -105,7 +105,7 @@ export default function Header() {
           <div className="flex items-center gap-3">
             <a
               href="#contact"
-              className="hidden sm:inline-flex items-center px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-[#c8102e] text-white hover:bg-[#a60c24] hover:shadow-[0_0_20px_rgba(200,16,46,0.6)] transition-all duration-300 no-underline"
+              className="hidden sm:inline-flex items-center px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-[#0284c7] via-[#0ea5e9] to-[#0284c7] text-[#fcf9f2] hover:shadow-[0_0_20px_rgba(56,189,248,0.55)] transition-all duration-300 no-underline"
               aria-label="Book a consultation with AI Biz Champion"
             >
               Contact Us
