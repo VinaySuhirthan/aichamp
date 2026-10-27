@@ -44,14 +44,14 @@ export default function FAQ() {
               style={{ lineHeight: "1.35", letterSpacing: "-0.015em", marginBottom: "20px" }}
             >
               Common{" "}
-              <em className="italic text-[#fcf9f2] drop-shadow-[0_0_15px_rgba(56,189,248,0.45)]">Questions</em>
+              <em className="italic text-[#0284c7]">Questions</em>
             </h2>
             <p className="text-[var(--muted-lt)] text-sm md:text-base max-w-[320px] faq-reveal" style={{ lineHeight: "2.15" }}>
               If you have a question not answered here, please reach out via the contact form below.
             </p>
           </div>
           <div className="md:col-span-8 faq-reveal">
-            <Accordion items={faq.items} variant="dark" />
+            <Accordion items={faq.items} variant="light" />
           </div>
         </div>
       </div>

@@ -411,19 +411,19 @@ export default function Services() {
 
         {/* ─── Top Control Bar: Header + Search + AI Phone Banner ─── */}
         <div className="relative z-10 w-full mb-4">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-3 border-b border-[#15243e]">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-3 border-b border-[#e8dfd3]">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#38bdf8]/30 bg-[#0c1a33]/70 text-[#fcf9f2] text-[10px] font-sans font-semibold tracking-wider uppercase mb-1 shadow-sm">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#38bdf8] animate-ping" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#0ea5e9]/40 bg-white text-[#0c192c] text-[10px] font-sans font-semibold tracking-wider uppercase mb-1 shadow-sm">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#0284c7] animate-ping" />
                 <span>AI BIZ CHAMPION</span>
                 <span className="opacity-40">•</span>
                 <span>BECAUSE QUALITY MATTERS</span>
               </div>
               <h2
                 id="services-heading"
-                className="font-heading text-xl sm:text-2xl md:text-3xl font-extrabold text-[#fcf9f2] tracking-tight leading-tight"
+                className="font-heading text-xl sm:text-2xl md:text-3xl font-extrabold text-[#0c192c] tracking-tight leading-tight"
               >
-                15 Production-Grade <span className="text-[#38bdf8]">AI Capabilities</span>
+                15 Production-Grade <span className="text-[#0284c7]">AI Capabilities</span>
               </h2>
             </div>
 
@@ -441,12 +441,12 @@ export default function Services() {
                   onClick={() => setFilter(cat.id as any)}
                   className={`px-3 py-1.5 rounded-xl text-xs font-sans font-medium transition-all border flex items-center gap-1.5 cursor-pointer ${
                     filter === cat.id
-                      ? "bg-[#0ea5e9] text-[#fcf9f2] border-[#38bdf8] font-semibold shadow-[0_0_15px_rgba(14,165,233,0.35)]"
-                      : "bg-[#0a1222] text-[#a6bdd8] border-[#15243e] hover:border-[#38bdf8]/50 hover:text-[#fcf9f2]"
+                      ? "bg-[#0284c7] text-white border-[#0284c7] font-semibold shadow-sm"
+                      : "bg-white text-[#475569] border-[#e8dfd3] hover:border-[#0284c7] hover:text-[#0284c7]"
                   }`}
                 >
                   <span>{cat.label}</span>
-                  <span className={`text-[10px] font-sans font-bold px-1.5 py-0.2 rounded-full ${filter === cat.id ? "bg-black/25 text-[#fcf9f2]" : "text-[#788ea8]"}`}>
+                  <span className={`text-[10px] font-sans font-bold px-1.5 py-0.2 rounded-full ${filter === cat.id ? "bg-white/20 text-white" : "bg-[#f4efe6] text-[#64748b]"}`}>
                     {cat.count}
                   </span>
                 </button>
@@ -457,7 +457,7 @@ export default function Services() {
           {/* Search Input Bar */}
           <div className="flex items-center justify-between gap-3 pt-3">
             <div className="relative flex-1 max-w-xl">
-              <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#38bdf8]">
+              <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#0284c7]">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
                   <circle cx="11" cy="11" r="8" />
                   <line x1="21" y1="21" x2="16.65" y2="16.65" />
@@ -468,12 +468,12 @@ export default function Services() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search capabilities, models, or deliverables (e.g. Video, Midjourney, Agents, LaTeX)..."
-                className="w-full pl-9 pr-8 py-2 bg-[#0a1222]/90 border border-[#15243e] rounded-xl text-xs text-[#fcf9f2] placeholder-[#788ea8] focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8]/35 font-sans transition-all"
+                className="w-full pl-9 pr-8 py-2 bg-white border border-[#e8dfd3] rounded-xl text-xs text-[#0c192c] placeholder-[#64748b] focus:outline-none focus:border-[#0284c7] focus:ring-2 focus:ring-[#0284c7]/20 font-sans shadow-sm transition-all"
               />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery("")}
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center text-[#a6bdd8] hover:text-[#fcf9f2]"
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center text-[#64748b] hover:text-[#0c192c]"
                 >
                   ✕
                 </button>
@@ -481,13 +481,13 @@ export default function Services() {
             </div>
 
             {/* Scroll progress & row indicator */}
-            <div className="hidden sm:flex items-center gap-3 text-xs font-sans text-[#a6bdd8]">
+            <div className="hidden sm:flex items-center gap-3 text-xs font-sans text-[#475569]">
               <span>
-                Showing <strong className="text-[#fcf9f2]">{filteredServices.length}</strong> services • 3 in a row
+                Showing <strong className="text-[#0c192c]">{filteredServices.length}</strong> services • 3 in a row
               </span>
-              <div className="w-20 h-1.5 bg-[#0e1c36] rounded-full overflow-hidden border border-[#15243e]">
+              <div className="w-20 h-1.5 bg-[#e0f2fe] rounded-full overflow-hidden border border-[#bae6fd]">
                 <div
-                  className="h-full bg-[#38bdf8] transition-all duration-150"
+                  className="h-full bg-[#0284c7] transition-all duration-150"
                   style={{ width: `${Math.round(scrollProgress * 100)}%` }}
                 />
               </div>
@@ -498,14 +498,14 @@ export default function Services() {
         {/* ─── CARD VIEWPORT: ONLY THE CARDS MOVE THROUGH THIS PINNED FRAME ─── */}
         <div
           ref={cardViewportRef}
-          className="relative w-full h-[580px] md:h-[620px] overflow-hidden rounded-2xl border border-[#15243e]/70 bg-[#070e1c]/60 backdrop-blur-sm p-2 sm:p-3"
+          className="relative w-full h-[580px] md:h-[620px] overflow-hidden rounded-2xl border border-[#e8dfd3] bg-white/60 backdrop-blur-sm p-2 sm:p-3 shadow-sm"
         >
           {filteredServices.length === 0 ? (
             <div className="py-24 text-center">
-              <p className="font-heading text-lg text-[#fcf9f2] mb-2">No capabilities match &ldquo;{searchQuery}&rdquo;</p>
+              <p className="font-heading text-lg text-[#0c192c] mb-2">No capabilities match &ldquo;{searchQuery}&rdquo;</p>
               <button
                 onClick={() => { setSearchQuery(""); setFilter("all"); }}
-                className="px-4 py-1.5 rounded-full bg-[#0ea5e9] text-[#fcf9f2] text-xs font-semibold cursor-pointer hover:bg-[#0284c7] transition-colors"
+                className="px-4 py-1.5 rounded-full bg-[#0284c7] text-white text-xs font-semibold cursor-pointer hover:bg-[#0369a1] transition-colors shadow-sm"
               >
                 Reset Filters
               </button>
@@ -518,11 +518,11 @@ export default function Services() {
               {filteredServices.map((item) => (
                 <div
                   key={item.id}
-                  className="service-card-item group relative rounded-2xl border border-[#15243e] bg-gradient-to-b from-[#0f1d38] via-[#0a1426] to-[#060c18] p-5 flex flex-col justify-between transition-all duration-300 hover:border-[#38bdf8]/80 hover:shadow-[0_16px_36px_rgba(56,189,248,0.22)]"
+                  className="service-card-item group relative rounded-2xl border border-[#e8dfd3] bg-white p-5 flex flex-col justify-between transition-all duration-300 hover:border-[#38bdf8] hover:shadow-[0_16px_36px_rgba(2,132,199,0.12),0_0_24px_rgba(129,140,248,0.18)] hover:-translate-y-1 shadow-sm"
                 >
                   <div>
                     {/* Real AI-Generated Image Preview for every service */}
-                    <div className="relative w-full h-36 rounded-xl overflow-hidden mb-3.5 border border-[#15243e] bg-[#060c18]">
+                    <div className="relative w-full h-36 rounded-xl overflow-hidden mb-3.5 border border-[#e8dfd3] bg-[#f4efe6]">
                       <Image
                         src={item.imageSrc}
                         alt={`${item.name} AI-generated service showcase`}
@@ -530,33 +530,33 @@ export default function Services() {
                         className="object-cover transition-transform duration-700 group-hover:scale-105"
                         sizes="(max-width: 768px) 100vw, 360px"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#060c18] via-transparent to-transparent opacity-80" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0c192c]/75 via-transparent to-transparent opacity-75" />
 
                       {/* Top left badge */}
-                      <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-black/75 backdrop-blur-md border border-white/10 text-[9px] font-sans font-semibold text-[#fcf9f2] uppercase tracking-wider">
+                      <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-[#0c192c]/80 backdrop-blur-md border border-white/15 text-[9px] font-sans font-semibold text-white uppercase tracking-wider">
                         {item.tag}
                       </div>
 
                       {/* Bottom index & format */}
-                      <div className="absolute bottom-2 left-2.5 right-2.5 flex items-center justify-between text-[10px] font-sans text-[#fcf9f2]">
+                      <div className="absolute bottom-2 left-2.5 right-2.5 flex items-center justify-between text-[10px] font-sans text-white">
                         <span className="font-bold text-[#38bdf8]">#{item.id < 10 ? `0${item.id}` : item.id}</span>
-                        <span className="bg-black/60 px-2 py-0.5 rounded backdrop-blur-sm text-[9px]">{item.stat.value}</span>
+                        <span className="bg-[#0c192c]/70 px-2 py-0.5 rounded backdrop-blur-sm text-[9px]">{item.stat.value}</span>
                       </div>
                     </div>
 
                     {/* Title in Modern Plus Jakarta Sans */}
-                    <h3 className="font-heading text-[18px] sm:text-[19px] font-bold text-[#fcf9f2] group-hover:text-[#38bdf8] transition-colors mb-1.5 leading-snug tracking-[-0.015em]">
+                    <h3 className="font-heading text-[18px] sm:text-[19px] font-bold text-[#0c192c] group-hover:text-[#0284c7] transition-colors mb-1.5 leading-snug tracking-[-0.015em]">
                       {item.name}
                     </h3>
 
                     {/* Tech Stack Chip */}
-                    <p className="text-[11px] font-sans font-medium text-[#fcf9f2]/90 mb-2 flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#38bdf8]" />
+                    <p className="text-[11px] font-sans font-semibold text-[#0284c7] mb-2 flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#0284c7]" />
                       <span>{item.techStack}</span>
                     </p>
 
                     {/* Description */}
-                    <p className="text-[#a6bdd8] text-[12.5px] leading-relaxed mb-3.5 line-clamp-3 font-sans">
+                    <p className="text-[#475569] text-[12.5px] leading-relaxed mb-3.5 line-clamp-3 font-sans">
                       {item.description}
                     </p>
 
@@ -565,9 +565,9 @@ export default function Services() {
                       {item.deliverables.slice(0, 2).map((deliv, di) => (
                         <span
                           key={di}
-                          className="inline-flex items-center gap-1 text-[10px] font-sans font-medium text-[#fcf9f2] bg-[#0a1222] border border-[#15243e] px-2 py-0.5 rounded"
+                          className="inline-flex items-center gap-1 text-[10px] font-sans font-medium text-[#0c192c] bg-[#f4efe6] border border-[#e8dfd3] px-2 py-0.5 rounded"
                         >
-                          <span className="text-[#38bdf8] font-bold">✓</span>
+                          <span className="text-[#0284c7] font-bold">✓</span>
                           <span>{deliv}</span>
                         </span>
                       ))}
@@ -575,14 +575,14 @@ export default function Services() {
                   </div>
 
                   {/* Card Footer */}
-                  <div className="pt-3 border-t border-[#15243e] flex items-center justify-between font-sans">
-                    <span className="text-[10px] font-sans text-[#788ea8] uppercase tracking-wider">
+                  <div className="pt-3 border-t border-[#e8dfd3] flex items-center justify-between font-sans">
+                    <span className="text-[10px] font-sans text-[#64748b] uppercase tracking-wider font-semibold">
                       {item.categoryLabel}
                     </span>
 
                     <Link
                       href="#contact"
-                      className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#0ea5e9]/20 hover:bg-[#0ea5e9] text-[#fcf9f2] hover:text-white border border-[#38bdf8]/50 text-[11px] font-sans font-semibold tracking-wider uppercase transition-all duration-300 cursor-pointer hover:shadow-[0_0_15px_rgba(56,189,248,0.4)]"
+                      className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#e0f2fe] hover:bg-[#0284c7] text-[#0284c7] hover:text-white border border-[#bae6fd] text-[11px] font-sans font-semibold tracking-wider uppercase transition-all duration-300 cursor-pointer hover:shadow-md"
                     >
                       <span>Inquire</span>
                       <span>→</span>
@@ -595,9 +595,9 @@ export default function Services() {
         </div>
 
         {/* Bottom indicator hint */}
-        <div className="relative z-10 pt-2 flex items-center justify-between text-[11px] font-sans text-[#a6bdd8]">
+        <div className="relative z-10 pt-2 flex items-center justify-between text-[11px] font-sans text-[#64748b]">
           <span>↓ Scroll mouse wheel: Background remains stationary while cards glide through</span>
-          <Link href="#contact" className="text-[#38bdf8] hover:text-[#fcf9f2] font-semibold transition-colors">
+          <Link href="#contact" className="text-[#0284c7] hover:text-[#0369a1] font-semibold transition-colors">
             Custom Enterprise Launch Package ↗
           </Link>
         </div>

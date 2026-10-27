@@ -27,52 +27,52 @@ export default function HeroCanvas() {
     });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(width, height);
-    renderer.setClearColor(0x000000, 0);
+    renderer.setClearColor(0xfaf7f0, 0);
     mount.appendChild(renderer.domElement);
 
     // ── Cyber Sphere & World Group ───────────────────────
     const worldGroup = new THREE.Group();
     scene.add(worldGroup);
 
-    // 1. Primary Neural Wireframe Sphere (Electric Light Blue)
+    // 1. Primary Neural Wireframe Sphere (Electric Sky Blue)
     const sphereGeo = new THREE.IcosahedronGeometry(1.25, 2);
     const sphereMat = new THREE.MeshBasicMaterial({
-      color: 0x0ea5e9, // Vivid Light Sky Blue
+      color: 0x0284c7, // Sky Blue
       wireframe: true,
       transparent: true,
-      opacity: 0.55,
+      opacity: 0.65,
     });
     const sphereMesh = new THREE.Mesh(sphereGeo, sphereMat);
     worldGroup.add(sphereMesh);
 
-    // 2. Outer Concentric Cyber Cage (Creamy White)
+    // 2. Outer Concentric Cyber Cage (Ice Light Blue)
     const outerGeo = new THREE.IcosahedronGeometry(1.65, 1);
     const outerMat = new THREE.MeshBasicMaterial({
-      color: 0xfcf9f2, // Creamy White
+      color: 0x38bdf8, // Ice Sky Blue
       wireframe: true,
       transparent: true,
-      opacity: 0.32,
+      opacity: 0.42,
     });
     const outerMesh = new THREE.Mesh(outerGeo, outerMat);
     worldGroup.add(outerMesh);
 
-    // 3. Glowing Node Points on Vertices (Ice Cyan Blue)
+    // 3. Glowing Node Points on Vertices (Vivid Sky Blue)
     const nodePositions = sphereGeo.attributes.position.clone();
     nodePositions.needsUpdate = true;
     const nodeGeo = new THREE.BufferGeometry();
     nodeGeo.setAttribute("position", nodePositions);
 
     const nodeMat = new THREE.PointsMaterial({
-      color: 0x38bdf8, // Electric Ice Blue Nodes
-      size: 0.056,
+      color: 0x0ea5e9, // Electric Light Blue Nodes
+      size: 0.055,
       transparent: true,
-      opacity: 0.98,
+      opacity: 0.95,
       sizeAttenuation: true,
     });
     const nodePoints = new THREE.Points(nodeGeo, nodeMat);
     worldGroup.add(nodePoints);
 
-    // 4. Floating Cosmic Data Particles (Creamy White)
+    // 4. Floating Cosmic Data Particles (Light Blue)
     const PARTICLE_COUNT = 700;
     const pPositions = new Float32Array(PARTICLE_COUNT * 3);
 
@@ -90,10 +90,10 @@ export default function HeroCanvas() {
     particlesGeo.setAttribute("position", new THREE.BufferAttribute(pPositions, 3));
 
     const particlesMat = new THREE.PointsMaterial({
-      color: 0xfcf9f2, // Creamy White ambient dust
+      color: 0x0284c7, // Sky Blue ambient particles
       size: 0.024,
       transparent: true,
-      opacity: 0.6,
+      opacity: 0.45,
       sizeAttenuation: true,
     });
     const particles = new THREE.Points(particlesGeo, particlesMat);
@@ -148,10 +148,15 @@ export default function HeroCanvas() {
       outerMesh.rotation.z = -elapsed * 0.08;
       outerMesh.rotation.x = elapsed * 0.05;
 
-      // Subtle breathing pulse
+      // Subtle breathing pulse & iridescent chromatic resonance
       const pulse = 1 + Math.sin(elapsed * 1.5) * 0.04;
       sphereMesh.scale.setScalar(pulse);
       nodePoints.scale.setScalar(pulse);
+
+      // Antigravity chromatic light shift between cyan, sky blue, and ethereal violet
+      const hue = 0.55 + Math.sin(elapsed * 0.25) * 0.08;
+      nodeMat.color.setHSL(hue, 0.95, 0.58);
+      outerMat.color.setHSL((hue + 0.05) % 1, 0.9, 0.62);
 
       renderer.render(scene, camera);
     };

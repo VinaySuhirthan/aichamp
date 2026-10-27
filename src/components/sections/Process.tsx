@@ -51,9 +51,9 @@ export default function Process() {
           <p className="section-label" style={{ marginBottom: "16px" }}>Process</p>
           <h2
             id="process-heading"
-            className="font-heading text-[clamp(32px,5vw,56px)] text-[#f8f4ec] font-bold max-w-[520px] tracking-tight leading-tight"
+            className="font-heading text-[clamp(32px,5vw,56px)] text-[#0c192c] font-bold max-w-[520px] tracking-tight leading-tight"
           >
-            How We <span className="text-[#f3eedf] italic font-normal drop-shadow-[0_0_20px_rgba(243,238,223,0.3)]">Work</span>
+            How We <span className="text-[#0284c7] italic font-normal">Work</span>
           </h2>
         </div>
 
@@ -65,7 +65,7 @@ export default function Process() {
             <div
               key={step.number}
               className={`process-step relative p-6 md:p-10 ${
-                i < process.steps.length - 1 ? "border-b md:border-b-0 md:border-r border-[#15243e]" : ""
+                i < process.steps.length - 1 ? "border-b md:border-b-0 md:border-r border-[#e8dfd3]" : ""
               }`}
             >
               {/* Step number */}
@@ -75,13 +75,13 @@ export default function Process() {
 
               {/* Content */}
               <div className="relative">
-                <p className="text-[#38bdf8] text-[11px] tracking-[0.2em] uppercase font-sans font-bold" style={{ marginBottom: "12px" }}>
+                <p className="text-[#0284c7] text-[11px] tracking-[0.2em] uppercase font-sans font-bold" style={{ marginBottom: "12px" }}>
                   Step {step.number}
                 </p>
-                <h3 className="font-heading text-[22px] md:text-[24px] text-[#fcf9f2] font-bold tracking-tight" style={{ lineHeight: "1.3", marginBottom: "14px" }}>
+                <h3 className="font-heading text-[22px] md:text-[24px] text-[#0c192c] font-bold tracking-tight" style={{ lineHeight: "1.3", marginBottom: "14px" }}>
                   {step.title}
                 </h3>
-                <p className="text-[#a6bdd8] font-sans text-sm leading-relaxed">
+                <p className="text-[#475569] font-sans text-sm leading-relaxed">
                   {step.description}
                 </p>
               </div>
@@ -97,7 +97,7 @@ export default function Process() {
                     height="16"
                     viewBox="0 0 24 24"
                     fill="none"
-                    stroke="#38bdf8"
+                    stroke="#0284c7"
                     strokeWidth="1.8"
                   >
                     <path d="M5 12h14M12 5l7 7-7 7" />

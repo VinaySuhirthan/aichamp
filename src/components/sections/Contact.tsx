@@ -99,12 +99,12 @@ export default function Contact() {
     <section
       ref={sectionRef}
       id="contact"
-      className="py-20 md:py-48 bg-[var(--surface)] text-[var(--paper)] border-t border-[var(--border)] relative overflow-hidden"
+      className="py-20 md:py-48 bg-[var(--ink)] text-[var(--paper)] border-t border-[var(--border)] relative overflow-hidden"
       aria-labelledby="contact-heading"
     >
-      {/* Dual ambient glow: Ice Blue + Deep Midnight Sapphire */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#0ea5e9]/12 blur-[130px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[450px] h-[450px] bg-[#1e40af]/15 blur-[130px] rounded-full pointer-events-none" />
+      {/* Dual ambient glow: Ice Blue */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#0ea5e9]/10 blur-[130px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[450px] h-[450px] bg-[#38bdf8]/10 blur-[130px] rounded-full pointer-events-none" />
 
       <div className="container relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-20">
@@ -113,12 +113,12 @@ export default function Contact() {
             <p className="section-label contact-reveal" style={{ marginBottom: "16px" }}>Contact</p>
             <h2
               id="contact-heading"
-              className="font-heading text-[clamp(32px,4vw,52px)] text-[#fcf9f2] font-bold tracking-tight contact-reveal"
+              className="font-heading text-[clamp(32px,4vw,52px)] text-[#0c192c] font-bold tracking-tight contact-reveal"
               style={{ lineHeight: "1.3", letterSpacing: "-0.015em", marginBottom: "24px" }}
             >
               {contact.label}
             </h2>
-            <p className="text-[var(--muted-lt)] text-base contact-reveal" style={{ lineHeight: "2.15", marginBottom: "36px" }}>
+            <p className="text-[#475569] text-base contact-reveal" style={{ lineHeight: "2.15", marginBottom: "36px" }}>
               {contact.intro}
             </p>
 
@@ -167,7 +167,7 @@ export default function Contact() {
                   <circle cx="12" cy="12" r="10" />
                   <polyline points="9 12 11 14 15 10" />
                 </svg>
-                <h3 className="font-heading text-2xl text-[#f8f4ec] font-bold mb-3">
+                <h3 className="font-heading text-2xl text-[#0c192c] font-bold mb-3">
                   Message received.
                 </h3>
                 <p className="text-[var(--muted-lt)] text-sm leading-relaxed mb-6">
@@ -189,11 +189,11 @@ export default function Contact() {
                 onSubmit={handleSubmit}
                 noValidate
                 aria-label="Contact form"
-                className="grid grid-cols-1 md:grid-cols-2 gap-7 bg-[var(--surface-2)]/60 p-8 sm:p-10 rounded-2xl border border-[var(--border)]"
+                className="grid grid-cols-1 md:grid-cols-2 gap-7 bg-white p-8 sm:p-10 rounded-2xl border border-[var(--border)] shadow-md"
               >
                 {/* Name */}
                 <div className="form-field">
-                  <label htmlFor="contact-name" className="text-xs font-sans uppercase font-semibold tracking-wider text-[var(--muted-lt)] block" style={{ marginBottom: "10px" }}>
+                  <label htmlFor="contact-name" className="text-xs font-sans uppercase font-bold tracking-wider text-[#0c192c] block" style={{ marginBottom: "10px" }}>
                     Full Name <span className="text-[var(--accent)]">*</span>
                   </label>
                   <input
@@ -201,7 +201,7 @@ export default function Contact() {
                     type="text"
                     name="name"
                     autoComplete="name"
-                    className="w-full bg-[var(--surface-2)] border border-[var(--border)] text-[var(--paper)] rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-[var(--accent)] transition-colors placeholder:text-[var(--muted)]"
+                    className="w-full bg-[#faf7f0] border border-[var(--border)] text-[#0c192c] rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-[var(--accent)] focus:bg-white transition-colors placeholder:text-[var(--muted)]"
                     placeholder="Your name"
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -218,7 +218,7 @@ export default function Contact() {
 
                 {/* Email */}
                 <div className="form-field">
-                  <label htmlFor="contact-email" className="text-xs font-sans uppercase font-semibold tracking-wider text-[var(--muted-lt)] block" style={{ marginBottom: "10px" }}>
+                  <label htmlFor="contact-email" className="text-xs font-sans uppercase font-bold tracking-wider text-[#0c192c] block" style={{ marginBottom: "10px" }}>
                     Email Address <span className="text-[var(--accent)]">*</span>
                   </label>
                   <input
@@ -226,7 +226,7 @@ export default function Contact() {
                     type="email"
                     name="email"
                     autoComplete="email"
-                    className="w-full bg-[var(--surface-2)] border border-[var(--border)] text-[var(--paper)] rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-[var(--accent)] transition-colors placeholder:text-[var(--muted)]"
+                    className="w-full bg-[#faf7f0] border border-[var(--border)] text-[#0c192c] rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-[var(--accent)] focus:bg-white transition-colors placeholder:text-[var(--muted)]"
                     placeholder="you@example.com"
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
@@ -235,7 +235,7 @@ export default function Contact() {
                     aria-invalid={!!errors.email}
                   />
                   {errors.email && (
-                    <p id="email-error" className="text-xs text-red-400 mt-2" role="alert">
+                    <p id="email-error" className="text-xs text-red-500 mt-2" role="alert">
                       {errors.email}
                     </p>
                   )}
@@ -243,7 +243,7 @@ export default function Contact() {
 
                 {/* Contact Number / Phone */}
                 <div className="form-field">
-                  <label htmlFor="contact-phone" className="text-xs font-sans uppercase font-semibold tracking-wider text-[var(--muted-lt)] block" style={{ marginBottom: "10px" }}>
+                  <label htmlFor="contact-phone" className="text-xs font-sans uppercase font-bold tracking-wider text-[#0c192c] block" style={{ marginBottom: "10px" }}>
                     Contact Number / Phone
                   </label>
                   <input
@@ -251,7 +251,7 @@ export default function Contact() {
                     type="tel"
                     name="phone"
                     autoComplete="tel"
-                    className="w-full bg-[var(--surface-2)] border border-[var(--border)] text-[var(--paper)] rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-[var(--accent)] transition-colors placeholder:text-[var(--muted)]"
+                    className="w-full bg-[#faf7f0] border border-[var(--border)] text-[#0c192c] rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-[var(--accent)] focus:bg-white transition-colors placeholder:text-[var(--muted)]"
                     placeholder="+91 99949 65489"
                     value={form.phone}
                     onChange={(e) => setForm({ ...form, phone: e.target.value })}
@@ -259,7 +259,7 @@ export default function Contact() {
                     aria-invalid={!!errors.phone}
                   />
                   {errors.phone && (
-                    <p id="phone-error" className="text-xs text-red-400 mt-2" role="alert">
+                    <p id="phone-error" className="text-xs text-red-500 mt-2" role="alert">
                       {errors.phone}
                     </p>
                   )}
@@ -267,20 +267,20 @@ export default function Contact() {
 
                 {/* Service */}
                 <div className="form-field">
-                  <label htmlFor="contact-service" className="text-xs font-sans uppercase font-semibold tracking-wider text-[var(--muted-lt)] block" style={{ marginBottom: "10px" }}>
+                  <label htmlFor="contact-service" className="text-xs font-sans uppercase font-bold tracking-wider text-[#0c192c] block" style={{ marginBottom: "10px" }}>
                     Service of Interest
                   </label>
                   <select
                     id="contact-service"
                     name="service"
-                    className="w-full bg-[var(--surface-2)] border border-[var(--border)] text-[var(--paper)] rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-[var(--accent)] transition-colors cursor-pointer"
+                    className="w-full bg-[#faf7f0] border border-[var(--border)] text-[#0c192c] rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-[var(--accent)] focus:bg-white transition-colors cursor-pointer"
                     value={form.service}
                     onChange={(e) => setForm({ ...form, service: e.target.value })}
                     aria-label="Select a service"
                   >
-                    <option value="" className="bg-[var(--surface-2)] text-[var(--muted)]">Select a service (optional)</option>
+                    <option value="" className="bg-white text-[var(--muted)]">Select a service (optional)</option>
                     {contact.serviceOptions.map((opt) => (
-                      <option key={opt} value={opt} className="bg-[var(--surface-2)] text-[var(--paper)]">
+                      <option key={opt} value={opt} className="bg-white text-[#0c192c]">
                         {opt}
                       </option>
                     ))}
@@ -289,14 +289,14 @@ export default function Contact() {
 
                 {/* Message */}
                 <div className="form-field md:col-span-2">
-                  <label htmlFor="contact-message" className="text-xs font-sans uppercase font-semibold tracking-wider text-[var(--muted-lt)] block" style={{ marginBottom: "10px" }}>
+                  <label htmlFor="contact-message" className="text-xs font-sans uppercase font-bold tracking-wider text-[#0c192c] block" style={{ marginBottom: "10px" }}>
                     Message <span className="text-[var(--accent)]">*</span>
                   </label>
                   <textarea
                     id="contact-message"
                     name="message"
                     rows={4}
-                    className="w-full bg-[var(--surface-2)] border border-[var(--border)] text-[var(--paper)] rounded-xl p-4 text-sm focus:outline-none focus:border-[var(--accent)] transition-colors placeholder:text-[var(--muted)] resize-y min-h-[130px]"
+                    className="w-full bg-[#faf7f0] border border-[var(--border)] text-[#0c192c] rounded-xl p-4 text-sm focus:outline-none focus:border-[var(--accent)] focus:bg-white transition-colors placeholder:text-[var(--muted)] resize-y min-h-[130px]"
                     placeholder="Describe your project, objectives, or required deliverables..."
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}

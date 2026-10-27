@@ -169,14 +169,14 @@ export default function AIChatbot() {
         {!isOpen && (
           <button
             onClick={() => setIsOpen(true)}
-            className="group relative flex items-center gap-3.5 px-5 py-3.5 rounded-full bg-white text-[#060c18] border border-neutral-200/90 shadow-[0_12px_36px_rgba(0,0,0,0.4),0_2px_10px_rgba(0,0,0,0.15)] hover:shadow-[0_16px_44px_rgba(255,255,255,0.3)] hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
+            className="rgb-border-pill rgb-soft-glow group relative flex items-center gap-3.5 px-5 py-3.5 rounded-full bg-white text-[#0c192c] border border-[#bae6fd] shadow-[0_12px_36px_rgba(2,132,199,0.22),0_2px_10px_rgba(0,0,0,0.06)] hover:shadow-[0_16px_44px_rgba(2,132,199,0.35)] hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
             aria-label="Open AI Assistant Chat"
           >
-            {/* Subtle soft white aura ring on hover */}
-            <span className="absolute -inset-0.5 rounded-full bg-white/40 blur-sm group-hover:opacity-100 opacity-0 transition duration-300 pointer-events-none" />
+            {/* Subtle soft sky blue aura ring on hover */}
+            <span className="absolute -inset-0.5 rounded-full bg-[#38bdf8]/25 blur-sm group-hover:opacity-100 opacity-0 transition duration-300 pointer-events-none" />
 
-            {/* AI Avatar Icon with 4-point Sparkle */}
-            <div className="relative flex items-center justify-center w-8 h-8 rounded-full bg-[#060c18] text-white shadow-sm">
+            {/* AI Avatar Icon with 4-point Sparkle & Chromatic Gradient */}
+            <div className="relative flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-tr from-[#0284c7] via-[#6366f1] to-[#38bdf8] text-white shadow-sm">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M12 0C12 6.627 6.627 12 0 12c6.627 0 12 5.373 12 12 0-6.627 5.373-12 12-12-6.627 0-12-5.373-12-12z" />
               </svg>
@@ -187,14 +187,14 @@ export default function AIChatbot() {
             {/* Label */}
             <div className="flex flex-col text-left">
               <div className="flex items-center gap-1.5">
-                <span className="font-heading font-extrabold text-sm tracking-tight text-[#060c18]">
+                <span className="font-heading font-extrabold text-sm tracking-tight text-[#0c192c]">
                   Ask AI
                 </span>
-                <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-neutral-100 text-neutral-600 font-sans font-semibold border border-neutral-200">
+                <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-[#e0f2fe] text-[#0284c7] font-sans font-semibold border border-[#bae6fd]">
                   Online
                 </span>
               </div>
-              <span className="text-[11px] text-neutral-500 font-sans font-medium">Instant Assistant</span>
+              <span className="text-[11px] text-[#64748b] font-sans font-medium">Instant Assistant</span>
             </div>
 
             {/* Right arrow */}
@@ -207,7 +207,7 @@ export default function AIChatbot() {
               strokeWidth="2.5"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="text-neutral-400 group-hover:text-[#060c18] group-hover:translate-x-0.5 transition-all ml-0.5"
+              className="text-[#64748b] group-hover:text-[#0284c7] group-hover:translate-x-0.5 transition-all ml-0.5"
               aria-hidden="true"
             >
               <polyline points="9 18 15 12 9 6" />
@@ -215,37 +215,37 @@ export default function AIChatbot() {
 
             {/* Unread dot */}
             {hasUnread && (
-              <span className="w-2.5 h-2.5 bg-[#0ea5e9] rounded-full animate-ping" />
+              <span className="w-2.5 h-2.5 bg-[#0284c7] rounded-full animate-ping" />
             )}
           </button>
         )}
       </div>
 
-      {/* Chat Window Dialog */}
+      {/* Chat Window Dialog - Luxury Creamy White & Sky Blue */}
       {isOpen && (
         <aside
           aria-label="AI Assistant Chat"
-          className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-[calc(100vw-32px)] sm:w-[420px] h-[580px] max-h-[85vh] flex flex-col rounded-2xl bg-[#081020]/95 backdrop-blur-2xl border border-[#0ea5e9]/40 shadow-[0_25px_70px_rgba(0,0,0,0.85),0_0_30px_rgba(14,165,233,0.25)] overflow-hidden animate-in fade-in zoom-in-95 duration-200"
+          className="rgb-hairline fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-[calc(100vw-32px)] sm:w-[420px] h-[580px] max-h-[85vh] flex flex-col rounded-2xl bg-white backdrop-blur-2xl border border-[#bae6fd] shadow-[0_25px_70px_rgba(2,132,199,0.25),0_0_30px_rgba(14,165,233,0.15)] overflow-hidden animate-in fade-in zoom-in-95 duration-200"
         >
           {/* Header */}
-          <div className="relative flex items-center justify-between px-5 py-3.5 bg-gradient-to-r from-[#0a1528] via-[#0f1d38] to-[#081020] border-b border-[#1b2a47]">
+          <div className="relative flex items-center justify-between px-5 py-3.5 bg-gradient-to-r from-[#0284c7] via-[#0ea5e9] to-[#6366f1] text-white border-b border-[#0284c7] shadow-sm">
             <div className="flex items-center gap-3">
-              <div className="relative w-9 h-9 rounded-full bg-[#060c18] border border-white/20 flex items-center justify-center text-white shadow-md">
+              <div className="relative w-9 h-9 rounded-full bg-white/20 border border-white/30 flex items-center justify-center text-white shadow-md">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M12 0C12 6.627 6.627 12 0 12c6.627 0 12 5.373 12 12 0-6.627 5.373-12 12-12-6.627 0-12-5.373-12-12z" />
                 </svg>
-                <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-[#10b981] rounded-full border-2 border-[#060c18]" />
+                <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-[#10b981] rounded-full border-2 border-white" />
               </div>
               <div>
                 <div className="flex items-center gap-1.5">
-                  <h3 className="font-heading font-bold text-sm text-[#fcf9f2] tracking-tight">
+                  <h3 className="font-heading font-bold text-sm text-white tracking-tight">
                     AI Biz Champion
                   </h3>
-                  <span className="text-[9px] px-2 py-0.5 rounded-full bg-[#0ea5e9]/25 text-[#fcf9f2] font-sans font-semibold border border-[#0ea5e9]/40">
+                  <span className="text-[9px] px-2 py-0.5 rounded-full bg-white/25 text-white font-sans font-semibold border border-white/30">
                     AI Specialist
                   </span>
                 </div>
-                <p className="text-[11px] text-[#a6bdd8] font-sans">
+                <p className="text-[11px] text-[#e0f2fe] font-sans">
                   Advisory guided by Dr. G. Nalinipriya
                 </p>
               </div>
@@ -255,7 +255,7 @@ export default function AIChatbot() {
             <div className="flex items-center gap-1">
               <button
                 onClick={clearChat}
-                className="p-1.5 rounded-lg text-[#a6bdd8] hover:text-[#fcf9f2] hover:bg-white/5 transition-colors"
+                className="p-1.5 rounded-lg text-white/80 hover:text-white hover:bg-white/15 transition-colors cursor-pointer"
                 title="Clear Chat History"
                 aria-label="Clear chat"
               >
@@ -265,7 +265,7 @@ export default function AIChatbot() {
               </button>
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-1.5 rounded-lg text-[#a6bdd8] hover:text-[#fcf9f2] hover:bg-white/5 transition-colors"
+                className="p-1.5 rounded-lg text-white/80 hover:text-white hover:bg-white/15 transition-colors cursor-pointer"
                 title="Minimize Chat"
                 aria-label="Close chat"
               >
@@ -277,14 +277,14 @@ export default function AIChatbot() {
           </div>
 
           {/* Messages Body */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-3.5 scrollbar-thin scrollbar-thumb-[#15243e]">
+          <div className="flex-1 overflow-y-auto p-4 space-y-3.5 bg-[#faf7f0] scrollbar-thin scrollbar-thumb-[#bae6fd]">
             {messages.map((msg) => (
               <div
                 key={msg.id}
                 className={`flex gap-2.5 ${msg.role === "user" ? "justify-end" : "justify-start"}`}
               >
                 {msg.role === "assistant" && (
-                  <div className="w-7 h-7 rounded-full bg-[#060c18] border border-white/20 flex items-center justify-center shrink-0 mt-0.5 text-white">
+                  <div className="w-7 h-7 rounded-full bg-[#0284c7] text-white flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                       <path d="M12 0C12 6.627 6.627 12 0 12c6.627 0 12 5.373 12 12 0-6.627 5.373-12 12-12-6.627 0-12-5.373-12-12z" />
                     </svg>
@@ -293,14 +293,14 @@ export default function AIChatbot() {
                 <div
                   className={`max-w-[84%] rounded-2xl px-3.5 py-2.5 text-xs sm:text-[13px] leading-relaxed shadow-sm ${
                     msg.role === "user"
-                      ? "bg-gradient-to-r from-[#0284c7] to-[#0ea5e9] text-white rounded-tr-xs font-sans font-medium"
-                      : "bg-[#0d182e] text-[#fcf9f2] border border-[#1b2a47] rounded-tl-xs font-sans"
+                      ? "bg-gradient-to-r from-[#0284c7] to-[#0ea5e9] text-white rounded-tr-xs font-sans font-medium shadow-md shadow-[#0284c7]/20"
+                      : "bg-white text-[#0c192c] border border-[#e8dfd3] rounded-tl-xs font-sans shadow-sm"
                   }`}
                 >
                   {renderFormattedMessage(msg.content)}
                   <div
                     className={`mt-1 text-[10px] text-right ${
-                      msg.role === "user" ? "text-white/70" : "text-[#788ea8]"
+                      msg.role === "user" ? "text-white/80" : "text-[#64748b]"
                     }`}
                   >
                     {msg.timestamp}
@@ -312,15 +312,15 @@ export default function AIChatbot() {
             {/* Loading Indicator */}
             {isLoading && (
               <div className="flex gap-2.5 justify-start">
-                <div className="w-7 h-7 rounded-full bg-[#060c18] border border-white/20 flex items-center justify-center shrink-0 text-white">
+                <div className="w-7 h-7 rounded-full bg-[#0284c7] text-white flex items-center justify-center shrink-0 shadow-sm">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path d="M12 0C12 6.627 6.627 12 0 12c6.627 0 12 5.373 12 12 0-6.627 5.373-12 12-12-6.627 0-12-5.373-12-12z" />
                   </svg>
                 </div>
-                <div className="bg-[#0d182e] border border-[#1b2a47] rounded-2xl rounded-tl-xs px-4 py-3 flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-[#0ea5e9] animate-bounce" style={{ animationDelay: "0ms" }} />
-                  <span className="w-2 h-2 rounded-full bg-[#0ea5e9] animate-bounce" style={{ animationDelay: "150ms" }} />
-                  <span className="w-2 h-2 rounded-full bg-[#0ea5e9] animate-bounce" style={{ animationDelay: "300ms" }} />
+                <div className="bg-white border border-[#e8dfd3] rounded-2xl rounded-tl-xs px-4 py-3 flex items-center gap-1.5 shadow-sm">
+                  <span className="w-2 h-2 rounded-full bg-[#0284c7] animate-bounce" style={{ animationDelay: "0ms" }} />
+                  <span className="w-2 h-2 rounded-full bg-[#0284c7] animate-bounce" style={{ animationDelay: "150ms" }} />
+                  <span className="w-2 h-2 rounded-full bg-[#0284c7] animate-bounce" style={{ animationDelay: "300ms" }} />
                 </div>
               </div>
             )}
@@ -330,12 +330,12 @@ export default function AIChatbot() {
 
           {/* Quick Prompts (only shown if few messages) */}
           {messages.length <= 2 && !isLoading && (
-            <div className="px-3 py-2 bg-[#091224]/90 border-t border-[#1b2a47] flex gap-1.5 overflow-x-auto scrollbar-none">
+            <div className="px-3 py-2 bg-[#f4efe6] border-t border-[#e8dfd3] flex gap-1.5 overflow-x-auto scrollbar-none">
               {STARTER_PROMPTS.map((prompt, i) => (
                 <button
                   key={i}
                   onClick={() => handleSend(prompt)}
-                  className="whitespace-nowrap px-2.5 py-1 rounded-full bg-[#0f1d38] hover:bg-[#1b2a47] text-[#a6bdd8] hover:text-[#fcf9f2] text-[11px] font-sans border border-[#1b2a47] transition-colors cursor-pointer"
+                  className="whitespace-nowrap px-2.5 py-1 rounded-full bg-white hover:bg-[#e0f2fe] text-[#0284c7] hover:text-[#0369a1] text-[11px] font-sans font-medium border border-[#e8dfd3] transition-colors cursor-pointer shadow-xs"
                 >
                   {prompt}
                 </button>
@@ -344,7 +344,7 @@ export default function AIChatbot() {
           )}
 
           {/* Footer Input */}
-          <div className="p-3 bg-[#081020] border-t border-[#1b2a47]">
+          <div className="p-3 bg-white border-t border-[#e8dfd3]">
             <div className="relative flex items-center gap-2">
               <input
                 ref={inputRef}
@@ -354,7 +354,7 @@ export default function AIChatbot() {
                 onKeyDown={handleKeyDown}
                 placeholder="Ask about AI services, tools, pricing..."
                 disabled={isLoading}
-                className="flex-1 bg-[#050a14] text-[#fcf9f2] placeholder-[#788ea8] text-xs sm:text-sm px-3.5 py-2.5 rounded-xl border border-[#1b2a47] focus:outline-none focus:border-[#0ea5e9] focus:ring-1 focus:ring-[#0ea5e9] transition-all"
+                className="flex-1 bg-[#faf7f0] text-[#0c192c] placeholder-[#64748b] text-xs sm:text-sm px-3.5 py-2.5 rounded-xl border border-[#e8dfd3] focus:outline-none focus:border-[#0284c7] focus:bg-white focus:ring-1 focus:ring-[#0284c7] transition-all"
               />
               <button
                 onClick={() => handleSend()}
@@ -369,7 +369,7 @@ export default function AIChatbot() {
             </div>
 
             {/* Direct WhatsApp Callout */}
-            <div className="flex items-center justify-between mt-2 pt-2 border-t border-[#15243e] text-[10px] text-[#788ea8]">
+            <div className="flex items-center justify-between mt-2 pt-2 border-t border-[#e8dfd3] text-[10px] text-[#64748b]">
               <span>Prefer WhatsApp?</span>
               <a
                 href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hello Dr. Nalinipriya & AI Biz Champion, I want to inquire about your AI services.")}`}

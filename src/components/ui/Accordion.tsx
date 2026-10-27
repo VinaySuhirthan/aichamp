@@ -41,7 +41,7 @@ export default function Accordion({ items, variant = "dark" }: AccordionProps) {
               aria-expanded={isOpen}
               aria-controls={panelId}
               onClick={() => toggle(i)}
-              style={{ color: isDark ? "var(--paper)" : "var(--ink)", cursor: "inherit" }}
+              style={{ color: "var(--paper)", cursor: "inherit" }}
             >
               <span className="pr-4">{item.q}</span>
               <svg

@@ -94,12 +94,12 @@ export default function About() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent transition-opacity duration-300" />
                 {/* Floating identity badge */}
-                <div className="absolute bottom-3 left-3 right-3 bg-[var(--ink)]/90 backdrop-blur-md px-3 py-2.5 rounded-xl border border-white/10 flex items-center justify-between shadow-lg">
+                <div className="absolute bottom-3 left-3 right-3 bg-white/95 backdrop-blur-md px-3 py-2.5 rounded-xl border border-[#e8dfd3] flex items-center justify-between shadow-lg">
                   <div>
-                    <p className="text-[12px] font-medium text-[var(--paper)] leading-tight">Dr. G. Nalinipriya</p>
-                    <p className="text-[9px] text-[#fcf9f2] tracking-wider uppercase font-mono font-semibold">Founder & AI Specialist</p>
+                    <p className="text-[12px] font-bold text-[#0c192c] leading-tight">Dr. G. Nalinipriya</p>
+                    <p className="text-[9px] text-[#0284c7] tracking-wider uppercase font-mono font-semibold">Founder & AI Specialist</p>
                   </div>
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#38bdf8] animate-pulse" title="Active Practice" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#0284c7] animate-pulse" title="Active Practice" />
                 </div>
               </div>
             </div>
@@ -107,11 +107,11 @@ export default function About() {
             {/* Credentials */}
             <ul className="w-full max-w-[270px] list-none" style={{ marginTop: "36px" }} aria-label="Credentials">
               {about.credentials.map((cred) => (
-                <li key={cred.label} className="border-t border-[var(--border)]" style={{ paddingTop: "16px", marginBottom: "16px" }}>
-                  <p className="text-[10px] tracking-[0.16em] uppercase text-[#f3eedf] font-mono font-semibold" style={{ marginBottom: "6px" }}>
+                <li key={cred.label} className="border-t border-[#e8dfd3]" style={{ paddingTop: "16px", marginBottom: "16px" }}>
+                  <p className="text-[10px] tracking-[0.16em] uppercase text-[#0284c7] font-mono font-semibold" style={{ marginBottom: "6px" }}>
                     {cred.label}
                   </p>
-                  <p className="text-[var(--paper)] text-sm font-medium leading-snug">{cred.value}</p>
+                  <p className="text-[#0c192c] text-sm font-semibold leading-snug">{cred.value}</p>
                 </li>
               ))}
             </ul>
@@ -122,12 +122,12 @@ export default function About() {
             <p className="section-label about-reveal" style={{ marginBottom: "18px" }}>About The Founder</p>
             <h2
               id="about-heading"
-              className="font-serif text-[clamp(32px,4.5vw,56px)] text-[var(--paper)] font-medium about-reveal"
+              className="font-serif text-[clamp(32px,4.5vw,56px)] text-[#0c192c] font-medium about-reveal"
               style={{ lineHeight: "1.35", letterSpacing: "-0.015em", marginBottom: "16px" }}
             >
               {about.name}
             </h2>
-            <p className="text-[#f3eedf] text-sm tracking-[0.1em] uppercase leading-normal about-reveal font-mono font-semibold" style={{ marginBottom: "36px" }}>
+            <p className="text-[#0284c7] text-sm tracking-[0.1em] uppercase leading-normal about-reveal font-mono font-semibold" style={{ marginBottom: "36px" }}>
               {about.title}
             </p>
 
@@ -135,7 +135,7 @@ export default function About() {
               {about.bio.map((para, i) => (
                 <p
                   key={i}
-                  className="text-[var(--muted-lt)] text-[15px] sm:text-[16px] about-reveal"
+                  className="text-[#475569] text-[15px] sm:text-[16px] about-reveal"
                   style={{ lineHeight: "2.15", marginBottom: "26px" }}
                 >
                   {para}
@@ -159,17 +159,17 @@ export default function About() {
         </div>
 
         {/* Global Impact Photo Showcase: All 18 Photos in Compact Perfect Size */}
-        <div className="border-t border-[var(--border)] mt-16 md:mt-24 pt-10 md:pt-16">
+        <div className="border-t border-[#e8dfd3] mt-16 md:mt-24 pt-10 md:pt-16">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-6 mb-8 md:mb-10">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#38bdf8]/30 bg-[#0c1a33]/70 text-[#fcf9f2] text-[10px] font-mono tracking-widest uppercase mb-3">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#0ea5e9]/40 bg-white text-[#0c192c] text-[10px] font-mono tracking-widest uppercase mb-3 shadow-sm">
                 <span>Archive & Milestones</span>
               </div>
-              <h3 className="font-serif text-2xl md:text-3xl text-[var(--paper)] font-medium tracking-tight">
+              <h3 className="font-serif text-2xl md:text-3xl text-[#0c192c] font-medium tracking-tight">
                 Global Keynotes, Research & Academic Honors
               </h3>
             </div>
-            <p className="text-[var(--muted-lt)] text-xs md:text-sm max-w-md font-mono">
+            <p className="text-[#475569] text-xs md:text-sm max-w-md font-mono">
               Capturing international keynotes, doctoral mentoring summits, and honors across 18 archival moments. Click any photo to expand.
             </p>
           </div>
@@ -182,7 +182,7 @@ export default function About() {
               <div
                 key={item.id}
                 onClick={() => setSelectedPhoto(item.id)}
-                className="photo-card group hover-shimmer relative h-[95px] sm:h-[120px] md:h-[145px] rounded-lg md:rounded-xl overflow-hidden border border-[var(--border)] bg-[var(--surface-2)] cursor-pointer transition-all duration-300 hover:border-[#38bdf8] hover:shadow-[0_8px_24px_rgba(56,189,248,0.25)] hover:-translate-y-1"
+                className="photo-card group hover-shimmer relative h-[95px] sm:h-[120px] md:h-[145px] rounded-lg md:rounded-xl overflow-hidden border border-[#e8dfd3] bg-white cursor-pointer transition-all duration-300 hover:border-[#0284c7] hover:shadow-[0_8px_24px_rgba(2,132,199,0.18)] hover:-translate-y-1 shadow-sm"
                 role="button"
                 tabIndex={0}
                 aria-label={`View photo ${item.id}: ${item.alt}`}
@@ -201,18 +201,18 @@ export default function About() {
                   unoptimized
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-40 group-hover:opacity-20 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0c192c]/75 via-transparent to-transparent opacity-40 group-hover:opacity-20 transition-opacity duration-300" />
                 
                 {/* Index Pill */}
                 <div className="absolute top-2 left-2 z-10">
-                  <span className="font-mono text-[9px] font-semibold text-[var(--paper)] bg-black/60 backdrop-blur-md px-1.5 py-0.5 rounded border border-white/10 group-hover:border-[#38bdf8]/60 group-hover:text-[#fcf9f2] transition-colors">
+                  <span className="font-mono text-[9px] font-semibold text-white bg-[#0c192c]/70 backdrop-blur-md px-1.5 py-0.5 rounded border border-white/10 group-hover:border-[#38bdf8]/60 transition-colors">
                     #{item.id < 10 ? `0${item.id}` : item.id}
                   </span>
                 </div>
 
                 {/* Hover indicator */}
                 <div className="absolute bottom-2 right-2 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <span className="w-5 h-5 rounded-full bg-[#0ea5e9] text-[#fcf9f2] flex items-center justify-center text-[10px] font-bold shadow-md shadow-[#0ea5e9]/40">
+                  <span className="w-5 h-5 rounded-full bg-[#0284c7] text-white flex items-center justify-center text-[10px] font-bold shadow-md shadow-[#0284c7]/40">
                     ↗
                   </span>
                 </div>
@@ -231,36 +231,36 @@ export default function About() {
           className="fixed inset-0 z-[200] flex items-center justify-center p-4 md:p-8"
           onClick={() => setSelectedPhoto(null)}
         >
-          <div className="absolute inset-0 bg-black/90 backdrop-blur-md" aria-hidden="true" />
+          <div className="absolute inset-0 bg-[#0c192c]/65 backdrop-blur-md" aria-hidden="true" />
           
           <div
-            className="relative bg-[var(--surface-2)] border border-[var(--border)] rounded-2xl max-w-3xl w-full p-4 sm:p-6 shadow-2xl overflow-hidden z-10"
+            className="relative bg-white border border-[#e8dfd3] rounded-2xl max-w-3xl w-full p-4 sm:p-6 shadow-2xl overflow-hidden z-10"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header controls */}
-            <div className="flex items-center justify-between pb-4 border-b border-[var(--border)] mb-4">
-              <span className="text-xs font-mono text-[#fcf9f2] font-semibold tracking-wider uppercase">
+            <div className="flex items-center justify-between pb-4 border-b border-[#e8dfd3] mb-4">
+              <span className="text-xs font-mono text-[#0c192c] font-semibold tracking-wider uppercase">
                 Photo #{selectedPhoto < 10 ? `0${selectedPhoto}` : selectedPhoto} of {about.gallery.length}
               </span>
               
               <div className="flex items-center gap-2">
                 <button
                   onClick={handlePrev}
-                  className="px-3 py-1.5 rounded-lg border border-[var(--border)] hover:border-[#38bdf8] text-xs text-[var(--paper)] hover:text-[#fcf9f2] cursor-pointer transition-colors"
+                  className="px-3 py-1.5 rounded-lg border border-[#e8dfd3] hover:border-[#0284c7] text-xs text-[#0c192c] hover:text-[#0284c7] cursor-pointer transition-colors bg-[#f4efe6]"
                   aria-label="Previous photo"
                 >
                   ← Prev
                 </button>
                 <button
                   onClick={handleNext}
-                  className="px-3 py-1.5 rounded-lg border border-[var(--border)] hover:border-[#38bdf8] text-xs text-[var(--paper)] hover:text-[#fcf9f2] cursor-pointer transition-colors"
+                  className="px-3 py-1.5 rounded-lg border border-[#e8dfd3] hover:border-[#0284c7] text-xs text-[#0c192c] hover:text-[#0284c7] cursor-pointer transition-colors bg-[#f4efe6]"
                   aria-label="Next photo"
                 >
                   Next →
                 </button>
                 <button
                   onClick={() => setSelectedPhoto(null)}
-                  className="p-1.5 rounded-lg border border-[var(--border)] hover:border-[#38bdf8] text-[var(--muted-lt)] hover:text-[#fcf9f2] cursor-pointer transition-colors ml-2"
+                  className="p-1.5 rounded-lg border border-[#e8dfd3] hover:border-[#0284c7] text-[#64748b] hover:text-[#0c192c] cursor-pointer transition-colors ml-2 bg-[#f4efe6]"
                   aria-label="Close photo preview"
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -272,7 +272,7 @@ export default function About() {
             </div>
 
             {/* Main photo */}
-            <div className="relative w-full h-[320px] sm:h-[450px] rounded-xl overflow-hidden bg-black/50 border border-[var(--border)]">
+            <div className="relative w-full h-[320px] sm:h-[450px] rounded-xl overflow-hidden bg-[#f4efe6] border border-[#e8dfd3]">
               <Image
                 src={activePhotoObj.src}
                 alt={activePhotoObj.alt}

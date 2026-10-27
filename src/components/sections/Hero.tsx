@@ -57,18 +57,19 @@ export default function Hero() {
     <section
       ref={sectionRef}
       id="hero"
-      className="hero relative min-h-[90dvh] sm:min-h-screen flex flex-col justify-center items-center text-center overflow-hidden pt-20 sm:pt-24 pb-10 px-4"
+      className="hero relative min-h-[90dvh] sm:min-h-screen flex flex-col justify-center items-center text-center overflow-hidden pt-20 sm:pt-24 pb-10 px-4 bg-[#faf7f0]"
       aria-label="Hero section"
     >
       {/* 3D WebGL Background Canvas */}
       <HeroCanvas />
 
-      {/* Ambient background glows */}
+      {/* Antigravity Minimal RGB Prismatic Aura */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] rounded-full pointer-events-none z-0"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] sm:w-[700px] sm:h-[700px] rounded-full pointer-events-none z-0"
         style={{
-          background: "radial-gradient(circle, rgba(56, 189, 248, 0.22) 0%, rgba(14, 165, 233, 0.06) 45%, transparent 70%)",
-          filter: "blur(60px)",
+          background: "conic-gradient(from var(--rgb-angle, 0deg), rgba(56, 189, 248, 0.22) 0%, rgba(129, 140, 248, 0.18) 25%, rgba(192, 132, 252, 0.15) 50%, rgba(244, 114, 182, 0.18) 75%, rgba(56, 189, 248, 0.22) 100%)",
+          filter: "blur(90px)",
+          animation: "rgb-rotate 14s linear infinite",
         }}
       />
       
@@ -76,19 +77,19 @@ export default function Hero() {
       <div
         className="absolute bottom-0 inset-x-0 h-28 pointer-events-none z-0"
         style={{
-          background: "linear-gradient(to top, #060c18 0%, rgba(6,12,24,0.5) 60%, transparent 100%)",
+          background: "linear-gradient(to top, #faf7f0 0%, rgba(250,247,240,0.6) 60%, transparent 100%)",
         }}
       />
 
       {/* Hero Content Container */}
       <div className="relative z-10 max-w-[1000px] mx-auto flex flex-col items-center">
-        {/* Top Floating Category Badge (Creamy White on Deep Sapphire with Light Blue Live Pulse) */}
+        {/* Top Floating Category Badge with Antigravity RGB Halo */}
         <div
           ref={badgeRef}
-          className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-[#38bdf8]/35 bg-[#0c1a33]/60 backdrop-blur-md mb-3 sm:mb-4 shadow-[0_4px_20px_rgba(14,165,233,0.25)]"
+          className="rgb-border-pill rgb-soft-glow inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/95 backdrop-blur-md mb-3 sm:mb-4 shadow-[0_4px_16px_rgba(2,132,199,0.12)] cursor-default select-none"
         >
-          <span className="w-2 h-2 rounded-full bg-[#38bdf8] shadow-[0_0_10px_#38bdf8] animate-pulse" />
-          <span className="text-xs font-bold tracking-wider uppercase text-[#fcf9f2]">
+          <span className="w-2 h-2 rounded-full bg-gradient-to-r from-[#38bdf8] via-[#818cf8] to-[#c084fc] shadow-[0_0_12px_#38bdf8] animate-pulse" />
+          <span className="text-xs font-bold tracking-wider uppercase text-[#0c192c]">
             AI Biz Champion
           </span>
         </div>
@@ -96,25 +97,24 @@ export default function Hero() {
         {/* Master Headline: 3 Clean Lines */}
         <h1
           ref={headlineRef}
-          className="font-sans font-black tracking-[-0.025em] uppercase leading-[0.98] text-[#fcf9f2] flex flex-col items-center select-none"
+          className="font-sans font-black tracking-[-0.025em] uppercase leading-[0.98] text-[#0c192c] flex flex-col items-center select-none"
         >
-          <span className="block text-3xl sm:text-5xl md:text-6xl font-extrabold text-[#fcf9f2] drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
+          <span className="block text-3xl sm:text-5xl md:text-6xl font-extrabold text-[#0c192c]">
             Empowering The
           </span>
           
-          {/* Signature Outlined Stroke Keyword */}
+          {/* Signature Outlined Stroke Keyword with Antigravity Chromatic Glow */}
           <span
-            className="block text-4xl sm:text-6xl md:text-7xl lg:text-[84px] font-black tracking-tight my-0.5 sm:my-1"
+            className="rgb-chromatic-glow block text-4xl sm:text-6xl md:text-7xl lg:text-[84px] font-black tracking-tight my-0.5 sm:my-1"
             style={{
-              WebkitTextStroke: "2px rgba(252, 249, 242, 0.95)",
+              WebkitTextStroke: "2.5px #0284c7",
               color: "transparent",
-              textShadow: "0 0 35px rgba(56, 189, 248, 0.65)",
             }}
           >
             NEXT-GEN
           </span>
 
-          <span className="block text-3xl sm:text-5xl md:text-6xl font-extrabold text-[#fcf9f2] drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
+          <span className="block text-3xl sm:text-5xl md:text-6xl font-extrabold text-[#0c192c]">
             AI Revolution
           </span>
         </h1>
@@ -122,17 +122,17 @@ export default function Hero() {
         {/* Subtitle */}
         <p
           ref={subRef}
-          className="text-xs sm:text-sm md:text-base text-[#a6bdd8] font-normal max-w-lg mt-3 sm:mt-4 mb-5 sm:mb-6 leading-relaxed drop-shadow"
+          className="text-xs sm:text-sm md:text-base text-[#475569] font-medium max-w-lg mt-3 sm:mt-4 mb-5 sm:mb-6 leading-relaxed"
         >
           Pioneers in high-impact AI agents, video, and automated growth systems — led by{" "}
-          <span className="text-[#fcf9f2] font-semibold drop-shadow-[0_0_12px_rgba(252,249,242,0.35)] underline decoration-[#38bdf8]/60 underline-offset-4">Dr. G. Nalinipriya</span>, Professor & AI Specialist.
+          <span className="text-[#0c192c] font-bold underline decoration-[#0ea5e9]/70 underline-offset-4">Dr. G. Nalinipriya</span>, Professor & AI Specialist.
         </p>
 
         {/* Action CTAs: Dual-Tone Actions */}
         <div ref={ctasRef} className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
           <a
             href={hero.cta1.href || "#services"}
-            className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-gradient-to-r from-[#0284c7] via-[#0ea5e9] to-[#0284c7] text-[#fcf9f2] font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(56,189,248,0.7)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#38bdf8]"
+            className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-gradient-to-r from-[#0284c7] via-[#0ea5e9] to-[#0284c7] text-white font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_rgba(2,132,199,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0ea5e9]"
             aria-label="Explore our services"
           >
             <span>{hero.cta1.label || "View Services"}</span>
@@ -140,7 +140,7 @@ export default function Hero() {
           </a>
           <a
             href={hero.cta2.href || "#contact"}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[#fcf9f2]/40 bg-white/[0.04] backdrop-blur-md text-[#fcf9f2] font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 hover:bg-[#0c1a33]/60 hover:border-[#38bdf8] hover:text-[#38bdf8] hover:scale-105 hover:shadow-[0_0_25px_rgba(56,189,248,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#38bdf8]"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[#0284c7]/40 bg-white/95 backdrop-blur-md text-[#0284c7] font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 hover:bg-[#e0f2fe] hover:border-[#0284c7] hover:scale-105 hover:shadow-[0_4px_16px_rgba(2,132,199,0.18)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0ea5e9]"
             aria-label="Book a consultation"
           >
             <span>{hero.cta2.label || "Book Consultation"}</span>

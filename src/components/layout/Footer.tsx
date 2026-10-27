@@ -4,13 +4,13 @@ import { site, nav, footer } from "@/content/content";
 
 export default function Footer() {
   return (
-    <footer className="bg-[var(--surface)] border-t border-[var(--border)] py-16 md:py-20" role="contentinfo">
+    <footer className="bg-[var(--surface-2)] border-t border-[var(--border)] py-16 md:py-20" role="contentinfo">
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <div className="relative w-10 h-10 rounded-full overflow-hidden border border-[#fcf9f2]/40 bg-[#0a1222] p-0.5 shadow-sm flex-shrink-0">
+              <div className="relative w-10 h-10 rounded-full overflow-hidden border border-[#0ea5e9]/30 bg-white p-0.5 shadow-sm flex-shrink-0">
                 <Image
                   src="/logo.png"
                   alt="AI Biz Champion Brand Mark"
@@ -19,11 +19,11 @@ export default function Footer() {
                   className="object-contain w-full h-full rounded-full"
                 />
               </div>
-              <p className="font-serif text-2xl text-[var(--paper)] tracking-[-0.02em] font-medium">
+              <p className="font-serif text-2xl text-[#0c192c] tracking-[-0.02em] font-bold">
                 AI Biz Champion
               </p>
             </div>
-            <p className="text-[var(--muted-lt)] text-sm leading-relaxed max-w-xs">
+            <p className="text-[#475569] text-sm leading-relaxed max-w-xs">
               Because Quality Matters. Expert AI-powered services led by Dr. G. Nalinipriya, Professor and AI Specialist.
             </p>
           </div>
@@ -37,7 +37,7 @@ export default function Footer() {
                   <li key={item.href}>
                     <a
                       href={item.href}
-                      className="text-[var(--muted-lt)] text-sm hover:text-[#fcf9f2] transition-colors no-underline focus-visible:outline-[#38bdf8]"
+                      className="text-[#475569] text-sm hover:text-[#0284c7] transition-colors no-underline focus-visible:outline-[#0ea5e9]"
                     >
                       {item.label}
                     </a>
@@ -54,7 +54,7 @@ export default function Footer() {
               <li>
                 <a
                   href={`mailto:${site.email}`}
-                  className="text-[var(--muted-lt)] text-sm hover:text-[#fcf9f2] transition-colors no-underline break-all focus-visible:outline-[#38bdf8]"
+                  className="text-[#475569] text-sm hover:text-[#0284c7] transition-colors no-underline break-all focus-visible:outline-[#0ea5e9]"
                   aria-label="Send us an email"
                 >
                   {site.email}
