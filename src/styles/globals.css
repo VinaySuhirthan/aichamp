@@ -314,17 +314,11 @@ p { line-height: 1.8; }
   will-change: opacity, transform;
 }
 
-/* ─── Service Card Scroll Reveal ────────────────────────── */
-/* Cards start invisible; GSAP animates them in row-by-row  */
+/* ─── Service Card Item ─────────────────────────────────── */
 .service-card-item {
-  opacity: 0;
-  transform: translateY(60px) scale(0.96);
-  will-change: opacity, transform;
-}
-/* Ensure hover micro-lift still works after GSAP clears props */
-.service-card-item.is-revealed {
   opacity: 1;
   transform: none;
+  will-change: transform, box-shadow;
 }
 
 /* ─── Sticky Card Stacking ──────────────────────────────── */
