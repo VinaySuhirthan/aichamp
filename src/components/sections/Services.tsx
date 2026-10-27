@@ -507,12 +507,12 @@ export default function Services() {
         }
       });
 
-      // Pin distance: 600px per row transition
-      const scrollDistance = (numRows - 1) * 600;
-      const dwellTime = 1.0;
-      const transitionTime = 0.5;
+      // Pin distance: comfortable 420px per row transition (no heavy dragging)
+      const scrollDistance = (numRows - 1) * 420;
+      const dwellTime = 0.55;
+      const transitionTime = 0.85;
 
-      // Master ScrollTrigger timeline with solid dwell times
+      // Master ScrollTrigger timeline with butter-smooth scrub
       const tl = gsap.timeline({
         scrollTrigger: {
           id: "services-3at-a-time-trigger",
@@ -520,7 +520,7 @@ export default function Services() {
           start: "top 72px",
           end: () => `+=${scrollDistance}`,
           pin: true,
-          scrub: 0.35,
+          scrub: 0.8, // Ultra-luxurious liquid inertial smoothing
           anticipatePin: 1,
           invalidateOnRefresh: true,
           onUpdate: (self) => {
@@ -561,35 +561,35 @@ export default function Services() {
         const transStart = cursor;
         const transEnd = transStart + transitionTime;
 
-        // Current row smoothly shifts slightly up and fades out (subtle 10px drift, never displaced)
+        // Current row smoothly glides up and cross-fades out like silk
         tl.to(
           currentRowEl,
           {
-            y: -10,
+            y: -14,
             opacity: 0,
-            scale: 0.98,
+            scale: 0.985,
             duration: transitionTime,
-            ease: "power2.inOut",
+            ease: "power1.inOut",
           },
           transStart
         )
         .set(currentRowEl, { pointerEvents: "none" }, transStart + transitionTime * 0.5);
 
-        // Next row smoothly enters into exact center y:0 with full opacity
+        // Next row smoothly enters into center with gentle ease
         tl.set(nextRowEl, { pointerEvents: "auto" }, transStart + 0.05)
         .fromTo(
           nextRowEl,
           {
-            y: 10,
+            y: 14,
             opacity: 0,
-            scale: 0.98,
+            scale: 0.985,
           },
           {
             y: 0,
             opacity: 1,
             scale: 1,
             duration: transitionTime,
-            ease: "power2.inOut",
+            ease: "power1.inOut",
           },
           transStart
         );
@@ -628,23 +628,23 @@ export default function Services() {
       if (typeof labelT === "number" && totalDur > 0) {
         const normProgress = labelT / totalDur;
         const targetScroll = trigger.start + normProgress * (trigger.end - trigger.start);
-        tl.tweenTo(`row-${targetIdx}`, { duration: 0.45, ease: "power2.out" });
-        window.scrollTo({ top: targetScroll, behavior: "instant" });
+        tl.tweenTo(`row-${targetIdx}`, { duration: 0.65, ease: "power2.out" });
+        window.scrollTo({ top: targetScroll, behavior: "smooth" });
         return;
       }
     }
 
     if (tl) {
-      tl.tweenTo(`row-${targetIdx}`, { duration: 0.45, ease: "power2.out" });
+      tl.tweenTo(`row-${targetIdx}`, { duration: 0.65, ease: "power2.out" });
     } else {
       // Mobile fallback
       rowRefs.current.forEach((el, idx) => {
         if (!el) return;
         if (idx === targetIdx) {
-          gsap.to(el, { y: 0, opacity: 1, scale: 1, duration: 0.35, overwrite: true });
+          gsap.to(el, { y: 0, opacity: 1, scale: 1, duration: 0.45, ease: "power2.out", overwrite: true });
           el.style.pointerEvents = "auto";
         } else {
-          gsap.to(el, { y: idx < targetIdx ? -10 : 10, opacity: 0, scale: 0.98, duration: 0.35, overwrite: true });
+          gsap.to(el, { y: idx < targetIdx ? -14 : 14, opacity: 0, scale: 0.985, duration: 0.45, ease: "power2.out", overwrite: true });
           el.style.pointerEvents = "none";
         }
       });
