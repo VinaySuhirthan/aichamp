@@ -273,14 +273,10 @@ function ServiceCard({
   item,
   index,
   onOpenSpec,
-  mode = "carousel",
-  isActive = false,
 }: {
   item: ServiceItem;
   index: number;
   onOpenSpec: (item: ServiceItem) => void;
-  mode?: "carousel" | "grid";
-  isActive?: boolean;
 }) {
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -291,15 +287,15 @@ function ServiceCard({
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
-    // Set coordinates for the specular spotlight
+    // Specular spotlight position
     card.style.setProperty("--mouse-x", `${x}px`);
     card.style.setProperty("--mouse-y", `${y}px`);
 
-    // 3D Tilt calculation (ranges from -1 to 1)
+    // 3D Tilt calculation
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
-    const rotateX = ((y - centerY) / centerY) * -9; // Max 9 deg tilt
-    const rotateY = ((x - centerX) / centerX) * 9;
+    const rotateX = ((y - centerY) / centerY) * -7;
+    const rotateY = ((x - centerX) / centerX) * 7;
 
     card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-4px) scale3d(1.02, 1.02, 1.02)`;
   }, []);
@@ -313,21 +309,18 @@ function ServiceCard({
   return (
     <div
       ref={cardRef}
+      data-card-index={index}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onClick={() => onOpenSpec(item)}
-      className={`card-spotlight preserve-3d group relative flex flex-col justify-between rounded-2xl border bg-white p-4.5 sm:p-5 transition-all duration-300 cursor-pointer shadow-sm ${
-        isActive
-          ? "border-[#0284c7] service-active-halo"
-          : "border-[#e8dfd3] hover:border-[#38bdf8] hover:shadow-[0_20px_40px_rgba(2,132,199,0.14)]"
-      } ${mode === "carousel" ? "w-[330px] sm:w-[370px] flex-shrink-0" : "w-full"}`}
+      className="service-card-item card-spotlight preserve-3d group relative flex flex-col justify-between rounded-2xl border border-[#e8dfd3] bg-white p-3.5 transition-all duration-300 cursor-pointer shadow-sm hover:border-[#38bdf8] hover:shadow-[0_20px_45px_rgba(2,132,199,0.14),0_0_20px_rgba(56,189,248,0.12)] w-full h-[355px] sm:h-[365px] will-change-transform"
       style={{
         transformStyle: "preserve-3d",
         transition: "transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease",
       }}
     >
       {/* ─── Top Media Preview Frame with 3D Depth ─── */}
-      <div className="translate-z-20 relative w-full h-36 sm:h-38 rounded-xl overflow-hidden mb-3.5 border border-[#e8dfd3] bg-[#f4efe6]">
+      <div className="translate-z-20 relative w-full h-22 sm:h-24 rounded-xl overflow-hidden mb-1.5 border border-[#e8dfd3] bg-[#f4efe6] shrink-0">
         <Image
           src={item.imageSrc}
           alt={`${item.name} AI Capability Showcase`}
@@ -336,29 +329,29 @@ function ServiceCard({
           sizes="(max-width: 768px) 100vw, 400px"
         />
 
-        {/* Cinematic dark gradient scrim for high-contrast readability */}
+        {/* Scrim overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#0c192c]/90 via-[#0c192c]/30 to-transparent" />
 
         {/* Top Floating Badge Bar */}
-        <div className="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between pointer-events-none">
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#0c192c]/85 backdrop-blur-md border border-white/20 text-[9px] font-sans font-bold text-white uppercase tracking-wider shadow-sm">
+        <div className="absolute top-1.5 left-2 right-2 flex items-center justify-between pointer-events-none">
+          <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#0c192c]/85 backdrop-blur-md border border-white/20 text-[8.5px] font-sans font-bold text-white uppercase tracking-wider shadow-sm">
             <span className="w-1.5 h-1.5 rounded-full bg-[#38bdf8] animate-pulse" />
             <span>{item.tag}</span>
           </div>
 
-          <div className="px-2 py-0.5 rounded bg-black/60 backdrop-blur-md border border-white/10 text-[9px] font-mono text-[#bae6fd]">
+          <div className="px-2 py-0.5 rounded bg-black/60 backdrop-blur-md border border-white/10 text-[8.5px] font-mono text-[#bae6fd]">
             // {item.number}
           </div>
         </div>
 
         {/* Bottom Status & Key Metric */}
-        <div className="absolute bottom-2 left-2.5 right-2.5 flex items-center justify-between text-white pointer-events-none">
-          <div className="text-[9.5px] font-mono tracking-wider text-[#7dd3fc] font-semibold flex items-center gap-1">
+        <div className="absolute bottom-1.5 left-2 right-2 flex items-center justify-between text-white pointer-events-none">
+          <div className="text-[9px] font-mono tracking-wider text-[#7dd3fc] font-semibold flex items-center gap-1">
             <span className="inline-block w-1 h-1 rounded-full bg-[#38bdf8]" />
             <span>{item.badgeStatus}</span>
           </div>
 
-          <div className="px-2 py-0.5 rounded-full bg-white/15 backdrop-blur-md text-[9.5px] font-sans font-bold text-white border border-white/20">
+          <div className="px-2 py-0.5 rounded-full bg-white/15 backdrop-blur-md text-[9px] font-sans font-bold text-white border border-white/20">
             {item.stat.value}
           </div>
         </div>
@@ -367,43 +360,43 @@ function ServiceCard({
       {/* ─── Card Core Info with 3D Layer Elevation ─── */}
       <div className="translate-z-30 flex-1 flex flex-col justify-between">
         <div>
-          {/* Header Title in Crisp Plus Jakarta Sans */}
-          <h3 className="font-heading text-[18px] sm:text-[19px] font-extrabold text-[#0c192c] group-hover:text-[#0284c7] transition-colors mb-1 leading-snug tracking-tight">
+          {/* Header Title with consistent 2-line baseline height */}
+          <h3 className="font-heading text-[15px] sm:text-[16px] font-extrabold text-[#0c192c] group-hover:text-[#0284c7] transition-colors leading-snug tracking-tight line-clamp-2 h-10 flex items-center mb-1">
             {item.name}
           </h3>
 
           {/* Tech Stack Chip */}
-          <div className="flex items-center gap-1.5 text-[11px] font-sans font-semibold text-[#0284c7] mb-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#0284c7]" />
+          <div className="flex items-center gap-1.5 text-[10px] font-sans font-semibold text-[#0284c7] mb-1">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#0284c7] shrink-0" />
             <span className="truncate">{item.techStack}</span>
           </div>
 
-          {/* High-Craft Description */}
-          <p className="text-[#475569] text-[12.5px] leading-relaxed mb-3 line-clamp-2 sm:line-clamp-3 font-sans">
+          {/* High-Craft Description with aligned height */}
+          <p className="text-[#475569] text-[11px] leading-snug mb-1.5 line-clamp-2 font-sans h-7">
             {item.description}
           </p>
 
           {/* Deliverables Checklist Badges */}
-          <div className="flex flex-wrap gap-1.5 mb-3.5">
+          <div className="flex flex-wrap gap-1 mb-1.5">
             {item.deliverables.slice(0, 2).map((deliv, di) => (
               <span
                 key={di}
-                className="inline-flex items-center gap-1.5 text-[10px] font-sans font-medium text-[#0c192c] bg-[#f8fafc] border border-[#e2e8f0] px-2 py-0.5 rounded-lg group-hover:border-[#bae6fd] transition-colors"
+                className="inline-flex items-center gap-1 text-[8.5px] font-sans font-medium text-[#0c192c] bg-[#f8fafc] border border-[#e2e8f0] px-2 py-0.5 rounded-md group-hover:border-[#bae6fd] transition-colors"
               >
-                <span className="text-[#0284c7] font-bold text-xs">✓</span>
-                <span>{deliv}</span>
+                <span className="text-[#0284c7] font-bold text-[9px]">✓</span>
+                <span className="truncate max-w-[125px]">{deliv}</span>
               </span>
             ))}
           </div>
         </div>
 
         {/* ─── Card Footer Action Bar ─── */}
-        <div className="pt-3 border-t border-[#f1e9de] flex items-center justify-between font-sans">
+        <div className="pt-1.5 border-t border-[#f1e9de] flex items-center justify-between font-sans shrink-0">
           <div className="flex flex-col">
-            <span className="text-[9.5px] font-sans text-[#64748b] uppercase tracking-wider font-bold">
+            <span className="text-[8.5px] font-sans text-[#64748b] uppercase tracking-wider font-bold">
               {item.categoryLabel}
             </span>
-            <span className="text-[9.5px] font-mono text-[#0284c7]">
+            <span className="text-[8.5px] font-mono text-[#0284c7]">
               {item.sla}
             </span>
           </div>
@@ -414,7 +407,7 @@ function ServiceCard({
               e.stopPropagation();
               onOpenSpec(item);
             }}
-            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#e0f2fe] hover:bg-[#0284c7] text-[#0284c7] hover:text-white border border-[#bae6fd] text-[10.5px] font-sans font-bold tracking-wider uppercase transition-all duration-300 shadow-sm group-hover:scale-105"
+            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#e0f2fe] hover:bg-[#0284c7] text-[#0284c7] hover:text-white border border-[#bae6fd] text-[9px] font-sans font-bold tracking-wider uppercase transition-all duration-300 shadow-sm group-hover:scale-105"
           >
             <span>Explore Specs</span>
             <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
@@ -425,17 +418,17 @@ function ServiceCard({
   );
 }
 
-/* ─── Main Services Component ────────────────────────────────── */
+/* ─── Main Services Component (Pinned 3-at-a-Time with Rest Periods) ─ */
 export default function Services() {
   const sectionRef = useRef<HTMLElement>(null);
-  const runwayContainerRef = useRef<HTMLDivElement>(null);
-  const runwayTrackRef = useRef<HTMLDivElement>(null);
-  const gridTrackRef = useRef<HTMLDivElement>(null);
+  const pinnedStageRef = useRef<HTMLDivElement>(null);
+  const rowRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const scrollTriggerRef = useRef<ScrollTrigger | null>(null);
+  const timelineRef = useRef<gsap.core.Timeline | null>(null);
 
-  const [viewMode, setViewMode] = useState<"carousel" | "grid">("carousel");
   const [filter, setFilter] = useState<"all" | "visual" | "video" | "tech" | "publishing">("all");
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [activeCardIndex, setActiveCardIndex] = useState<number>(0);
+  const [activeRowIndex, setActiveRowIndex] = useState<number>(0);
   const [scrollProgress, setScrollProgress] = useState<number>(0);
   const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
 
@@ -458,105 +451,205 @@ export default function Services() {
     });
   }, [filter, searchQuery]);
 
-  // ─── BUTTER-SMOOTH HORIZONTAL SCROLLTRIGGER FOR CINEMATIC RUNWAY ───
+  // Chunk capabilities into groups of 3 (exactly 3 cards per row)
+  const rows = useMemo(() => {
+    const result: ServiceItem[][] = [];
+    for (let i = 0; i < filteredServices.length; i += 3) {
+      result.push(filteredServices.slice(i, i + 3));
+    }
+    return result;
+  }, [filteredServices]);
+
+  const numRows = rows.length;
+
+  // ─── BUTTER-SMOOTH TIMELINE WITH SOLID DWELL TIME (CARDS ALWAYS SHARP & READABLE) ───
   useEffect(() => {
-    if (viewMode !== "carousel") return;
-
     const mm = gsap.matchMedia();
-    mm.add("(min-width: 768px) and (prefers-reduced-motion: no-preference)", () => {
-      const container = runwayContainerRef.current;
-      const track = runwayTrackRef.current;
-      if (!container || !track) return;
 
-      // Clean existing triggers for this section
+    mm.add("(min-width: 768px) and (prefers-reduced-motion: no-preference)", () => {
+      if (!pinnedStageRef.current || numRows === 0) return;
+
+      // Clean existing triggers
       ScrollTrigger.getAll()
-        .filter((t) => t.vars?.id === "services-runway-trigger")
+        .filter((t) => t.vars?.id === "services-3at-a-time-trigger")
         .forEach((t) => t.kill());
 
-      const getScrollAmount = () => {
-        const trackWidth = track.scrollWidth;
-        const containerWidth = container.clientWidth;
-        return Math.max(0, trackWidth - containerWidth + 60);
-      };
+      // If only 1 row (3 cards), display statically without pinning
+      if (numRows <= 1) {
+        if (rowRefs.current[0]) {
+          gsap.set(rowRefs.current[0], {
+            yPercent: 0,
+            opacity: 1,
+            pointerEvents: "auto",
+          });
+        }
+        setActiveRowIndex(0);
+        return;
+      }
 
-      const distance = getScrollAmount();
-      if (distance <= 0) return;
+      // Initial placement: Row 0 is visible at y:0, other rows hidden with subtle 10px drift
+      rowRefs.current.forEach((rowEl, idx) => {
+        if (!rowEl) return;
+        if (idx === 0) {
+          gsap.set(rowEl, {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            pointerEvents: "auto",
+          });
+        } else {
+          gsap.set(rowEl, {
+            y: 10,
+            opacity: 0,
+            scale: 0.98,
+            pointerEvents: "none",
+          });
+        }
+      });
 
-      const trigger = ScrollTrigger.create({
-        id: "services-runway-trigger",
-        trigger: container,
-        start: "top 76px",
-        end: () => `+=${Math.max(distance * 1.25, 1600)}`,
-        pin: true,
-        scrub: 1,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-        onUpdate: (self) => {
-          setScrollProgress(self.progress);
-          const totalCards = filteredServices.length;
-          if (totalCards > 0) {
-            const index = Math.min(
-              totalCards - 1,
-              Math.floor(self.progress * totalCards)
-            );
-            setActiveCardIndex(index);
-          }
+      // Pin distance: 600px per row transition
+      const scrollDistance = (numRows - 1) * 600;
+      const dwellTime = 1.0;
+      const transitionTime = 0.5;
+
+      // Master ScrollTrigger timeline with solid dwell times
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          id: "services-3at-a-time-trigger",
+          trigger: pinnedStageRef.current,
+          start: "top 72px",
+          end: () => `+=${scrollDistance}`,
+          pin: true,
+          scrub: 0.35,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            setScrollProgress(self.progress);
+            const totalDuration = tl.duration();
+            if (totalDuration > 0) {
+              const currentT = self.progress * totalDuration;
+              let closest = 0;
+              let minDiff = 9999;
+              for (let i = 0; i < numRows; i++) {
+                const labelT = tl.labels[`row-${i}`];
+                if (typeof labelT === "number") {
+                  const diff = Math.abs(currentT - labelT);
+                  if (diff < minDiff) {
+                    minDiff = diff;
+                    closest = i;
+                  }
+                }
+              }
+              setActiveRowIndex(closest);
+            }
+          },
         },
-        animation: gsap.to(track, {
-          x: () => -getScrollAmount(),
-          ease: "none",
-        }),
       });
 
-      const ro = new ResizeObserver(() => {
-        ScrollTrigger.refresh();
-      });
-      ro.observe(track);
+      scrollTriggerRef.current = tl.scrollTrigger || null;
+      timelineRef.current = tl;
+
+      let cursor = 0;
+      tl.addLabel("row-0", cursor + dwellTime / 2);
+      cursor += dwellTime;
+
+      for (let r = 0; r < numRows - 1; r++) {
+        const currentRowEl = rowRefs.current[r];
+        const nextRowEl = rowRefs.current[r + 1];
+        if (!currentRowEl || !nextRowEl) continue;
+
+        const transStart = cursor;
+        const transEnd = transStart + transitionTime;
+
+        // Current row smoothly shifts slightly up and fades out (subtle 10px drift, never displaced)
+        tl.to(
+          currentRowEl,
+          {
+            y: -10,
+            opacity: 0,
+            scale: 0.98,
+            duration: transitionTime,
+            ease: "power2.inOut",
+          },
+          transStart
+        )
+        .set(currentRowEl, { pointerEvents: "none" }, transStart + transitionTime * 0.5);
+
+        // Next row smoothly enters into exact center y:0 with full opacity
+        tl.set(nextRowEl, { pointerEvents: "auto" }, transStart + 0.05)
+        .fromTo(
+          nextRowEl,
+          {
+            y: 10,
+            opacity: 0,
+            scale: 0.98,
+          },
+          {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            duration: transitionTime,
+            ease: "power2.inOut",
+          },
+          transStart
+        );
+
+        cursor = transEnd;
+        tl.addLabel(`row-${r + 1}`, cursor + dwellTime / 2);
+        cursor += dwellTime;
+      }
+
+      // Anchor timeline duration to match full cursor dwell
+      tl.set({}, {}, cursor);
 
       return () => {
-        trigger.kill();
-        ro.disconnect();
+        tl.kill();
+        timelineRef.current = null;
+        ScrollTrigger.getAll()
+          .filter((t) => t.vars?.id === "services-3at-a-time-trigger")
+          .forEach((t) => t.kill());
       };
     });
 
     return () => mm.revert();
-  }, [viewMode, filteredServices]);
+  }, [rows, numRows]);
 
-  // ─── STAGGERED 3D ENTRANCE FOR GRID MODE ───
-  useEffect(() => {
-    if (viewMode !== "grid") return;
+  // Jump to specific row of 3 when clicking dot / arrow
+  const goToRow = (targetIdx: number) => {
+    if (targetIdx < 0 || targetIdx >= numRows) return;
+    setActiveRowIndex(targetIdx);
 
-    const ctx = gsap.context(() => {
-      if (!gridTrackRef.current) return;
-      const cards = gridTrackRef.current.querySelectorAll(".card-spotlight");
+    const tl = timelineRef.current;
+    const trigger = scrollTriggerRef.current;
 
-      gsap.fromTo(
-        cards,
-        {
-          opacity: 0,
-          y: 40,
-          rotateX: 12,
-          scale: 0.96,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          rotateX: 0,
-          scale: 1,
-          duration: 0.7,
-          stagger: 0.08,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: gridTrackRef.current,
-            start: "top 85%",
-            toggleActions: "play none none none",
-          },
+    if (tl && trigger && numRows > 1) {
+      const labelT = tl.labels[`row-${targetIdx}`];
+      const totalDur = tl.duration();
+      if (typeof labelT === "number" && totalDur > 0) {
+        const normProgress = labelT / totalDur;
+        const targetScroll = trigger.start + normProgress * (trigger.end - trigger.start);
+        tl.tweenTo(`row-${targetIdx}`, { duration: 0.45, ease: "power2.out" });
+        window.scrollTo({ top: targetScroll, behavior: "instant" });
+        return;
+      }
+    }
+
+    if (tl) {
+      tl.tweenTo(`row-${targetIdx}`, { duration: 0.45, ease: "power2.out" });
+    } else {
+      // Mobile fallback
+      rowRefs.current.forEach((el, idx) => {
+        if (!el) return;
+        if (idx === targetIdx) {
+          gsap.to(el, { y: 0, opacity: 1, scale: 1, duration: 0.35, overwrite: true });
+          el.style.pointerEvents = "auto";
+        } else {
+          gsap.to(el, { y: idx < targetIdx ? -10 : 10, opacity: 0, scale: 0.98, duration: 0.35, overwrite: true });
+          el.style.pointerEvents = "none";
         }
-      );
-    });
-
-    return () => ctx.revert();
-  }, [viewMode, filteredServices]);
+      });
+    }
+  };
 
   // Close modal on Escape key
   useEffect(() => {
@@ -567,14 +660,6 @@ export default function Services() {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [selectedService]);
-
-  // Scroll Runway programmatically with navigation arrows
-  const slideRunway = (direction: "left" | "right") => {
-    if (!runwayTrackRef.current) return;
-    const cardWidth = 410;
-    const scrollOffset = direction === "left" ? -cardWidth : cardWidth;
-    runwayTrackRef.current.scrollBy({ left: scrollOffset, behavior: "smooth" });
-  };
 
   // Open chatbot with pre-filled message
   const handleAskAIAboutService = (service: ServiceItem) => {
@@ -601,108 +686,65 @@ export default function Services() {
       />
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-[#0284c7]/5 blur-[160px] rounded-full pointer-events-none" />
 
-      {/* ─── Sticky / Pinned Stage Container ─── */}
+      {/* ─── Pinned Viewport Container (Only 3 Cards Visible at a Time) ─── */}
       <div
-        ref={runwayContainerRef}
-        className={`relative w-full max-w-7xl mx-auto px-4 sm:px-6 flex flex-col justify-between ${
-          viewMode === "carousel" ? "min-h-[92vh] py-6 overflow-hidden" : "py-14"
-        }`}
+        ref={pinnedStageRef}
+        className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 py-2 sm:py-3 flex flex-col justify-start overflow-hidden"
       >
-        {/* ─── Control Bar: Brand Heading + Category Pills + View Switcher ─── */}
-        <div className="relative z-20 w-full mb-6">
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-[#e8dfd3]">
+        {/* ─── Top Control Bar: Innovative Header + Category Pills + Search ─── */}
+        <div className="relative z-20 w-full mb-2 sm:mb-2.5">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 pb-3 border-b border-[#e8dfd3]">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#0ea5e9]/40 bg-white text-[#0c192c] text-[10px] font-sans font-bold tracking-wider uppercase mb-1.5 shadow-sm">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#0ea5e9]/40 bg-white text-[#0c192c] text-[10px] font-sans font-bold tracking-wider uppercase mb-1 shadow-sm">
                 <span className="w-2 h-2 rounded-full bg-[#0284c7] animate-ping" />
                 <span>AI BIZ CHAMP</span>
                 <span className="opacity-40">•</span>
-                <span>BECAUSE QUALITY MATTERS</span>
+                <span>INNOVATIVE SERVICE SUITE</span>
               </div>
               <h2
                 id="services-heading"
                 className="font-heading text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#0c192c] tracking-tight leading-tight"
               >
-                15 Production-Grade <span className="text-[#0284c7]">AI Capabilities</span>
+                Our Next-Gen <span className="text-[#0284c7]">AI Services</span>
               </h2>
             </div>
 
-            {/* Quick Filter Categories + View Switcher */}
-            <div className="flex flex-wrap items-center gap-2">
-              <div className="flex flex-wrap items-center gap-1.5 bg-white/70 backdrop-blur-sm p-1 rounded-2xl border border-[#e8dfd3] shadow-sm">
-                {[
-                  { id: "all", label: "All 15", count: 15 },
-                  { id: "visual", label: "Brand & Visual", count: 3 },
-                  { id: "video", label: "Video & Motion", count: 6 },
-                  { id: "tech", label: "Web & Agents", count: 3 },
-                  { id: "publishing", label: "Publishing", count: 3 },
-                ].map((cat) => (
-                  <button
-                    key={cat.id}
-                    onClick={() => {
-                      setFilter(cat.id as any);
-                      setActiveCardIndex(0);
-                    }}
-                    className={`px-3 py-1.5 rounded-xl text-xs font-sans font-semibold transition-all border flex items-center gap-1.5 cursor-pointer ${
-                      filter === cat.id
-                        ? "bg-[#0284c7] text-white border-[#0284c7] shadow-sm"
-                        : "bg-white text-[#475569] border-transparent hover:border-[#bae6fd] hover:text-[#0284c7]"
+            {/* Category Filter Pills */}
+            <div className="flex flex-wrap items-center gap-1.5 bg-white/70 backdrop-blur-sm p-1 rounded-2xl border border-[#e8dfd3] shadow-sm">
+              {[
+                { id: "all", label: "All 15", count: 15 },
+                { id: "visual", label: "Brand & Visual", count: 3 },
+                { id: "video", label: "Video & Motion", count: 6 },
+                { id: "tech", label: "Web & Agents", count: 3 },
+                { id: "publishing", label: "Publishing", count: 3 },
+              ].map((cat) => (
+                <button
+                  key={cat.id}
+                  onClick={() => {
+                    setFilter(cat.id as any);
+                    goToRow(0);
+                  }}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-sans font-semibold transition-all border flex items-center gap-1.5 cursor-pointer ${
+                    filter === cat.id
+                      ? "bg-[#0284c7] text-white border-[#0284c7] shadow-sm"
+                      : "bg-white text-[#475569] border-transparent hover:border-[#bae6fd] hover:text-[#0284c7]"
+                  }`}
+                >
+                  <span>{cat.label}</span>
+                  <span
+                    className={`text-[10px] font-mono font-bold px-1.5 py-0.2 rounded-full ${
+                      filter === cat.id ? "bg-white/20 text-white" : "bg-[#f4efe6] text-[#64748b]"
                     }`}
                   >
-                    <span>{cat.label}</span>
-                    <span
-                      className={`text-[10px] font-mono font-bold px-1.5 py-0.2 rounded-full ${
-                        filter === cat.id ? "bg-white/20 text-white" : "bg-[#f4efe6] text-[#64748b]"
-                      }`}
-                    >
-                      {cat.count}
-                    </span>
-                  </button>
-                ))}
-              </div>
-
-              {/* View Switcher Toggle: Cinematic Runway vs 3D Grid */}
-              <div className="flex items-center gap-1 bg-white p-1 rounded-xl border border-[#e8dfd3] shadow-sm">
-                <button
-                  type="button"
-                  onClick={() => setViewMode("carousel")}
-                  title="Cinematic Runway (Smooth 3D Scroll)"
-                  className={`px-2.5 py-1 rounded-lg text-xs font-sans font-semibold flex items-center gap-1 transition-all ${
-                    viewMode === "carousel"
-                      ? "bg-[#0284c7] text-white shadow-xs"
-                      : "text-[#64748b] hover:text-[#0c192c]"
-                  }`}
-                >
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-                    <rect x="2" y="5" width="20" height="14" rx="2" />
-                    <line x1="2" y1="10" x2="22" y2="10" />
-                  </svg>
-                  <span>Runway</span>
+                    {cat.count}
+                  </span>
                 </button>
-
-                <button
-                  type="button"
-                  onClick={() => setViewMode("grid")}
-                  title="3D Grid View"
-                  className={`px-2.5 py-1 rounded-lg text-xs font-sans font-semibold flex items-center gap-1 transition-all ${
-                    viewMode === "grid"
-                      ? "bg-[#0284c7] text-white shadow-xs"
-                      : "text-[#64748b] hover:text-[#0c192c]"
-                  }`}
-                >
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-                    <rect x="3" y="3" width="7" height="7" />
-                    <rect x="14" y="3" width="7" height="7" />
-                    <rect x="14" y="14" width="7" height="7" />
-                    <rect x="3" y="14" width="7" height="7" />
-                  </svg>
-                  <span>Grid</span>
-                </button>
-              </div>
+              ))}
             </div>
           </div>
 
-          {/* Search Bar + Progress Indicators */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-3.5">
+          {/* Search Bar + Clean Minimal Step Navigator (Row text removed) */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-2.5">
             <div className="relative flex-1 max-w-xl">
               <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#0284c7]">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
@@ -713,7 +755,10 @@ export default function Services() {
               <input
                 type="text"
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                  goToRow(0);
+                }}
                 placeholder="Search capabilities, models, or deliverables (e.g. Video, Midjourney, Agents, LaTeX)..."
                 className="w-full pl-9 pr-8 py-2 bg-white border border-[#e8dfd3] rounded-xl text-xs text-[#0c192c] placeholder-[#64748b] focus:outline-none focus:border-[#0284c7] focus:ring-2 focus:ring-[#0284c7]/20 font-sans shadow-sm transition-all"
               />
@@ -727,56 +772,54 @@ export default function Services() {
               )}
             </div>
 
-            {/* Scrubber & Arrow Controls */}
-            <div className="flex items-center justify-between sm:justify-end gap-3 text-xs font-sans text-[#475569]">
-              <span>
-                Showing <strong className="text-[#0c192c]">{filteredServices.length}</strong> capabilities
-              </span>
+            {/* Clean Minimal Step Dots & Arrows (No Row text) */}
+            <div className="flex items-center justify-between sm:justify-end gap-2.5 text-xs font-sans text-[#475569]">
+              {/* Step indicator dots */}
+              <div className="flex items-center gap-1.5 bg-white px-2.5 py-1.5 rounded-full border border-[#e8dfd3] shadow-xs">
+                {rows.map((_, ri) => (
+                  <button
+                    key={ri}
+                    onClick={() => goToRow(ri)}
+                    title={`Jump to Set ${ri + 1}`}
+                    className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                      ri === activeRowIndex
+                        ? "w-6 bg-[#0284c7]"
+                        : "w-2 bg-[#bae6fd] hover:bg-[#0284c7]/60"
+                    }`}
+                  />
+                ))}
+              </div>
 
-              {viewMode === "carousel" && (
-                <div className="flex items-center gap-2">
-                  <div className="hidden sm:flex items-center gap-2">
-                    <span className="text-[10px] font-mono font-bold text-[#0284c7]">
-                      {activeCardIndex + 1 < 10 ? `0${activeCardIndex + 1}` : activeCardIndex + 1} /{" "}
-                      {filteredServices.length < 10 ? `0${filteredServices.length}` : filteredServices.length}
-                    </span>
-                    <div className="w-24 h-1.5 bg-[#e0f2fe] rounded-full overflow-hidden border border-[#bae6fd]">
-                      <div
-                        className="h-full bg-[#0284c7] transition-all duration-150"
-                        style={{ width: `${Math.round(scrollProgress * 100)}%` }}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-1">
-                    <button
-                      type="button"
-                      onClick={() => slideRunway("left")}
-                      title="Slide Left"
-                      className="w-7 h-7 rounded-full bg-white border border-[#e8dfd3] flex items-center justify-center text-[#0c192c] hover:bg-[#e0f2fe] hover:border-[#0284c7] transition-colors shadow-xs"
-                    >
-                      ←
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => slideRunway("right")}
-                      title="Slide Right"
-                      className="w-7 h-7 rounded-full bg-white border border-[#e8dfd3] flex items-center justify-center text-[#0c192c] hover:bg-[#e0f2fe] hover:border-[#0284c7] transition-colors shadow-xs"
-                    >
-                      →
-                    </button>
-                  </div>
-                </div>
-              )}
+              {/* Prev / Next buttons */}
+              <div className="flex items-center gap-1">
+                <button
+                  type="button"
+                  onClick={() => goToRow(activeRowIndex - 1)}
+                  disabled={activeRowIndex === 0}
+                  title="Previous 3 Services"
+                  className="w-7 h-7 rounded-full bg-white border border-[#e8dfd3] flex items-center justify-center text-[#0c192c] disabled:opacity-30 disabled:cursor-not-allowed hover:bg-[#e0f2fe] hover:border-[#0284c7] transition-colors shadow-xs cursor-pointer"
+                >
+                  ↑
+                </button>
+                <button
+                  type="button"
+                  onClick={() => goToRow(activeRowIndex + 1)}
+                  disabled={activeRowIndex >= numRows - 1}
+                  title="Next 3 Services"
+                  className="w-7 h-7 rounded-full bg-white border border-[#e8dfd3] flex items-center justify-center text-[#0c192c] disabled:opacity-30 disabled:cursor-not-allowed hover:bg-[#e0f2fe] hover:border-[#0284c7] transition-colors shadow-xs cursor-pointer"
+                >
+                  ↓
+                </button>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* ─── CARD STAGE ─── */}
+        {/* ─── CARD STAGE: FULLY VISIBLE 3 CARDS WITH PLENTY OF BREATHING ROOM ─── */}
         {filteredServices.length === 0 ? (
           <div className="py-24 text-center bg-white/70 rounded-2xl border border-[#e8dfd3] p-8 shadow-sm">
             <p className="font-heading text-lg font-bold text-[#0c192c] mb-2">
-              No capabilities match &ldquo;{searchQuery}&rdquo;
+              No services match &ldquo;{searchQuery}&rdquo;
             </p>
             <p className="text-xs text-[#64748b] mb-4">
               Try searching for &quot;Video&quot;, &quot;Agents&quot;, &quot;Reels&quot;, or &quot;Research&quot;.
@@ -791,61 +834,52 @@ export default function Services() {
               Reset Filters
             </button>
           </div>
-        ) : viewMode === "carousel" ? (
-          /* ─── CINEMATIC HORIZONTAL RUNWAY MODE ─── */
-          <div className="relative w-full overflow-x-auto card-runway-track py-4">
-            <div
-              ref={runwayTrackRef}
-              className="flex items-stretch gap-6 sm:gap-7 will-change-transform pb-2"
-            >
-              {filteredServices.map((item, index) => (
-                <ServiceCard
-                  key={item.id}
-                  item={item}
-                  index={index}
-                  mode="carousel"
-                  isActive={index === activeCardIndex}
-                  onOpenSpec={(svc) => setSelectedService(svc)}
-                />
-              ))}
-            </div>
-          </div>
         ) : (
-          /* ─── 3D WATERFALL GRID MODE ─── */
-          <div
-            ref={gridTrackRef}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7"
-          >
-            {filteredServices.map((item, index) => (
-              <ServiceCard
-                key={item.id}
-                item={item}
-                index={index}
-                mode="grid"
-                onOpenSpec={(svc) => setSelectedService(svc)}
-              />
+          <div className="relative w-full h-[370px] sm:h-[380px] overflow-hidden mt-1 mb-1.5">
+            {rows.map((rowCards, rowIndex) => (
+              <div
+                key={rowIndex}
+                ref={(el) => {
+                  rowRefs.current[rowIndex] = el;
+                }}
+                className="absolute inset-0 w-full h-full grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 items-start"
+                style={{
+                  opacity: rowIndex === 0 ? 1 : 0,
+                  pointerEvents: rowIndex === 0 ? "auto" : "none",
+                  willChange: "transform, opacity",
+                }}
+              >
+                {rowCards.map((item, itemIdx) => (
+                  <ServiceCard
+                    key={item.id}
+                    item={item}
+                    index={rowIndex * 3 + itemIdx}
+                    onOpenSpec={(svc) => setSelectedService(svc)}
+                  />
+                ))}
+              </div>
             ))}
           </div>
         )}
 
-        {/* ─── Bottom Hints & Consultation Bridge ─── */}
-        <div className="relative z-10 pt-4 flex flex-col sm:flex-row items-center justify-between text-xs font-sans text-[#64748b] gap-2">
+        {/* ─── Bottom Status & Scroll Instructions ─── */}
+        <div className="relative z-10 pt-2 border-t border-[#e8dfd3] flex flex-col sm:flex-row items-center justify-between text-xs font-sans text-[#64748b] gap-2">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-[#0284c7] animate-pulse" />
             <span>
-              {viewMode === "carousel"
-                ? "↓ Scroll down mouse wheel to glide smoothly through 3D capabilities"
-                : "Hover on any card for 3D tilt perspective • Click for technical specification"}
+              Scroll down or use arrows to navigate through all 15 services (3 visible at a time)
             </span>
           </div>
 
-          <Link
-            href="#contact"
-            className="text-[#0284c7] hover:text-[#0369a1] font-bold transition-colors flex items-center gap-1 hover:underline"
-          >
-            <span>Custom Enterprise Solution Matrix</span>
-            <span>↗</span>
-          </Link>
+          <div className="flex items-center gap-3">
+            <Link
+              href="#contact"
+              className="text-[#0284c7] hover:text-[#0369a1] font-bold transition-colors flex items-center gap-1 hover:underline"
+            >
+              <span>Custom Enterprise Scoping</span>
+              <span>↗</span>
+            </Link>
+          </div>
         </div>
       </div>
 

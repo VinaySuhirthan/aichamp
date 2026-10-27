@@ -97,9 +97,9 @@ export default function Hero() {
         {/* Master Headline: 3 Clean Lines */}
         <h1
           ref={headlineRef}
-          className="font-sans font-black tracking-[-0.025em] uppercase leading-[0.98] text-[#0c192c] flex flex-col items-center select-none"
+          className="font-sans font-black tracking-[-0.025em] uppercase leading-[0.98] flex flex-col items-center select-none"
         >
-          <span className="block text-3xl sm:text-5xl md:text-6xl font-extrabold text-[#0c192c]">
+          <span className="block text-3xl sm:text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-black via-[#091e3a] to-[#034ea2] bg-clip-text text-transparent pb-0.5">
             Empowering The
           </span>
           
@@ -114,7 +114,7 @@ export default function Hero() {
             NEXT-GEN
           </span>
 
-          <span className="block text-3xl sm:text-5xl md:text-6xl font-extrabold text-[#0c192c]">
+          <span className="block text-3xl sm:text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-black via-[#091e3a] to-[#034ea2] bg-clip-text text-transparent pb-0.5">
             AI Revolution
           </span>
         </h1>
