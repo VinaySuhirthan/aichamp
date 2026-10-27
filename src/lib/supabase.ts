@@ -18,6 +18,7 @@ export interface ContactSubmission {
   created_at?: string;
   name: string;
   email: string;
+  phone?: string | null;
   service?: string | null;
   message: string;
   status?: string;

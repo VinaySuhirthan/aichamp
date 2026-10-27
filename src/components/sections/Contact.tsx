@@ -11,6 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 interface FormState {
   name: string;
   email: string;
+  phone: string;
   service: string;
   message: string;
 }
@@ -18,12 +19,13 @@ interface FormState {
 interface FormErrors {
   name?: string;
   email?: string;
+  phone?: string;
   message?: string;
 }
 
 export default function Contact() {
   const sectionRef = useRef<HTMLElement>(null);
-  const [form, setForm] = useState<FormState>({ name: "", email: "", service: "", message: "" });
+  const [form, setForm] = useState<FormState>({ name: "", email: "", phone: "", service: "", message: "" });
   const [errors, setErrors] = useState<FormErrors>({});
   const [serverError, setServerError] = useState<string | null>(null);
   const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
@@ -52,6 +54,9 @@ export default function Contact() {
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
       e.email = "Please enter a valid email address.";
     }
+    if (form.phone.trim() && !/^[+0-9\s\-()]{7,20}$/.test(form.phone.trim())) {
+      e.phone = "Please enter a valid contact number.";
+    }
     if (!form.message.trim()) e.message = "Message is required.";
     setErrors(e);
     return Object.keys(e).length === 0;
@@ -68,6 +73,7 @@ export default function Contact() {
         {
           name: form.name.trim(),
           email: form.email.trim(),
+          phone: form.phone.trim() || null,
           service: form.service.trim() || null,
           message: form.message.trim(),
         },
@@ -107,8 +113,8 @@ export default function Contact() {
             <p className="section-label contact-reveal" style={{ marginBottom: "16px" }}>Contact</p>
             <h2
               id="contact-heading"
-              className="font-serif text-[clamp(32px,4vw,52px)] text-[var(--paper)] font-medium contact-reveal"
-              style={{ lineHeight: "1.35", letterSpacing: "-0.015em", marginBottom: "24px" }}
+              className="font-heading text-[clamp(32px,4vw,52px)] text-[#f8f4ec] font-bold tracking-tight contact-reveal"
+              style={{ lineHeight: "1.3", letterSpacing: "-0.015em", marginBottom: "24px" }}
             >
               {contact.label}
             </h2>
@@ -118,7 +124,7 @@ export default function Contact() {
 
             <div className="contact-reveal">
               <div style={{ marginBottom: "28px" }}>
-                <p className="text-[10px] tracking-[0.18em] uppercase text-[var(--muted)] font-mono" style={{ marginBottom: "6px" }}>
+                <p className="text-[10px] tracking-[0.18em] uppercase text-[var(--muted)] font-sans font-bold" style={{ marginBottom: "6px" }}>
                   Email
                 </p>
                 <a
@@ -131,7 +137,7 @@ export default function Contact() {
               </div>
 
               <div>
-                <p className="text-[10px] tracking-[0.18em] uppercase text-[var(--muted)] font-mono" style={{ marginBottom: "8px" }}>
+                <p className="text-[10px] tracking-[0.18em] uppercase text-[var(--muted)] font-sans font-bold" style={{ marginBottom: "8px" }}>
                   Direct WhatsApp Contact
                 </p>
                 <a
@@ -161,7 +167,7 @@ export default function Contact() {
                   <circle cx="12" cy="12" r="10" />
                   <polyline points="9 12 11 14 15 10" />
                 </svg>
-                <h3 className="font-serif text-2xl text-[var(--paper)] font-medium mb-3">
+                <h3 className="font-heading text-2xl text-[#f8f4ec] font-bold mb-3">
                   Message received.
                 </h3>
                 <p className="text-[var(--muted-lt)] text-sm leading-relaxed mb-6">
@@ -171,9 +177,9 @@ export default function Contact() {
                   onClick={() => {
                     setStatus("idle");
                     setServerError(null);
-                    setForm({ name: "", email: "", service: "", message: "" });
+                    setForm({ name: "", email: "", phone: "", service: "", message: "" });
                   }}
-                  className="text-xs font-mono uppercase tracking-wider text-[var(--accent)] hover:underline cursor-pointer"
+                  className="text-xs font-sans uppercase font-bold tracking-wider text-[var(--accent)] hover:underline cursor-pointer"
                 >
                   ← Send another enquiry
                 </button>
@@ -187,7 +193,7 @@ export default function Contact() {
               >
                 {/* Name */}
                 <div className="form-field">
-                  <label htmlFor="contact-name" className="text-xs font-mono uppercase tracking-wider text-[var(--muted-lt)] block font-medium" style={{ marginBottom: "10px" }}>
+                  <label htmlFor="contact-name" className="text-xs font-sans uppercase font-semibold tracking-wider text-[var(--muted-lt)] block" style={{ marginBottom: "10px" }}>
                     Full Name <span className="text-[var(--accent)]">*</span>
                   </label>
                   <input
@@ -212,7 +218,7 @@ export default function Contact() {
 
                 {/* Email */}
                 <div className="form-field">
-                  <label htmlFor="contact-email" className="text-xs font-mono uppercase tracking-wider text-[var(--muted-lt)] block font-medium" style={{ marginBottom: "10px" }}>
+                  <label htmlFor="contact-email" className="text-xs font-sans uppercase font-semibold tracking-wider text-[var(--muted-lt)] block" style={{ marginBottom: "10px" }}>
                     Email Address <span className="text-[var(--accent)]">*</span>
                   </label>
                   <input
@@ -235,9 +241,33 @@ export default function Contact() {
                   )}
                 </div>
 
+                {/* Contact Number / Phone */}
+                <div className="form-field">
+                  <label htmlFor="contact-phone" className="text-xs font-sans uppercase font-semibold tracking-wider text-[var(--muted-lt)] block" style={{ marginBottom: "10px" }}>
+                    Contact Number / Phone
+                  </label>
+                  <input
+                    id="contact-phone"
+                    type="tel"
+                    name="phone"
+                    autoComplete="tel"
+                    className="w-full bg-[var(--surface-2)] border border-[var(--border)] text-[var(--paper)] rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-[var(--accent)] transition-colors placeholder:text-[var(--muted)]"
+                    placeholder="+91 99949 65489"
+                    value={form.phone}
+                    onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                    aria-describedby={errors.phone ? "phone-error" : undefined}
+                    aria-invalid={!!errors.phone}
+                  />
+                  {errors.phone && (
+                    <p id="phone-error" className="text-xs text-red-400 mt-2" role="alert">
+                      {errors.phone}
+                    </p>
+                  )}
+                </div>
+
                 {/* Service */}
-                <div className="form-field md:col-span-2">
-                  <label htmlFor="contact-service" className="text-xs font-mono uppercase tracking-wider text-[var(--muted-lt)] block font-medium" style={{ marginBottom: "10px" }}>
+                <div className="form-field">
+                  <label htmlFor="contact-service" className="text-xs font-sans uppercase font-semibold tracking-wider text-[var(--muted-lt)] block" style={{ marginBottom: "10px" }}>
                     Service of Interest
                   </label>
                   <select
@@ -259,7 +289,7 @@ export default function Contact() {
 
                 {/* Message */}
                 <div className="form-field md:col-span-2">
-                  <label htmlFor="contact-message" className="text-xs font-mono uppercase tracking-wider text-[var(--muted-lt)] block font-medium" style={{ marginBottom: "10px" }}>
+                  <label htmlFor="contact-message" className="text-xs font-sans uppercase font-semibold tracking-wider text-[var(--muted-lt)] block" style={{ marginBottom: "10px" }}>
                     Message <span className="text-[var(--accent)]">*</span>
                   </label>
                   <textarea
