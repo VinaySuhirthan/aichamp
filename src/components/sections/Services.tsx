@@ -12,211 +12,185 @@ export interface ServiceItem {
   id: number;
   number: string;
   name: string;
-  category: "visual" | "video" | "tech" | "publishing";
+  category: "tech" | "video" | "education" | "publishing" | "visual";
   categoryLabel: string;
   tag: string;
-  badgeStatus: string;
   techStack: string;
   description: string;
   deliverables: string[];
   stat: { label: string; value: string };
   sla: string;
   imageSrc: string;
-  colorAccent: string;
 }
 
 export const allServices: ServiceItem[] = [
   {
     id: 1,
     number: "01",
-    name: "Poster Design",
-    category: "visual",
-    categoryLabel: "Brand & Visual",
-    tag: "Generative Art",
-    badgeStatus: "8K PRODUCTION GRADE",
-    techStack: "Midjourney v6.1 • Vector • Print 300DPI",
-    description: "Striking promotional and architectural poster visuals synthesized via custom diffusion models, human art direction, and fine Swiss typography.",
-    deliverables: ["Vector & CMYK Print 300DPI", "Custom LoRA Fine-Tuning", "Full Commercial & Resale Rights"],
-    stat: { label: "Resolution", value: "8K Ultra-HD" },
-    sla: "24-48h Delivery",
-    imageSrc: "/images/service-poster.jpg",
-    colorAccent: "#0284c7",
+    name: "AI Exam Tutor & Academic Coach",
+    category: "education",
+    categoryLabel: "Courses & Mentorship",
+    tag: "Adaptive Learning",
+    techStack: "GPT-4o • RAG • Vector DB • Custom Syllabus",
+    description: "Personalized exam coaching and curriculum mastery with adaptive question engines, instant step-by-step solutions, and smart revision pathways.",
+    deliverables: ["Adaptive Exam Practice Engine", "Syllabus-Aligned Smart Modules", "Instant Step-by-Step Explanations"],
+    stat: { label: "Score Improvement", value: "+35% Average" },
+    sla: "48h Deployment",
+    imageSrc: "/images/service-agents.jpg",
   },
   {
     id: 2,
     number: "02",
-    name: "Short Video Creation",
-    category: "video",
-    categoryLabel: "Video & Motion",
-    tag: "High Velocity",
-    badgeStatus: "CINEMATIC NEURAL MOTION",
-    techStack: "Runway Gen-3 • Premiere • After Effects",
-    description: "Algorithmic, high-retention video sequences built with cinematic neural generation, dynamic sound design, and narrative pacing.",
-    deliverables: ["Cinematic Neural Motion", "Dynamic SFX & Custom Score", "Multi-Platform 9:16 & 16:9 Ratios"],
-    stat: { label: "Turnaround", value: "24-48 Hours" },
-    sla: "Daily Iterations",
-    imageSrc: "/images/service-video.jpg",
-    colorAccent: "#0ea5e9",
+    name: "E-Book Creation & Global Publishing",
+    category: "publishing",
+    categoryLabel: "Publishing & Research",
+    tag: "Revenue Engine",
+    techStack: "Editorial AI • InDesign • Amazon KDP • EPUB",
+    description: "End-to-end digital book production: manuscript structuring, interior typography, high-impact vector covers, and turnkey global sales setup on Amazon KDP & Apple Books.",
+    deliverables: ["Amazon KDP Ready EPUB & PDF", "Vector Cover & Interior Typesetting", "Automated Funnel & Royalties Setup"],
+    stat: { label: "Distribution", value: "Amazon, Apple & Kobo" },
+    sla: "5-7 Days Turnkey",
+    imageSrc: "/images/service-poster.jpg",
   },
   {
     id: 3,
     number: "03",
-    name: "Instagram Reels Creation",
+    name: "YouTube Channel Growth & Automation",
     category: "video",
-    categoryLabel: "Video & Motion",
-    tag: "Viral Growth",
-    badgeStatus: "ALGORITHMIC HOOK ENGINE",
-    techStack: "9:16 Vertical • Auto-Captions • Motion FX",
-    description: "Trend-aware vertical storytelling engineered for peak algorithmic reach, kinetic typography, and instant 3-second hook retention.",
-    deliverables: ["Kinetic Typography", "Algorithmic 3s Hook Engine", "Soundtrack Licensing & Sync"],
-    stat: { label: "Retention", value: "+84% Benchmark" },
-    sla: "10-20 Reels / Sprint",
-    imageSrc: "/images/ai-phone.jpg",
-    colorAccent: "#8b5cf6",
+    categoryLabel: "Video & Growth",
+    tag: "High Velocity",
+    techStack: "Runway Gen-3 • Midjourney v6 • TubeBuddy • Premiere",
+    description: "Algorithmic channel scaling engineered for high CTR and viral retention: hook script synthesis, automated B-roll infill, custom thumbnails, and YouTube SEO tag clustering.",
+    deliverables: ["High-CTR Custom 3D Thumbnails", "Retention-Engineered Scriptwriting", "Complete YouTube SEO Optimization"],
+    stat: { label: "Average CTR", value: "11.8% Hook Rate" },
+    sla: "Weekly Production",
+    imageSrc: "/images/service-video.jpg",
   },
   {
     id: 4,
     number: "04",
-    name: "Website Design & Development",
+    name: "AI SEO & Google Search Dominance",
     category: "tech",
-    categoryLabel: "Web & Agents",
-    tag: "Enterprise",
-    badgeStatus: "LIGHTHOUSE 100/100",
-    techStack: "Next.js 16 • React 19 • Tailwind • GSAP",
-    description: "State-of-the-art web applications and high-conversion landing pages engineered for sub-second load times, responsiveness, and SEO dominance.",
-    deliverables: ["Sub-second TTFB & Core Vitals", "Custom Interactive GSAP Engine", "Full Responsive Architecture"],
-    stat: { label: "Performance", value: "100/100 Lighthouse" },
-    sla: "1-2 Weeks Launch",
+    categoryLabel: "Web & Intelligence",
+    tag: "Organic Growth",
+    techStack: "Google SGE • Semantic Schema • Next.js • Surfer",
+    description: "Algorithmic search optimization built for Google AI Overviews: semantic keyword clustering, programmatic schema graphs, and sub-second Core Web Vitals.",
+    deliverables: ["Google AI Overviews Optimization", "Complete Technical Schema Markup", "High-Intent Keyword Cluster Roadmap"],
+    stat: { label: "Search Visibility", value: "Top 3 Ranking Targets" },
+    sla: "2-4 Weeks Program",
     imageSrc: "/images/service-web.jpg",
-    colorAccent: "#0284c7",
   },
   {
     id: 5,
     number: "05",
-    name: "Vlog Creation",
-    category: "video",
-    categoryLabel: "Video & Motion",
-    tag: "Editorial",
-    badgeStatus: "4K HDR MASTER",
-    techStack: "Multitrack Sync • Smart B-Roll • Sound Design",
-    description: "Turn raw founder and creator footage into polished, episodic documentaries with studio-grade pacing, transcription, and color correction.",
-    deliverables: ["Automated Multitrack Sync", "Color Grading & Master LUT", "Narrative B-Roll AI Infill"],
-    stat: { label: "Master Format", value: "4K Master HDR" },
-    sla: "3-5 Days Episodic",
-    imageSrc: "/images/service-video.jpg",
-    colorAccent: "#38bdf8",
+    name: "Online AI Masterclasses & Courses",
+    category: "education",
+    categoryLabel: "Courses & Mentorship",
+    tag: "Curriculum",
+    techStack: "LMS Architecture • Prompt Engineering • Video Modules",
+    description: "Mastery courses delivered by Dr. G. Nalinipriya, teaching educators, professionals, and entrepreneurs how to deploy and monetize 200+ advanced AI tools.",
+    deliverables: ["Modular HD Video Courseware", "Curated AI Prompt & Tool Vault", "Certificate of Completion"],
+    stat: { label: "Tools Covered", value: "200+ Practical Tools" },
+    sla: "Instant Access & Live",
+    imageSrc: "/images/10.webp",
   },
   {
     id: 6,
     number: "06",
-    name: "Chatbot Creation & Integration",
+    name: "Website Design & Development",
     category: "tech",
-    categoryLabel: "Web & Agents",
-    tag: "Autonomous",
-    badgeStatus: "ZERO-HALLUCINATION RAG",
-    techStack: "RAG • Vector DB • WhatsApp API • OpenAI",
-    description: "Domain-adapted conversational intelligence engines seamlessly wired to your database, website chat, WhatsApp, and CRM pipelines.",
-    deliverables: ["Zero-Hallucination RAG Pipeline", "WhatsApp & Webhook Sync", "Live CRM Lead Capture & Analytics"],
-    stat: { label: "Latency", value: "< 240ms Response" },
-    sla: "48h Deployment",
-    imageSrc: "/images/service-agents.jpg",
-    colorAccent: "#10b981",
+    categoryLabel: "Web & Intelligence",
+    tag: "Enterprise",
+    techStack: "Next.js 16 • React 19 • Tailwind • Supabase",
+    description: "Ultra-fast, high-converting websites engineered for small businesses, creators, and modern brands with mobile responsiveness and sub-second loading.",
+    deliverables: ["Lighthouse 100/100 Core Web Vitals", "Custom Responsive Component Architecture", "Integrated Lead Capture & Analytics"],
+    stat: { label: "Performance", value: "100/100 Lighthouse" },
+    sla: "1-2 Weeks Launch",
+    imageSrc: "/images/service-web.jpg",
   },
   {
     id: 7,
     number: "07",
-    name: "AI Agent Development & Integration",
-    category: "tech",
-    categoryLabel: "Web & Agents",
-    tag: "Next-Gen",
-    badgeStatus: "MULTI-AGENT MESH",
-    techStack: "LangChain • Tool Calling • Cognitive Automations",
-    description: "Self-governing cognitive agent systems capable of multi-step task execution, web scraping, document synthesis, and automated business operations.",
-    deliverables: ["Autonomous Multi-Step Logic", "Tool Calling & API Bridges", "Human-in-the-Loop Safeguards"],
-    stat: { label: "Architecture", value: "Multi-Agent Mesh" },
-    sla: "1-3 Weeks Custom",
-    imageSrc: "/images/service-agents.jpg",
-    colorAccent: "#0284c7",
+    name: "Dedicated 1-on-1 AI Mentorship",
+    category: "education",
+    categoryLabel: "Courses & Mentorship",
+    tag: "Elite Advisory",
+    techStack: "PhD Advisory • Strategy Sprints • Private Sessions",
+    description: "Direct executive and doctoral advisory sessions with Dr. G. Nalinipriya, Professor & PhD Advisor, accelerating your AI research, business roadmap, or startup adoption.",
+    deliverables: ["Custom 90-Day Execution Roadmap", "Direct 1-on-1 Strategy Video Sprints", "Ongoing WhatsApp & Email Advisory"],
+    stat: { label: "Format", value: "Private 1-on-1 Advisory" },
+    sla: "Flexible Scheduling",
+    imageSrc: "/images/1.webp",
   },
   {
     id: 8,
     number: "08",
-    name: "AI Avatar Creation",
+    name: "Short Video & Viral Reels Creation",
     category: "video",
-    categoryLabel: "Video & Motion",
-    tag: "Photoreal",
-    badgeStatus: "99.4% VOICE FIDELITY",
-    techStack: "Neural Dubbing • Lip-Sync • 40+ Languages",
-    description: "Hyper-realistic AI presenters and virtual spokespersons delivering video content at scale without studio booking or recurring production costs.",
-    deliverables: ["Photorealistic Lip-Sync", "40+ Languages Native Audio", "Consistent Brand Spokesperson Token"],
-    stat: { label: "Voice Cloning", value: "99.4% Fidelity" },
-    sla: "24h Video Delivery",
+    categoryLabel: "Video & Growth",
+    tag: "Viral Reach",
+    techStack: "9:16 Vertical • Kinetic Captions • Motion FX",
+    description: "Trend-aware vertical storytelling engineered for peak algorithmic reach across Instagram, YouTube Shorts, and TikTok with instant 3-second hook retention.",
+    deliverables: ["Algorithmic 3s Hook Engine", "Kinetic Typography & Sound FX", "Full Commercial Music Licensing"],
+    stat: { label: "Retention Rate", value: "+84% Benchmark" },
+    sla: "10-20 Reels / Sprint",
     imageSrc: "/images/ai-phone.jpg",
-    colorAccent: "#ec4899",
   },
   {
     id: 9,
     number: "09",
-    name: "E-book Creation & Publishing",
-    category: "publishing",
-    categoryLabel: "Publishing & Research",
-    tag: "Revenue Engine",
-    badgeStatus: "AMAZON KDP READY",
-    techStack: "Editorial AI • EPUB / PDF • Amazon KDP",
-    description: "Complete book packaging pipeline: expert manuscript formatting, high-aesthetic layout, vector covers, and global distribution setup.",
-    deliverables: ["Amazon KDP Ready EPUB & PDF", "Vector Cover & Interior Typography", "Automated Sales Funnel Setup"],
-    stat: { label: "Distribution", value: "Amazon, Apple & Kobo" },
-    sla: "5-7 Days Turnkey",
-    imageSrc: "/images/service-poster.jpg",
-    colorAccent: "#f59e0b",
+    name: "Chatbot Creation & Integration",
+    category: "tech",
+    categoryLabel: "Web & Intelligence",
+    tag: "Autonomous",
+    techStack: "RAG • Vector Database • WhatsApp API • OpenAI",
+    description: "Domain-adapted conversational intelligence engines seamlessly wired to your database, website chat, WhatsApp Business, and CRM pipelines.",
+    deliverables: ["Zero-Hallucination RAG Pipeline", "WhatsApp & Webhook Integration", "Automated Lead Capture & Analytics"],
+    stat: { label: "Response Latency", value: "< 240ms Response" },
+    sla: "48h Deployment",
+    imageSrc: "/images/service-agents.jpg",
   },
   {
     id: 10,
     number: "10",
-    name: "Personal Branding",
-    category: "visual",
-    categoryLabel: "Brand & Visual",
-    tag: "Executive",
-    badgeStatus: "TOP 1% AUTHORITY SUITE",
-    techStack: "Identity System • LinkedIn Suite • Guidelines",
-    description: "Transform academic or technical authority into a commanding digital presence with signature design tokens, bio kits, and thought-leadership assets.",
-    deliverables: ["Executive Presence Kit", "LinkedIn Authority Templates", "Signature Token Library"],
-    stat: { label: "Positioning", value: "Top 1% Creator" },
-    sla: "Full Kit in 7 Days",
-    imageSrc: "/images/1.webp",
-    colorAccent: "#4f46e5",
+    name: "AI Agent Development & Automation",
+    category: "tech",
+    categoryLabel: "Web & Intelligence",
+    tag: "Cognitive Mesh",
+    techStack: "LangChain • Tool Calling • Cognitive Automations",
+    description: "Self-governing cognitive agent systems capable of multi-step task execution, automated research synthesis, web scraping, and workflow orchestration.",
+    deliverables: ["Autonomous Multi-Step Logic", "Custom API & Tool Calling Bridges", "Human-in-the-Loop Safeguards"],
+    stat: { label: "Architecture", value: "Multi-Agent Mesh" },
+    sla: "1-3 Weeks Custom",
+    imageSrc: "/images/service-agents.jpg",
   },
   {
     id: 11,
     number: "11",
-    name: "UGC Video Creation",
+    name: "AI Avatar Creation & Neural Voice",
     category: "video",
-    categoryLabel: "Video & Motion",
-    tag: "Social Proof",
-    badgeStatus: "DIRECT RESPONSE ROAS",
-    techStack: "Creator Formats • Dynamic Hooks • Ad Creative",
-    description: "Organic, conversion-oriented user-style video ads that feel native on TikTok, Instagram, and YouTube Shorts while boosting ad ROAS.",
-    deliverables: ["Organic Native Formats", "Split-Tested Creative Variations", "Conversion ROAS Optimized"],
-    stat: { label: "Target ROAS", value: "3.2x - 5.5x" },
-    sla: "48h Per Ad Batch",
+    categoryLabel: "Video & Growth",
+    tag: "Photoreal",
+    techStack: "Neural Dubbing • Lip-Sync • 40+ Languages",
+    description: "Photorealistic AI presenters and virtual spokespersons delivering video content at scale without studio bookings or recurring filming costs.",
+    deliverables: ["Photorealistic Facial Lip-Sync", "40+ Languages Native Audio Clone", "Consistent Brand Spokesperson Token"],
+    stat: { label: "Voice Cloning", value: "99.4% Fidelity" },
+    sla: "24h Video Delivery",
     imageSrc: "/images/ai-phone.jpg",
-    colorAccent: "#06b6d4",
   },
   {
     id: 12,
     number: "12",
-    name: "Advertisement Video Production",
-    category: "video",
-    categoryLabel: "Video & Motion",
-    tag: "Performance",
-    badgeStatus: "PRORES 4K MASTER",
-    techStack: "Direct Response • Sound Design • 4K Export",
-    description: "Commercials constructed on data-backed creative testing: attention-grabbing pattern interrupts, clear value propositions, and compelling calls-to-action.",
-    deliverables: ["Pattern Interrupt Hooks", "Broadcast-Grade Audio Mastering", "Omni-Channel Asset Package"],
-    stat: { label: "Master Output", value: "4K Master ProRes" },
-    sla: "3-5 Days Turnkey",
-    imageSrc: "/images/service-video.jpg",
-    colorAccent: "#0284c7",
+    name: "Poster Design & Generative Art",
+    category: "visual",
+    categoryLabel: "Brand & Visual",
+    tag: "Generative Art",
+    techStack: "Midjourney v6.1 • Vector • Print 300DPI",
+    description: "Striking promotional, brand, and architectural poster visuals synthesized via custom diffusion models, human creative direction, and Swiss typography.",
+    deliverables: ["Vector & CMYK Print 300DPI", "Custom LoRA Art Direction", "Full Commercial & Resale Rights"],
+    stat: { label: "Resolution", value: "8K Ultra-HD" },
+    sla: "24-48h Delivery",
+    imageSrc: "/images/service-poster.jpg",
   },
   {
     id: 13,
@@ -225,30 +199,26 @@ export const allServices: ServiceItem[] = [
     category: "visual",
     categoryLabel: "Brand & Visual",
     tag: "Vector Precision",
-    badgeStatus: "GOLDEN RATIO GEOMETRY",
     techStack: "Geometric Grids • SVG Matrix • Style Guide",
-    description: "Timeless, mathematically proportioned startup marks and identity lockups built for ultra-clean scaling from mobile favicons to building billboards.",
-    deliverables: ["Golden Ratio Geometric Grid", "Universal SVG / EPS / PDF Export", "Full Brand Identity Guidelines"],
+    description: "Mathematically proportioned startup logos and brand marks designed for crisp, clean scaling from mobile favicons to physical billboards.",
+    deliverables: ["Golden Ratio Geometric Grid", "Universal SVG / EPS / PDF Export", "Complete Brand Color Guidelines"],
     stat: { label: "Scalability", value: "Vector Infinite" },
     sla: "48-72h 3 Concepts",
     imageSrc: "/images/service-poster.jpg",
-    colorAccent: "#8b5cf6",
   },
   {
     id: 14,
     number: "14",
-    name: "Personalized Music Creation",
-    category: "publishing",
-    categoryLabel: "Publishing & Research",
-    tag: "Generative Audio",
-    badgeStatus: "24-BIT / 48KHZ WAV",
-    techStack: "Neural Synthesis • DAW Master • 48kHz WAV",
-    description: "Custom AI-composed audio tracks, podcast theme music, and bespoke soundscapes scored specifically to reflect brand tone and video pacing.",
-    deliverables: ["Original Neural Composition", "Stems & 48kHz 24-bit WAV", "100% Royalty-Free Rights"],
-    stat: { label: "Audio Fidelity", value: "Studio 24-Bit / 48kHz" },
-    sla: "24-48h Master",
-    imageSrc: "/images/service-agents.jpg",
-    colorAccent: "#0ea5e9",
+    name: "Personal Branding & Authority Suite",
+    category: "visual",
+    categoryLabel: "Brand & Visual",
+    tag: "Executive",
+    techStack: "Identity System • LinkedIn Suite • Bio Assets",
+    description: "Transform professional and academic authority into a commanding digital presence with custom brand tokens, bio kits, and thought-leadership templates.",
+    deliverables: ["Executive Presence Kit", "LinkedIn Authority Templates", "Signature Token Library"],
+    stat: { label: "Positioning", value: "Top 1% Creator" },
+    sla: "Full Kit in 7 Days",
+    imageSrc: "/images/13.webp",
   },
   {
     id: 15,
@@ -256,19 +226,17 @@ export const allServices: ServiceItem[] = [
     name: "Research Paper Writing & Assistance",
     category: "publishing",
     categoryLabel: "Publishing & Research",
-    tag: "Academic Gold",
-    badgeStatus: "PHD ADVISOR REVIEWED",
+    tag: "Doctoral Review",
     techStack: "Doctoral Review • Scopus / IEEE • LaTeX",
     description: "Scholarly methodology guidance, peer-review preparation, and technical paper structuring supervised by Dr. G. Nalinipriya, Professor & PhD Advisor.",
     deliverables: ["IEEE / Scopus Journal Targeting", "Mathematical LaTeX Typesetting", "Faculty Peer-Review Rubric"],
     stat: { label: "Supervision", value: "PhD Professor Advisor" },
     sla: "Doctoral Consultation",
     imageSrc: "/images/11.webp",
-    colorAccent: "#0284c7",
   },
 ];
 
-/* ─── Compact Next-Level Executive Service Card ─── */
+/* ─── Premium Editorial Service Card (100% Fully Visible, Zero Clipping) ─── */
 function ServiceCard({
   item,
   onOpenSpec,
@@ -276,146 +244,80 @@ function ServiceCard({
   item: ServiceItem;
   onOpenSpec: (item: ServiceItem) => void;
 }) {
-  const cardRef = useRef<HTMLDivElement>(null);
-
-  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    const card = cardRef.current;
-    if (!card) return;
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    card.style.setProperty("--mouse-x", `${x}px`);
-    card.style.setProperty("--mouse-y", `${y}px`);
-  }, []);
-
   return (
     <div
-      ref={cardRef}
-      onMouseMove={handleMouseMove}
       onClick={() => onOpenSpec(item)}
-      className="group relative flex flex-col justify-between rounded-2xl border border-[#e8dfd3] bg-white p-3.5 sm:p-4 transition-all duration-300 cursor-pointer shadow-[0_4px_20px_-4px_rgba(12,25,44,0.06)] hover:shadow-[0_20px_45px_-10px_rgba(2,132,199,0.2)] hover:border-[#0284c7] hover:-translate-y-1 w-full h-[365px] sm:h-[378px] overflow-hidden select-none"
+      className="group relative flex flex-col justify-between rounded-2xl border border-[#e8dfd3] bg-white p-4 sm:p-5 transition-all duration-300 cursor-pointer shadow-[0_2px_12px_rgba(12,25,44,0.04)] hover:shadow-[0_16px_36px_rgba(2,132,199,0.12)] hover:border-[#0284c7]/40 hover:-translate-y-1 w-full h-[390px] sm:h-[400px] select-none"
     >
-      {/* Specular Spotlight Glow on Hover */}
-      <div
-        className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-        style={{
-          background: `radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(2, 132, 199, 0.08), transparent 50%)`,
-        }}
-      />
-
-      {/* Top Media Frame with Cinematic Overlay */}
-      <div className="relative w-full h-32 sm:h-36 rounded-xl overflow-hidden mb-2.5 border border-[#e8dfd3] bg-[#f4efe6] shrink-0">
-        <Image
-          src={item.imageSrc}
-          alt={`${item.name} AI Capability`}
-          fill
-          className="object-cover transition-transform duration-700 ease-out group-hover:scale-108"
-          sizes="(max-width: 768px) 100vw, 400px"
-        />
-
-        {/* Cinematic gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0c192c]/90 via-[#0c192c]/30 to-transparent" />
-
-        {/* Top Floating Badge Bar */}
-        <div className="absolute top-2 left-2 right-2 flex items-center justify-between pointer-events-none">
-          <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#0c192c]/85 backdrop-blur-md border border-white/20 text-[8.5px] font-sans font-bold text-white uppercase tracking-wider shadow-sm">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#38bdf8] animate-pulse" />
-            <span>{item.tag}</span>
-          </div>
-
-          <div className="px-2 py-0.5 rounded-full bg-white/20 backdrop-blur-md border border-white/25 text-[8.5px] font-mono font-bold text-white shadow-xs">
-            {item.number}
-          </div>
+      <div>
+        {/* Authentic 16:9 Image Frame */}
+        <div className="relative w-full aspect-[16/9] max-h-[175px] rounded-xl overflow-hidden bg-[#f4efe6] border border-[#e8dfd3] mb-2.5 shrink-0">
+          <Image
+            src={item.imageSrc}
+            alt={item.name}
+            fill
+            className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
+          />
         </div>
 
-        {/* Bottom Banner Status on Image */}
-        <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between text-white pointer-events-none">
-          <div className="text-[9px] font-mono tracking-wider text-[#7dd3fc] font-semibold flex items-center gap-1">
-            <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#38bdf8]" />
-            <span className="truncate max-w-[140px]">{item.badgeStatus}</span>
-          </div>
-
-          <div className="px-2 py-0.5 rounded-full bg-black/45 backdrop-blur-md text-[8.5px] font-sans font-bold text-white border border-white/20">
-            {item.stat.value}
-          </div>
+        {/* Minimal Editorial Category & Index Moniker */}
+        <div className="flex items-center justify-between text-[10.5px] font-mono tracking-wider text-[#64748b] uppercase mb-1">
+          <span className="truncate max-w-[200px]">{item.categoryLabel}</span>
+          <span className="font-bold text-[#0284c7] shrink-0">{item.number}</span>
         </div>
+
+        {/* Title */}
+        <h3 className="font-heading text-base sm:text-[17px] font-bold text-[#0c192c] group-hover:text-[#0284c7] transition-colors leading-snug tracking-tight mb-1 line-clamp-1">
+          {item.name}
+        </h3>
+
+        {/* Clear, readable editorial description */}
+        <p className="text-[#475569] text-xs leading-relaxed mb-2 font-sans line-clamp-2">
+          {item.description}
+        </p>
+
+        {/* Curated Editorial Highlights */}
+        <ul className="space-y-1 border-t border-[#f1e9de] pt-2 mb-2">
+          {item.deliverables.slice(0, 2).map((deliv, di) => (
+            <li key={di} className="flex items-center gap-2 text-[11px] sm:text-xs text-[#334155] font-sans">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#0284c7] shrink-0" />
+              <span className="truncate">{deliv}</span>
+            </li>
+          ))}
+        </ul>
       </div>
 
-      {/* Card Core Content */}
-      <div className="flex-1 flex flex-col justify-between">
-        <div>
-          {/* Service Title */}
-          <h3 className="font-heading text-sm sm:text-base font-extrabold text-[#0c192c] group-hover:text-[#0284c7] transition-colors leading-snug tracking-tight mb-1 line-clamp-1">
-            {item.name}
-          </h3>
+      {/* Clean Footer Action Bar - Fully Visible and Anchored at Bottom */}
+      <div className="pt-2 border-t border-[#f1e9de] flex items-center justify-between text-xs font-sans shrink-0">
+        <span className="text-[#64748b] font-mono text-[11px]">
+          Turnaround: <strong className="text-[#0c192c] font-semibold">{item.sla}</strong>
+        </span>
 
-          {/* Tech Stack Chip */}
-          <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-[#f0f9ff] border border-[#bae6fd] text-[9.5px] font-mono font-semibold text-[#0284c7] mb-1.5 max-w-full truncate">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#0284c7] shrink-0" />
-            <span className="truncate">{item.techStack}</span>
-          </div>
-
-          {/* Description */}
-          <p className="text-[#475569] text-[11px] leading-relaxed mb-2 font-sans line-clamp-2">
-            {item.description}
-          </p>
-
-          {/* Deliverables Checklist Badges */}
-          <div className="flex flex-wrap gap-1 mb-2">
-            {item.deliverables.slice(0, 2).map((deliv, di) => (
-              <span
-                key={di}
-                className="inline-flex items-center gap-1 text-[8.5px] font-sans font-medium text-[#0c192c] bg-[#faf7f0] border border-[#e8dfd3] px-2 py-0.5 rounded-md group-hover:border-[#bae6fd] transition-colors"
-              >
-                <span className="text-[#0284c7] font-bold text-[8.5px]">✓</span>
-                <span className="truncate max-w-[125px]">{deliv}</span>
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* Card Footer Action Bar */}
-        <div className="pt-2 border-t border-[#f1e9de] flex items-center justify-between font-sans shrink-0">
-          <div className="flex flex-col">
-            <span className="text-[8.5px] font-sans text-[#64748b] uppercase tracking-wider font-bold">
-              {item.categoryLabel}
-            </span>
-            <span className="text-[9px] font-mono text-[#0284c7] font-semibold">
-              ⚡ {item.sla}
-            </span>
-          </div>
-
-          <button
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-              onOpenSpec(item);
-            }}
-            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#e0f2fe] group-hover:bg-[#0284c7] text-[#0284c7] group-hover:text-white border border-[#bae6fd] text-[9px] font-sans font-bold tracking-wider uppercase transition-all duration-300 shadow-xs cursor-pointer"
-          >
-            <span>Explore Specs</span>
-            <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-          </button>
-        </div>
+        <span className="inline-flex items-center gap-1.5 font-bold text-[#0284c7] group-hover:text-[#0369a1] transition-colors">
+          <span>Explore Service</span>
+          <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+        </span>
       </div>
     </div>
   );
 }
 
-/* ─── Main Services Component with Compact Pinned Scroll Showcase ─── */
+/* ─── Main Section: Stable Pinned Layout (Heading + Controls Stationary Above Cards) ─── */
 export default function Services() {
   const sectionRef = useRef<HTMLElement>(null);
   const pinnedStageRef = useRef<HTMLDivElement>(null);
-  const rowRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
   const scrollTriggerRef = useRef<ScrollTrigger | null>(null);
-  const timelineRef = useRef<gsap.core.Timeline | null>(null);
 
-  const [filter, setFilter] = useState<"all" | "visual" | "video" | "tech" | "publishing">("all");
+  const [filter, setFilter] = useState<"all" | "tech" | "video" | "education" | "publishing" | "visual">("all");
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [activeRowIndex, setActiveRowIndex] = useState<number>(0);
   const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
+  const [scrollProgress, setScrollProgress] = useState<number>(0);
+  const [cardWidth, setCardWidth] = useState<number>(380);
 
-  // Filtered capabilities
+  // Filter capabilities
   const filteredServices = useMemo(() => {
     return allServices.filter((s) => {
       const matchesCategory = filter === "all" || s.category === filter;
@@ -434,200 +336,119 @@ export default function Services() {
     });
   }, [filter, searchQuery]);
 
-  // Chunk capabilities into sets of 3
-  const rows = useMemo(() => {
-    const result: ServiceItem[][] = [];
-    for (let i = 0; i < filteredServices.length; i += 3) {
-      result.push(filteredServices.slice(i, i + 3));
+  // Total groups of 3 cards
+  const totalGroups = Math.max(1, Math.ceil(filteredServices.length / 3));
+  const currentGroup = Math.min(totalGroups, Math.floor(scrollProgress * (totalGroups - 1) + 0.1) + 1);
+
+  // ── Compute Exact Viewport-Based Card Width ──
+  const updateCardDimensions = useCallback(() => {
+    if (!viewportRef.current) return;
+    const vw = viewportRef.current.clientWidth;
+    if (vw <= 0) return;
+
+    // Desktop: exactly 3 cards side by side, 2 gaps of 24px (48px total)
+    // Tablet: exactly 2 cards side by side, 1 gap of 24px
+    // Mobile: 1 card
+    let w: number;
+    if (window.innerWidth >= 1024) {
+      w = (vw - 48) / 3;
+    } else if (window.innerWidth >= 768) {
+      w = (vw - 24) / 2;
+    } else {
+      w = vw - 24;
     }
-    return result;
-  }, [filteredServices]);
 
-  const numRows = rows.length;
+    const finalW = Math.max(280, Math.floor(w));
+    setCardWidth(finalW);
+  }, []);
 
-  // ─── PINNED SCROLL ANIMATION (Zero Giant Gaps, Clean 10px Subtle Glide) ───
+  // ── PINNED SECTION ANIMATION (Heading & Controls Stationary Above Cards) ──
   useEffect(() => {
-    const mm = gsap.matchMedia();
+    updateCardDimensions();
 
-    mm.add("(min-width: 768px) and (prefers-reduced-motion: no-preference)", () => {
-      if (!pinnedStageRef.current || numRows === 0) return;
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
 
-      // Clean existing triggers
-      ScrollTrigger.getAll()
-        .filter((t) => t.vars?.id === "services-pinned-trigger")
-        .forEach((t) => t.kill());
+    const pinnedStage = pinnedStageRef.current;
+    const viewport = viewportRef.current;
+    const track = trackRef.current;
+    if (!pinnedStage || !viewport || !track) return;
 
-      // If only 1 row (3 cards), show statically without pinning
-      if (numRows <= 1) {
-        if (rowRefs.current[0]) {
-          gsap.set(rowRefs.current[0], {
-            y: 0,
-            opacity: 1,
-            visibility: "visible",
-            pointerEvents: "auto",
-          });
-        }
-        setActiveRowIndex(0);
+    if (scrollTriggerRef.current) {
+      scrollTriggerRef.current.kill();
+      scrollTriggerRef.current = null;
+    }
+
+    const setupCarousel = () => {
+      updateCardDimensions();
+
+      const visibleWidth = viewport.clientWidth;
+      const totalWidth = track.scrollWidth;
+      const scrollDist = totalWidth - visibleWidth;
+
+      // If all items fit within visible viewport (e.g. 3 or fewer), no horizontal scroll is needed
+      if (scrollDist <= 10) {
+        gsap.set(track, { x: 0 });
+        setScrollProgress(0);
         return;
       }
 
-      // Initial placement: Row 0 is visible at y:0, other rows parked with visibility: hidden
-      rowRefs.current.forEach((rowEl, idx) => {
-        if (!rowEl) return;
-        if (idx === 0) {
-          gsap.set(rowEl, {
-            y: 0,
-            opacity: 1,
-            visibility: "visible",
-            pointerEvents: "auto",
-          });
-        } else {
-          gsap.set(rowEl, {
-            y: 10,
-            opacity: 0,
-            visibility: "hidden",
-            pointerEvents: "none",
-          });
-        }
-      });
+      // Vertical distance linked to scroll: comfortable scroll pacing
+      const pinDistance = (totalGroups - 1) * 750;
 
-      // Pin distance per set: comfortable scroll distance
-      const scrollDistance = (numRows - 1) * 450;
-      const dwellTime = 0.7;
-      const transitionTime = 0.5;
-
-      // Master ScrollTrigger timeline
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          id: "services-pinned-trigger",
-          trigger: pinnedStageRef.current,
-          start: "top 72px",
-          end: () => `+=${scrollDistance}`,
-          pin: true,
-          scrub: 0.5,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-          onUpdate: (self) => {
-            const totalDuration = tl.duration();
-            if (totalDuration > 0) {
-              const currentT = self.progress * totalDuration;
-              let closest = 0;
-              let minDiff = 9999;
-              for (let i = 0; i < numRows; i++) {
-                const labelT = tl.labels[`set-${i}`];
-                if (typeof labelT === "number") {
-                  const diff = Math.abs(currentT - labelT);
-                  if (diff < minDiff) {
-                    minDiff = diff;
-                    closest = i;
-                  }
-                }
-              }
-              setActiveRowIndex(closest);
-            }
-          },
+      // Pin the section stage at top 72px (below navbar)
+      // Heading and controls remain completely stationary inside the pinned container above the cards
+      const trigger = ScrollTrigger.create({
+        id: "services-horizontal-carousel",
+        trigger: pinnedStage,
+        pin: true,
+        start: "top 72px",
+        end: () => `+=${pinDistance}`,
+        scrub: 0.8,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+        onUpdate: (self) => {
+          const x = -self.progress * scrollDist;
+          gsap.set(track, { x });
+          setScrollProgress(self.progress);
         },
       });
 
-      scrollTriggerRef.current = tl.scrollTrigger || null;
-      timelineRef.current = tl;
+      scrollTriggerRef.current = trigger;
+    };
 
-      let cursor = 0;
-      tl.addLabel("set-0", cursor + dwellTime / 2);
-      cursor += dwellTime;
+    const timer = setTimeout(() => {
+      setupCarousel();
+      ScrollTrigger.refresh();
+    }, 120);
 
-      for (let r = 0; r < numRows - 1; r++) {
-        const currentRowEl = rowRefs.current[r];
-        const nextRowEl = rowRefs.current[r + 1];
-        if (!currentRowEl || !nextRowEl) continue;
+    const onResize = () => {
+      setupCarousel();
+      ScrollTrigger.refresh();
+    };
+    window.addEventListener("resize", onResize);
 
-        const transStart = cursor;
-        const transEnd = transStart + transitionTime;
-
-        // Current row smoothly glides up by only 10px and fades out (ZERO empty gap)
-        tl.to(
-          currentRowEl,
-          {
-            y: -10,
-            opacity: 0,
-            duration: transitionTime,
-            ease: "power2.inOut",
-          },
-          transStart
-        )
-        .set(currentRowEl, { visibility: "hidden", pointerEvents: "none" }, transEnd);
-
-        // Next row transitions in from 10px below to y:0
-        tl.set(nextRowEl, { visibility: "visible", pointerEvents: "auto" }, transStart)
-        .fromTo(
-          nextRowEl,
-          {
-            y: 10,
-            opacity: 0,
-          },
-          {
-            y: 0,
-            opacity: 1,
-            duration: transitionTime,
-            ease: "power2.inOut",
-          },
-          transStart
-        );
-
-        cursor = transEnd;
-        tl.addLabel(`set-${r + 1}`, cursor + dwellTime / 2);
-        cursor += dwellTime;
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("resize", onResize);
+      if (scrollTriggerRef.current) {
+        scrollTriggerRef.current.kill();
+        scrollTriggerRef.current = null;
       }
+      if (track) {
+        gsap.set(track, { x: 0 });
+      }
+    };
+  }, [filteredServices.length, totalGroups, filter, searchQuery, updateCardDimensions]);
 
-      tl.set({}, {}, cursor);
-
-      return () => {
-        tl.kill();
-        timelineRef.current = null;
-        ScrollTrigger.getAll()
-          .filter((t) => t.vars?.id === "services-pinned-trigger")
-          .forEach((t) => t.kill());
-      };
-    });
-
-    return () => mm.revert();
-  }, [rows, numRows]);
-
-  // Jump to specific set
-  const goToRow = (targetIdx: number) => {
-    if (targetIdx < 0 || targetIdx >= numRows) return;
-    setActiveRowIndex(targetIdx);
-
-    const tl = timelineRef.current;
+  // Jump to specific set/group
+  const goToGroup = (groupIdx: number) => {
     const trigger = scrollTriggerRef.current;
+    if (!trigger || totalGroups <= 1) return;
 
-    if (tl && trigger && numRows > 1) {
-      const labelT = tl.labels[`set-${targetIdx}`];
-      const totalDur = tl.duration();
-      if (typeof labelT === "number" && totalDur > 0) {
-        const normProgress = labelT / totalDur;
-        const targetScroll = trigger.start + normProgress * (trigger.end - trigger.start);
-        tl.tweenTo(`set-${targetIdx}`, { duration: 0.5, ease: "power2.out" });
-        window.scrollTo({ top: targetScroll, behavior: "smooth" });
-        return;
-      }
-    }
-
-    if (tl) {
-      tl.tweenTo(`set-${targetIdx}`, { duration: 0.5, ease: "power2.out" });
-    } else {
-      // Mobile fallback
-      rowRefs.current.forEach((el, idx) => {
-        if (!el) return;
-        if (idx === targetIdx) {
-          gsap.to(el, { y: 0, opacity: 1, visibility: "visible", duration: 0.35, ease: "power2.out" });
-          el.style.pointerEvents = "auto";
-        } else {
-          gsap.to(el, { y: idx < targetIdx ? -10 : 10, opacity: 0, visibility: "hidden", duration: 0.35, ease: "power2.out" });
-          el.style.pointerEvents = "none";
-        }
-      });
-    }
+    const norm = groupIdx / (totalGroups - 1);
+    const targetScroll = trigger.start + norm * (trigger.end - trigger.start);
+    window.scrollTo({ top: targetScroll, behavior: "smooth" });
   };
 
   // Close modal on Escape
@@ -650,62 +471,56 @@ export default function Services() {
     <section
       ref={sectionRef}
       id="services"
-      className="bg-[var(--ink)] relative"
+      className="bg-[#faf7f0] relative border-t border-[#e8dfd3]"
       aria-labelledby="services-heading"
     >
-      {/* Background Ambient Atmosphere */}
-      <div
-        className="absolute inset-0 opacity-[0.025] pointer-events-none"
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, #0284c7 1px, transparent 1px), linear-gradient(to bottom, #0284c7 1px, transparent 1px)",
-          backgroundSize: "48px 48px",
-        }}
-      />
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-[#0284c7]/5 blur-[160px] rounded-full pointer-events-none" />
-
-      {/* Pinned Stage Container: Compact, tight vertical padding */}
+      {/* ── STABLE PINNED STAGE (Holds Stationary Header + Stationary Controls + Moving Cards) ── */}
       <div
         ref={pinnedStageRef}
-        className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-3 flex flex-col justify-start overflow-hidden"
+        className="relative w-full h-[calc(100dvh-72px)] min-h-[580px] max-h-[820px] pt-3 pb-3 sm:pt-4 sm:pb-4 flex flex-col justify-between overflow-hidden bg-[#faf7f0]"
       >
-        {/* Top Control Bar: Compact Header + Search */}
-        <div className="relative z-20 w-full mb-1.5 sm:mb-2">
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-2 pb-2 sm:pb-2.5 border-b border-[#e8dfd3]">
-            <div>
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border border-[#0ea5e9]/40 bg-white text-[#0c192c] text-[9.5px] font-sans font-bold tracking-wider uppercase mb-0.5 shadow-xs">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#0284c7] animate-pulse" />
-                <span>AI BIZ CHAMP SUITE</span>
-                <span className="opacity-40">•</span>
-                <span>PINNED 3-CARD SHOWCASE</span>
-              </div>
-              <h2
-                id="services-heading"
-                className="font-heading text-xl sm:text-2xl md:text-3xl font-extrabold text-[#0c192c] tracking-tight leading-tight"
-              >
-                Our Master-Crafted <span className="text-[#0284c7]">AI Services</span>
-              </h2>
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-1 flex flex-col justify-between">
+          {/* ── 1. STATIONARY SECTION HEADER (Visible across all 5 sets) ── */}
+          <div className="mb-2 shrink-0">
+            <div className="inline-flex items-center gap-2 px-3 py-0.5 rounded-full border border-[#0ea5e9]/30 bg-white text-[#0284c7] text-[10.5px] font-sans font-semibold tracking-wider uppercase mb-1 shadow-xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#0284c7]" />
+              <span>OUR CAPABILITIES</span>
             </div>
 
+            <h2
+              id="services-heading"
+              className="font-heading text-xl sm:text-2xl lg:text-[28px] font-extrabold text-[#0c192c] tracking-tight leading-tight"
+            >
+              AI Services, Built Around Your <span className="text-[#0284c7]">Goals</span>
+            </h2>
+
+            <p className="mt-0.5 text-xs sm:text-[13px] text-[#475569] max-w-2xl font-sans leading-normal">
+              Production-ready artificial intelligence solutions, academic coaching, and scalable digital media systems tailored to accelerate your growth.
+            </p>
+          </div>
+
+          {/* ── 2. STATIONARY CONTROLS: CATEGORIES & SEARCH (Visible across all 5 sets) ── */}
+          <div className="mb-2.5 flex flex-col lg:flex-row lg:items-center justify-between gap-2.5 pb-2 border-b border-[#e8dfd3] shrink-0">
             {/* Category Filter Pills */}
-            <div className="flex flex-wrap items-center gap-1 bg-white p-1 rounded-2xl border border-[#e8dfd3] shadow-xs">
+            <div className="flex flex-wrap items-center gap-1.5">
               {[
-                { id: "all", label: "All 15", count: 15 },
+                { id: "all", label: "All Capabilities", count: 15 },
+                { id: "tech", label: "Web & Intelligence", count: 4 },
+                { id: "education", label: "Courses & Mentorship", count: 3 },
+                { id: "video", label: "Video & Growth", count: 3 },
+                { id: "publishing", label: "Publishing & Research", count: 2 },
                 { id: "visual", label: "Brand & Visual", count: 3 },
-                { id: "video", label: "Video & Motion", count: 6 },
-                { id: "tech", label: "Web & Agents", count: 3 },
-                { id: "publishing", label: "Publishing", count: 3 },
               ].map((cat) => (
                 <button
                   key={cat.id}
                   onClick={() => {
                     setFilter(cat.id as any);
-                    goToRow(0);
+                    if (trackRef.current) gsap.set(trackRef.current, { x: 0 });
                   }}
-                  className={`px-2.5 sm:px-3 py-1 rounded-xl text-xs font-sans font-semibold transition-all border flex items-center gap-1.5 cursor-pointer ${
+                  className={`px-2.5 py-1 rounded-xl text-xs font-sans font-semibold transition-all border flex items-center gap-1.5 cursor-pointer ${
                     filter === cat.id
                       ? "bg-[#0284c7] text-white border-[#0284c7] shadow-xs"
-                      : "bg-white text-[#475569] border-transparent hover:border-[#bae6fd] hover:text-[#0284c7]"
+                      : "bg-white text-[#475569] border-[#e8dfd3] hover:border-[#bae6fd] hover:text-[#0284c7]"
                   }`}
                 >
                   <span>{cat.label}</span>
@@ -719,12 +534,10 @@ export default function Services() {
                 </button>
               ))}
             </div>
-          </div>
 
-          {/* Search Bar + Set Navigator */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 pt-2">
-            <div className="relative flex-1 max-w-xl">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#0284c7]">
+            {/* Search Input */}
+            <div className="relative w-full lg:w-72">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#64748b]">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
                   <circle cx="11" cy="11" r="8" />
                   <line x1="21" y1="21" x2="16.65" y2="16.65" />
@@ -735,37 +548,105 @@ export default function Services() {
                 value={searchQuery}
                 onChange={(e) => {
                   setSearchQuery(e.target.value);
-                  goToRow(0);
+                  if (trackRef.current) gsap.set(trackRef.current, { x: 0 });
                 }}
-                placeholder="Search capabilities, models, or deliverables (e.g. Video, Midjourney, Agents)..."
+                placeholder="Search capabilities or deliverables..."
                 className="w-full pl-8 pr-8 py-1.5 bg-white border border-[#e8dfd3] rounded-xl text-xs text-[#0c192c] placeholder-[#64748b] focus:outline-none focus:border-[#0284c7] focus:ring-2 focus:ring-[#0284c7]/20 font-sans shadow-xs transition-all"
               />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery("")}
-                  className="absolute inset-y-0 right-0 pr-2.5 flex items-center text-[#64748b] hover:text-[#0c192c] cursor-pointer"
+                  className="absolute inset-y-0 right-0 pr-2.5 flex items-center text-[#64748b] hover:text-[#0c192c] cursor-pointer text-xs"
                 >
                   ✕
                 </button>
               )}
             </div>
+          </div>
 
-            {/* Set Navigator Dots & Next/Prev Controls */}
-            <div className="flex items-center justify-between sm:justify-end gap-2.5 text-xs font-sans text-[#475569]">
-              <span className="text-[11px] font-mono text-[#64748b]">
-                Set <strong className="text-[#0c192c]">{activeRowIndex + 1}</strong> of{" "}
-                <strong className="text-[#0c192c]">{Math.max(1, numRows)}</strong>
+          {/* ── 3. SCROLL-DRIVEN HORIZONTAL CAROUSEL VIEWPORT (ONLY THIS MOVES) ── */}
+          <div
+            ref={viewportRef}
+            className="relative w-full overflow-hidden flex-1 flex items-center py-1"
+          >
+            {filteredServices.length === 0 ? (
+              <div className="w-full py-12 text-center bg-white rounded-2xl border border-[#e8dfd3] p-8 shadow-xs">
+                <p className="font-heading text-base font-bold text-[#0c192c] mb-1.5">
+                  No capabilities match &ldquo;{searchQuery}&rdquo;
+                </p>
+                <p className="text-xs text-[#64748b] mb-3">
+                  Try searching for &quot;Tutor&quot;, &quot;SEO&quot;, &quot;Mentorship&quot;, or &quot;YouTube&quot;.
+                </p>
+                <button
+                  onClick={() => {
+                    setSearchQuery("");
+                    setFilter("all");
+                  }}
+                  className="px-4 py-1.5 rounded-full bg-[#0284c7] text-white text-xs font-bold cursor-pointer hover:bg-[#0369a1] transition-all shadow-sm"
+                >
+                  Reset Filters
+                </button>
+              </div>
+            ) : (
+              <div
+                ref={trackRef}
+                className="flex flex-nowrap items-stretch gap-6 will-change-transform select-none py-1"
+                style={{ width: "max-content" }}
+              >
+                {filteredServices.map((item) => (
+                  <div
+                    key={item.id}
+                    style={{
+                      width: `${cardWidth}px`,
+                      flex: `0 0 ${cardWidth}px`,
+                      minWidth: `${cardWidth}px`,
+                      maxWidth: `${cardWidth}px`,
+                    }}
+                    className="shrink-0 flex flex-col"
+                  >
+                    <ServiceCard
+                      item={item}
+                      onOpenSpec={(svc) => setSelectedService(svc)}
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* ── 4. STATIONARY BOTTOM PROGRESS & NAVIGATION BAR (Visible across all 5 sets) ── */}
+          <div className="mt-2.5 pt-2.5 border-t border-[#e8dfd3] flex flex-col sm:flex-row items-center justify-between gap-2.5 text-xs font-sans text-[#64748b] shrink-0">
+            {/* Scroll Indicator with Dynamic Progress Line */}
+            <div className="flex items-center gap-3 w-full sm:w-auto">
+              <span className="font-mono text-[11px] text-[#0c192c] font-semibold whitespace-nowrap">
+                Set {currentGroup} of {totalGroups}
               </span>
 
-              {/* Step indicator dots */}
+              {/* Progress Line */}
+              <div className="flex-1 sm:w-44 h-1.5 bg-[#e8dfd3] rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-[#0284c7] transition-all duration-150 ease-out rounded-full"
+                  style={{
+                    width: `${Math.max(15, Math.round(scrollProgress * 100))}%`,
+                  }}
+                />
+              </div>
+
+              <span className="text-[11px] text-[#64748b] hidden md:inline">
+                Scroll to slide capabilities
+              </span>
+            </div>
+
+            {/* Set Jump Dots & Controls */}
+            <div className="flex items-center gap-2">
               <div className="flex items-center gap-1.5 bg-white px-2 py-1 rounded-full border border-[#e8dfd3] shadow-xs">
-                {rows.map((_, ri) => (
+                {Array.from({ length: totalGroups }).map((_, gi) => (
                   <button
-                    key={ri}
-                    onClick={() => goToRow(ri)}
-                    title={`Jump to Set ${ri + 1}`}
+                    key={gi}
+                    onClick={() => goToGroup(gi)}
+                    title={`Jump to Set ${gi + 1}`}
                     className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                      ri === activeRowIndex
+                      gi === currentGroup - 1
                         ? "w-5 bg-[#0284c7]"
                         : "w-1.5 bg-[#bae6fd] hover:bg-[#0284c7]/60"
                     }`}
@@ -773,115 +654,47 @@ export default function Services() {
                 ))}
               </div>
 
-              {/* Prev / Next buttons */}
               <div className="flex items-center gap-1">
                 <button
                   type="button"
-                  onClick={() => goToRow(activeRowIndex - 1)}
-                  disabled={activeRowIndex === 0}
+                  onClick={() => goToGroup(Math.max(0, currentGroup - 2))}
+                  disabled={currentGroup <= 1}
                   title="Previous Set"
-                  className="w-6 h-6 rounded-full bg-white border border-[#e8dfd3] flex items-center justify-center text-[#0c192c] disabled:opacity-30 disabled:cursor-not-allowed hover:bg-[#e0f2fe] hover:border-[#0284c7] transition-colors shadow-xs cursor-pointer text-xs font-bold"
+                  className="w-6 h-6 rounded-full bg-white border border-[#e8dfd3] flex items-center justify-center text-[#0c192c] disabled:opacity-30 disabled:cursor-not-allowed hover:bg-[#f0f9ff] hover:border-[#0284c7] transition-colors shadow-xs cursor-pointer text-xs font-bold"
                 >
-                  ↑
+                  ←
                 </button>
                 <button
                   type="button"
-                  onClick={() => goToRow(activeRowIndex + 1)}
-                  disabled={activeRowIndex >= numRows - 1}
+                  onClick={() => goToGroup(Math.min(totalGroups - 1, currentGroup))}
+                  disabled={currentGroup >= totalGroups}
                   title="Next Set"
-                  className="w-6 h-6 rounded-full bg-white border border-[#e8dfd3] flex items-center justify-center text-[#0c192c] disabled:opacity-30 disabled:cursor-not-allowed hover:bg-[#e0f2fe] hover:border-[#0284c7] transition-colors shadow-xs cursor-pointer text-xs font-bold"
+                  className="w-6 h-6 rounded-full bg-white border border-[#e8dfd3] flex items-center justify-center text-[#0c192c] disabled:opacity-30 disabled:cursor-not-allowed hover:bg-[#f0f9ff] hover:border-[#0284c7] transition-colors shadow-xs cursor-pointer text-xs font-bold"
                 >
-                  ↓
+                  →
                 </button>
               </div>
             </div>
           </div>
         </div>
-
-        {/* ─── PINNED CARD STAGE: Tight, zero dead space above cards ─── */}
-        {filteredServices.length === 0 ? (
-          <div className="py-14 text-center bg-white rounded-2xl border border-[#e8dfd3] p-6 shadow-xs">
-            <p className="font-heading text-base font-bold text-[#0c192c] mb-1.5">
-              No services match &ldquo;{searchQuery}&rdquo;
-            </p>
-            <p className="text-xs text-[#64748b] mb-3">
-              Try searching for &quot;Video&quot;, &quot;Agents&quot;, &quot;Reels&quot;, or &quot;Research&quot;.
-            </p>
-            <button
-              onClick={() => {
-                setSearchQuery("");
-                setFilter("all");
-              }}
-              className="px-3.5 py-1.5 rounded-full bg-[#0284c7] text-white text-xs font-bold cursor-pointer hover:bg-[#0369a1] transition-all shadow-sm"
-            >
-              Reset Filters
-            </button>
-          </div>
-        ) : (
-          <div className="relative w-full h-[375px] sm:h-[390px] overflow-hidden mt-1 mb-1.5">
-            {rows.map((rowCards, rowIndex) => (
-              <div
-                key={rowIndex}
-                ref={(el) => {
-                  rowRefs.current[rowIndex] = el;
-                }}
-                className="absolute inset-0 w-full h-full grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 items-start bg-[var(--ink)]"
-                style={{
-                  opacity: rowIndex === 0 ? 1 : 0,
-                  visibility: rowIndex === 0 ? "visible" : "hidden",
-                  pointerEvents: rowIndex === 0 ? "auto" : "none",
-                  willChange: "transform, opacity",
-                }}
-              >
-                {rowCards.map((item) => (
-                  <ServiceCard
-                    key={item.id}
-                    item={item}
-                    onOpenSpec={(svc) => setSelectedService(svc)}
-                  />
-                ))}
-              </div>
-            ))}
-          </div>
-        )}
-
-        {/* Bottom Status & Scroll Instructions */}
-        <div className="relative z-10 pt-1.5 border-t border-[#e8dfd3] flex flex-col sm:flex-row items-center justify-between text-[11px] font-sans text-[#64748b] gap-1.5">
-          <div className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#0284c7] animate-pulse" />
-            <span>
-              Scroll down or use the ↑ ↓ arrows to smoothly advance through all {filteredServices.length} capabilities
-            </span>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <Link
-              href="#contact"
-              className="text-[#0284c7] hover:text-[#0369a1] font-bold transition-colors flex items-center gap-1 hover:underline"
-            >
-              <span>Custom Enterprise Scoping</span>
-              <span>↗</span>
-            </Link>
-          </div>
-        </div>
       </div>
 
-      {/* Modal / Detailed Spec Drawer */}
+      {/* Specification Detail Modal */}
       {selectedService && (
         <div
-          className="fixed inset-0 z-[250] flex items-center justify-center p-4 sm:p-6 bg-[#0c192c]/70 backdrop-blur-md transition-all animate-fadeIn"
+          className="fixed inset-0 z-[250] flex items-center justify-center p-4 sm:p-6 bg-[#0c192c]/65 backdrop-blur-md transition-all animate-fadeIn"
           onClick={() => setSelectedService(null)}
           role="dialog"
           aria-modal="true"
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-2xl bg-white rounded-3xl border border-[#e8dfd3] p-6 sm:p-8 shadow-[0_25px_60px_-15px_rgba(2,132,199,0.3)] overflow-hidden transition-all"
+            className="relative w-full max-w-2xl bg-white rounded-3xl border border-[#e8dfd3] p-6 sm:p-8 shadow-[0_25px_60px_-15px_rgba(2,132,199,0.25)] overflow-hidden transition-all"
           >
             {/* Top Close Button */}
             <button
               onClick={() => setSelectedService(null)}
-              className="absolute top-5 right-5 w-9 h-9 rounded-full bg-[#f4efe6] hover:bg-[#e0f2fe] text-[#0c192c] hover:text-[#0284c7] flex items-center justify-center font-bold text-sm transition-colors cursor-pointer border border-[#e8dfd3]"
+              className="absolute top-5 right-5 w-9 h-9 rounded-full bg-[#faf7f0] hover:bg-[#e0f2fe] text-[#0c192c] hover:text-[#0284c7] flex items-center justify-center font-bold text-sm transition-colors cursor-pointer border border-[#e8dfd3]"
               aria-label="Close specification modal"
             >
               ✕

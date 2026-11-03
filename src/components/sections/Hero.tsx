@@ -121,14 +121,8 @@ export default function Hero() {
             Empowering The
           </span>
           
-          {/* Signature Outlined Stroke Keyword with Antigravity Chromatic Glow */}
-          <span
-            className="rgb-chromatic-glow block text-4xl sm:text-6xl md:text-7xl lg:text-[84px] font-black tracking-tight my-0.5 sm:my-1"
-            style={{
-              WebkitTextStroke: "2.5px #0284c7",
-              color: "transparent",
-            }}
-          >
+          {/* High-Impact Vibrant Gradient Filled NEXT-GEN */}
+          <span className="block text-4xl sm:text-6xl md:text-7xl lg:text-[84px] font-black tracking-tight my-0.5 sm:my-1 bg-gradient-to-r from-[#0284c7] via-[#0ea5e9] to-[#2563eb] bg-clip-text text-transparent drop-shadow-sm pb-1">
             NEXT-GEN
           </span>
 
