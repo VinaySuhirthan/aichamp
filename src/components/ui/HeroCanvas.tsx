@@ -158,19 +158,9 @@ export default function HeroCanvas() {
     };
     window.addEventListener("mousemove", onMouseMove, { passive: true });
 
-    // ── Viewport Visibility Observer ───
-    let isVisible = true;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        isVisible = entry.isIntersecting;
-        if (isVisible) lastTime = performance.now();
-      },
-      { threshold: 0.05 }
-    );
-    observer.observe(mount);
-
-    // ── Animation Loop — 30fps cap for smooth, consistent perf ──
-    let frameId: number;
+    // ── Animation Loop — 30fps cap with clean pause when offscreen ──
+    let frameId: number = 0;
+    let isRunning = false;
     let elapsed = 0;
     let lastTime = performance.now();
     let colorTick = 0;
@@ -180,8 +170,8 @@ export default function HeroCanvas() {
     const waveZArr = waveGeo.attributes.position.array as Float32Array;
 
     const animate = (time: number) => {
+      if (!isRunning) return;
       frameId = requestAnimationFrame(animate);
-      if (!isVisible) return;
 
       const rawDelta = time - lastTime;
       lastTime = time;
@@ -226,7 +216,7 @@ export default function HeroCanvas() {
       sphereMesh.scale.setScalar(pulse);
       nodePoints.scale.setScalar(pulse);
 
-      // Chromatic shift — only update every 3rd frame (visually identical)
+      // Chromatic shift — update every 3rd frame
       colorTick++;
       if (colorTick % 3 === 0) {
         const hue = 0.55 + Math.sin(elapsed * 0.25) * 0.08;
@@ -239,7 +229,34 @@ export default function HeroCanvas() {
 
       renderer.render(scene, camera);
     };
-    frameId = requestAnimationFrame(animate);
+
+    const startLoop = () => {
+      if (!isRunning) {
+        isRunning = true;
+        lastTime = performance.now();
+        accumulator = 0;
+        frameId = requestAnimationFrame(animate);
+      }
+    };
+
+    const stopLoop = () => {
+      isRunning = false;
+      stopLoop();
+    };
+
+    // ── Viewport Visibility Observer (Stops RAF when off-screen) ───
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          startLoop();
+        } else {
+          stopLoop();
+        }
+      },
+      { threshold: 0.02 }
+    );
+    observer.observe(mount);
+    startLoop();
 
     // ── Resize Handler (debounced) ─────────────────────────
     let resizeTimer: ReturnType<typeof setTimeout>;

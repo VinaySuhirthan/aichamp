@@ -1342,13 +1342,10 @@ p { line-height: 1.8; }
 
 @keyframes blob-morph-3d {
   0%, 100% {
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    transform: scale(1) rotate(0deg);
   }
-  33% {
-    border-radius: 46% 54% 60% 40% / 54% 46% 54% 46%;
-  }
-  66% {
-    border-radius: 68% 32% 48% 52% / 32% 58% 42% 68%;
+  50% {
+    transform: scale(1.05, 0.95) rotate(7deg);
   }
 }
 
@@ -1395,23 +1392,36 @@ p { line-height: 1.8; }
 
 .animate-blob-morph {
   animation: blob-morph-3d 14s ease-in-out infinite;
-  will-change: border-radius;
+  will-change: transform;
+  transform-origin: center center;
 }
 
 /* Luminous Ambient Glows Tuned for Warm Cream (#faf7f0) */
 .ambient-glow-cyan {
+  contain: paint;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
   background: radial-gradient(circle, rgba(14, 165, 233, 0.3) 0%, rgba(56, 189, 248, 0.16) 42%, rgba(14, 165, 233, 0.04) 70%, transparent 100%);
   filter: blur(55px);
 }
 .ambient-glow-lavender {
+  contain: paint;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
   background: radial-gradient(circle, rgba(129, 140, 248, 0.28) 0%, rgba(192, 132, 252, 0.16) 42%, rgba(129, 140, 248, 0.03) 70%, transparent 100%);
   filter: blur(55px);
 }
 .ambient-glow-rose {
+  contain: paint;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
   background: radial-gradient(circle, rgba(244, 114, 182, 0.24) 0%, rgba(251, 146, 60, 0.14) 42%, rgba(244, 114, 182, 0.03) 70%, transparent 100%);
   filter: blur(55px);
 }
 .ambient-glow-blue {
+  contain: paint;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
   background: radial-gradient(circle, rgba(2, 132, 199, 0.28) 0%, rgba(37, 99, 235, 0.15) 45%, rgba(2, 132, 199, 0.03) 70%, transparent 100%);
   filter: blur(55px);
 }

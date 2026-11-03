@@ -18,9 +18,9 @@ export default function SmoothScrollProvider({
     const mm = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (mm.matches) return;
 
-    // Initialize Lenis with optimized smooth-scrolling physics
+    // Initialize Lenis with optimized responsive smooth-scrolling physics
     const lenis = new Lenis({
-      duration: 1.15,
+      duration: 0.9,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
@@ -39,8 +39,8 @@ export default function SmoothScrollProvider({
     };
     gsap.ticker.add(tickerCallback);
 
-    // Turn off GSAP lag smoothing so scroll doesn't hitch or jump
-    gsap.ticker.lagSmoothing(0);
+    // Enable GSAP lag smoothing to absorb frame drops and prevent scroll hitching
+    gsap.ticker.lagSmoothing(500, 33);
 
     return () => {
       gsap.ticker.remove(tickerCallback);

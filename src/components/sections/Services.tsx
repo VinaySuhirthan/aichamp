@@ -315,7 +315,9 @@ export default function Services() {
   const [filter, setFilter] = useState<"all" | "tech" | "video" | "education" | "publishing" | "visual">("all");
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
-  const [scrollProgress, setScrollProgress] = useState<number>(0);
+  const progressBarRef = useRef<HTMLDivElement>(null);
+  const [currentGroup, setCurrentGroup] = useState<number>(1);
+  const currentGroupRef = useRef<number>(1);
   const [cardWidth, setCardWidth] = useState<number>(380);
 
   // Filter capabilities
@@ -339,7 +341,7 @@ export default function Services() {
 
   // Total groups of 3 cards
   const totalGroups = Math.max(1, Math.ceil(filteredServices.length / 3));
-  const currentGroup = Math.min(totalGroups, Math.floor(scrollProgress * (totalGroups - 1) + 0.1) + 1);
+  // currentGroup is state-managed on set transitions only to eliminate 60fps React re-renders
 
   // ── Compute Exact Viewport-Based Card Width ──
   const updateCardDimensions = useCallback(() => {
@@ -390,7 +392,9 @@ export default function Services() {
       // If all items fit within visible viewport (e.g. 3 or fewer), no horizontal scroll is needed
       if (scrollDist <= 10) {
         gsap.set(track, { x: 0 });
-        setScrollProgress(0);
+        if (progressBarRef.current) progressBarRef.current.style.width = "100%";
+        setCurrentGroup(1);
+        currentGroupRef.current = 1;
         return;
       }
 
@@ -406,12 +410,22 @@ export default function Services() {
         start: "top 72px",
         end: () => `+=${pinDistance}`,
         scrub: 0.8,
-        anticipatePin: 1,
+        anticipatePin: 0,
         invalidateOnRefresh: true,
         onUpdate: (self) => {
           const x = -self.progress * scrollDist;
           gsap.set(track, { x });
-          setScrollProgress(self.progress);
+
+          if (progressBarRef.current) {
+            const pct = Math.max(15, Math.round(self.progress * 100));
+            progressBarRef.current.style.width = `${pct}%`;
+          }
+
+          const newGroup = Math.min(totalGroups, Math.floor(self.progress * (totalGroups - 1) + 0.1) + 1);
+          if (newGroup !== currentGroupRef.current) {
+            currentGroupRef.current = newGroup;
+            setCurrentGroup(newGroup);
+          }
         },
       });
 
@@ -423,14 +437,19 @@ export default function Services() {
       ScrollTrigger.refresh();
     }, 120);
 
+    let resizeTimer: ReturnType<typeof setTimeout>;
     const onResize = () => {
-      setupCarousel();
-      ScrollTrigger.refresh();
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        setupCarousel();
+        ScrollTrigger.refresh();
+      }, 150);
     };
     window.addEventListener("resize", onResize);
 
     return () => {
       clearTimeout(timer);
+      clearTimeout(resizeTimer);
       window.removeEventListener("resize", onResize);
       if (scrollTriggerRef.current) {
         scrollTriggerRef.current.kill();
@@ -652,9 +671,10 @@ export default function Services() {
               {/* Progress Line */}
               <div className="flex-1 sm:w-44 h-1.5 bg-[#e8dfd3] rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-[#0284c7] transition-all duration-150 ease-out rounded-full"
+                  ref={progressBarRef}
+                  className="h-full bg-[#0284c7] transition-[width] duration-75 ease-out rounded-full will-change-[width]"
                   style={{
-                    width: `${Math.max(15, Math.round(scrollProgress * 100))}%`,
+                    width: "15%",
                   }}
                 />
               </div>

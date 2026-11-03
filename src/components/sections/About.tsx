@@ -317,6 +317,7 @@ export default function About() {
                   className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
                   unoptimized
                   priority={idx < 6}
+                  loading={idx < 6 ? "eager" : "lazy"}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0c192c]/80 via-transparent to-transparent opacity-40 group-hover:opacity-10 transition-opacity duration-300" />
 

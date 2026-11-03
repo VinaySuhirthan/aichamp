@@ -101,12 +101,16 @@ export default function Floating3DShape({
         width: `${size}px`,
         height: `${height}px`,
         animationDelay: delay !== 0 ? `${delay}s` : undefined,
+        contain: "paint layout",
+        backfaceVisibility: "hidden",
+        WebkitBackfaceVisibility: "hidden",
+        transformStyle: "preserve-3d",
         ...style,
       }}
       aria-hidden="true"
     >
       <div
-        className={`relative w-full h-full backdrop-blur-[3px] transition-transform duration-700 ${
+        className={`relative w-full h-full ${
           isBlob ? "animate-blob-morph" : ""
         }`}
         style={{
