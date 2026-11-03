@@ -31,7 +31,7 @@ export default function FAQ() {
     <section
       ref={sectionRef}
       id="faq"
-      className="py-20 md:py-48 bg-[var(--ink)]"
+      className="py-16 md:py-24 bg-[var(--ink)]"
       aria-labelledby="faq-heading"
     >
       <div className="container">

@@ -72,8 +72,55 @@ export default function HeroCanvas() {
     const nodePoints = new THREE.Points(nodeGeo, nodeMat);
     worldGroup.add(nodePoints);
 
-    // 4. Floating Cosmic Data Particles (Light Blue)
-    const PARTICLE_COUNT = 700;
+    // 4. Flowing Undulating Liquid Neural Silk Wave (Organic Flowing Texture)
+    const waveWidth = 7;
+    const waveHeight = 5;
+    const waveSegmentsX = 48;
+    const waveSegmentsY = 36;
+    const waveGeo = new THREE.PlaneGeometry(waveWidth, waveHeight, waveSegmentsX, waveSegmentsY);
+    const waveInitialPositions = waveGeo.attributes.position.clone();
+
+    const waveMat = new THREE.MeshBasicMaterial({
+      color: 0x38bdf8,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.28,
+    });
+    const waveMesh = new THREE.Mesh(waveGeo, waveMat);
+    waveMesh.position.set(0, -0.15, -0.5);
+    waveMesh.rotation.x = -Math.PI / 3.2;
+    worldGroup.add(waveMesh);
+
+    // 5. Flowing Gyroscopic Orbital Liquid Ribbon Ring 1
+    const ring1Geo = new THREE.TorusGeometry(1.85, 0.015, 16, 90);
+    const ring1InitialPos = ring1Geo.attributes.position.clone();
+    const ring1Mat = new THREE.MeshBasicMaterial({
+      color: 0x0ea5e9,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.55,
+    });
+    const ring1Mesh = new THREE.Mesh(ring1Geo, ring1Mat);
+    ring1Mesh.rotation.x = Math.PI / 4;
+    ring1Mesh.rotation.y = Math.PI / 6;
+    worldGroup.add(ring1Mesh);
+
+    // 6. Flowing Gyroscopic Orbital Liquid Ribbon Ring 2 (Counter-tilted)
+    const ring2Geo = new THREE.TorusGeometry(2.15, 0.012, 16, 90);
+    const ring2InitialPos = ring2Geo.attributes.position.clone();
+    const ring2Mat = new THREE.MeshBasicMaterial({
+      color: 0x818cf8, // Subtle Electric Violet
+      wireframe: true,
+      transparent: true,
+      opacity: 0.45,
+    });
+    const ring2Mesh = new THREE.Mesh(ring2Geo, ring2Mat);
+    ring2Mesh.rotation.x = -Math.PI / 3.5;
+    ring2Mesh.rotation.z = Math.PI / 5;
+    worldGroup.add(ring2Mesh);
+
+    // 7. Floating Cosmic Data Particles (Light Blue)
+    const PARTICLE_COUNT = 650;
     const pPositions = new Float32Array(PARTICLE_COUNT * 3);
 
     for (let i = 0; i < PARTICLE_COUNT; i++) {
@@ -113,7 +160,7 @@ export default function HeroCanvas() {
     };
     window.addEventListener("mousemove", onMouseMove, { passive: true });
 
-    // ── Viewport Visibility Observer (Saves GPU during scroll) ───
+    // ── Viewport Visibility Observer ───
     let isVisible = true;
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -148,15 +195,47 @@ export default function HeroCanvas() {
       outerMesh.rotation.z = -elapsed * 0.08;
       outerMesh.rotation.x = elapsed * 0.05;
 
-      // Subtle breathing pulse & iridescent chromatic resonance
+      ring1Mesh.rotation.z = elapsed * 0.22;
+      ring2Mesh.rotation.y = -elapsed * 0.18;
+
+      // ── Animate Flowing Liquid Silk Wave Mesh ──
+      const wavePos = waveGeo.attributes.position;
+      const initPos = waveInitialPositions;
+      for (let i = 0; i < wavePos.count; i++) {
+        const x = initPos.getX(i);
+        const y = initPos.getY(i);
+        // Multi-frequency harmonic wave for liquid silk effect
+        const z =
+          Math.sin(x * 1.4 + elapsed * 1.8) * Math.cos(y * 1.4 + elapsed * 1.3) * 0.26 +
+          Math.sin(Math.sqrt(x * x + y * y) * 2.2 - elapsed * 2.0) * 0.14;
+        wavePos.setZ(i, z);
+      }
+      wavePos.needsUpdate = true;
+
+      // ── Animate Orbital Ribbon Ripples ──
+      const ring1Pos = ring1Geo.attributes.position;
+      for (let i = 0; i < ring1Pos.count; i++) {
+        const ox = ring1InitialPos.getX(i);
+        const oy = ring1InitialPos.getY(i);
+        const oz = ring1InitialPos.getZ(i);
+        const ripple = Math.sin(ox * 3.0 + elapsed * 3.0) * 0.025;
+        ring1Pos.setX(i, ox + ripple);
+        ring1Pos.setY(i, oy + ripple);
+      }
+      ring1Pos.needsUpdate = true;
+
+      // Subtle breathing pulse
       const pulse = 1 + Math.sin(elapsed * 1.5) * 0.04;
       sphereMesh.scale.setScalar(pulse);
       nodePoints.scale.setScalar(pulse);
 
-      // Antigravity chromatic light shift between cyan, sky blue, and ethereal violet
+      // Antigravity chromatic light shift
       const hue = 0.55 + Math.sin(elapsed * 0.25) * 0.08;
       nodeMat.color.setHSL(hue, 0.95, 0.58);
       outerMat.color.setHSL((hue + 0.05) % 1, 0.9, 0.62);
+      waveMat.color.setHSL((hue + 0.02) % 1, 0.85, 0.65);
+      ring1Mat.color.setHSL(hue, 0.92, 0.58);
+      ring2Mat.color.setHSL((hue + 0.12) % 1, 0.88, 0.62);
 
       renderer.render(scene, camera);
     };
@@ -185,6 +264,12 @@ export default function HeroCanvas() {
       outerMat.dispose();
       nodeGeo.dispose();
       nodeMat.dispose();
+      waveGeo.dispose();
+      waveMat.dispose();
+      ring1Geo.dispose();
+      ring1Mat.dispose();
+      ring2Geo.dispose();
+      ring2Mat.dispose();
       particlesGeo.dispose();
       particlesMat.dispose();
       if (mount.contains(renderer.domElement)) {

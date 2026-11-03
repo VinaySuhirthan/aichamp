@@ -99,7 +99,7 @@ export default function Contact() {
     <section
       ref={sectionRef}
       id="contact"
-      className="py-20 md:py-48 bg-[var(--ink)] text-[var(--paper)] border-t border-[var(--border)] relative overflow-hidden"
+      className="py-16 md:py-24 bg-[var(--ink)] text-[var(--paper)] border-t border-[var(--border)] relative overflow-hidden"
       aria-labelledby="contact-heading"
     >
       {/* Dual ambient glow: Ice Blue */}

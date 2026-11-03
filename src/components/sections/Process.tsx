@@ -43,7 +43,7 @@ export default function Process() {
     <section
       ref={sectionRef}
       id="process"
-      className="py-20 md:py-48 bg-[var(--ink)]"
+      className="py-16 md:py-24 bg-[var(--ink)]"
       aria-labelledby="process-heading"
     >
       <div className="container">

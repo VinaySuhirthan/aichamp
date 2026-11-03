@@ -68,7 +68,7 @@ export default function About() {
     <section
       ref={sectionRef}
       id="about"
-      className="py-20 md:py-48 section--light relative overflow-hidden"
+      className="py-16 md:py-24 section--light relative overflow-hidden"
       aria-labelledby="about-heading"
     >
       <div className="container relative z-10">

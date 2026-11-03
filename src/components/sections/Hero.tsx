@@ -60,8 +60,26 @@ export default function Hero() {
       className="hero relative min-h-[90dvh] sm:min-h-screen flex flex-col justify-center items-center text-center overflow-hidden pt-20 sm:pt-24 pb-10 px-4 bg-[#faf7f0]"
       aria-label="Hero section"
     >
-      {/* 3D WebGL Background Canvas */}
+      {/* 3D WebGL Background Canvas with Undulating Silk Wave & Orbital Rings */}
       <HeroCanvas />
+
+      {/* ── Flowing Liquid Texture Shape 1 (Top Left Ambient Chromatic Wave) ── */}
+      <div
+        className="animate-fluid-1 absolute top-[22%] left-[18%] -translate-x-1/2 -translate-y-1/2 w-[340px] h-[340px] sm:w-[500px] sm:h-[500px] pointer-events-none z-0"
+        style={{
+          background: "radial-gradient(circle at 40% 40%, rgba(56, 189, 248, 0.32) 0%, rgba(14, 165, 233, 0.2) 45%, transparent 75%)",
+          filter: "blur(75px)",
+        }}
+      />
+
+      {/* ── Flowing Liquid Texture Shape 2 (Bottom Right Ambient Violet-Cyan Wave) ── */}
+      <div
+        className="animate-fluid-2 absolute top-[68%] right-[16%] translate-x-1/2 -translate-y-1/2 w-[360px] h-[360px] sm:w-[540px] sm:h-[540px] pointer-events-none z-0"
+        style={{
+          background: "radial-gradient(circle at 60% 60%, rgba(129, 140, 248, 0.28) 0%, rgba(56, 189, 248, 0.18) 50%, transparent 75%)",
+          filter: "blur(80px)",
+        }}
+      />
 
       {/* Antigravity Minimal RGB Prismatic Aura */}
       <div
