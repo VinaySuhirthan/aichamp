@@ -4,9 +4,10 @@ import React from "react";
 
 export interface Floating3DShapeProps {
   variant?: "sphere" | "blob" | "ellipsoid" | "pill";
-  theme?: "cyan" | "lavender" | "rose" | "ice";
+  theme?: "cyan" | "lavender" | "rose" | "ice" | "mint";
   size?: number; // width in px
-  animation?: 1 | 2 | 3;
+  path?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
+  delay?: number; // delay in seconds (supports negative values like -8s)
   className?: string;
   style?: React.CSSProperties;
 }
@@ -15,11 +16,12 @@ export default function Floating3DShape({
   variant = "sphere",
   theme = "cyan",
   size = 140,
-  animation = 1,
+  path,
+  delay = 0,
   className = "",
   style = {},
 }: Floating3DShapeProps) {
-  // Theme gradients & shadows matching the strict warm cream / navy / cyan / lavender / pink palette
+  // Theme gradients & shadows matching the strict warm cream / navy / cyan / lavender / pink / mint palette
   const themeStyles = {
     cyan: {
       gradient:
@@ -53,14 +55,38 @@ export default function Floating3DShape({
       border: "1px solid rgba(255, 255, 255, 0.75)",
       glow: "rgba(45, 212, 191, 0.22)",
     },
+    mint: {
+      gradient:
+        "radial-gradient(circle at 35% 28%, rgba(255, 255, 255, 0.98) 0%, rgba(240, 253, 244, 0.85) 16%, rgba(52, 211, 153, 0.4) 46%, rgba(16, 185, 129, 0.28) 75%, rgba(5, 150, 105, 0.16) 100%)",
+      shadow:
+        "inset -10px -10px 22px rgba(5, 150, 105, 0.2), inset 8px 8px 18px rgba(255, 255, 255, 0.95), inset -2px -2px 6px rgba(52, 211, 153, 0.25), 0 20px 38px -10px rgba(5, 150, 105, 0.14), 0 8px 18px -4px rgba(16, 185, 129, 0.08)",
+      border: "1px solid rgba(255, 255, 255, 0.75)",
+      glow: "rgba(52, 211, 153, 0.22)",
+    },
   }[theme];
 
-  const animClass =
-    animation === 1
-      ? "animate-float-shape-1"
-      : animation === 2
-      ? "animate-float-shape-2"
-      : "animate-float-shape-3";
+  // Determine path: if not explicitly specified, auto-pick based on left vs right positioning in className
+  let chosenPath = path;
+  if (!chosenPath) {
+    if (className.includes("-right") || className.includes("right-")) {
+      chosenPath = 5; // Default right path
+    } else {
+      chosenPath = 1; // Default left path
+    }
+  }
+
+  const pathClassMap: Record<number, string> = {
+    1: "animate-border-drift-left-1",
+    2: "animate-border-drift-left-2",
+    3: "animate-border-drift-left-3",
+    4: "animate-border-drift-left-4",
+    5: "animate-border-drift-right-1",
+    6: "animate-border-drift-right-2",
+    7: "animate-border-drift-right-3",
+    8: "animate-border-drift-right-4",
+  };
+
+  const animClass = pathClassMap[chosenPath] || "animate-border-drift-left-1";
 
   const isBlob = variant === "blob";
   const isEllipsoid = variant === "ellipsoid";
@@ -74,6 +100,7 @@ export default function Floating3DShape({
       style={{
         width: `${size}px`,
         height: `${height}px`,
+        animationDelay: delay !== 0 ? `${delay}s` : undefined,
         ...style,
       }}
       aria-hidden="true"
@@ -135,4 +162,3 @@ export default function Floating3DShape({
     </div>
   );
 }
-

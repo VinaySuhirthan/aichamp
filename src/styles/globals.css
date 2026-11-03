@@ -1150,12 +1150,292 @@ p { line-height: 1.8; }
   box-shadow: 0 16px 36px -10px rgba(2, 132, 199, 0.14);
 }
 
+
+/* ── Organic Border-Drifting 3D Bubbles (GPU Accelerated 60 FPS) ──
+ * Constrained strictly to the outer 10-15% of the viewport.
+ * Non-repetitive curved perimeter drifts with subtle enter/exit transitions.
+ */
+
+/* Path 1: Left Border - Down & Outward Wave (28s) */
+@keyframes border-drift-left-1 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+    opacity: 0.85;
+  }
+  20% {
+    transform: translate3d(-35px, 60px, 0) rotate(-4deg) scale(0.96);
+    opacity: 0.65;
+  }
+  45% {
+    transform: translate3d(20px, 140px, 0) rotate(5deg) scale(1.04);
+    opacity: 0.92;
+  }
+  70% {
+    transform: translate3d(-20px, 210px, 0) rotate(-2deg) scale(0.98);
+    opacity: 0.7;
+  }
+  85% {
+    transform: translate3d(10px, 90px, 0) rotate(3deg) scale(1.02);
+    opacity: 0.88;
+  }
+}
+
+/* Path 2: Left Border - Up & Inward Arc (34s) */
+@keyframes border-drift-left-2 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+    opacity: 0.88;
+  }
+  25% {
+    transform: translate3d(25px, -70px, 0) rotate(6deg) scale(1.05);
+    opacity: 0.92;
+  }
+  50% {
+    transform: translate3d(-30px, -150px, 0) rotate(-5deg) scale(0.95);
+    opacity: 0.6;
+  }
+  75% {
+    transform: translate3d(15px, -200px, 0) rotate(4deg) scale(1.02);
+    opacity: 0.86;
+  }
+  90% {
+    transform: translate3d(-10px, -80px, 0) rotate(-2deg) scale(0.98);
+    opacity: 0.8;
+  }
+}
+
+/* Path 3: Left Border - S-Curved Perimeter Float (40s) */
+@keyframes border-drift-left-3 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+    opacity: 0.82;
+  }
+  20% {
+    transform: translate3d(18px, 40px, 0) rotate(-3deg) scale(1.03);
+    opacity: 0.88;
+  }
+  40% {
+    transform: translate3d(-28px, 90px, 0) rotate(5deg) scale(0.96);
+    opacity: 0.65;
+  }
+  60% {
+    transform: translate3d(-15px, 150px, 0) rotate(-4deg) scale(0.94);
+    opacity: 0.72;
+  }
+  80% {
+    transform: translate3d(22px, 75px, 0) rotate(3deg) scale(1.02);
+    opacity: 0.9;
+  }
+}
+
+/* Path 4: Left Border - Diagonal Corner Wander (36s) */
+@keyframes border-drift-left-4 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+    opacity: 0.85;
+  }
+  30% {
+    transform: translate3d(-40px, -60px, 0) rotate(-7deg) scale(0.92);
+    opacity: 0.55;
+  }
+  60% {
+    transform: translate3d(15px, -30px, 0) rotate(4deg) scale(1.05);
+    opacity: 0.92;
+  }
+  85% {
+    transform: translate3d(-15px, 30px, 0) rotate(-3deg) scale(0.98);
+    opacity: 0.8;
+  }
+}
+
+/* Path 5: Right Border - Up & Outward Arc (30s) */
+@keyframes border-drift-right-1 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+    opacity: 0.85;
+  }
+  25% {
+    transform: translate3d(35px, -65px, 0) rotate(5deg) scale(0.95);
+    opacity: 0.62;
+  }
+  50% {
+    transform: translate3d(-20px, -145px, 0) rotate(-4deg) scale(1.04);
+    opacity: 0.9;
+  }
+  75% {
+    transform: translate3d(25px, -210px, 0) rotate(3deg) scale(0.97);
+    opacity: 0.7;
+  }
+  90% {
+    transform: translate3d(-10px, -95px, 0) rotate(-2deg) scale(1.02);
+    opacity: 0.86;
+  }
+}
+
+/* Path 6: Right Border - Down & Inward Wave (35s) */
+@keyframes border-drift-right-2 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+    opacity: 0.88;
+  }
+  20% {
+    transform: translate3d(-25px, 55px, 0) rotate(-5deg) scale(1.03);
+    opacity: 0.92;
+  }
+  45% {
+    transform: translate3d(30px, 130px, 0) rotate(4deg) scale(0.94);
+    opacity: 0.6;
+  }
+  70% {
+    transform: translate3d(-18px, 195px, 0) rotate(-3deg) scale(1.04);
+    opacity: 0.88;
+  }
+  88% {
+    transform: translate3d(12px, 85px, 0) rotate(2deg) scale(0.98);
+    opacity: 0.78;
+  }
+}
+
+/* Path 7: Right Border - Perimeter Figure-Eight Glide (44s) */
+@keyframes border-drift-right-3 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+    opacity: 0.84;
+  }
+  20% {
+    transform: translate3d(-22px, -45px, 0) rotate(4deg) scale(1.04);
+    opacity: 0.9;
+  }
+  40% {
+    transform: translate3d(35px, -100px, 0) rotate(-6deg) scale(0.93);
+    opacity: 0.58;
+  }
+  60% {
+    transform: translate3d(15px, -165px, 0) rotate(3deg) scale(0.96);
+    opacity: 0.75;
+  }
+  80% {
+    transform: translate3d(-20px, -85px, 0) rotate(-2deg) scale(1.03);
+    opacity: 0.88;
+  }
+}
+
+/* Path 8: Right Border - Diagonal Border Wander (38s) */
+@keyframes border-drift-right-4 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+    opacity: 0.85;
+  }
+  30% {
+    transform: translate3d(38px, 65px, 0) rotate(6deg) scale(0.94);
+    opacity: 0.6;
+  }
+  60% {
+    transform: translate3d(-22px, 35px, 0) rotate(-4deg) scale(1.05);
+    opacity: 0.92;
+  }
+  85% {
+    transform: translate3d(15px, -25px, 0) rotate(2deg) scale(0.98);
+    opacity: 0.82;
+  }
+}
+
+@keyframes blob-morph-3d {
+  0%, 100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  33% {
+    border-radius: 46% 54% 60% 40% / 54% 46% 54% 46%;
+  }
+  66% {
+    border-radius: 68% 32% 48% 52% / 32% 58% 42% 68%;
+  }
+}
+
+@keyframes float-spark {
+  0% { transform: translateY(0px) scale(0.8); opacity: 0.2; }
+  50% { transform: translateY(-30px) scale(1.1); opacity: 0.8; }
+  100% { transform: translateY(-60px) scale(0.6); opacity: 0; }
+}
+
+/* Utility Animation Classes */
+.animate-border-drift-left-1 {
+  animation: border-drift-left-1 28s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+.animate-border-drift-left-2 {
+  animation: border-drift-left-2 34s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+.animate-border-drift-left-3 {
+  animation: border-drift-left-3 40s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+.animate-border-drift-left-4 {
+  animation: border-drift-left-4 36s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-border-drift-right-1 {
+  animation: border-drift-right-1 30s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+.animate-border-drift-right-2 {
+  animation: border-drift-right-2 35s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+.animate-border-drift-right-3 {
+  animation: border-drift-right-3 44s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+.animate-border-drift-right-4 {
+  animation: border-drift-right-4 38s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-blob-morph {
+  animation: blob-morph-3d 14s ease-in-out infinite;
+  will-change: border-radius;
+}
+
+/* Luminous Ambient Glows Tuned for Warm Cream (#faf7f0) */
+.ambient-glow-cyan {
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.3) 0%, rgba(56, 189, 248, 0.16) 42%, rgba(14, 165, 233, 0.04) 70%, transparent 100%);
+  filter: blur(55px);
+}
+.ambient-glow-lavender {
+  background: radial-gradient(circle, rgba(129, 140, 248, 0.28) 0%, rgba(192, 132, 252, 0.16) 42%, rgba(129, 140, 248, 0.03) 70%, transparent 100%);
+  filter: blur(55px);
+}
+.ambient-glow-rose {
+  background: radial-gradient(circle, rgba(244, 114, 182, 0.24) 0%, rgba(251, 146, 60, 0.14) 42%, rgba(244, 114, 182, 0.03) 70%, transparent 100%);
+  filter: blur(55px);
+}
+.ambient-glow-blue {
+  background: radial-gradient(circle, rgba(2, 132, 199, 0.28) 0%, rgba(37, 99, 235, 0.15) 45%, rgba(2, 132, 199, 0.03) 70%, transparent 100%);
+  filter: blur(55px);
+}
+
+.ambient-spark {
+  position: absolute;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #38bdf8, #818cf8);
+  pointer-events: none;
+  animation: float-spark 7s ease-in-out infinite;
+}
+
+/* Reduced Motion Overrides */
 @media (prefers-reduced-motion: reduce) {
-  .animate-drift-1,
-  .animate-drift-2,
-  .animate-drift-3,
-  .animate-pulse-glow,
-  .animate-flow-line {
+  .animate-border-drift-left-1,
+  .animate-border-drift-left-2,
+  .animate-border-drift-left-3,
+  .animate-border-drift-left-4,
+  .animate-border-drift-right-1,
+  .animate-border-drift-right-2,
+  .animate-border-drift-right-3,
+  .animate-border-drift-right-4,
+  .animate-blob-morph,
+  .ambient-spark {
     animation: none !important;
   }
 }

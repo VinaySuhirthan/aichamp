@@ -9,13 +9,14 @@ export default function Footer() {
       {/* ── Flowing Gradient Light Beam Across Top ── */}
       <div className="animate-flow-line absolute top-0 left-0 w-80 h-[2px] bg-gradient-to-r from-transparent via-[#0284c7] to-transparent pointer-events-none z-10" />
 
-      {/* ── 3D Shape & Ambient Lighting ── */}
+      {/* ── 3D Bubble & Ambient Lighting ── */}
       <Floating3DShape
         variant="sphere"
         theme="rose"
         size={135}
-        animation={3}
-        className="-right-10 sm:-right-16 bottom-6 opacity-75 hidden md:block"
+        path={7}
+        delay={-19}
+        className="-right-10 sm:-right-16 bottom-6 hidden md:block"
       />
       <div className="animate-drift-1 absolute -bottom-10 left-1/3 w-[500px] h-[260px] rounded-full pointer-events-none z-0 ambient-glow-cyan opacity-60" />
       <div className="animate-drift-2 absolute -top-10 right-1/4 w-[460px] h-[240px] rounded-full pointer-events-none z-0 ambient-glow-lavender opacity-50" />

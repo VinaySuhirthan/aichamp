@@ -70,20 +70,22 @@ export default function Process() {
       className="py-16 md:py-24 bg-[#faf7f0] relative overflow-hidden border-t border-[#e8dfd3]"
       aria-labelledby="process-heading"
     >
-      {/* ── Floating 3D Shapes on Flanks ── */}
+      {/* ── Floating 3D Bubbles on Outer Borders ── */}
       <Floating3DShape
         variant="sphere"
         theme="ice"
-        size={165}
-        animation={3}
-        className="-left-14 sm:-left-20 top-1/4 opacity-85 hidden sm:block"
+        size={160}
+        path={2}
+        delay={-12}
+        className="-left-14 sm:-left-20 top-1/4 hidden sm:block"
       />
       <Floating3DShape
         variant="pill"
         theme="lavender"
         size={135}
-        animation={1}
-        className="-right-12 sm:-right-18 top-1/2 opacity-85 hidden sm:block"
+        path={6}
+        delay={-24}
+        className="-right-12 sm:-right-18 top-1/2 hidden sm:block"
       />
 
       {/* ── Visibly Luminous Continuous Ambient Background ── */}

@@ -119,34 +119,38 @@ export default function About() {
       className="py-16 md:py-20 bg-[#faf7f0] relative overflow-hidden border-t border-[#e8dfd3]"
       aria-labelledby="about-heading"
     >
-      {/* ── 1. Floating 3D Gradient Objects (Flanking Left & Right Edges) ── */}
+      {/* ── 1. Floating 3D Gradient Bubbles (Gliding Along Outer Borders) ── */}
       <Floating3DShape
         variant="sphere"
         theme="cyan"
         size={160}
-        animation={1}
-        className="-left-14 sm:-left-20 top-20 opacity-90 hidden sm:block"
+        path={3}
+        delay={-5}
+        className="-left-14 sm:-left-20 top-20 hidden sm:block"
       />
       <Floating3DShape
         variant="blob"
         theme="lavender"
-        size={190}
-        animation={2}
-        className="-right-16 sm:-right-24 top-1/4 opacity-85 hidden sm:block"
+        size={185}
+        path={7}
+        delay={-15}
+        className="-right-16 sm:-right-24 top-1/4 hidden sm:block"
       />
       <Floating3DShape
         variant="ellipsoid"
-        theme="rose"
+        theme="mint"
         size={150}
-        animation={3}
-        className="-left-12 bottom-36 opacity-85 hidden lg:block"
+        path={1}
+        delay={-25}
+        className="-left-12 bottom-36 hidden lg:block"
       />
       <Floating3DShape
         variant="sphere"
-        theme="ice"
-        size={175}
-        animation={1}
-        className="-right-16 bottom-24 opacity-85 hidden sm:block"
+        theme="rose"
+        size={170}
+        path={5}
+        delay={-11}
+        className="-right-16 bottom-24 hidden sm:block"
       />
 
       {/* ── 2. Visibly Luminous Continuous Ambient Background (Tuned for Cream #faf7f0) ── */}

@@ -24,20 +24,22 @@ const stats = [
 export default function MarqueeRibbon() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-[#faf7f0] via-[#ffffff] to-[#faf7f0] border-y border-[#e8dfd3] py-8 sm:py-12 select-none">
-      {/* Floating 3D Shapes on Outer Flanks */}
+      {/* Floating 3D Bubbles on Outer Borders */}
       <Floating3DShape
         variant="sphere"
         theme="rose"
-        size={140}
-        animation={1}
-        className="-left-10 top-1/2 -translate-y-1/2 opacity-85 hidden lg:block"
+        size={135}
+        path={4}
+        delay={-16}
+        className="-left-10 top-1/2 -translate-y-1/2 hidden lg:block"
       />
       <Floating3DShape
         variant="ellipsoid"
-        theme="cyan"
-        size={150}
-        animation={2}
-        className="-right-12 top-1/2 -translate-y-1/2 opacity-85 hidden lg:block"
+        theme="ice"
+        size={145}
+        path={8}
+        delay={-28}
+        className="-right-12 top-1/2 -translate-y-1/2 hidden lg:block"
       />
 
       {/* Visibly Luminous Ambient Drifting Orbs */}

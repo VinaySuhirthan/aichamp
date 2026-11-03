@@ -100,27 +100,38 @@ export default function Hero() {
         }}
       />
 
-            {/* ── 3D Decorative Floating Gradient Shapes on Flanks ── */}
+            {/* ── 3D Decorative Floating Gradient Bubbles on Outer Borders ── */}
       <Floating3DShape
         variant="sphere"
         theme="cyan"
-        size={175}
-        animation={1}
-        className="-left-14 sm:-left-20 top-[22%] opacity-90 hidden sm:block"
+        size={170}
+        path={1}
+        delay={-6}
+        className="-left-12 sm:-left-16 top-[22%] hidden sm:block"
       />
       <Floating3DShape
         variant="blob"
         theme="lavender"
-        size={195}
-        animation={2}
-        className="-right-16 sm:-right-24 top-[32%] opacity-85 hidden sm:block"
+        size={185}
+        path={5}
+        delay={-14}
+        className="-right-14 sm:-right-20 top-[30%] hidden sm:block"
       />
       <Floating3DShape
         variant="ellipsoid"
-        theme="ice"
-        size={140}
-        animation={3}
-        className="-left-10 bottom-[15%] opacity-80 hidden lg:block"
+        theme="mint"
+        size={145}
+        path={3}
+        delay={-22}
+        className="-left-10 bottom-[16%] hidden lg:block"
+      />
+      <Floating3DShape
+        variant="sphere"
+        theme="rose"
+        size={150}
+        path={7}
+        delay={-9}
+        className="-right-12 bottom-[20%] hidden lg:block"
       />
 
       {/* Floating subtle particle sparks */}

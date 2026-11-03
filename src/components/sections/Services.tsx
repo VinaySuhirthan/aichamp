@@ -480,20 +480,22 @@ export default function Services() {
         ref={pinnedStageRef}
         className="relative w-full h-[calc(100dvh-72px)] min-h-[580px] max-h-[820px] pt-3 pb-3 sm:pt-4 sm:pb-4 flex flex-col justify-between overflow-hidden bg-[#faf7f0]"
       >
-        {/* ── Floating 3D Shapes on Outer Margins (Preserving 3-Card Carousel) ── */}
+        {/* ── Floating 3D Bubbles on Outer Margins (Preserving 3-Card Carousel) ── */}
         <Floating3DShape
           variant="sphere"
           theme="cyan"
-          size={165}
-          animation={1}
-          className="-left-14 sm:-left-20 top-1/3 opacity-80 hidden sm:block"
+          size={160}
+          path={2}
+          delay={-8}
+          className="-left-14 sm:-left-20 top-1/3 hidden sm:block"
         />
         <Floating3DShape
           variant="blob"
           theme="lavender"
-          size={180}
-          animation={2}
-          className="-right-14 sm:-right-20 top-1/2 opacity-80 hidden sm:block"
+          size={175}
+          path={6}
+          delay={-18}
+          className="-right-14 sm:-right-20 top-1/2 hidden sm:block"
         />
 
         {/* ── Visibly Luminous Continuous Ambient Background & Network Details ── */}

@@ -60,20 +60,22 @@ export default function FAQ() {
       className="py-16 md:py-24 bg-[#faf7f0] relative overflow-hidden border-t border-[#e8dfd3]"
       aria-labelledby="faq-heading"
     >
-      {/* ── Floating 3D Shapes on Flanks ── */}
+      {/* ── Floating 3D Bubbles on Outer Borders ── */}
       <Floating3DShape
         variant="blob"
         theme="rose"
-        size={175}
-        animation={2}
-        className="-left-14 sm:-left-20 top-1/4 opacity-85 hidden sm:block"
+        size={170}
+        path={4}
+        delay={-14}
+        className="-left-14 sm:-left-20 top-1/4 hidden sm:block"
       />
       <Floating3DShape
         variant="sphere"
         theme="cyan"
         size={160}
-        animation={1}
-        className="-right-12 sm:-right-18 top-1/2 opacity-85 hidden sm:block"
+        path={8}
+        delay={-26}
+        className="-right-12 sm:-right-18 top-1/2 hidden sm:block"
       />
 
       {/* ── Visibly Luminous Continuous Ambient Background ── */}
