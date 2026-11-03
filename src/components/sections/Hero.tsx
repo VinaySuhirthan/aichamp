@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { hero } from "@/content/content";
+import Floating3DShape from "@/components/ui/Floating3DShape";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -99,6 +100,34 @@ export default function Hero() {
         }}
       />
 
+            {/* ── 3D Decorative Floating Gradient Shapes on Flanks ── */}
+      <Floating3DShape
+        variant="sphere"
+        theme="cyan"
+        size={175}
+        animation={1}
+        className="-left-14 sm:-left-20 top-[22%] opacity-90 hidden sm:block"
+      />
+      <Floating3DShape
+        variant="blob"
+        theme="lavender"
+        size={195}
+        animation={2}
+        className="-right-16 sm:-right-24 top-[32%] opacity-85 hidden sm:block"
+      />
+      <Floating3DShape
+        variant="ellipsoid"
+        theme="ice"
+        size={140}
+        animation={3}
+        className="-left-10 bottom-[15%] opacity-80 hidden lg:block"
+      />
+
+      {/* Floating subtle particle sparks */}
+      <div className="ambient-spark w-2 h-2 top-[20%] left-[16%] [animation-delay:0.5s]" />
+      <div className="ambient-spark w-2.5 h-2.5 top-[38%] right-[18%] [animation-delay:3s]" />
+      <div className="ambient-spark w-2 h-2 top-[68%] left-[22%] [animation-delay:1.5s]" />
+
       {/* Hero Content Container */}
       <div className="relative z-10 max-w-[1000px] mx-auto flex flex-col items-center">
         {/* Top Floating Category Badge with Antigravity RGB Halo */}
@@ -122,7 +151,7 @@ export default function Hero() {
           </span>
           
           {/* High-Impact Vibrant Gradient Filled NEXT-GEN */}
-          <span className="block text-4xl sm:text-6xl md:text-7xl lg:text-[84px] font-black tracking-tight my-0.5 sm:my-1 bg-gradient-to-r from-[#0284c7] via-[#0ea5e9] to-[#2563eb] bg-clip-text text-transparent drop-shadow-sm pb-1">
+          <span className="brand-gradient-fill block text-4xl sm:text-6xl md:text-7xl lg:text-[84px] font-black tracking-tight my-0.5 sm:my-1 bg-gradient-to-r from-[#0284c7] via-[#0ea5e9] to-[#2563eb] bg-clip-text text-transparent drop-shadow-[0_4px_20px_rgba(2,132,199,0.25)] pb-1" style={{ WebkitTextStroke: "0px transparent" }}>
             NEXT-GEN
           </span>
 

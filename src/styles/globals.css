@@ -850,27 +850,14 @@ p { line-height: 1.8; }
   opacity: 0.65;
 }
 
-/* 3. Minimal RGB Chromatic Text Stroke / Aura for NEXT-GEN */
-.rgb-chromatic-glow {
-  animation: rgb-chromatic 8s ease-in-out infinite alternate;
-}
-@keyframes rgb-chromatic {
-  0% {
-    text-shadow: 0 0 35px rgba(56, 189, 248, 0.55), 0 0 60px rgba(129, 140, 248, 0.25);
-    -webkit-text-stroke-color: #0284c7;
-  }
-  33% {
-    text-shadow: 0 0 35px rgba(129, 140, 248, 0.55), 0 0 60px rgba(192, 132, 252, 0.25);
-    -webkit-text-stroke-color: #6366f1;
-  }
-  66% {
-    text-shadow: 0 0 35px rgba(192, 132, 252, 0.55), 0 0 60px rgba(244, 114, 182, 0.25);
-    -webkit-text-stroke-color: #a855f7;
-  }
-  100% {
-    text-shadow: 0 0 35px rgba(56, 189, 248, 0.55), 0 0 60px rgba(14, 165, 233, 0.25);
-    -webkit-text-stroke-color: #0284c7;
-  }
+/* 3. Filled Gradient Brand Heading */
+.brand-gradient-fill {
+  background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 45%, #2563eb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: #0284c7;
+  text-shadow: 0 10px 30px rgba(2, 132, 199, 0.15);
 }
 
 /* 4. Minimal RGB Shimmer Hairline for Navbar */
@@ -1054,4 +1041,121 @@ p { line-height: 1.8; }
 .animate-fluid-2 {
   animation: fluid-morph-2 22s ease-in-out infinite;
   will-change: transform, border-radius;
+}
+
+
+/* ─── Premium Ambient Drifting Orbs (GPU Accelerated 60 FPS) ─── */
+@keyframes ambient-drift-slow-1 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(40px, -35px, 0) scale(1.08);
+  }
+  66% {
+    transform: translate3d(-35px, 25px, 0) scale(0.95);
+  }
+}
+
+@keyframes ambient-drift-slow-2 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(-40px, 30px, 0) scale(1.06);
+  }
+  66% {
+    transform: translate3d(35px, -30px, 0) scale(0.96);
+  }
+}
+
+@keyframes ambient-drift-slow-3 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(30px, 40px, 0) scale(1.1);
+  }
+}
+
+@keyframes ambient-pulse-glow {
+  0%, 100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes flow-line-x {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-drift-1 {
+  animation: ambient-drift-slow-1 26s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-drift-2 {
+  animation: ambient-drift-slow-2 30s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-drift-3 {
+  animation: ambient-drift-slow-3 22s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-pulse-glow {
+  animation: ambient-pulse-glow 8s ease-in-out infinite;
+  will-change: opacity, transform;
+}
+
+.animate-flow-line {
+  animation: flow-line-x 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform;
+}
+
+/* ── Delicate Ambient Pattern Textures ───────────────── */
+.bg-grid-subtle {
+  background-image: linear-gradient(to right, rgba(2, 132, 199, 0.05) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(2, 132, 199, 0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.bg-dot-subtle {
+  background-image: radial-gradient(rgba(2, 132, 199, 0.12) 1.2px, transparent 1.2px);
+  background-size: 28px 28px;
+}
+
+.bg-circuit-subtle {
+  background-image: radial-gradient(rgba(14, 165, 233, 0.15) 1.5px, transparent 1.5px),
+                    linear-gradient(to right, rgba(2, 132, 199, 0.035) 1px, transparent 1px);
+  background-size: 48px 48px, 48px 48px;
+}
+
+/* ── Refined Agency Hover Interactions ───────────────── */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px -10px rgba(2, 132, 199, 0.14);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-drift-1,
+  .animate-drift-2,
+  .animate-drift-3,
+  .animate-pulse-glow,
+  .animate-flow-line {
+    animation: none !important;
+  }
 }

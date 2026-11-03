@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
 import Image from "next/image";
+import Floating3DShape from "@/components/ui/Floating3DShape";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -479,6 +480,30 @@ export default function Services() {
         ref={pinnedStageRef}
         className="relative w-full h-[calc(100dvh-72px)] min-h-[580px] max-h-[820px] pt-3 pb-3 sm:pt-4 sm:pb-4 flex flex-col justify-between overflow-hidden bg-[#faf7f0]"
       >
+        {/* ── Floating 3D Shapes on Outer Margins (Preserving 3-Card Carousel) ── */}
+        <Floating3DShape
+          variant="sphere"
+          theme="cyan"
+          size={165}
+          animation={1}
+          className="-left-14 sm:-left-20 top-1/3 opacity-80 hidden sm:block"
+        />
+        <Floating3DShape
+          variant="blob"
+          theme="lavender"
+          size={180}
+          animation={2}
+          className="-right-14 sm:-right-20 top-1/2 opacity-80 hidden sm:block"
+        />
+
+        {/* ── Visibly Luminous Continuous Ambient Background & Network Details ── */}
+        <div className="animate-drift-1 absolute top-[15%] left-[8%] w-[520px] h-[360px] rounded-full pointer-events-none z-0 ambient-glow-cyan opacity-80" />
+        <div className="animate-drift-2 absolute bottom-[8%] right-[10%] w-[500px] h-[340px] rounded-full pointer-events-none z-0 ambient-glow-lavender opacity-80" />
+        <div className="absolute inset-0 bg-circuit-subtle opacity-30 pointer-events-none z-0" />
+        
+        {/* Floating subtle particle sparks */}
+        <div className="ambient-spark w-2 h-2 top-[24%] left-[15%] [animation-delay:1.5s]" />
+        <div className="ambient-spark w-2.5 h-2.5 bottom-[28%] right-[18%] [animation-delay:4s]" />
         <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-1 flex flex-col justify-between">
           {/* ── 1. STATIONARY SECTION HEADER (Visible across all 5 sets) ── */}
           <div className="mb-2 shrink-0">

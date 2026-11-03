@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { contact, site } from "@/content/content";
+import Floating3DShape from "@/components/ui/Floating3DShape";
 import { supabase } from "@/lib/supabase";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -31,6 +32,14 @@ export default function Contact() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
 
   useEffect(() => {
+    const timer = setTimeout(() => {
+      if (sectionRef.current) {
+        sectionRef.current.querySelectorAll(".contact-reveal").forEach((el) => {
+          (el as HTMLElement).style.opacity = "1";
+          (el as HTMLElement).style.transform = "none";
+        });
+      }
+    }, 600);
     const mm = gsap.matchMedia();
     mm.add("(prefers-reduced-motion: no-preference)", () => {
       if (!sectionRef.current) return;
@@ -43,7 +52,7 @@ export default function Contact() {
         scrollTrigger: { trigger: sectionRef.current, start: "top 85%" },
       });
     });
-    return () => mm.revert();
+    return () => { clearTimeout(timer); mm.revert(); };
   }, []);
 
   const validate = (): boolean => {
@@ -110,7 +119,11 @@ export default function Contact() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-20">
           {/* Left info column */}
           <div className="md:col-span-4">
-            <p className="section-label contact-reveal" style={{ marginBottom: "16px" }}>Contact</p>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/90 border border-[#0ea5e9]/25 shadow-sm text-xs font-semibold text-[#0c192c] mb-4 contact-reveal">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span>Available for Immediate Consultation</span>
+            </div>
+            <p className="section-label contact-reveal" style={{ marginBottom: "14px" }}>Direct Engagement</p>
             <h2
               id="contact-heading"
               className="font-heading text-[clamp(32px,4vw,52px)] text-[#0c192c] font-bold tracking-tight contact-reveal"
@@ -189,7 +202,7 @@ export default function Contact() {
                 onSubmit={handleSubmit}
                 noValidate
                 aria-label="Contact form"
-                className="grid grid-cols-1 md:grid-cols-2 gap-7 bg-white p-8 sm:p-10 rounded-2xl border border-[var(--border)] shadow-md"
+                className="relative grid grid-cols-1 md:grid-cols-2 gap-7 bg-white/95 backdrop-blur-sm p-8 sm:p-10 rounded-2xl border border-[var(--border)] shadow-[0_12px_40px_rgba(2,132,199,0.06)] hover:shadow-[0_16px_50px_rgba(2,132,199,0.1)] transition-all duration-300 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#0ea5e9]/40 before:to-transparent"
               >
                 {/* Name */}
                 <div className="form-field">
@@ -201,7 +214,7 @@ export default function Contact() {
                     type="text"
                     name="name"
                     autoComplete="name"
-                    className="w-full bg-[#faf7f0] border border-[var(--border)] text-[#0c192c] rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-[var(--accent)] focus:bg-white transition-colors placeholder:text-[var(--muted)]"
+                    className="w-full bg-[#faf7f0] border border-[var(--border)] text-[#0c192c] rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-[var(--accent)] focus:ring-2 focus:ring-[#0ea5e9]/15 focus:bg-white transition-all duration-200 placeholder:text-[var(--muted)]"
                     placeholder="Your name"
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -226,7 +239,7 @@ export default function Contact() {
                     type="email"
                     name="email"
                     autoComplete="email"
-                    className="w-full bg-[#faf7f0] border border-[var(--border)] text-[#0c192c] rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-[var(--accent)] focus:bg-white transition-colors placeholder:text-[var(--muted)]"
+                    className="w-full bg-[#faf7f0] border border-[var(--border)] text-[#0c192c] rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-[var(--accent)] focus:ring-2 focus:ring-[#0ea5e9]/15 focus:bg-white transition-all duration-200 placeholder:text-[var(--muted)]"
                     placeholder="you@example.com"
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
@@ -251,7 +264,7 @@ export default function Contact() {
                     type="tel"
                     name="phone"
                     autoComplete="tel"
-                    className="w-full bg-[#faf7f0] border border-[var(--border)] text-[#0c192c] rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-[var(--accent)] focus:bg-white transition-colors placeholder:text-[var(--muted)]"
+                    className="w-full bg-[#faf7f0] border border-[var(--border)] text-[#0c192c] rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-[var(--accent)] focus:ring-2 focus:ring-[#0ea5e9]/15 focus:bg-white transition-all duration-200 placeholder:text-[var(--muted)]"
                     placeholder="+91 99949 65489"
                     value={form.phone}
                     onChange={(e) => setForm({ ...form, phone: e.target.value })}
@@ -273,7 +286,7 @@ export default function Contact() {
                   <select
                     id="contact-service"
                     name="service"
-                    className="w-full bg-[#faf7f0] border border-[var(--border)] text-[#0c192c] rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-[var(--accent)] focus:bg-white transition-colors cursor-pointer"
+                    className="w-full bg-[#faf7f0] border border-[var(--border)] text-[#0c192c] rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-[var(--accent)] focus:ring-2 focus:ring-[#0ea5e9]/15 focus:bg-white transition-all duration-200 cursor-pointer"
                     value={form.service}
                     onChange={(e) => setForm({ ...form, service: e.target.value })}
                     aria-label="Select a service"
@@ -296,7 +309,7 @@ export default function Contact() {
                     id="contact-message"
                     name="message"
                     rows={4}
-                    className="w-full bg-[#faf7f0] border border-[var(--border)] text-[#0c192c] rounded-xl p-4 text-sm focus:outline-none focus:border-[var(--accent)] focus:bg-white transition-colors placeholder:text-[var(--muted)] resize-y min-h-[130px]"
+                    className="w-full bg-[#faf7f0] border border-[var(--border)] text-[#0c192c] rounded-xl p-4 text-sm focus:outline-none focus:border-[var(--accent)] focus:ring-2 focus:ring-[#0ea5e9]/15 focus:bg-white transition-all duration-200 placeholder:text-[var(--muted)] resize-y min-h-[130px]"
                     placeholder="Describe your project, objectives, or required deliverables..."
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}

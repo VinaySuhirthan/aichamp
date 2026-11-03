@@ -1,10 +1,25 @@
 import Link from "next/link";
 import Image from "next/image";
 import { site, nav, footer } from "@/content/content";
+import Floating3DShape from "@/components/ui/Floating3DShape";
 
 export default function Footer() {
   return (
-    <footer className="bg-[var(--surface-2)] border-t border-[var(--border)] py-16 md:py-20" role="contentinfo">
+    <footer className="relative bg-[var(--surface-2)] border-t border-[var(--border)] py-16 md:py-20 overflow-hidden before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#0ea5e9]/40 before:to-transparent" role="contentinfo">
+      {/* ── Flowing Gradient Light Beam Across Top ── */}
+      <div className="animate-flow-line absolute top-0 left-0 w-80 h-[2px] bg-gradient-to-r from-transparent via-[#0284c7] to-transparent pointer-events-none z-10" />
+
+      {/* ── 3D Shape & Ambient Lighting ── */}
+      <Floating3DShape
+        variant="sphere"
+        theme="rose"
+        size={135}
+        animation={3}
+        className="-right-10 sm:-right-16 bottom-6 opacity-75 hidden md:block"
+      />
+      <div className="animate-drift-1 absolute -bottom-10 left-1/3 w-[500px] h-[260px] rounded-full pointer-events-none z-0 ambient-glow-cyan opacity-60" />
+      <div className="animate-drift-2 absolute -top-10 right-1/4 w-[460px] h-[240px] rounded-full pointer-events-none z-0 ambient-glow-lavender opacity-50" />
+
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
           {/* Brand */}
