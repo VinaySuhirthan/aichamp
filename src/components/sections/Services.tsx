@@ -750,7 +750,7 @@ export default function Services() {
             {/* Header Badge */}
             <div className="flex items-center gap-2 mb-3">
               <span className="px-3 py-1 rounded-full bg-[#e0f2fe] text-[#0284c7] font-mono font-bold text-xs border border-[#bae6fd]">
-                // {selectedService.number} {selectedService.categoryLabel}
+                {"//"} {selectedService.number} {selectedService.categoryLabel}
               </span>
               <span className="text-xs font-mono text-[#64748b]">
                 ⚡ {selectedService.sla}

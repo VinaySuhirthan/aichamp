@@ -123,7 +123,7 @@ export default function FAQ() {
                 onClick={handleOpenAIChat}
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#e0f2fe] hover:bg-[#0284c7] text-[#0284c7] hover:text-white border border-[#bae6fd] text-xs font-sans font-bold tracking-wider uppercase transition-all duration-300 cursor-pointer shadow-xs"
               >
-                <span>🎙️ Ask AI Assistant</span>
+                <span>🎙️ Ask Champ</span>
                 <span>→</span>
               </button>
             </div>

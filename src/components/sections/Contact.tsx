@@ -111,6 +111,9 @@ export default function Contact() {
       className="py-16 md:py-24 bg-[var(--ink)] text-[var(--paper)] border-t border-[var(--border)] relative overflow-hidden"
       aria-labelledby="contact-heading"
     >
+      {/* Floating 3D Gradient Shapes (Flanks) */}
+      <Floating3DShape variant="sphere" theme="cyan" size={72} path={1} delay={-10} />
+      <Floating3DShape variant="pill" theme="lavender" size={68} path={5} delay={-22} />
       {/* Dual ambient glow: Ice Blue */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#0ea5e9]/10 blur-[130px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[450px] h-[450px] bg-[#38bdf8]/10 blur-[130px] rounded-full pointer-events-none" />

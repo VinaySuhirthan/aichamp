@@ -20,7 +20,7 @@ export default function MobileCTABar() {
         type="button"
         onClick={handleOpenAIChat}
         className="flex-1 inline-flex items-center justify-center gap-2 py-3 px-3 rounded-xl bg-gradient-to-r from-[#0284c7] via-[#0ea5e9] to-[#0284c7] text-white font-bold text-xs tracking-wide uppercase transition-transform active:scale-95 shadow-md shadow-[#0284c7]/25 cursor-pointer"
-        aria-label="Open Ask AI Chatbot"
+        aria-label="Open Champ AI Chatbot"
       >
         <span className="relative flex items-center justify-center w-5 h-5 rounded-full bg-white/20 text-white">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -28,7 +28,7 @@ export default function MobileCTABar() {
           </svg>
           <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-[#10b981] rounded-full" />
         </span>
-        <span>Ask AI</span>
+        <span>Ask Champ</span>
         <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-white/20 text-white font-sans font-semibold normal-case">
           Online
         </span>

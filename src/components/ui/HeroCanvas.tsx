@@ -241,7 +241,9 @@ export default function HeroCanvas() {
 
     const stopLoop = () => {
       isRunning = false;
-      stopLoop();
+      if (frameId) {
+        cancelAnimationFrame(frameId);
+      }
     };
 
     // ── Viewport Visibility Observer (Stops RAF when off-screen) ───

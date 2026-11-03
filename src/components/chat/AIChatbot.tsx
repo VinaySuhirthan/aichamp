@@ -24,7 +24,7 @@ export default function AIChatbot() {
     {
       id: "welcome",
       role: "assistant",
-      content: `Hello! I'm your **AI Biz Champ Assistant**.\n\nLed by **Dr. G. Nalinipriya** (Professor in IT & AI Specialist with 30+ yrs experience and 200+ AI tools), we deliver 15 high-precision services across **Design, Video, Web, AI Agents, and Academic Publishing**.\n\nFeel free to speak to me using the 🎙️ **Microphone** button or type your question below!`,
+      content: `Hello! I'm **Champ**, your AI consultant at AI Biz Champ.\n\nLed by **Dr. G. Nalinipriya** (Professor in IT & AI Specialist with 30+ yrs experience and 200+ AI tools), we deliver 15 high-precision services across **Design, Video, Web, AI Agents, and Academic Publishing**.\n\nFeel free to speak to me using the 🎙️ **Microphone** button or type your question below!`,
       timestamp: "Just now",
     },
   ]);
@@ -529,7 +529,7 @@ export default function AIChatbot() {
       {
         id: "welcome-reset",
         role: "assistant",
-        content: `Chat history cleared. How else can I assist your business or project today?`,
+        content: `Chat history cleared. I'm **Champ** — how else can I assist your business or project today?`,
         timestamp: "Just now",
       },
     ]);
@@ -581,7 +581,7 @@ export default function AIChatbot() {
           <button
             onClick={() => setIsOpen(true)}
             className="rgb-border-pill rgb-soft-glow group relative flex items-center gap-3.5 px-5 py-3.5 rounded-full bg-white text-[#0c192c] border border-[#bae6fd] shadow-[0_12px_36px_rgba(2,132,199,0.22),0_2px_10px_rgba(0,0,0,0.06)] hover:shadow-[0_16px_44px_rgba(2,132,199,0.35)] hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
-            aria-label="Open AI Assistant Chat"
+            aria-label="Open Champ AI Chat"
           >
             {/* Subtle soft sky blue aura ring on hover */}
             <span className="absolute -inset-0.5 rounded-full bg-[#38bdf8]/25 blur-sm group-hover:opacity-100 opacity-0 transition duration-300 pointer-events-none" />
@@ -599,14 +599,14 @@ export default function AIChatbot() {
             <div className="flex flex-col text-left">
               <div className="flex items-center gap-1.5">
                 <span className="font-heading font-extrabold text-sm tracking-tight text-[#0c192c]">
-                  Ask AI
+                  Ask Champ
                 </span>
                 <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-[#e0f2fe] text-[#0284c7] font-sans font-semibold border border-[#bae6fd]">
                   Online
                 </span>
               </div>
               <span className="text-[11px] text-[#64748b] font-sans font-medium">
-                Voice & Text Assistant
+                Champ · Voice &amp; AI
               </span>
             </div>
 
@@ -638,7 +638,7 @@ export default function AIChatbot() {
       {isOpen && (
         <aside
           ref={chatWindowRef}
-          aria-label="AI Assistant Chat"
+          aria-label="Champ AI Chat"
           style={
             position
               ? {
@@ -694,14 +694,14 @@ export default function AIChatbot() {
               <div>
                 <div className="flex items-center gap-1.5">
                   <h3 className="font-heading font-bold text-sm text-white tracking-tight">
-                    AI Biz Champ
+                    Champ
                   </h3>
                   <span className="text-[9px] px-2 py-0.5 rounded-full bg-white/25 text-white font-sans font-semibold border border-white/30">
                     Voice & Chat
                   </span>
                 </div>
                 <p className="text-[10.5px] text-[#e0f2fe] font-sans">
-                  Advisory guided by Dr. G. Nalinipriya
+                  AI Advisor · Dr. G. Nalinipriya
                 </p>
               </div>
             </div>

@@ -50,7 +50,7 @@ function generateDomainResponse(message: string, history: ChatMessage[] = []): s
     q.startsWith("hi ") ||
     q.startsWith("hello ")
   ) {
-    return `Hello! Welcome to **AI Biz Champ**.\n\nI am your AI Consultant guided by **Dr. G. Nalinipriya** (Professor in IT & AI Specialist with 30+ years experience and 200+ AI tools).\n\nHow can I assist your business or project today?\n- **Explore 15 AI Services** (Design, Video, Web, AI Agents, Research)\n- **Learn about Dr. G. Nalinipriya**\n- **Project Timelines & Pricing**\n- **Book a Discovery Consultation**`;
+    return `Hello! Welcome to **AI Biz Champ**.\n\nI'm **Champ**, your AI consultant guided by **Dr. G. Nalinipriya** (Professor in IT & AI Specialist with 30+ years experience and 200+ AI tools).\n\nHow can I assist your business or project today?\n- **Explore 15 AI Services** (Design, Video, Web, AI Agents, Research)\n- **Learn about Dr. G. Nalinipriya**\n- **Project Timelines & Pricing**\n- **Book a Discovery Consultation**`;
   }
 
   // Founder / Leadership
@@ -165,7 +165,7 @@ function generateDomainResponse(message: string, history: ChatMessage[] = []): s
   }
 
   // General Fallback
-  return `Thank you for your question! **AI Biz Champ** delivers elite AI solutions directed by **Dr. G. Nalinipriya** (Professor in IT with 30+ yrs experience and 200+ AI tools).\n\nHere are popular topics you can ask me about:\n- **"What services do you offer?"** (Visual, Video, Web, AI Agents, Academic Publishing)\n- **"Tell me about Dr. G. Nalinipriya"** (Patents, research, background)\n- **"How long does a project take?"** (Timelines & delivery)\n- **"How do I book a consultation?"** (Direct contact & proposals)\n\nWhat would you like to know more about?`;
+  return `Thank you for your question! I'm **Champ**, your AI guide at **AI Biz Champ** — directed by **Dr. G. Nalinipriya** (Professor in IT with 30+ yrs experience and 200+ AI tools).\n\nHere are popular topics you can ask me about:\n- **"What services do you offer?"** (Visual, Video, Web, AI Agents, Academic Publishing)\n- **"Tell me about Dr. G. Nalinipriya"** (Patents, research, background)\n- **"How long does a project take?"** (Timelines & delivery)\n- **"How do I book a consultation?"** (Direct contact & proposals)\n\nWhat would you like to know more about?`;
 }
 
 export async function POST(req: NextRequest) {
@@ -234,7 +234,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(
       {
         reply:
-          "Hello! I am your AI Biz Champ Consultant. Feel free to ask about our 15 AI services, Dr. G. Nalinipriya's leadership, pricing, or scroll to the Contact Section below to book a consultation!",
+          "Hello! I'm Champ, your AI consultant at AI Biz Champ. Feel free to ask about our 15 AI services, Dr. G. Nalinipriya's leadership, pricing, or scroll to the Contact Section below to book a consultation!",
         source: "resilient-fallback",
       },
       { status: 200 }
